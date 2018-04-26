@@ -1,0 +1,7 @@
+<form #form="ngForm" (submit)="add()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" name="name" [(ngModel)]="song.name" required #name="ngModel">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

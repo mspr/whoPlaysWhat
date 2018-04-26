@@ -1,0 +1,53 @@
+{
+  "musicians": [
+    {
+      "id": 1,
+      "name": "Maxime",
+      "role": "Guitarist"
+    },
+    {
+      "id": 2,
+      "name": "Anatole",
+      "role": "Guitarist"
+    },
+    {
+      "id": 3,
+      "name": "Oriane",
+      "role": "Singer"
+    },
+    {
+      "id": 4,
+      "name": "Hugo",
+      "role": "Drumer"
+    },
+    {
+      "id": 5,
+      "name": "Arnaud",
+      "role": "Bassist"
+    }
+  ],
+  "bands": [
+    {
+      "id": 1,
+      "name": "Les Improbables",
+      "songs": [
+        {
+          "id": 1,
+          "name": "Crossroads"
+        },
+        {
+          "id": 2,
+          "name": "Funky Blue Sunday"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "The Yellow Summary"
+    },
+    {
+      "id": 3,
+      "name": "The New Cat Sí"
+    }
+  ]
+}
