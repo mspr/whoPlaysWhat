@@ -47,11 +47,13 @@
   "songs": [
     {
       "id": 1,
-      "name": "Crossroads"
+      "name": "Crossroads",
+      "bandId": 1
     },
     {
       "id": 2,
-      "name": "Funky Blue Sunday"
+      "name": "Funky Blue Sunday",
+      "bandId": 2
     }
   ]
 }
