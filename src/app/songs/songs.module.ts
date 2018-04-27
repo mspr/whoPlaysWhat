@@ -5,6 +5,7 @@ import { SongsAddComponent } from './songs-add/songs-add.component';
 import { SongsListComponent } from './songs-list/songs-list.component';
 import { SongsRoutingModule } from './songs-routing.module';
 import { FormsModule } from '@angular/forms';
+import { SongService } from '../core/song.service';
 
 @NgModule({
   imports: [
@@ -16,6 +17,9 @@ import { FormsModule } from '@angular/forms';
     SongsShowComponent,
     SongsAddComponent,
     SongsListComponent
+  ],
+  providers: [
+    SongService
   ]
 })
 export class SongsModule { }

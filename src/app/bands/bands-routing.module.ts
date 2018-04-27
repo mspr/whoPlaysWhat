@@ -1,3 +1,4 @@
+import { BandsLayoutComponent } from './bands-layout/bands-layout.component';
 import { BandsAddComponent } from './bands-add/bands-add.component';
 import { BandsShowComponent } from './bands-show/bands-show.component';
 import { BandsListComponent } from './bands-list/bands-list.component';
@@ -21,7 +22,7 @@ const routes: Routes = [{
     pathMatch: 'full'
   }],
   path: '',
-  component: BandsListComponent,
+  component: BandsLayoutComponent
 }];
 
 @NgModule({
