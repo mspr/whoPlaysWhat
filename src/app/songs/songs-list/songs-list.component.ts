@@ -1,7 +1,8 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SongService } from './../../core/song.service';
 import { Song } from './../song';
 import { Component, OnInit } from '@angular/core';
+import { map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'wpw-songs-list',
@@ -11,13 +12,17 @@ import { Component, OnInit } from '@angular/core';
 export class SongsListComponent implements OnInit {
 
   public songs : Song[];
+  private bandId : number;
 
-  constructor(private router: Router,
+  constructor(private activatedRoute: ActivatedRoute,
+    private router: Router,
     private songService: SongService) { }
 
   ngOnInit() {
-    this.songService.getAll().subscribe((songs) => {
-      this.songs = songs;
+
+    let bandId = this.activatedRoute.snapshot.params['id'];
+    this.songService.getAll(bandId).subscribe((songs) => {
+        this.songs = songs;
     });
   }
 

@@ -29,17 +29,7 @@
   "bands": [
     {
       "id": 1,
-      "name": "Les Improbables",
-      "songs": [
-        {
-          "id": 1,
-          "name": "Crossroads"
-        },
-        {
-          "id": 2,
-          "name": "Funky Blue Sunday"
-        }
-      ]
+      "name": "Les Improbables"
     },
     {
       "id": 2,
@@ -52,6 +42,16 @@
     {
       "name": "ghfghghgh",
       "id": 5
+    }
+  ],
+  "songs": [
+    {
+      "id": 1,
+      "name": "Crossroads"
+    },
+    {
+      "id": 2,
+      "name": "Funky Blue Sunday"
     }
   ]
 }
