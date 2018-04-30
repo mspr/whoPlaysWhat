@@ -42,7 +42,7 @@ export class BandsListComponent implements OnInit {
   }
 
   displaySongs(band) {
-    this.router.navigate([`/bands/${band.id}`]);
+    this.router.navigate([`/bands/${band.id}/songs`]);
   }
 
 }

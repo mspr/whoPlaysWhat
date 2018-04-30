@@ -11,15 +11,6 @@ const routes: Routes = [{
   {
     path: "add",
     component: BandsAddComponent
-  },
-  {
-    path: ':id/songs',
-    loadChildren: () => SongsModule,
-  },
-  {
-    path: ':id',
-    redirectTo: ':id/songs',
-    pathMatch: 'full'
   }],
   path: '',
   component: BandsLayoutComponent
