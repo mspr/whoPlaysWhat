@@ -3,27 +3,32 @@
     {
       "id": 1,
       "name": "Maxime",
-      "role": "Guitarist"
+      "role": "Guitarist",
+      "bandId": 1
     },
     {
       "id": 2,
       "name": "Anatole",
-      "role": "Guitarist"
+      "role": "Guitarist",
+      "bandId": 1
     },
     {
       "id": 3,
       "name": "Oriane",
-      "role": "Singer"
+      "role": "Singer",
+      "bandId": 1
     },
     {
       "id": 4,
       "name": "Hugo",
-      "role": "Drumer"
+      "role": "Drumer",
+      "bandId": 1
     },
     {
       "id": 5,
       "name": "Arnaud",
-      "role": "Bassist"
+      "role": "Bassist",
+      "bandId": 1
     }
   ],
   "bands": [

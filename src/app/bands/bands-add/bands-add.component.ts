@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'wpw-add',
+  selector: 'wpw-bands-add',
   templateUrl: './bands-add.component.html',
   styleUrls: ['./bands-add.component.scss']
 })

@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'wpw-band',
+  selector: 'wpw-bands-show',
   templateUrl: './bands-show.component.html',
   styleUrls: ['./bands-show.component.scss']
 })

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'wpw-bands',
+  selector: 'wpw-bands-list',
   templateUrl: './bands-list.component.html',
   styleUrls: ['./bands-list.component.scss']
 })
@@ -39,10 +39,6 @@ export class BandsListComponent implements OnInit {
       this.bandService.removed.emit();
       this.router.navigate(['bands']);
     });
-  }
-
-  displaySongs(band) {
-    this.router.navigate([`/bands/${band.id}/songs`]);
   }
 
 }

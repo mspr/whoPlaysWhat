@@ -18,6 +18,9 @@ import { SongService } from '../core/song.service';
     SongsAddComponent,
     SongsListComponent
   ],
+  exports: [
+    SongsListComponent
+  ],
   providers: [
     SongService
   ]

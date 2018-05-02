@@ -1,3 +1,4 @@
+import { BandsShowComponent } from './bands/bands-show/bands-show.component';
 import { BandsModule } from './bands/bands.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -10,8 +11,8 @@ const routes: Routes = [{
     pathMatch: 'full'
   },
   {
-    path: 'bands/:id/songs',
-    loadChildren: () => SongsModule,
+    path: 'bands/:id',
+    component: BandsShowComponent,
   },
   {
     path: 'bands',

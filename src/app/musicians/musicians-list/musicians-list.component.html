@@ -1,0 +1,10 @@
+<div class="row" *ngFor="let musician of musicians">
+  <div class="col">
+    <a [routerLink]="['/musicians', musician.id]" routerLinkActive="active" class="list-group-item list-group-item-action">
+      {{musician.name}}
+    </a>
+  </div>
+  <div class="col">
+    <button (click)="onRemove()">X</button>
+  </div>
+</div>

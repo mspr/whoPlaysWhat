@@ -1,1 +1,8 @@
-<p>{{band?.name}}</p>
+<div class="row">
+  <div class="col-md-3">
+    <wpw-songs-list></wpw-songs-list>
+  </div>
+  <div class="col-md">
+    <wpw-musicians-list [bandId]=band?.id></wpw-musicians-list>
+  </div>
+</div>

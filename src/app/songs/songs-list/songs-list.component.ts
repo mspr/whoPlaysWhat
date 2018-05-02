@@ -21,8 +21,21 @@ export class SongsListComponent implements OnInit {
   ngOnInit() {
 
     let bandId = this.activatedRoute.snapshot.params['id'];
+
     this.songService.getAll(bandId).subscribe((songs) => {
         this.songs = songs;
+    });
+
+    this.songService.removed.subscribe(() => {
+      this.songService.getAll(bandId).subscribe((bands) => {
+        this.songs = bands;
+      });
+    });
+
+    this.songService.added.subscribe(() => {
+      this.songService.getAll(bandId).subscribe((bands) => {
+        this.songs = bands;
+      });
     });
   }
 

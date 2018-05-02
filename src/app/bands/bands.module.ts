@@ -8,12 +8,16 @@ import { BandsRoutingModule } from './bands-routing.module';
 import { BandsAddComponent } from './bands-add/bands-add.component';
 import { BandService } from '../core/band.service';
 import { BandsLayoutComponent } from './bands-layout/bands-layout.component';
+import { SongsModule } from '../songs/songs.module';
+import { MusiciansModule } from '../musicians/musicians.module';
 
 @NgModule({
   imports: [
     CommonModule,
     BandsRoutingModule,
-    FormsModule
+    FormsModule,
+    SongsModule,
+    MusiciansModule
   ],
   declarations: [
     BandsShowComponent,
