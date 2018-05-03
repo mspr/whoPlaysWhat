@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { Musician } from '../musician';
 import { MusicianService } from '../../core/musician.service';
 
@@ -17,13 +17,17 @@ export class MusiciansListComponent implements OnInit {
   constructor(private musicianService: MusicianService) { }
 
   ngOnInit() {
-    this.musicianService.getAll(this.bandId).subscribe((musicians) => {
-      this.musicians = musicians;
-    });
   }
 
   onRemove() {
 
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.bandId = changes.bandId.currentValue;
+    this.musicianService.getAll(this.bandId).subscribe((musicians) => {
+      this.musicians = musicians;
+    });
   }
 
 }

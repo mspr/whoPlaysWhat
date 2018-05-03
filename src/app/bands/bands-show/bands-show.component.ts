@@ -1,6 +1,6 @@
 import { BandService } from './../../core/band.service';
 import { Band } from './../band';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
 
@@ -23,6 +23,12 @@ export class BandsShowComponent implements OnInit {
     ).subscribe((band) => {
         this.band = band;
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
+
   }
 
 }
