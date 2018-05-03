@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Musician } from '../musician';
 import { MusicianService } from '../../core/musician.service';
 
@@ -11,23 +12,20 @@ export class MusiciansListComponent implements OnInit {
 
   public musicians : Musician[];
 
-  @Input()
-  public bandId : number;
-
-  constructor(private musicianService: MusicianService) { }
+  constructor(private activatedRoute: ActivatedRoute,
+    private musicianService: MusicianService) { }
 
   ngOnInit() {
+
+    let bandId = this.activatedRoute.snapshot.params['id'];
+
+    this.musicianService.getAll(bandId).subscribe((musicians) => {
+      this.musicians = musicians;
+    });
   }
 
   onRemove() {
 
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.bandId = changes.bandId.currentValue;
-    this.musicianService.getAll(this.bandId).subscribe((musicians) => {
-      this.musicians = musicians;
-    });
   }
 
 }

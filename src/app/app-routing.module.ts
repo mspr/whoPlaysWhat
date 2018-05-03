@@ -18,6 +18,10 @@ const routes: Routes = [{
       loadChildren: () => MusiciansModule
     },
     {
+      path: 'songs',
+      loadChildren: () => SongsModule
+    },
+    {
       path: '',
       component: BandsShowComponent,
     }]
