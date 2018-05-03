@@ -1,21 +1,27 @@
+import { MusiciansShowComponent } from './musicians-show/musicians-show.component';
 import { FormsModule } from '@angular/forms';
 import { MusicianService } from './../core/musician.service';
 import { MusiciansListComponent } from './musicians-list/musicians-list.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { MusiciansRoutingModule } from './musicians-routing.module';
+import { MusiciansAddComponent } from './musicians-add/musicians-add.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    MusiciansRoutingModule
   ],
   exports: [
     MusiciansListComponent
   ],
   declarations: [
-    MusiciansListComponent
+    MusiciansListComponent,
+    MusiciansAddComponent,
+    MusiciansShowComponent
   ],
   providers: [
     MusicianService

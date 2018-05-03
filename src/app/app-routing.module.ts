@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SongsModule } from './songs/songs.module';
+import { MusiciansModule } from './musicians/musicians.module';
 
 const routes: Routes = [{
     path: '',
@@ -12,7 +13,14 @@ const routes: Routes = [{
   },
   {
     path: 'bands/:id',
-    component: BandsShowComponent,
+    children: [{
+      path: 'musicians',
+      loadChildren: () => MusiciansModule
+    },
+    {
+      path: '',
+      component: BandsShowComponent,
+    }]
   },
   {
     path: 'bands',

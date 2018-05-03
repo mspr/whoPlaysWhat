@@ -1,10 +1,18 @@
-<div class="row" *ngFor="let musician of musicians">
-  <div class="col">
-    <a [routerLink]="['/musicians', musician.id]" routerLinkActive="active" class="list-group-item list-group-item-action">
-      {{musician.name}}
-    </a>
+<h4>Musicians</h4>
+<div class="row">
+  <div class="col-md-3">
+    <div class="row" *ngFor="let musician of musicians">
+      <div class="col">
+        <a [routerLink]="['musicians', musician.id]" routerLinkActive="active" class="list-group-item list-group-item-action">
+          {{musician.name}}
+        </a>
+      </div>
+      <div class="col">
+        <button (click)="onRemove()">X</button>
+      </div>
+    </div>
   </div>
-  <div class="col">
-    <button (click)="onRemove()">X</button>
+  <div class="col-md">
+    <router-outlet></router-outlet>
   </div>
 </div>
