@@ -24,6 +24,12 @@ export class MusiciansListComponent implements OnInit {
     this.musicianService.getAll(this.bandId).subscribe((musicians) => {
       this.musicians = musicians;
     });
+
+    this.musicianService.added.subscribe(() => {
+      this.musicianService.getAll(this.bandId).subscribe((musicians) => {
+        this.musicians = musicians;
+      });
+    });
   }
 
   onRemove(id) {
