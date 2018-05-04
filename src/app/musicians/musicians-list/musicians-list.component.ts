@@ -25,6 +25,12 @@ export class MusiciansListComponent implements OnInit {
       this.musicians = musicians;
     });
 
+    this.musicianService.removed.subscribe(() => {
+      this.musicianService.getAll(this.bandId).subscribe((musicians) => {
+        this.musicians = musicians;
+      });
+    });
+
     this.musicianService.added.subscribe(() => {
       this.musicianService.getAll(this.bandId).subscribe((musicians) => {
         this.musicians = musicians;
@@ -34,6 +40,7 @@ export class MusiciansListComponent implements OnInit {
 
   onRemove(id) {
     this.musicianService.remove(id).subscribe(() => {
+      this.musicianService.removed.emit();
       this.router.navigate([`bands/${this.bandId}`, 'musicians']);
     });
   }
