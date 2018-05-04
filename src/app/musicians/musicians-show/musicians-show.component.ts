@@ -17,8 +17,11 @@ export class MusiciansShowComponent implements OnInit {
     private musicianService: MusicianService) { }
 
   ngOnInit() {
+
+    let bandId = this.activatedRoute.snapshot.params['id'];
+
     this.activatedRoute.params.pipe(
-      switchMap((params) => this.musicianService.getById(params.id))
+      switchMap((params) => this.musicianService.getById(bandId, params.id))
     ).subscribe((musician) => {
         this.musician = musician;
     });

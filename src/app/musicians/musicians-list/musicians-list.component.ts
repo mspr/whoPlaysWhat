@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Musician } from '../musician';
 import { MusicianService } from '../../core/musician.service';
@@ -13,7 +13,8 @@ export class MusiciansListComponent implements OnInit {
   public bandId : number;
   public musicians : Musician[];
 
-  constructor(private activatedRoute: ActivatedRoute,
+  constructor(private router: Router,
+    private activatedRoute: ActivatedRoute,
     private musicianService: MusicianService) { }
 
   ngOnInit() {
@@ -25,8 +26,10 @@ export class MusiciansListComponent implements OnInit {
     });
   }
 
-  onRemove() {
-
+  onRemove(id) {
+    this.musicianService.remove(id).subscribe(() => {
+      this.router.navigate([`bands/${this.bandId}`, 'musicians']);
+    });
   }
 
 }
