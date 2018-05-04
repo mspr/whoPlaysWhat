@@ -10,6 +10,7 @@ import { MusicianService } from '../../core/musician.service';
 })
 export class MusiciansListComponent implements OnInit {
 
+  public bandId : number;
   public musicians : Musician[];
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -17,9 +18,9 @@ export class MusiciansListComponent implements OnInit {
 
   ngOnInit() {
 
-    let bandId = this.activatedRoute.snapshot.params['id'];
+    this.bandId = this.activatedRoute.snapshot.params['id'];
 
-    this.musicianService.getAll(bandId).subscribe((musicians) => {
+    this.musicianService.getAll(this.bandId).subscribe((musicians) => {
       this.musicians = musicians;
     });
   }
