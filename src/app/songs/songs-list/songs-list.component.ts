@@ -1,3 +1,4 @@
+import { BandService } from './../../core/band.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SongService } from './../../core/song.service';
 import { Song } from './../song';
@@ -11,31 +12,26 @@ import { map, switchMap } from 'rxjs/operators';
 })
 export class SongsListComponent implements OnInit {
 
-  public songs : Song[];
+  public songs : Song[] = new Array<Song>();
   public bandId : number;
 
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
+    private bandService: BandService,
     private songService: SongService) { }
 
   ngOnInit() {
 
-    let bandId = this.activatedRoute.snapshot.params['id'];
+    this.bandId = this.activatedRoute.snapshot.params['id'];
 
-    this.songService.getAll(bandId).subscribe((songs) => {
-        this.songs = songs;
-    });
+    this.retrieveSongs(this.bandId);
 
     this.songService.removed.subscribe(() => {
-      this.songService.getAll(bandId).subscribe((bands) => {
-        this.songs = bands;
-      });
+      this.retrieveSongs(this.bandId);
     });
 
     this.songService.added.subscribe(() => {
-      this.songService.getAll(bandId).subscribe((bands) => {
-        this.songs = bands;
-      });
+      this.retrieveSongs(this.bandId);
     });
   }
 
@@ -43,6 +39,16 @@ export class SongsListComponent implements OnInit {
     this.songService.remove(id).subscribe(() => {
       this.songService.removed.emit();
       this.router.navigate(['songs']);
+    });
+  }
+
+  private retrieveSongs(bandId) {
+    this.bandService.getById(bandId).subscribe((band) => {
+      band.songs.forEach(songId => {
+        this.songService.getById(songId).subscribe((song) => {
+          this.songs.push(song);
+        });
+      });
     });
   }
 
