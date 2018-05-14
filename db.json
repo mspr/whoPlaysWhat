@@ -11,6 +11,12 @@
       "name": "Oriane",
       "role": "Singer",
       "bandId": 1
+    },
+    {
+      "name": "Anatole",
+      "role": "",
+      "bandId": "1",
+      "id": 4
     }
   ],
   "bands": [

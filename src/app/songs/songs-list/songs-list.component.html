@@ -3,7 +3,7 @@
   <div class="col-md-3">
     <div class="row" *ngFor="let song of songs">
       <div class="col">
-        <a [routerLink]="['/songs', song.id]" routerLinkActive="active" class="list-group-item list-group-item-action">
+        <a [routerLink]="['/bands', bandId, 'songs', song.id]" routerLinkActive="active" class="list-group-item list-group-item-action">
           {{song.name}}
         </a>
       </div>
@@ -11,7 +11,7 @@
         <button (click)="onRemove(song.id)">X</button>
       </div>
     </div>
-  <button [routerLink]="['add']">New Song</button>
+  <button [routerLink]="['/bands', bandId, 'songs', 'add']">New Song</button>
   </div>
   <div class="col-md">
     <router-outlet></router-outlet>

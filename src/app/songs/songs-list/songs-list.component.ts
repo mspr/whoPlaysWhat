@@ -12,7 +12,7 @@ import { map, switchMap } from 'rxjs/operators';
 export class SongsListComponent implements OnInit {
 
   public songs : Song[];
-  private bandId : number;
+  public bandId : number;
 
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,

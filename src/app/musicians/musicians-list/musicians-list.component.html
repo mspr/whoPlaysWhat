@@ -11,7 +11,7 @@
         <button (click)="onRemove(musician.id)">X</button>
       </div>
     </div>
-    <button [routerLink]="['add']">New Musician</button>
+    <button [routerLink]="['/bands', bandId, 'musicians', 'add']">New Musician</button>
   </div>
   <div class="col-md">
     <router-outlet></router-outlet>
