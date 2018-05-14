@@ -1,10 +1,10 @@
-<div class="row" *ngFor="let band of bands">
-  <div class="col">
-    <a [routerLink]="['/bands', band.id]" routerLinkActive="active" class="list-group-item list-group-item-action">
-      {{band.name}}
-    </a>
-  </div>
-  <div class="col">
-    <button (click)="onRemove(band.id)">X</button>
-  </div>
+<div class="row">
+    <div class="col-md-4" *ngFor="let band of bands">
+      <a [routerLink]="['/bands', band.id]" routerLinkActive="active" class="list-group-item list-group-item-action">
+        {{band.name}}
+      </a>
+      <div class="col">
+        <button (click)="onRemove(band.id)">X</button>
+      </div>
+    </div>
 </div>
