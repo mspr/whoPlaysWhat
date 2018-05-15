@@ -11,8 +11,12 @@ export class MusicianService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAll(bandId) {
+  getAllByBand(bandId) {
     return this.httpClient.get<Musician[]>(environment.baseUrl + `/bands/${bandId}` + '/musicians');
+  }
+
+  getAll() {
+    return this.httpClient.get<Musician[]>(environment.baseUrl + `/musicians`);
   }
 
   getById(bandId, musicianId)

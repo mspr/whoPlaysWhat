@@ -19,21 +19,28 @@ export class MusiciansListComponent implements OnInit {
 
   ngOnInit() {
 
+    this.musicians = new Array<Musician>();
     this.bandId = this.activatedRoute.snapshot.params['id'];
 
-    this.musicianService.getAll(this.bandId).subscribe((musicians) => {
-      this.musicians = musicians;
+    this.retrieveMusicians();
+
+    this.musicianService.added.subscribe(() => {
+      this.retrieveMusicians();
     });
 
     this.musicianService.removed.subscribe(() => {
-      this.musicianService.getAll(this.bandId).subscribe((musicians) => {
-        this.musicians = musicians;
-      });
+      this.retrieveMusicians();
     });
+  }
 
-    this.musicianService.added.subscribe(() => {
-      this.musicianService.getAll(this.bandId).subscribe((musicians) => {
-        this.musicians = musicians;
+  private retrieveMusicians() {
+    this.musicianService.getAll().subscribe((musicians) => {
+      musicians.forEach(musician => {
+        musician.bands.forEach(band => {
+          if (band.id_band == this.bandId) {
+            this.musicians.push(musician);
+          };
+        });
       });
     });
   }
