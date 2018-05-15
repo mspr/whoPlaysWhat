@@ -2,7 +2,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Musician } from '../musician';
 import { MusicianService } from '../../core/musician.service';
-import { BandService } from '../../core/band.service';
 
 @Component({
   selector: 'wpw-musicians-list',
@@ -16,7 +15,6 @@ export class MusiciansListComponent implements OnInit {
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
-    private bandService: BandService,
     private musicianService: MusicianService) { }
 
   ngOnInit() {
@@ -42,12 +40,8 @@ export class MusiciansListComponent implements OnInit {
   }
 
   private retrieveMusicians() {
-    this.bandService.getById(this.bandId).subscribe((band) => {
-      band.musicianIds.forEach(musicianId => {
-        this.musicianService.getById(musicianId).subscribe((musician) => {
-          this.musicians.push(musician);
-        });
-      });
+    this.musicianService.getAllByBand(this.bandId).subscribe((musician) => {
+      this.musicians.push(musician);
     });
   }
 }

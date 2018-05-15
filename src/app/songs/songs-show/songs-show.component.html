@@ -1,1 +1,5 @@
 <p>{{song?.name}}</p>
+<div *ngFor="let musician of musicians" [style.color]="musiciansColor[musician.id]">
+  {{musician.name}} |
+  {{musiciansColor[musician.id]}}
+</div>

@@ -1,7 +1,10 @@
+import { BandService } from './band.service';
 import { Musician } from './../musicians/musician';
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class MusicianService {
@@ -9,10 +12,22 @@ export class MusicianService {
   public removed = new EventEmitter();
   public added = new EventEmitter<Musician>();
 
-  constructor(private httpClient: HttpClient) { }
+  private musiciansByBandId: Subject<Musician> = new Subject<Musician>();
 
-  getAllByBand(bandId) {
-    return this.httpClient.get<Musician[]>(environment.baseUrl + `/bands/${bandId}` + '/musicians');
+  constructor(private bandService: BandService,
+    private httpClient: HttpClient) { }
+
+  getAllByBand(bandId) : Observable<Musician> {
+
+    this.bandService.getById(bandId).subscribe((band) => {
+      band.musicianIds.forEach(musicianId => {
+        this.getById(musicianId).subscribe((musician) => {
+          this.musiciansByBandId.next(musician);
+        });
+      });
+    });
+
+    return this.musiciansByBandId.asObservable();
   }
 
   getAll() {

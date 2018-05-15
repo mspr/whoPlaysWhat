@@ -5,7 +5,7 @@
       "name": "Maxime",
       "role": "Guitarist",
       "bands": [
-        {"id_band": 1, "color": "#ff0000"}
+        {"id_band": 1, "color": "#1c6ba0"}
       ]
     },
     {
@@ -13,15 +13,15 @@
       "name": "Oriane",
       "role": "Singer",
       "bands": [
-        {"id_band": 1, "color": "#ff0000"}
+        {"id_band": 1, "color": "#8FBC8F"}
       ]
     },
     {
       "id": 4,
       "name": "Anatole",
-      "role": "",
+      "role": "Guitarist",
       "bands": [
-        {"id_band": 1, "color": "#ff0000"}
+        {"id_band": 1, "color": "#cc3e51"}
       ]
     },
     {
@@ -29,7 +29,7 @@
       "name": "Hugo",
       "role": "Drumer",
       "bands": [
-        {"id_band": 2, "color": "#ff0000"}
+        {"id_band": 2, "color": "#D8BFD8"}
       ]
     },
     {
@@ -37,7 +37,7 @@
       "name": "Philippe",
       "role": "Bassist",
       "bands": [
-        {"id_band": 2, "color": "#ff0000"}
+        {"id_band": 2, "color": "#6495ED"}
       ]
     }
   ],
