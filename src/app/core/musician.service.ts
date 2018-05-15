@@ -19,7 +19,7 @@ export class MusicianService {
     return this.httpClient.get<Musician[]>(environment.baseUrl + `/musicians`);
   }
 
-  getById(bandId, musicianId)
+  getById(musicianId)
   {
     return this.httpClient.get<Musician>(environment.baseUrl + `/musicians/${musicianId}`);
   }

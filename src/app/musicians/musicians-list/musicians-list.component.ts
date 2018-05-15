@@ -2,6 +2,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Musician } from '../musician';
 import { MusicianService } from '../../core/musician.service';
+import { BandService } from '../../core/band.service';
 
 @Component({
   selector: 'wpw-musicians-list',
@@ -11,15 +12,15 @@ import { MusicianService } from '../../core/musician.service';
 export class MusiciansListComponent implements OnInit {
 
   public bandId : number;
-  public musicians : Musician[];
+  public musicians : Musician[] = new Array<Musician>();
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
+    private bandService: BandService,
     private musicianService: MusicianService) { }
 
   ngOnInit() {
 
-    this.musicians = new Array<Musician>();
     this.bandId = this.activatedRoute.snapshot.params['id'];
 
     this.retrieveMusicians();
@@ -33,18 +34,6 @@ export class MusiciansListComponent implements OnInit {
     });
   }
 
-  private retrieveMusicians() {
-    this.musicianService.getAll().subscribe((musicians) => {
-      musicians.forEach(musician => {
-        musician.bands.forEach(band => {
-          if (band.id_band == this.bandId) {
-            this.musicians.push(musician);
-          };
-        });
-      });
-    });
-  }
-
   onRemove(id) {
     this.musicianService.remove(id).subscribe(() => {
       this.musicianService.removed.emit();
@@ -52,4 +41,13 @@ export class MusiciansListComponent implements OnInit {
     });
   }
 
+  private retrieveMusicians() {
+    this.bandService.getById(this.bandId).subscribe((band) => {
+      band.musicianIds.forEach(musicianId => {
+        this.musicianService.getById(musicianId).subscribe((musician) => {
+          this.musicians.push(musician);
+        });
+      });
+    });
+  }
 }

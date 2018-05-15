@@ -24,14 +24,14 @@ export class SongsListComponent implements OnInit {
 
     this.bandId = this.activatedRoute.snapshot.params['id'];
 
-    this.retrieveSongs(this.bandId);
+    this.retrieveSongs();
 
     this.songService.removed.subscribe(() => {
-      this.retrieveSongs(this.bandId);
+      this.retrieveSongs();
     });
 
     this.songService.added.subscribe(() => {
-      this.retrieveSongs(this.bandId);
+      this.retrieveSongs();
     });
   }
 
@@ -42,14 +42,13 @@ export class SongsListComponent implements OnInit {
     });
   }
 
-  private retrieveSongs(bandId) {
-    this.bandService.getById(bandId).subscribe((band) => {
-      band.songs.forEach(songId => {
+  private retrieveSongs() {
+    this.bandService.getById(this.bandId).subscribe((band) => {
+      band.songIds.forEach(songId => {
         this.songService.getById(songId).subscribe((song) => {
           this.songs.push(song);
         });
       });
     });
   }
-
 }
