@@ -17,8 +17,8 @@ export class MusicianService {
   constructor(private bandService: BandService,
     private httpClient: HttpClient) { }
 
-  getAllByBand(bandId) : Observable<Musician> {
-
+  getAllByBand(bandId) : Observable<Musician>
+  {
     this.bandService.getById(bandId).subscribe((band) => {
       band.musicianIds.forEach(musicianId => {
         this.getById(musicianId).subscribe((musician) => {
@@ -30,7 +30,8 @@ export class MusicianService {
     return this.musiciansByBandId.asObservable();
   }
 
-  getAll() {
+  getAll()
+  {
     return this.httpClient.get<Musician[]>(environment.baseUrl + `/musicians`);
   }
 

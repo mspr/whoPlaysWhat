@@ -27,7 +27,7 @@ export class SongsShowComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.bandId = this.activatedRoute.snapshot.params['id'];
+    this.bandId = this.activatedRoute.parent.snapshot.params['id'];
 
     this.activatedRoute.params.pipe(
       switchMap((params) => this.songService.getById(params.id))
