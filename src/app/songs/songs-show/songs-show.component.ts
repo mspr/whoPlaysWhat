@@ -1,4 +1,3 @@
-import { BandService } from './../../core/band.service';
 import { Musician } from './../../musicians/musician';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Song } from '../song';
@@ -18,13 +17,10 @@ export class SongsShowComponent implements OnInit, OnDestroy
   public song = new Song();
   public musicians : Musician[] = new Array<Musician>();
   public musiciansColor = {};
-  public retrieveMusiciansSubscription;
 
   constructor(private activatedRoute: ActivatedRoute,
-    private bandService: BandService,
     private musicianService: MusicianService,
-    private songService: SongService) {
-  }
+    private songService: SongService) {}
 
   ngOnInit()
   {
@@ -32,25 +28,18 @@ export class SongsShowComponent implements OnInit, OnDestroy
 
     this.activatedRoute.params.pipe(
       switchMap((params) => this.songService.getById(params.id))
-    ).subscribe((song) => {
-        this.song = song;
-        this.retrieveMusicians();
-    });
-  }
-
-  retrieveMusicians()
-  {
-    if (!this.retrieveMusiciansSubscription)
-    {
-      this.retrieveMusiciansSubscription = this.musicianService.getAllByBand(this.bandId).subscribe((musicians) => {
-        this.musicians = musicians;
-        //this.musiciansColor[musician.id] = musician.bands.find(element => element.id_band == this.bandId).color;
+    ).switchMap((song) => {
+      this.song = song;
+      return this.musicianService.getAllByBand(this.bandId);
+    }).subscribe((musicians) => {
+      this.musicians = musicians;
+      this.musicians.forEach(musician => {
+        this.musiciansColor[musician.id] = musician.bands.find(element => element.id_band == this.bandId).color;
       });
-    }
+    });
   }
 
   ngOnDestroy()
   {
-    this.retrieveMusiciansSubscription.unsubscribe();
   }
 }
