@@ -28,7 +28,7 @@ export class MusiciansAddComponent implements OnInit
   add()
   {
     let bandId = this.activatedRoute.parent.snapshot.params['id'];
-    this.musician.bands = [ { id_band: bandId, color: "" } ];
+    this.musician.bands = [ { id_band: bandId, color: this.color } ];
 
     this.musicianService.add(this.musician).switchMap((musician) => {
       return this.bandService.getById(bandId).switchMap((band) => {
