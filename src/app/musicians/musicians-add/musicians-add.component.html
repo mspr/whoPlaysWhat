@@ -2,6 +2,7 @@
   <div class="form-group">
     <label for="name">Name</label>
     <input type="text" class="form-control" name="name" [(ngModel)]="musician.name" required #name="ngModel">
+    <input [(colorPicker)]="color" [style.background]="color"/>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

@@ -15,6 +15,7 @@ import 'rxjs/add/operator/map'
 export class MusiciansAddComponent implements OnInit
 {
   public musician = new Musician();
+  public color;
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,

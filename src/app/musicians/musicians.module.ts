@@ -7,13 +7,15 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MusiciansRoutingModule } from './musicians-routing.module';
 import { MusiciansAddComponent } from './musicians-add/musicians-add.component';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
-    MusiciansRoutingModule
+    MusiciansRoutingModule,
+    ColorPickerModule
   ],
   exports: [
     MusiciansListComponent
