@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
   templateUrl: './bands-add.component.html',
   styleUrls: ['./bands-add.component.scss']
 })
-export class BandsAddComponent implements OnInit {
-
+export class BandsAddComponent implements OnInit
+{
   public band = new Band();
 
   constructor(private bandService : BandService,
@@ -18,11 +18,11 @@ export class BandsAddComponent implements OnInit {
   ngOnInit() {
   }
 
-  add() {
+  add()
+  {
     this.bandService.add(this.band).subscribe((band) => {
       this.bandService.added.emit(band);
       this.router.navigate(['bands', band.id]);
     })
   }
-
 }

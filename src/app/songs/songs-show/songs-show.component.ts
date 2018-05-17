@@ -12,8 +12,8 @@ import { MusicianService } from '../../core/musician.service';
   templateUrl: './songs-show.component.html',
   styleUrls: ['./songs-show.component.scss']
 })
-export class SongsShowComponent implements OnInit, OnDestroy {
-
+export class SongsShowComponent implements OnInit, OnDestroy
+{
   public bandId : number;
   public song = new Song();
   public musicians : Musician[] = new Array<Musician>();
@@ -26,7 +26,8 @@ export class SongsShowComponent implements OnInit, OnDestroy {
     private songService: SongService) {
   }
 
-  ngOnInit() {
+  ngOnInit()
+  {
     this.bandId = this.activatedRoute.parent.snapshot.params['id'];
 
     this.activatedRoute.params.pipe(
@@ -37,16 +38,19 @@ export class SongsShowComponent implements OnInit, OnDestroy {
     });
   }
 
-  retrieveMusicians() {
-    if (!this.retrieveMusiciansSubscription) {
-      this.retrieveMusiciansSubscription = this.musicianService.getAllByBand(this.bandId).subscribe((musician) => {
-        this.musicians.push(musician);
-        this.musiciansColor[musician.id] = musician.bands.find(element => element.id_band == this.bandId).color;
+  retrieveMusicians()
+  {
+    if (!this.retrieveMusiciansSubscription)
+    {
+      this.retrieveMusiciansSubscription = this.musicianService.getAllByBand(this.bandId).subscribe((musicians) => {
+        this.musicians = musicians;
+        //this.musiciansColor[musician.id] = musician.bands.find(element => element.id_band == this.bandId).color;
       });
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy()
+  {
     this.retrieveMusiciansSubscription.unsubscribe();
   }
 }

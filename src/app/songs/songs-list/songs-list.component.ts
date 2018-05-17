@@ -10,8 +10,8 @@ import { map, switchMap } from 'rxjs/operators';
   templateUrl: './songs-list.component.html',
   styleUrls: ['./songs-list.component.scss']
 })
-export class SongsListComponent implements OnInit {
-
+export class SongsListComponent implements OnInit
+{
   public songs : Song[] = new Array<Song>();
   public bandId : number;
 
@@ -20,8 +20,8 @@ export class SongsListComponent implements OnInit {
     private bandService: BandService,
     private songService: SongService) { }
 
-  ngOnInit() {
-
+  ngOnInit()
+  {
     this.bandId = this.activatedRoute.snapshot.params['id'];
 
     this.retrieveSongs();
@@ -35,14 +35,16 @@ export class SongsListComponent implements OnInit {
     });
   }
 
-  onRemove(id) {
+  onRemove(id)
+  {
     this.songService.remove(id).subscribe(() => {
       this.songService.removed.emit();
       this.router.navigate(['songs']);
     });
   }
 
-  private retrieveSongs() {
+  private retrieveSongs()
+  {
     this.bandService.getById(this.bandId).subscribe((band) => {
       band.songIds.forEach(songId => {
         this.songService.getById(songId).subscribe((song) => {

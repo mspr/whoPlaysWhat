@@ -9,20 +9,19 @@ import { map, switchMap } from 'rxjs/operators';
   templateUrl: './bands-show.component.html',
   styleUrls: ['./bands-show.component.scss']
 })
-export class BandsShowComponent implements OnInit {
-
+export class BandsShowComponent implements OnInit
+{
   public band : Band;
 
   constructor(private activatedRoute: ActivatedRoute,
     private bandService: BandService) { }
 
-  ngOnInit() {
-
+  ngOnInit()
+  {
     this.activatedRoute.params.pipe(
       switchMap((params) => this.bandService.getById(params.id))
     ).subscribe((band) => {
         this.band = band;
     });
   }
-
 }

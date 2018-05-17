@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 @Injectable()
-export class SongService {
-
+export class SongService
+{
   public removed = new EventEmitter();
   public added = new EventEmitter<Song>();
 
@@ -25,5 +25,4 @@ export class SongService {
   {
     return this.httpClient.delete<Song>(environment.baseUrl + `/songs/${id}`);
   }
-
 }

@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 @Injectable()
-export class BandService {
-
+export class BandService
+{
   public removed = new EventEmitter();
   public added = new EventEmitter<Band>();
 
@@ -31,4 +31,8 @@ export class BandService {
     return this.httpClient.delete<Band>(environment.baseUrl + `/bands/${id}`);
   }
 
+  update(band)
+  {
+    return this.httpClient.patch<Band>(environment.baseUrl + `/bands/${band.id}`, band)
+  }
 }

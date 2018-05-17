@@ -9,14 +9,15 @@ import { environment } from '../../../environments/environment';
   templateUrl: './bands-list.component.html',
   styleUrls: ['./bands-list.component.scss']
 })
-export class BandsListComponent implements OnInit {
-
+export class BandsListComponent implements OnInit
+{
   public bands : Band[] = [];
 
   constructor(private bandService: BandService,
     private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit()
+  {
     this.bandService.getAll().subscribe((bands) => {
       this.bands = bands;
     });
@@ -34,11 +35,11 @@ export class BandsListComponent implements OnInit {
     });
   }
 
-  onRemove(id) {
+  onRemove(id)
+  {
     this.bandService.remove(id).subscribe(() => {
       this.bandService.removed.emit();
       this.router.navigate(['bands']);
     });
   }
-
 }

@@ -5,8 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './bands-layout.component.html',
   styleUrls: ['./bands-layout.component.scss']
 })
-export class BandsLayoutComponent implements OnInit {
-
+export class BandsLayoutComponent implements OnInit
+{
   constructor() { }
 
   ngOnInit() {
