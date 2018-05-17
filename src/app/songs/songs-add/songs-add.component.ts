@@ -1,28 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { Song } from '../song';
 import { SongService } from '../../core/song.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { BandService } from '../../core/band.service';
 
 @Component({
   selector: 'wpw-songs-add',
   templateUrl: './songs-add.component.html',
   styleUrls: ['./songs-add.component.scss']
 })
-export class SongsAddComponent implements OnInit {
-
+export class SongsAddComponent implements OnInit
+{
   public song = new Song();
 
   constructor(private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private bandService: BandService,
     private songService: SongService) { }
 
   ngOnInit() {
   }
 
-  add() {
-    this.songService.add(this.song).subscribe((song) => {
-      this.songService.added.emit(song);
-      this.router.navigate(['songs', song.id]);
+  add()
+  {
+    let bandId = this.activatedRoute.parent.snapshot.params['id'];
+
+    this.songService.add(this.song).switchMap((song) =>
+    {
+      return this.bandService.getById(bandId).switchMap((band) => {
+        band.songIds.push(song.id);
+        return this.bandService.update(band).map(band => song);
+      });
+    }).subscribe((song) => {
+        this.songService.added.emit(song);
+        this.router.navigate([`bands/${bandId}`, 'songs', song.id]);
     });
   }
-
 }
