@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { MusiciansRoutingModule } from './musicians-routing.module';
 import { MusiciansAddComponent } from './musicians-add/musicians-add.component';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ColorPickerModule } from 'ngx-color-picker';
     FormsModule,
     RouterModule,
     MusiciansRoutingModule,
-    ColorPickerModule
+    ColorPickerModule,
+    MultiselectDropdownModule
   ],
   exports: [
     MusiciansListComponent

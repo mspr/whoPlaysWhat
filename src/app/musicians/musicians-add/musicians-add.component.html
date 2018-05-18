@@ -1,10 +1,16 @@
 <form #form="ngForm" (submit)="add()">
   <div class="form-group">
     <label for="name">Name :</label>
-    <input type="text" class="form-control" name="name" [(ngModel)]="musician.name" required #name="ngModel">
+    <input type="text" class="form-control" name="name" [(ngModel)]="musician.name" required #name="ngModel" />
+    <br/>
+    <label for="role">Role :</label>
+    <ss-multiselect-dropdown [options]="myOptions" name="role" [(ngModel)]="optionsModel" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+    <br/>
     <label for="color">Color :</label>
+    <br/>
     <input [style.background]="color" [cpPresetColors]="['#fff', '#000', '#2889e9', '#e920e9', '#fff500', 'rgb(236,64,64)']" [(colorPicker)]="color"
-      [(ngModel)]="musician.color" name="color" />
+      [(ngModel)]="color" name="color" />
   </div>
+  <br/>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
