@@ -43,28 +43,6 @@
           "color": "#D8BFD8"
         }
       ]
-    },
-    {
-      "id": 6,
-      "name": "Philippe",
-      "role": "Bassist",
-      "bands": [
-        {
-          "id_band": 2,
-          "color": "#6495ED"
-        }
-      ]
-    },
-    {
-      "name": "Philippe",
-      "role": "",
-      "bands": [
-        {
-          "id_band": "1",
-          "color": "#2889e9"
-        }
-      ],
-      "id": 11
     }
   ],
   "bands": [
@@ -73,15 +51,12 @@
       "name": "The Beatles",
       "songIds": [
         1,
-        3,
-        4,
-        5
+        3
       ],
       "musicianIds": [
         1,
         3,
-        4,
-        11
+        4
       ]
     },
     {
@@ -97,11 +72,13 @@
     },
     {
       "id": 3,
-      "name": "Pink Floyd"
+      "name": "Pink Floyd",
+      "songIds": []
     },
     {
       "name": "Dire Straits",
-      "id": 5
+      "id": 5,
+      "songIds": []
     }
   ],
   "songs": [
@@ -125,14 +102,6 @@
     {
       "name": "Let it be",
       "id": 3
-    },
-    {
-      "name": "Hey Jude",
-      "id": 4
-    },
-    {
-      "name": "Come Together",
-      "id": 5
     }
   ]
 }
