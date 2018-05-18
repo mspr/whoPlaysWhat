@@ -1,10 +1,10 @@
 export enum Roles
 {
-  Guitarist,
-  Bassist,
-  Singer,
-  Drumer,
-  Violinist,
-  Keyborder,
-  Chorus
+  Guitarist = "Guitarist",
+  Bassist = "Bassist",
+  Singer = "Singer",
+  Drumer = "Drumer",
+  Violinist = "Violinist",
+  Keyboarder = "Keyboarder",
+  Chorus = "Chorus"
 };

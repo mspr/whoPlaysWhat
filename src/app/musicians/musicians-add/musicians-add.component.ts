@@ -1,3 +1,4 @@
+import { Roles } from './../../core/roles';
 import { Band } from './../../bands/band';
 import { BandService } from './../../core/band.service';
 import { MusicianService } from './../../core/musician.service';
@@ -18,44 +19,26 @@ export class MusiciansAddComponent implements OnInit
   public musician = new Musician();
   public color;
 
-  // Default selection
-  optionsModel: number[] = [1, 2];
-
-  // Settings configuration
-  mySettings: IMultiSelectSettings = {
-      checkedStyle: 'fontawesome',
-      buttonClasses: 'btn btn-default btn-block',
-      dynamicTitleMaxItems: 3,
-      displayAllSelectedText: true
-  };
-
-  // Text configuration
-  myTexts: IMultiSelectTexts = {
-      checkAll: 'Select all',
-      uncheckAll: 'Unselect all',
-      checked: 'item selected',
-      checkedPlural: 'items selected',
-      searchPlaceholder: 'Find',
-      searchEmptyResult: 'Nothing found...',
-      searchNoRenderText: 'Type in search box to see results...',
-      defaultTitle: 'Select',
-      allSelected: 'All selected',
-  };
-
-  // Labels / Parents
-  myOptions: IMultiSelectOption[] = [
-      { id: 1, name: 'Car brands' },
-      { id: 2, name: 'Volvo' },
-      { id: 3, name: 'Honda' }
-  ];
+  public optionsModel: number[] = [1];
+  public mySettings: IMultiSelectSettings = {};
+  public myTexts: IMultiSelectTexts = {};
+  public myOptions: IMultiSelectOption[];
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
     private bandService: BandService,
-    private musicianService: MusicianService) { }
-
-  ngOnInit() {
+    private musicianService: MusicianService)
+  {
+    let options = [];
+    let id : number = 1;
+    Object.keys(Roles).forEach(key => {
+      options.push({ id: id, name: key });
+      ++id;
+    });
+    this.myOptions = options;
   }
+
+  ngOnInit() {}
 
   add()
   {
