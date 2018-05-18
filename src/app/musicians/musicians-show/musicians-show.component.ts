@@ -12,16 +12,20 @@ import { switchMap } from 'rxjs/operators';
 export class MusiciansShowComponent implements OnInit
 {
   public musician = new Musician();
+  public color;
 
   constructor(private activatedRoute: ActivatedRoute,
     private musicianService: MusicianService) { }
 
   ngOnInit()
   {
+    let bandId = this.activatedRoute.parent.snapshot.params["id"];
+
     this.activatedRoute.params.pipe(
       switchMap((params) => this.musicianService.getById(params.id))
     ).subscribe((musician) => {
-        this.musician = musician;
+      this.musician = musician;
+      this.color = this.musician.bands.find(elt => elt.id_band == bandId).color;
     });
   }
 }
