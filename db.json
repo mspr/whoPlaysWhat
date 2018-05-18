@@ -56,50 +56,6 @@
       ]
     },
     {
-      "name": "Hervé",
-      "role": "",
-      "bands": [
-        {
-          "id_band": "1",
-          "color": ""
-        }
-      ],
-      "id": 7
-    },
-    {
-      "name": "Gustave",
-      "role": "",
-      "bands": [
-        {
-          "id_band": "1",
-          "color": ""
-        }
-      ],
-      "id": 8
-    },
-    {
-      "name": "Victor",
-      "role": "",
-      "bands": [
-        {
-          "id_band": "1",
-          "color": ""
-        }
-      ],
-      "id": 9
-    },
-    {
-      "name": "Toto",
-      "role": "",
-      "bands": [
-        {
-          "id_band": "1",
-          "color": ""
-        }
-      ],
-      "id": 10
-    },
-    {
       "name": "Philippe",
       "role": "",
       "bands": [
@@ -125,10 +81,6 @@
         1,
         3,
         4,
-        7,
-        8,
-        9,
-        10,
         11
       ]
     },

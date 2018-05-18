@@ -1,3 +1,5 @@
+import { Band } from './../../bands/band';
+import { forkJoin } from 'rxjs/observable/forkJoin';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, SimpleChanges, OnDestroy } from '@angular/core';
@@ -6,6 +8,7 @@ import { MusicianService } from '../../core/musician.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
+import { BandService } from '../../core/band.service';
 
 @Component({
   selector: 'wpw-musicians-list',
@@ -21,6 +24,7 @@ export class MusiciansListComponent implements OnInit, OnDestroy
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
+    private bandService: BandService,
     private musicianService: MusicianService) { }
 
   ngOnInit()
@@ -46,7 +50,20 @@ export class MusiciansListComponent implements OnInit, OnDestroy
 
   onRemove(id)
   {
-    this.musicianService.remove(id).subscribe(() => {
+    this.musicianService.getById(id).switchMap((musician) =>
+    {
+      let getBandByIdObservables = new Array<Observable<Band>>();
+      musician.bands.forEach(band => {
+        getBandByIdObservables.push(this.bandService.getById(band.id_band).switchMap((band) => {
+          band.musicianIds.splice(band.musicianIds.indexOf(musician.id), 1);
+          return this.bandService.update(band);
+        }));
+      })
+
+      return forkJoin(getBandByIdObservables);
+    })
+    .switchMap(() => this.musicianService.remove(id))
+    .subscribe(() => {
       this.musicianService.removed.emit();
       this.router.navigate([`bands/${this.bandId}`, 'musicians']);
     });
