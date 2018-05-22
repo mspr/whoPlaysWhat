@@ -1,2 +1,2 @@
 <div [style.color]="color">{{musician.name}}</div>
-<div>{{musician.role}}</div>
+<div *ngFor="let role of musician.roles">{{role}}</div>

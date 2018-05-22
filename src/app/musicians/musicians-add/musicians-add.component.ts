@@ -45,6 +45,11 @@ export class MusiciansAddComponent implements OnInit
     let bandId = this.activatedRoute.parent.snapshot.params['id'];
     this.musician.bands = [ { id_band: bandId, color: this.color } ];
 
+    this.optionsModel.forEach(roleIdx => {
+      let keys = Object.keys(Roles);
+      this.musician.roles.push(keys[roleIdx-1]);
+    });
+
     this.musicianService.add(this.musician).switchMap((musician) => {
       return this.bandService.getById(bandId).switchMap((band) => {
         band.musicianIds.push(musician.id);
