@@ -42,4 +42,9 @@ export class SongsShowComponent implements OnInit, OnDestroy
   ngOnDestroy()
   {
   }
+
+  doesMusicianPlayThisPart(part, musicianId) {
+    let partsPlayedByTheMusician = this.song.musicians.find(elt=> elt.id == musicianId);
+    return partsPlayedByTheMusician.plays.find(elt => elt === part);
+  }
 }

@@ -6,9 +6,9 @@
     {{part}}
   </div>
 </div>
-<div class="row" *ngFor="let musician of musicians" [style.color]="musiciansColor[musician.id]">
-  <div class="col">{{musician.name}}</div>
+<div class="row" *ngFor="let musician of musicians">
+  <div class="col" [style.color]="musiciansColor[musician.id]">{{musician.name}}</div>
   <div *ngFor="let part of song?.structure" class="col">
-    -
+    <div [ngStyle]="{'background-color': doesMusicianPlayThisPart(part, musician.id) ? musiciansColor[musician.id] : '#eff5f5'}">&nbsp;</div>
   </div>
 </div>
