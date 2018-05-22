@@ -9,6 +9,7 @@ import { MusiciansRoutingModule } from './musicians-routing.module';
 import { MusiciansAddComponent } from './musicians-add/musicians-add.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
+import { MusiciansUpdateComponent } from './musicians-update/musicians-update.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
   declarations: [
     MusiciansListComponent,
     MusiciansAddComponent,
-    MusiciansShowComponent
+    MusiciansShowComponent,
+    MusiciansUpdateComponent
   ],
   providers: [
     MusicianService

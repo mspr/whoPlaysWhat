@@ -1,2 +1,3 @@
 <div [style.color]="color">{{musician.name}}</div>
 <div *ngFor="let role of musician.roles">{{role}}</div>
+<button [routerLink]="['/bands', bandId, 'musicians', musician.id, 'update']">Update</button>

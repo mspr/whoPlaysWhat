@@ -1,3 +1,4 @@
+import { MusiciansUpdateComponent } from './musicians-update/musicians-update.component';
 import { MusiciansShowComponent } from './musicians-show/musicians-show.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,6 +10,10 @@ const routes: Routes = [{
   {
     path: "add",
     component: MusiciansAddComponent
+  },
+  {
+    path: ":id/update",
+    component: MusiciansUpdateComponent
   },
   {
     path: ":id",
