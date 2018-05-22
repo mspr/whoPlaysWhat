@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { forkJoin } from 'rxjs/observable/forkJoin';
+import { Band } from '../bands/band';
 
 @Injectable()
 export class MusicianService

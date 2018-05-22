@@ -113,12 +113,14 @@
     {
       "id": 3,
       "name": "Pink Floyd",
-      "songIds": []
+      "songIds": [],
+      "musicianIds": []
     },
     {
       "name": "Dire Straits",
       "id": 5,
-      "songIds": []
+      "songIds": [],
+      "musicianIds": []
     }
   ],
   "songs": [
