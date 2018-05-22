@@ -1,5 +1,11 @@
 <p>{{song?.name}}</p>
-<div *ngFor="let musician of musicians" [style.color]="musiciansColor[musician.id]">
-  {{musician.name}} |
-  {{musiciansColor[musician.id]}}
+
+<div class="row">
+  <div class="col"></div>
+  <div *ngFor="let part of song?.structure" class="col">
+    {{part}}
+  </div>
+</div>
+<div class="row" *ngFor="let musician of musicians" [style.color]="musiciansColor[musician.id]">
+  {{musician.name}}
 </div>
