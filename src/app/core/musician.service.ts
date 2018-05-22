@@ -49,4 +49,9 @@ export class MusicianService
   {
     return this.httpClient.delete<Musician>(environment.baseUrl + `/musicians/${id}`);
   }
+
+  update(musician)
+  {
+    return this.httpClient.patch<Musician>(environment.baseUrl + `/musicians/${musician.id}`, musician);
+  }
 }

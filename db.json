@@ -10,7 +10,7 @@
       "bands": [
         {
           "id_band": 1,
-          "color": "#1c6ba0"
+          "color": "#efd45b"
         }
       ]
     },
@@ -18,12 +18,13 @@
       "id": 3,
       "name": "Oriane",
       "roles": [
-        "Singer"
+        "Singer",
+        "Violinist"
       ],
       "bands": [
         {
           "id_band": 1,
-          "color": "#8FBC8F"
+          "color": "#46d6f3"
         }
       ]
     },
@@ -70,8 +71,7 @@
       "name": "Roger",
       "roles": [
         "Guitarist",
-        "Drumer",
-        "Chorus"
+        "Drumer"
       ],
       "bands": [
         {
