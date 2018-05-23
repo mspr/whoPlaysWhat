@@ -16,7 +16,6 @@ export class SongsShowComponent implements OnInit, OnDestroy
   public bandId : number;
   public song : Song;
   public musicians : Musician[] = new Array<Musician>();
-  public musiciansColor = {};
 
   constructor(private activatedRoute: ActivatedRoute,
     private musicianService: MusicianService,
@@ -33,9 +32,6 @@ export class SongsShowComponent implements OnInit, OnDestroy
       return this.musicianService.getAllByBand(this.bandId);
     }).subscribe((musicians) => {
       this.musicians = musicians;
-      this.musicians.forEach(musician => {
-        this.musiciansColor[musician.id] = musician.bands.find(element => element.id_band == this.bandId).color;
-      });
     });
   }
 
@@ -50,5 +46,9 @@ export class SongsShowComponent implements OnInit, OnDestroy
 
   getInfoByBand() {
     return (this.song != null) ? this.song.bands.find(band => band.id == this.bandId) : null;
+  }
+
+  getMusicianColor(musician) {
+    return (musician != null) ? musician.bands.find(element => element.id_band == this.bandId).color : null;
   }
 }

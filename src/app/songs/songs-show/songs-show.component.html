@@ -7,8 +7,8 @@
   </div>
 </div>
 <div class="row" *ngFor="let musician of musicians">
-  <div class="col" [style.color]="musiciansColor[musician.id]">{{musician.name}}</div>
+  <div class="col" [style.color]="getMusicianColor(musician)">{{musician.name}}</div>
   <div *ngFor="let part of song?.structure" class="col" align="center">
-    <div [ngStyle]="{'background-color': doesMusicianPlayThisPart(part, musician.id) ? musiciansColor[musician.id] : '#eff5f5'}">&nbsp;</div>
+    <div [ngStyle]="{'background-color': doesMusicianPlayThisPart(part, musician.id) ? getMusicianColor(musician) : '#eff5f5'}">&nbsp;</div>
   </div>
 </div>
