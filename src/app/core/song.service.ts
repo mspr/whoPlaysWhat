@@ -38,6 +38,11 @@ export class SongService
     return this.httpClient.post<Song>(environment.baseUrl + '/songs', song);
   }
 
+  update(song)
+  {
+    return this.httpClient.patch<Song>(environment.baseUrl + `/songs/${song.id}`, song);
+  }
+
   remove(id)
   {
     return this.httpClient.delete<Song>(environment.baseUrl + `/songs/${id}`);

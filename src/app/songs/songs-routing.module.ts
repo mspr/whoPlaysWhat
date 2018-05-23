@@ -3,6 +3,7 @@ import { SongsAddComponent } from './songs-add/songs-add.component';
 import { SongsListComponent } from './songs-list/songs-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SongsUpdateComponent } from './songs-update/songs-update.component';
 
 const routes: Routes = [{
   path: '',
@@ -11,6 +12,10 @@ const routes: Routes = [{
   {
     path: "add",
     component: SongsAddComponent
+  },
+  {
+    path: ":id/update",
+    component: SongsUpdateComponent
   },
   {
     path: ":id",
