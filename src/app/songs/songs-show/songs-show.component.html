@@ -1,4 +1,4 @@
-<p><b>{{song?.name}}</b> <span *ngIf="getInfoByBand(); let infoByBand">({{infoByBand.key}} / {{infoByBand.bpm}} bpm)</span></p>
+<p><b>{{song?.name}}</b> <span *ngIf="getInfoByBand(); let infoByBand">({{infoByBand.tonality}}<span *ngIf="infoByBand.tempo"> / {{infoByBand.tempo}} bpm</span>)</span></p>
 <br/>
 <div class="row">
   <div class="col"></div>

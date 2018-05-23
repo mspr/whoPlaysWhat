@@ -1,3 +1,4 @@
+import { Tonalities } from './../../core/tonalities.enum';
 import { Component, OnInit } from '@angular/core';
 import { Song } from '../song';
 import { SongService } from '../../core/song.service';
@@ -12,18 +13,25 @@ import { BandService } from '../../core/band.service';
 export class SongsAddComponent implements OnInit
 {
   public song = new Song();
+  public tonalities = Object.keys(Tonalities);
+  public tonality : Tonalities;
+  public tempo : number = 90;
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
     private bandService: BandService,
-    private songService: SongService) { }
+    private songService: SongService)
+  {
+  }
 
-  ngOnInit() {
+  ngOnInit()
+  {
   }
 
   add()
   {
     let bandId = this.activatedRoute.parent.snapshot.params['id'];
+    this.song.bands = [{ id: bandId, tonality: this.tonality, tempo: this.tempo }];
 
     this.songService.add(this.song).switchMap((song) =>
     {

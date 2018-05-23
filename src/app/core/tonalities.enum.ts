@@ -12,4 +12,4 @@ export enum Tonalities
   Fs = "F#",
   G = "G",
   Gs = "G#"
-}
+};
