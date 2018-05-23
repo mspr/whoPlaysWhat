@@ -1,4 +1,4 @@
-<p><b>{{song?.name}}</b></p>
+<p><b>{{song?.name}}</b> <span *ngIf="getTempo(); let tempo">({{tempo}} bpm)</span></p>
 <br/>
 <div class="row">
   <div class="col"></div>

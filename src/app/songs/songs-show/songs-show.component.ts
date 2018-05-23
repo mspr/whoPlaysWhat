@@ -14,7 +14,7 @@ import { MusicianService } from '../../core/musician.service';
 export class SongsShowComponent implements OnInit, OnDestroy
 {
   public bandId : number;
-  public song = new Song();
+  public song : Song;
   public musicians : Musician[] = new Array<Musician>();
   public musiciansColor = {};
 
@@ -46,5 +46,15 @@ export class SongsShowComponent implements OnInit, OnDestroy
   doesMusicianPlayThisPart(part, musicianId) {
     let partsPlayedByTheMusician = this.song.musicians.find(elt=> elt.id == musicianId);
     return partsPlayedByTheMusician.plays.find(elt => elt === part);
+  }
+
+  getTempo() {
+    if (this.song != null) {
+      let band = this.song.bands.find(band => band.id == this.bandId);
+      if (band != null)
+        return band.bpm;
+    }
+
+    return null;
   }
 }

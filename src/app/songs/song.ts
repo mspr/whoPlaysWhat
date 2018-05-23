@@ -3,4 +3,5 @@ export class Song {
   public name : string = '';
   public structure : string[];
   public musicians;
+  public bands;
 }

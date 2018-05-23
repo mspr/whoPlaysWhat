@@ -142,25 +142,31 @@
         { "id":4, "plays": ["Verse 1", "Pre-chorus", "Chorus", "Verse 2", "Bridge", "Outro"] },
         { "id":6, "plays": ["Verse 1", "Pre-chorus", "Chorus", "Verse 2", "Bridge", "Outro"] },
         { "id":7, "plays": ["Verse 1", "Pre-chorus", "Chorus", "Verse 2", "Bridge", "Outro"] }
-     ]
+      ],
+      "bands": [
+        { "id":1, "bpm":100 }
+      ]
     },
     {
       "id": 2,
       "name": "Funky Blue Sunday",
       "structure": [],
-      "musicians": []
+      "musicians": [],
+      "bands": []
     },
     {
       "name": "Let it be",
       "id": 3,
       "structure": [],
-      "musicians": []
+      "musicians": [],
+      "bands": []
     },
     {
       "name": "Hey Jude",
       "id": 4,
       "structure": [],
-      "musicians": []
+      "musicians": [],
+      "bands": []
     }
   ]
 }
