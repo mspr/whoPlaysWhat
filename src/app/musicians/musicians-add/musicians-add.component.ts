@@ -1,4 +1,4 @@
-import { Roles } from './../../core/roles';
+import { Roles } from './../../core/roles.enum';
 import { Band } from './../../bands/band';
 import { BandService } from './../../core/band.service';
 import { MusicianService } from './../../core/musician.service';

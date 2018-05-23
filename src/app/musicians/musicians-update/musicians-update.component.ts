@@ -3,7 +3,7 @@ import { Musician } from './../musician';
 import { MusicianService } from './../../core/musician.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Roles } from '../../core/roles';
+import { Roles } from '../../core/roles.enum';
 
 @Component({
   selector: 'wpw-musicians-update',
