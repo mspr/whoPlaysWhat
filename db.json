@@ -137,14 +137,14 @@
         "Outro"
       ],
       "musicians": [
-        { "id":1, "plays": ["Introduction", "Chorus", "Bridge", "Outro"] },
-        { "id":3, "plays": ["Introduction", "Chorus", "Bridge", "Outro"] },
-        { "id":4, "plays": ["Verse 1", "Pre-chorus", "Chorus", "Verse 2", "Bridge", "Outro"] },
-        { "id":6, "plays": ["Verse 1", "Pre-chorus", "Chorus", "Verse 2", "Bridge", "Outro"] },
-        { "id":7, "plays": ["Verse 1", "Pre-chorus", "Chorus", "Verse 2", "Bridge", "Outro"] }
+        { "id": 1, "plays": ["Introduction", "Chorus", "Bridge", "Outro"] },
+        { "id": 3, "plays": ["Introduction", "Chorus", "Bridge", "Outro"] },
+        { "id": 4, "plays": ["Verse 1", "Pre-chorus", "Chorus", "Verse 2", "Bridge", "Outro"] },
+        { "id": 6, "plays": ["Verse 1", "Pre-chorus", "Chorus", "Verse 2", "Bridge", "Outro"] },
+        { "id": 7, "plays": ["Verse 1", "Pre-chorus", "Chorus", "Verse 2", "Bridge", "Outro"] }
       ],
       "bands": [
-        { "id":1, "bpm":100 }
+        { "id": 1, "bpm": 100, "key": "A" }
       ]
     },
     {

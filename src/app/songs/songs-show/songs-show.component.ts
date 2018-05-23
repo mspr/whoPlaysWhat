@@ -48,13 +48,7 @@ export class SongsShowComponent implements OnInit, OnDestroy
     return partsPlayedByTheMusician.plays.find(elt => elt === part);
   }
 
-  getTempo() {
-    if (this.song != null) {
-      let band = this.song.bands.find(band => band.id == this.bandId);
-      if (band != null)
-        return band.bpm;
-    }
-
-    return null;
+  getInfoByBand() {
+    return (this.song != null) ? this.song.bands.find(band => band.id == this.bandId) : null;
   }
 }
