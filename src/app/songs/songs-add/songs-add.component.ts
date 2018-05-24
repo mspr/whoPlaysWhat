@@ -22,6 +22,9 @@ export class SongsAddComponent implements OnInit
   public tempo : number = 90;
   public musicians : Musician[] = new Array<Musician>();
 
+  public availableParts : string[] = Object.keys(SongParts);
+  public songParts : string[];
+
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
     private bandService: BandService,
@@ -58,11 +61,10 @@ export class SongsAddComponent implements OnInit
     return (musician != null) ? musician.bands.find(element => element.id_band == this.bandId).color : null;
   }
 
-  getSongParts() {
-    return Object.keys(SongParts);
-  }
-
   addSongPart(songPart) {
-
+    if (songPart === SongParts.Introduction || songPart === SongParts.Outro) {
+      let songPartIdx = this.availableParts.indexOf(songPart);
+      this.availableParts.splice(songPartIdx, 1);
+    }
   }
 }
