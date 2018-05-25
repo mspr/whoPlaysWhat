@@ -67,6 +67,18 @@ export class SongsAddComponent implements OnInit
       this.availableParts.splice(songPartIdx, 1);
     }
 
+    if (songPart === SongParts.Verse) {
+      let verseOccurences = this.songParts.filter((value) => {
+        return value.includes(songPart);
+      }).length;
+      songPart = songPart + " " + (verseOccurences + 1);
+    }
+
     this.songParts.push(songPart);
+  }
+
+  clearSongParts() {
+    this.songParts.length = 0;
+    this.availableParts = Object.keys(SongParts);
   }
 }
