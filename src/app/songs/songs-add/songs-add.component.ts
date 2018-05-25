@@ -23,7 +23,7 @@ export class SongsAddComponent implements OnInit
   public musicians : Musician[] = new Array<Musician>();
 
   public availableParts : string[] = Object.keys(SongParts);
-  public songParts : string[];
+  public songParts : string[] = [];
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -66,5 +66,7 @@ export class SongsAddComponent implements OnInit
       let songPartIdx = this.availableParts.indexOf(songPart);
       this.availableParts.splice(songPartIdx, 1);
     }
+
+    this.songParts.push(songPart);
   }
 }
