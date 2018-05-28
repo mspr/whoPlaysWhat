@@ -62,10 +62,15 @@ export class SongsAddComponent implements OnInit
     return (musician != null) ? musician.bands.find(element => element.id_band == this.bandId).color : null;
   }
 
-  addSongPart(songPart) {
-    if (songPart === SongParts.Introduction || songPart === SongParts.Outro) {
-      let songPartIdx = this.availableParts.indexOf(songPart);
-      this.availableParts.splice(songPartIdx, 1);
+  addSongPart(songPart)
+  {
+    if (songPart === SongParts.Outro) {
+      this.availableParts = [];
+    }
+
+    let introductionIdx = this.availableParts.indexOf(SongParts.Introduction);
+    if (introductionIdx != -1) {
+      this.availableParts.splice(introductionIdx, 1);
     }
 
     if (songPart === SongParts.Verse) {
@@ -81,6 +86,7 @@ export class SongsAddComponent implements OnInit
   clearSongParts() {
     this.songParts.length = 0;
     this.availableParts = Object.keys(SongParts);
+    this.song.musicians = [];
   }
 
   doesMusicianPlayThisPart(part, musicianId) {
