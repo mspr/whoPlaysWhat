@@ -18,7 +18,7 @@ export class SongsAddComponent implements OnInit
   public bandId : number;
   public song = new Song();
   public tonalities = Object.keys(Tonalities);
-  public tonality : Tonalities;
+  public tonality : Tonalities = Tonalities.A;
   public tempo : number = 90;
   public musicians : Musician[] = new Array<Musician>();
 
