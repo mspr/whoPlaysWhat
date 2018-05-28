@@ -1,16 +1,15 @@
 <p><b>{{song?.name}}</b> <span *ngIf="getInfoByBand(); let infoByBand">({{infoByBand.tonality}}<span *ngIf="infoByBand.tempo"> / {{infoByBand.tempo}} bpm</span>)</span></p>
 <br/>
-<div class="row">
-  <div class="col"></div>
-  <div *ngFor="let part of song?.structure" class="col" align="center">
-    {{part}}
-  </div>
-</div>
-<div class="row" *ngFor="let musician of musicians">
-  <div class="col" [style.color]="getMusicianColor(musician)">{{musician.name}}</div>
-  <div *ngFor="let part of song?.structure" class="col" align="center">
-    <div [ngStyle]="{'background-color': doesMusicianPlayThisPart(part, musician.id) ? getMusicianColor(musician) : '#eff5f5'}">&nbsp;</div>
-  </div>
-</div>
+<table cellpadding="10">
+    <tr>
+      <th></th>
+      <th *ngFor="let part of song?.structure; let j = index;">{{part}}</th>
+    </tr>
+    <tr *ngFor="let musician of musicians; let i = index;">
+      <td [style.color]="getMusicianColor(musician)">{{ musician.name }}</td>
+      <td *ngFor="let part of song?.structure; let j = index;"
+        [ngStyle]="{'background-color': doesMusicianPlayThisPart(part, musician.id) ? getMusicianColor(musician) : '#eff5f5'}"></td>
+    </tr>
+  </table>
 <br/>
 <button [routerLink]="['/bands', bandId, 'songs', song?.id, 'update']">Update</button>

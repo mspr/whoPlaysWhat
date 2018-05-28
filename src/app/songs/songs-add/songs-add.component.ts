@@ -45,6 +45,7 @@ export class SongsAddComponent implements OnInit
   add()
   {
     this.song.bands = [{ id: this.bandId, tonality: this.tonality, tempo: this.tempo }];
+    this.song.structure = this.songParts;
 
     this.songService.add(this.song).switchMap((song) =>
     {
@@ -73,7 +74,7 @@ export class SongsAddComponent implements OnInit
       this.availableParts.splice(introductionIdx, 1);
     }
 
-    if (songPart === SongParts.Verse) {
+    if (songPart === SongParts.Verse || songPart === SongParts.Solo) {
       let verseOccurences = this.songParts.filter((value) => {
         return value.includes(songPart);
       }).length;

@@ -5,5 +5,6 @@ export enum SongParts
   Chorus = "Chorus",
   Verse = "Verse",
   Bridge = "Bridge",
+  Solo = "Solo",
   Outro = "Outro"
 }
