@@ -15,19 +15,18 @@
   <button type="button" *ngFor="let songPart of availableParts" (click)="addSongPart(songPart)">{{songPart}}</button>
   <button type="button" (click)="clearSongParts()">X</button>
   <br/>
-  <div class="row">
-    <div class="col"></div>
-    <div *ngFor="let part of songParts" class="col" align="center">
-      {{part}}
-    </div>
-  </div>
-  <div class="row" *ngFor="let musician of musicians">
-    <div class="col" [style.color]="getMusicianColor(musician)">{{musician.name}}</div>
-    <div *ngFor="let part of songParts" class="col" align="center">
-      -
-      <!-- <div [ngStyle]="{'background-color': doesMusicianPlayThisPart(part, musician.id) ? getMusicianColor(musician) : '#eff5f5'}">&nbsp;</div> -->
-    </div>
-  </div>
+  <br/>
+  <table>
+    <tr>
+      <th></th>
+      <th *ngFor="let part of songParts; let j = index;">{{part}}</th>
+    </tr>
+    <tr *ngFor="let musician of musicians; let i = index;">
+      <td [style.color]="getMusicianColor(musician)">{{ musician.name }}</td>
+      <td *ngFor="let part of songParts; let j = index;" (click)="onClick(musician, part)"
+        [ngStyle]="{'background-color': doesMusicianPlayThisPart(part, musician.id) ? getMusicianColor(musician) : '#eff5f5'}"></td>
+    </tr>
+  </table>
   <br/>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

@@ -31,6 +31,7 @@ export class SongsAddComponent implements OnInit
     private musicianService: MusicianService,
     private songService: SongService)
   {
+    this.song.musicians = [];
   }
 
   ngOnInit()
@@ -80,5 +81,20 @@ export class SongsAddComponent implements OnInit
   clearSongParts() {
     this.songParts.length = 0;
     this.availableParts = Object.keys(SongParts);
+  }
+
+  doesMusicianPlayThisPart(part, musicianId) {
+    let partsPlayedByTheMusician = this.song.musicians.find(elt=> elt.id == musicianId);
+    return partsPlayedByTheMusician != undefined && partsPlayedByTheMusician.plays.find(elt => elt === part);
+  }
+
+  onClick(musician, part)
+  {
+    let musicianInfo = this.song.musicians.find(info => info.id === musician.id);
+    if (musicianInfo) {
+      musicianInfo.plays.push(part);
+    } else {
+      this.song.musicians.push({id: musician.id, plays:[part]});
+    }
   }
 }
