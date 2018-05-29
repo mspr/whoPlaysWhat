@@ -296,21 +296,26 @@
           "plays": [
             "Introduction",
             "Solo 1",
-            "Outro"
+            "Outro",
+            "PreChorus",
+            "Bridge"
           ]
         },
         {
           "id": 3,
           "plays": [
             "PreChorus",
-            "Bridge"
+            "Bridge",
+            "Chorus",
+            "Verse 2"
           ]
         },
         {
           "id": 4,
           "plays": [
             "Chorus",
-            "Verse 2"
+            "Verse 2",
+            "Verse 1"
           ]
         },
         {
@@ -329,8 +334,8 @@
       "bands": [
         {
           "id": "1",
-          "tonality": "Cs",
-          "tempo": 87
+          "tonality": "F",
+          "tempo": 88
         }
       ],
       "id": 6
