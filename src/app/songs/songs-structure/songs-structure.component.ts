@@ -79,4 +79,11 @@ export class SongsStructureComponent implements OnInit
       this.song.musicians.push({id: musician.id, plays:[part]});
     }
   }
+
+  updatePartForMusicians(part)
+  {
+    this.musicians.forEach(musician => {
+      this.updatePartForMusician(musician, part);
+    });
+  }
 }
