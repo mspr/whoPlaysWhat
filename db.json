@@ -10,7 +10,7 @@
       "bands": [
         {
           "id_band": 1,
-          "color": "#efd45b"
+          "color": "#8eefa8"
         }
       ]
     },
@@ -42,19 +42,6 @@
       ]
     },
     {
-      "id": 5,
-      "name": "Hugo",
-      "roles": [
-        "Drumer"
-      ],
-      "bands": [
-        {
-          "id_band": 2,
-          "color": "#D8BFD8"
-        }
-      ]
-    },
-    {
       "name": "Hugo",
       "roles": [
         "Drumer"
@@ -62,6 +49,10 @@
       "bands": [
         {
           "id_band": "1",
+          "color": "#56d661"
+        },
+        {
+          "id_band": "2",
           "color": "#56d661"
         }
       ],
@@ -89,9 +80,6 @@
       "picture": "the_beatles.jpg",
       "songIds": [
         1,
-        3,
-        4,
-        5,
         6
       ],
       "musicianIds": [
@@ -106,11 +94,8 @@
       "id": 2,
       "name": "The Creedence",
       "picture": "the_creedence.jpg",
-      "songIds": [
-        2
-      ],
+      "songIds": [],
       "musicianIds": [
-        5,
         6
       ]
     },
@@ -202,27 +187,6 @@
           "tonality": "A"
         }
       ]
-    },
-    {
-      "id": 2,
-      "name": "Funky Blue Sunday",
-      "structure": [],
-      "musicians": [],
-      "bands": []
-    },
-    {
-      "name": "Let it be",
-      "id": 3,
-      "structure": [],
-      "musicians": [],
-      "bands": []
-    },
-    {
-      "name": "Hey Jude",
-      "id": 4,
-      "structure": [],
-      "musicians": [],
-      "bands": []
     },
     {
       "name": "Message in the bottle",

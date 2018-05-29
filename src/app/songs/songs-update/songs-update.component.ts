@@ -29,9 +29,9 @@ export class SongsUpdateComponent implements OnInit {
 
     this.songService.getById(songId).subscribe((song) => {
       this.song = song;
-      let infoByBand = song.bands.find(band => band.id == this.bandId);
-      this.tempo = infoByBand.tempo;
-      this.tonality = infoByBand.tonality;
+      let songInfoByBand = this.getSongInfoByBand();
+      this.tempo = songInfoByBand.tempo;
+      this.tonality = songInfoByBand.tonality;
     });
   }
 
