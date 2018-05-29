@@ -16,7 +16,7 @@ export class SongsUpdateComponent implements OnInit {
   public song = new Song();
   public tonalities = Object.keys(Tonalities);
   public tonality : Tonalities;
-  public tempo;
+  public tempo : number = 90;
 
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
