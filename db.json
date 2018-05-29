@@ -227,65 +227,43 @@
       "name": "Message in the bottle",
       "musicians": [
         {
-          "id": 4,
-          "plays": [
-            "Introduction",
-            "Verse 1",
-            "PreChorus",
-            "Chorus",
-            "Chorus",
-            "Verse 2",
-            "Solo 2",
-            "Outro"
-          ]
-        },
-        {
-          "id": 6,
-          "plays": [
-            "Introduction",
-            "Verse 1",
-            "PreChorus",
-            "Chorus",
-            "Verse 2",
-            "Outro"
-          ]
-        },
-        {
           "id": 1,
           "plays": [
-            "Verse 1",
-            "PreChorus",
-            "Chorus",
-            "Verse 2",
-            "Solo 1",
-            "Outro"
+            "Introduction"
           ]
         },
         {
           "id": 3,
           "plays": [
-            "Verse 1",
-            "PreChorus",
+            "Verse 1"
+          ]
+        },
+        {
+          "id": 4,
+          "plays": [
+            "PreChorus"
+          ]
+        },
+        {
+          "id": 6,
+          "plays": [
             "Chorus",
-            "Verse 2",
-            "Outro"
+            "Verse 2"
           ]
         },
         {
           "id": 7,
           "plays": [
-            "Verse 1",
-            "PreChorus",
-            "Chorus",
-            "Verse 2"
+            "Solo 1",
+            "Outro"
           ]
         }
       ],
       "bands": [
         {
           "id": "1",
-          "tonality": "E",
-          "tempo": 100
+          "tonality": "C",
+          "tempo": 99
         }
       ],
       "structure": [
@@ -294,12 +272,7 @@
         "PreChorus",
         "Chorus",
         "Verse 2",
-        "PreChorus",
-        "Chorus",
         "Solo 1",
-        "PreChorus",
-        "Chorus",
-        "Solo 2",
         "Outro"
       ],
       "id": 5
