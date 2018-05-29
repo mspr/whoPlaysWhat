@@ -1,0 +1,15 @@
+<label for="structure">Structure :</label>
+<button type="button" *ngFor="let songPart of availableParts" (click)="addSongPart(songPart)">{{songPart}}</button>
+<button type="button" (click)="clearSongParts()">X</button>
+<br/>
+<table cellpadding="10">
+  <tr>
+    <th></th>
+    <th *ngFor="let part of song.structure; let j = index;">{{part}}</th>
+  </tr>
+  <tr *ngFor="let musician of musicians; let i = index;">
+    <td [style.color]="getMusicianColor(musician)">{{ musician.name }}</td>
+    <td *ngFor="let part of song.structure; let j = index;" (click)="markPartAsPlayedForMusician(musician, part)"
+      [ngStyle]="{'background-color': doesMusicianPlayThisPart(part, musician.id) ? getMusicianColor(musician) : '#eff5f5'}"></td>
+  </tr>
+</table>

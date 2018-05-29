@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { SongService } from '../core/song.service';
 import { SongsUpdateComponent } from './songs-update/songs-update.component';
 import { BandService } from '../core/band.service';
+import { SongsStructureComponent } from './songs-structure/songs-structure.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { BandService } from '../core/band.service';
     SongsShowComponent,
     SongsAddComponent,
     SongsListComponent,
-    SongsUpdateComponent
+    SongsUpdateComponent,
+    SongsStructureComponent
   ],
   exports: [
     SongsListComponent

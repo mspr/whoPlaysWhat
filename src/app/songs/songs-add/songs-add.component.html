@@ -11,7 +11,7 @@
     <label for="tempo">Tempo :</label>
     <input type="number" name="tempo" [(ngModel)]="tempo" />
   </div>
-  <label for="structure">Structure :</label>
+  <!-- <label for="structure">Structure :</label>
   <button type="button" *ngFor="let songPart of availableParts" (click)="addSongPart(songPart)">{{songPart}}</button>
   <button type="button" (click)="clearSongParts()">X</button>
   <br/>
@@ -26,7 +26,8 @@
       <td *ngFor="let part of songParts; let j = index;" (click)="onClick(musician, part)"
         [ngStyle]="{'background-color': doesMusicianPlayThisPart(part, musician.id) ? getMusicianColor(musician) : '#eff5f5'}"></td>
     </tr>
-  </table>
+  </table> -->
+  <wpw-songs-structure [song]="song"></wpw-songs-structure>
   <br/>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
