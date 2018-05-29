@@ -66,11 +66,15 @@ export class SongsStructureComponent implements OnInit
     return partsPlayedByTheMusician != undefined && partsPlayedByTheMusician.plays.find(elt => elt === part);
   }
 
-  markPartAsPlayedForMusician(musician, part)
+  updatePartForMusician(musician, part)
   {
     let musicianInfo = this.song.musicians.find(info => info.id === musician.id);
     if (musicianInfo) {
-      musicianInfo.plays.push(part);
+      let partIdx = musicianInfo.plays.indexOf(part);
+      if (partIdx != -1)
+        musicianInfo.plays.splice(partIdx, 1);
+      else
+        musicianInfo.plays.push(part);
     } else {
       this.song.musicians.push({id: musician.id, plays:[part]});
     }

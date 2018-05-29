@@ -10,7 +10,7 @@
   </tr>
   <tr *ngFor="let musician of musicians; let i = index;">
     <td [style.color]="getMusicianColor(musician)">{{ musician.name }}</td>
-    <td *ngFor="let part of song.structure; let j = index;" (click)="markPartAsPlayedForMusician(musician, part)"
+    <td *ngFor="let part of song.structure; let j = index;" (click)="updatePartForMusician(musician, part)"
       [ngStyle]="{'background-color': doesMusicianPlayThisPart(part, musician.id) ? getMusicianColor(musician) : '#eff5f5'}"></td>
   </tr>
 </table>

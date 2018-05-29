@@ -304,8 +304,6 @@
         {
           "id": 3,
           "plays": [
-            "PreChorus",
-            "Bridge",
             "Chorus",
             "Verse 2"
           ]
@@ -313,8 +311,6 @@
         {
           "id": 4,
           "plays": [
-            "Chorus",
-            "Verse 2",
             "Verse 1"
           ]
         },
