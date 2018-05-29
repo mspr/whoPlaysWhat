@@ -80,7 +80,8 @@
       "picture": "the_beatles.jpg",
       "songIds": [
         1,
-        6
+        6,
+        7
       ],
       "musicianIds": [
         1,
@@ -118,187 +119,247 @@
     {
       "id": 1,
       "name": "Crossroads",
-      "structure": [
-        "Introduction",
-        "Verse 1",
-        "Pre-chorus",
-        "Chorus",
-        "Verse 2",
-        "Bridge",
-        "Outro"
-      ],
-      "musicians": [
-        {
-          "id": 1,
-          "plays": [
-            "Introduction",
-            "Chorus",
-            "Bridge",
-            "Outro"
-          ]
-        },
-        {
-          "id": 3,
-          "plays": [
-            "Introduction",
-            "Chorus",
-            "Bridge",
-            "Outro"
-          ]
-        },
-        {
-          "id": 4,
-          "plays": [
-            "Verse 1",
-            "Pre-chorus",
-            "Chorus",
-            "Verse 2",
-            "Bridge",
-            "Outro"
-          ]
-        },
-        {
-          "id": 6,
-          "plays": [
-            "Verse 1",
-            "Pre-chorus",
-            "Chorus",
-            "Verse 2",
-            "Bridge",
-            "Outro"
-          ]
-        },
-        {
-          "id": 7,
-          "plays": [
-            "Verse 1",
-            "Pre-chorus",
-            "Chorus",
-            "Verse 2",
-            "Bridge",
-            "Outro"
-          ]
-        }
-      ],
       "bands": [
         {
           "id": 1,
           "tempo": 100,
-          "tonality": "A"
+          "tonality": "A",
+          "structure": [
+            "Introduction",
+            "Verse 1",
+            "Pre-chorus",
+            "Chorus",
+            "Verse 2",
+            "Bridge",
+            "Outro"
+          ],
+          "musicians": [
+            {
+              "id": 1,
+              "plays": [
+                "Introduction",
+                "Chorus",
+                "Bridge",
+                "Outro"
+              ]
+            },
+            {
+              "id": 3,
+              "plays": [
+                "Introduction",
+                "Chorus",
+                "Bridge",
+                "Outro"
+              ]
+            },
+            {
+              "id": 4,
+              "plays": [
+                "Verse 1",
+                "Pre-chorus",
+                "Chorus",
+                "Verse 2",
+                "Bridge",
+                "Outro"
+              ]
+            },
+            {
+              "id": 6,
+              "plays": [
+                "Verse 1",
+                "Pre-chorus",
+                "Chorus",
+                "Verse 2",
+                "Bridge",
+                "Outro"
+              ]
+            },
+            {
+              "id": 7,
+              "plays": [
+                "Verse 1",
+                "Pre-chorus",
+                "Chorus",
+                "Verse 2",
+                "Bridge",
+                "Outro"
+              ]
+            }
+          ]
         }
       ]
     },
     {
+      "id": 5,
       "name": "Message in the bottle",
-      "musicians": [
-        {
-          "id": 1,
-          "plays": [
-            "Introduction"
-          ]
-        },
-        {
-          "id": 3,
-          "plays": [
-            "Verse 1"
-          ]
-        },
-        {
-          "id": 4,
-          "plays": [
-            "PreChorus"
-          ]
-        },
-        {
-          "id": 6,
-          "plays": [
-            "Chorus",
-            "Verse 2"
-          ]
-        },
-        {
-          "id": 7,
-          "plays": [
-            "Solo 1",
-            "Outro"
-          ]
-        }
-      ],
       "bands": [
         {
           "id": "1",
           "tonality": "C",
-          "tempo": 99
+          "tempo": 99,
+          "structure": [
+            "Introduction",
+            "Verse 1",
+            "PreChorus",
+            "Chorus",
+            "Verse 2",
+            "Solo 1",
+            "Outro"
+          ],
+          "musicians": [
+            {
+              "id": 1,
+              "plays": [
+                "Introduction"
+              ]
+            },
+            {
+              "id": 3,
+              "plays": [
+                "Verse 1"
+              ]
+            },
+            {
+              "id": 4,
+              "plays": [
+                "PreChorus"
+              ]
+            },
+            {
+              "id": 6,
+              "plays": [
+                "Chorus",
+                "Verse 2"
+              ]
+            },
+            {
+              "id": 7,
+              "plays": [
+                "Solo 1",
+                "Outro"
+              ]
+            }
+          ]
         }
-      ],
-      "structure": [
-        "Introduction",
-        "Verse 1",
-        "PreChorus",
-        "Chorus",
-        "Verse 2",
-        "Solo 1",
-        "Outro"
-      ],
-      "id": 5
+      ]
     },
     {
+      "id": 6,
       "name": "Hello",
-      "structure": [
-        "Introduction",
-        "PreChorus",
-        "Chorus",
-        "Verse 1",
-        "Verse 2",
-        "Bridge",
-        "Solo 1",
-        "Outro"
-      ],
-      "musicians": [
-        {
-          "id": 1,
-          "plays": [
-            "Introduction",
-            "Solo 1",
-            "Outro",
-            "PreChorus",
-            "Bridge"
-          ]
-        },
-        {
-          "id": 3,
-          "plays": [
-            "Chorus",
-            "Verse 2"
-          ]
-        },
-        {
-          "id": 4,
-          "plays": [
-            "Verse 1"
-          ]
-        },
-        {
-          "id": 6,
-          "plays": [
-            "Verse 1"
-          ]
-        },
-        {
-          "id": 7,
-          "plays": [
-            "Verse 1"
-          ]
-        }
-      ],
       "bands": [
         {
           "id": "1",
           "tonality": "F",
-          "tempo": 88
+          "tempo": 88,
+          "structure": [
+            "Introduction",
+            "PreChorus",
+            "Chorus",
+            "Verse 1",
+            "Verse 2",
+            "Bridge",
+            "Solo 1",
+            "Outro"
+          ],
+          "musicians": [
+            {
+              "id": 1,
+              "plays": [
+                "Introduction",
+                "Solo 1",
+                "Outro",
+                "PreChorus",
+                "Bridge"
+              ]
+            },
+            {
+              "id": 3,
+              "plays": [
+                "Chorus",
+                "Verse 2"
+              ]
+            },
+            {
+              "id": 4,
+              "plays": [
+                "Verse 1"
+              ]
+            },
+            {
+              "id": 6,
+              "plays": [
+                "Verse 1"
+              ]
+            },
+            {
+              "id": 7,
+              "plays": [
+                "Verse 1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Let it be",
+      "bands": [
+        {
+          "id": "1",
+          "structure": [
+            "Introduction",
+            "Chorus",
+            "Verse 1",
+            "Bridge",
+            "Solo 1",
+            "Outro"
+          ],
+          "musicians": [
+            {
+              "id": 1,
+              "plays": [
+                "Introduction",
+                "Solo 1",
+                "Outro",
+                "Bridge"
+              ]
+            },
+            {
+              "id": 4,
+              "plays": [
+                "Chorus",
+                "Outro",
+                "Bridge"
+              ]
+            },
+            {
+              "id": 3,
+              "plays": [
+                "Verse 1",
+                "Outro"
+              ]
+            },
+            {
+              "id": 7,
+              "plays": [
+                "Verse 1",
+                "Outro",
+                "Bridge"
+              ]
+            },
+            {
+              "id": 6,
+              "plays": [
+                "Outro",
+                "Bridge"
+              ]
+            }
+          ],
+          "tonality": "E",
+          "tempo": 67
         }
       ],
-      "id": 6
+      "id": 7
     }
   ]
 }

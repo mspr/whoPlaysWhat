@@ -24,15 +24,18 @@ export class SongsAddComponent implements OnInit
     private bandService: BandService,
     private songService: SongService)
   {
-    this.song.musicians = [];
   }
 
   ngOnInit() {
+    this.bandId = this.activatedRoute.parent.snapshot.params['id'];
+    this.song.bands = [{ id: this.bandId, structure: [], musicians: [] }];
   }
 
   add()
   {
-    this.song.bands = [{ id: this.bandId, tonality: this.tonality, tempo: this.tempo }];
+    let songBandInfo = this.GetSongBandInfo(this.bandId);
+    songBandInfo.tonality = this.tonality;
+    songBandInfo.tempo = this.tempo;
 
     this.songService.add(this.song).switchMap((song) =>
     {
@@ -44,5 +47,9 @@ export class SongsAddComponent implements OnInit
         this.songService.added.emit(song);
         this.router.navigate([`bands/${this.bandId}`, 'songs', song.id]);
     });
+  }
+
+  private GetSongBandInfo(bandId : number) {
+    return this.song.bands != undefined ? this.song.bands.find(elt => elt.id == bandId) : null;
   }
 }

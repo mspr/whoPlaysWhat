@@ -40,11 +40,11 @@ export class SongsShowComponent implements OnInit, OnDestroy
   }
 
   doesMusicianPlayThisPart(part, musicianId) {
-    let partsPlayedByTheMusician = this.song.musicians.find(elt=> elt.id == musicianId);
+    let partsPlayedByTheMusician = this.getSongBandInfo().musicians.find(elt=> elt.id == musicianId);
     return partsPlayedByTheMusician.plays.find(elt => elt === part);
   }
 
-  getInfoByBand() {
+  getSongBandInfo() {
     return (this.song != null) ? this.song.bands.find(band => band.id == this.bandId) : null;
   }
 

@@ -42,33 +42,44 @@ export class SongsStructureComponent implements OnInit
     }
 
     if (songPart === SongParts.Verse || songPart === SongParts.Solo) {
-      let verseOccurences = this.song.structure.filter((value) => {
+      let verseOccurences = this.getSongStructure().filter((value) => {
         return value.includes(songPart);
       }).length;
       songPart = songPart + " " + (verseOccurences + 1);
     }
 
-    this.song.structure.push(songPart);
+    this.getSongStructure().push(songPart);
   }
 
   clearSongParts() {
-    this.song.structure.length = 0;
+    this.getSongStructure().length = 0;
     this.availableParts = Object.keys(SongParts);
-    this.song.musicians = [];
+    this.GetSongBandInfo().musicians = [];
   }
 
   getMusicianColor(musician) {
     return (musician != null) ? musician.bands.find(element => element.id_band == this.bandId).color : null;
   }
 
+  getSongStructure() {
+    let songBandInfo = this.GetSongBandInfo();
+    return songBandInfo != undefined ? songBandInfo.structure : null;
+  }
+
+  private GetSongBandInfo() {
+    return this.song.bands != undefined ? this.song.bands.find(elt => elt.id == this.bandId) : null;
+  }
+
   doesMusicianPlayThisPart(part, musicianId) {
-    let partsPlayedByTheMusician = this.song.musicians.find(elt=> elt.id == musicianId);
+    let songBandInfo = this.GetSongBandInfo();
+    let partsPlayedByTheMusician = songBandInfo.musicians.find(elt=> elt.id == musicianId);
     return partsPlayedByTheMusician != undefined && partsPlayedByTheMusician.plays.find(elt => elt === part);
   }
 
   updatePartForMusician(musician, part)
   {
-    let musicianInfo = this.song.musicians.find(info => info.id === musician.id);
+    let songInfoFromBand = this.GetSongBandInfo();
+    let musicianInfo = songInfoFromBand.musicians.find(info => info.id === musician.id);
     if (musicianInfo) {
       let partIdx = musicianInfo.plays.indexOf(part);
       if (partIdx != -1)
@@ -76,12 +87,11 @@ export class SongsStructureComponent implements OnInit
       else
         musicianInfo.plays.push(part);
     } else {
-      this.song.musicians.push({id: musician.id, plays:[part]});
+      songInfoFromBand.musicians.push({id: musician.id, plays:[part]});
     }
   }
 
-  updatePartForMusicians(part)
-  {
+  updatePartForMusicians(part) {
     this.musicians.forEach(musician => {
       this.updatePartForMusician(musician, part);
     });

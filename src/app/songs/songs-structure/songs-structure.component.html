@@ -6,11 +6,11 @@
 <table cellpadding="10">
   <tr>
     <th></th>
-    <th *ngFor="let part of song.structure; let j = index;" (click)="updatePartForMusicians(part)">{{part}}</th>
+    <th *ngFor="let part of getSongStructure(); let j = index;" (click)="updatePartForMusicians(part)">{{part}}</th>
   </tr>
   <tr *ngFor="let musician of musicians; let i = index;">
     <td [style.color]="getMusicianColor(musician)">{{ musician.name }}</td>
-    <td *ngFor="let part of song.structure; let j = index;" (click)="updatePartForMusician(musician, part)"
+    <td *ngFor="let part of getSongStructure(); let j = index;" (click)="updatePartForMusician(musician, part)"
       [ngStyle]="{'background-color': doesMusicianPlayThisPart(part, musician.id) ? getMusicianColor(musician) : '#eff5f5'}"></td>
   </tr>
 </table>
