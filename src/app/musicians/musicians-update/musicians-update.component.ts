@@ -1,9 +1,10 @@
+import { Roles } from './../../core/roles.enum';
+import { RolesHelper } from './../../core/roles-helper';
 import { IMultiSelectSettings, IMultiSelectTexts, IMultiSelectOption } from 'angular-2-dropdown-multiselect';
 import { Musician } from './../musician';
 import { MusicianService } from './../../core/musician.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Roles } from '../../core/roles.enum';
 
 @Component({
   selector: 'wpw-musicians-update',
@@ -27,7 +28,7 @@ export class MusiciansUpdateComponent implements OnInit
   {
     let options = [];
     let id : number = 1;
-    Object.keys(Roles).forEach(key => {
+    RolesHelper.getRoles().forEach(key => {
       options.push({ id: id, name: key });
       ++id;
     });
@@ -42,7 +43,7 @@ export class MusiciansUpdateComponent implements OnInit
       this.musician = musician;
       this.color = this.musician.bands.find(elt => elt.id_band == this.bandId).color;
 
-      let roles = Object.keys(Roles);
+      let roles = RolesHelper.getRoles();
       this.musician.roles.forEach(role => {
         this.optionsModel.push(roles.indexOf(role) + 1);
       });

@@ -5,7 +5,7 @@
     <div class="row" *ngFor="let musician of musicians">
       <div class="col">
         <a [routerLink]="['/bands', bandId, 'musicians', musician.id]" routerLinkActive="active" class="list-group-item list-group-item-action">
-          {{musician.name}}
+          {{musician.name}} <img *ngFor="let roleIconPath of getRolesIconsPaths(musician)" src="{{roleIconPath}}" width="30" height="30" />
         </a>
       </div>
       <div class="col">

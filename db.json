@@ -10,7 +10,7 @@
       "bands": [
         {
           "id_band": 1,
-          "color": "#8eefa8"
+          "color": "#efe08e"
         }
       ]
     },
@@ -318,10 +318,10 @@
             {
               "id": 1,
               "plays": [
-                "Introduction",
                 "Solo 1",
                 "Outro",
-                "Bridge"
+                "Bridge",
+                "Introduction"
               ]
             },
             {
@@ -329,14 +329,16 @@
               "plays": [
                 "Chorus",
                 "Outro",
-                "Bridge"
+                "Bridge",
+                "Introduction"
               ]
             },
             {
               "id": 3,
               "plays": [
                 "Verse 1",
-                "Outro"
+                "Outro",
+                "Introduction"
               ]
             },
             {
@@ -344,14 +346,16 @@
               "plays": [
                 "Verse 1",
                 "Outro",
-                "Bridge"
+                "Bridge",
+                "Introduction"
               ]
             },
             {
               "id": 6,
               "plays": [
                 "Outro",
-                "Bridge"
+                "Bridge",
+                "Introduction"
               ]
             }
           ],

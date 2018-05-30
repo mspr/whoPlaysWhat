@@ -1,3 +1,4 @@
+import { Roles } from './../../core/roles.enum';
 import { Band } from './../../bands/band';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 import { Observable } from 'rxjs/Observable';
@@ -9,6 +10,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
 import { BandService } from '../../core/band.service';
+import { RolesHelper } from '../../core/roles-helper';
 
 @Component({
   selector: 'wpw-musicians-list',
@@ -67,6 +69,14 @@ export class MusiciansListComponent implements OnInit, OnDestroy
       this.musicianService.removed.emit();
       this.router.navigate([`bands/${this.bandId}`, 'musicians']);
     });
+  }
+
+  getRolesIconsPaths(musician : Musician) {
+    var rolesIconsPaths : string[] = [];
+    musician.roles.forEach(role => {
+      rolesIconsPaths.push(RolesHelper.getRoleIconPath(Roles[role]));
+    });
+    return rolesIconsPaths;
   }
 
   private retrieveMusicians()
