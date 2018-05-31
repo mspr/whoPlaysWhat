@@ -9,6 +9,7 @@ import { SongService } from '../core/song.service';
 import { SongsUpdateComponent } from './songs-update/songs-update.component';
 import { BandService } from '../core/band.service';
 import { SongsStructureComponent } from './songs-structure/songs-structure.component';
+import { SongsLevelComponent } from './songs-level/songs-level.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { SongsStructureComponent } from './songs-structure/songs-structure.compo
     SongsAddComponent,
     SongsListComponent,
     SongsUpdateComponent,
-    SongsStructureComponent
+    SongsStructureComponent,
+    SongsLevelComponent
   ],
   exports: [
     SongsListComponent

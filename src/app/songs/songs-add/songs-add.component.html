@@ -4,7 +4,7 @@
     <input type="text" class="form-control" name="name" [(ngModel)]="song.name" required #name="ngModel" />
     <br/>
     <label for="level">Level :</label>
-    <span *ngFor="let songLevelName of getSongLevelNames()" class="fa fa-star" title="{{songLevelName}}"></span>
+    <wpw-songs-level></wpw-songs-level>
     <br/>
     <label for="tonalities">Tonality :</label>
     <select class="form-control" name="tonalities" [(ngModel)]="tonality">
