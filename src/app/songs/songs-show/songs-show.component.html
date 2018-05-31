@@ -4,15 +4,15 @@
 <wpw-songs-level [readOnly]="true" [defaultLevel]="song?.level"></wpw-songs-level>
 <br/>
 <table cellpadding="10">
-    <tr>
-      <th></th>
-      <th *ngFor="let part of getSongBandInfo()?.structure; let j = index;">{{part}}</th>
-    </tr>
-    <tr *ngFor="let musician of musicians; let i = index;">
-      <td [style.color]="getMusicianColor(musician)">{{ musician.name }}</td>
-      <td *ngFor="let part of getSongBandInfo()?.structure; let j = index;"
-        [ngStyle]="{'background-color': doesMusicianPlayThisPart(part, musician.id) ? getMusicianColor(musician) : '#eff5f5'}"></td>
-    </tr>
-  </table>
+  <tr>
+    <th></th>
+    <th *ngFor="let part of getSongBandInfo()?.structure; let j = index;">{{part}}</th>
+  </tr>
+  <tr *ngFor="let musician of musicians; let i = index;">
+    <td [style.color]="getMusicianColor(musician)">{{ musician.name }}</td>
+    <td *ngFor="let part of getSongBandInfo()?.structure; let j = index;"
+      [ngStyle]="{'background-color': doesMusicianPlayThisPart(part, musician.id) ? getMusicianColor(musician) : '#eff5f5'}"></td>
+  </tr>
+</table>
 <br/>
 <button [routerLink]="['/bands', bandId, 'songs', song?.id, 'update']">Update</button>
