@@ -1,3 +1,4 @@
+import { SongLevel } from './../song-level.enum';
 import { Musician } from './../../musicians/musician';
 import { Tonalities } from './../../core/tonalities.enum';
 import { Component, OnInit } from '@angular/core';
@@ -47,6 +48,14 @@ export class SongsAddComponent implements OnInit
         this.songService.added.emit(song);
         this.router.navigate([`bands/${this.bandId}`, 'songs', song.id]);
     });
+  }
+
+  getSongLevelNames() {
+    let songLevelNames : string[] = [];
+    Object.keys(SongLevel).forEach(songLevel => {
+      songLevelNames.push(SongLevel[songLevel]);
+    });
+    return songLevelNames;
   }
 
   private GetSongBandInfo(bandId : number) {
