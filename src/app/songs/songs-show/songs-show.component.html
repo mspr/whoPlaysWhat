@@ -1,5 +1,8 @@
 <p><b>{{song?.name}}</b> <span *ngIf="getSongBandInfo(); let songBandInfo">({{songBandInfo.tonality}}<span *ngIf="songBandInfo.tempo"> / {{songBandInfo.tempo}} bpm</span>)</span></p>
 <br/>
+<label for="level">Level :</label>
+<wpw-songs-level [readOnly]="true" [defaultLevel]="song?.level"></wpw-songs-level>
+<br/>
 <table cellpadding="10">
     <tr>
       <th></th>

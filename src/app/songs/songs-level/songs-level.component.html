@@ -1,7 +1,16 @@
-<div (mouseout)="resetLevel()">
+<div *ngIf="!readOnly; else readOnlyComponent" (mouseout)="resetLevel()">
   <span *ngFor="let songLevelName of getLevelNames(); let i = index;">
       <span class="fa fa-star" title="{{songLevelName}}" id="{{i}}" (mouseenter)="updateHoveredLevel(i)" (click)="onLevelClick()"
         [ngStyle]="{'background-color': isLevelGreaterThanHovered(i) ? 'white' : 'yellow'}">
       </span>
     </span>
 </div>
+
+<ng-template #readOnlyComponent>
+  <div>
+      <span *ngFor="let songLevelName of getLevelNames(); let i = index;">
+        <span class="fa fa-star" title="{{songLevelName}}" id="{{i}}" [ngStyle]="{'background-color': isLevelGreaterThanHovered(i) ? 'white' : 'yellow'}">
+        </span>
+      </span>
+  </div>
+</ng-template>

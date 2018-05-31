@@ -81,7 +81,8 @@
       "songIds": [
         1,
         6,
-        7
+        7,
+        8
       ],
       "musicianIds": [
         1,
@@ -119,6 +120,7 @@
     {
       "id": 1,
       "name": "Crossroads",
+      "level": 0,
       "bands": [
         {
           "id": 1,
@@ -192,6 +194,7 @@
     {
       "id": 5,
       "name": "Message in the bottle",
+      "level": 1,
       "bands": [
         {
           "id": "1",
@@ -246,6 +249,7 @@
     {
       "id": 6,
       "name": "Hello",
+      "level": 5,
       "bands": [
         {
           "id": "1",
@@ -363,7 +367,71 @@
           "tempo": 67
         }
       ],
+      "level": 1,
       "id": 7
+    },
+    {
+      "name": "Yesterday",
+      "bands": [
+        {
+          "id": "1",
+          "structure": [
+            "Introduction",
+            "PreChorus",
+            "Chorus",
+            "Verse 1",
+            "Bridge",
+            "Solo 1",
+            "Outro"
+          ],
+          "musicians": [
+            {
+              "id": 1,
+              "plays": [
+                "Outro",
+                "Introduction"
+              ]
+            },
+            {
+              "id": 6,
+              "plays": [
+                "PreChorus",
+                "Outro",
+                "Introduction"
+              ]
+            },
+            {
+              "id": 3,
+              "plays": [
+                "Chorus",
+                "Outro",
+                "Introduction"
+              ]
+            },
+            {
+              "id": 7,
+              "plays": [
+                "Verse 1",
+                "Solo 1",
+                "Outro",
+                "Introduction"
+              ]
+            },
+            {
+              "id": 4,
+              "plays": [
+                "Bridge",
+                "Outro",
+                "Introduction"
+              ]
+            }
+          ],
+          "tonality": "Cs",
+          "tempo": 80
+        }
+      ],
+      "level": 2,
+      "id": 8
     }
   ]
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { SongLevelHelper } from '../song-level-helper';
 import { SongLevel } from '../song-level.enum';
 
@@ -7,10 +7,13 @@ import { SongLevel } from '../song-level.enum';
   templateUrl: './songs-level.component.html',
   styleUrls: ['./songs-level.component.scss']
 })
-export class SongsLevelComponent implements OnInit
+export class SongsLevelComponent implements OnInit, OnChanges
 {
   @Input()
   public defaultLevel : number;
+
+  @Input()
+  public readOnly = false;
 
   private hoveredLevel : number = 0;
 
@@ -20,6 +23,10 @@ export class SongsLevelComponent implements OnInit
   constructor() { }
 
   ngOnInit() {
+    this.hoveredLevel = this.defaultLevel;
+  }
+
+  ngOnChanges() {
     this.hoveredLevel = this.defaultLevel;
   }
 
