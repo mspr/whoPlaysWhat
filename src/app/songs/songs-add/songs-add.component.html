@@ -4,7 +4,7 @@
     <input type="text" class="form-control" name="name" [(ngModel)]="song.name" required #name="ngModel" />
     <br/>
     <label for="level">Level :</label>
-    <wpw-songs-level></wpw-songs-level>
+    <wpw-songs-level [defaultLevel]="song.level" (onSongLevelClick)="updateSongLevel($event)"></wpw-songs-level>
     <br/>
     <label for="tonalities">Tonality :</label>
     <select class="form-control" name="tonalities" [(ngModel)]="tonality">

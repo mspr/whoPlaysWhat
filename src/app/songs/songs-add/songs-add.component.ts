@@ -31,6 +31,10 @@ export class SongsAddComponent implements OnInit
     this.song.bands = [{ id: this.bandId, structure: [], musicians: [] }];
   }
 
+  updateSongLevel(songLevel) {
+    this.song.level = songLevel;
+  }
+
   add()
   {
     let songBandInfo = this.GetSongBandInfo(this.bandId);

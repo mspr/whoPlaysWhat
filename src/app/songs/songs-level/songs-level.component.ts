@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { SongLevelHelper } from '../song-level-helper';
+import { SongLevel } from '../song-level.enum';
 
 @Component({
   selector: 'wpw-songs-level',
@@ -8,22 +9,37 @@ import { SongLevelHelper } from '../song-level-helper';
 })
 export class SongsLevelComponent implements OnInit
 {
-  private songLevelSelectedIdx : number = 0;
+  @Input()
+  public defaultLevel : number;
+
+  private hoveredLevel : number = 0;
+
+  @Output()
+  public onSongLevelClick = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit() {
+    this.hoveredLevel = this.defaultLevel;
   }
 
-  getSongLevelNames() {
+  getLevelNames() {
     return SongLevelHelper.getSongLevelNames();
   }
 
-  adjustSongLevel(idx : number) {
-    this.songLevelSelectedIdx = idx;
+  updateHoveredLevel(idx : number) {
+    this.hoveredLevel = idx;
   }
 
-  isSongLevelGreaterThanSelected(idx : number) {
-    return idx > this.songLevelSelectedIdx;
+  isLevelGreaterThanHovered(idx : number) {
+    return idx > this.hoveredLevel;
+  }
+
+  onLevelClick() {
+    this.onSongLevelClick.emit(this.hoveredLevel);
+  }
+
+  resetLevel() {
+    this.hoveredLevel = this.defaultLevel;
   }
 }
