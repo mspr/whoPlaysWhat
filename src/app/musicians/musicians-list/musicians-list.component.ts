@@ -72,11 +72,7 @@ export class MusiciansListComponent implements OnInit, OnDestroy
   }
 
   getRolesIconsPaths(musician : Musician) {
-    var rolesIconsPaths : string[] = [];
-    musician.roles.forEach(role => {
-      rolesIconsPaths.push(RolesHelper.getRoleIconPath(Roles[role]));
-    });
-    return rolesIconsPaths;
+    return RolesHelper.getRolesIconsPaths(musician);
   }
 
   private retrieveMusicians()

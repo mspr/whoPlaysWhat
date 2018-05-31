@@ -1,3 +1,4 @@
+import { RolesHelper } from './../../core/roles-helper';
 import { Musician } from './../../musicians/musician';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Song } from '../song';
@@ -37,6 +38,10 @@ export class SongsShowComponent implements OnInit, OnDestroy
 
   ngOnDestroy()
   {
+  }
+
+  getRolesIconsPaths(musician : Musician) {
+    return RolesHelper.getRolesIconsPaths(musician);
   }
 
   doesMusicianPlayThisPart(part, musicianId) {
