@@ -1,3 +1,4 @@
+import { BandService } from './../../core/band.service';
 import { RolesHelper } from './../../core/roles-helper';
 import { Musician } from './../../musicians/musician';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -6,6 +7,7 @@ import { SongService } from '../../core/song.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { MusicianService } from '../../core/musician.service';
+import { Band } from '../../bands/band';
 
 @Component({
   selector: 'wpw-song',
@@ -14,23 +16,30 @@ import { MusicianService } from '../../core/musician.service';
 })
 export class SongsShowComponent implements OnInit, OnDestroy
 {
-  public bandId : number;
+  public band : Band;
   public song : Song;
   public musicians : Musician[] = new Array<Musician>();
 
   constructor(private activatedRoute: ActivatedRoute,
     private musicianService: MusicianService,
+    private bandService: BandService,
     private songService: SongService) {}
 
   ngOnInit()
   {
-    this.bandId = this.activatedRoute.parent.snapshot.params['id'];
-
     this.activatedRoute.params.pipe(
       switchMap((params) => this.songService.getById(params.id))
     ).switchMap((song) => {
       this.song = song;
-      return this.musicianService.getAllByBand(this.bandId);
+      let bandId = this.activatedRoute.parent.snapshot.params['id'];
+      return this.bandService.getById(bandId);
+    }).switchMap((band) => {
+      this.band = band;
+      let bandSongInfo = band.songs.find(s => s.id == this.song.id);
+      this.song.tempo = bandSongInfo.tempo;
+      this.song.tonality = bandSongInfo.tonality;
+      this.song.structure = bandSongInfo.structure;
+      return this.musicianService.getAllByBand(band);
     }).subscribe((musicians) => {
       this.musicians = musicians;
     });
@@ -45,15 +54,12 @@ export class SongsShowComponent implements OnInit, OnDestroy
   }
 
   doesMusicianPlayThisPart(part, musicianId) {
-    let partsPlayedByTheMusician = this.getSongBandInfo().musicians.find(elt=> elt.id == musicianId);
-    return partsPlayedByTheMusician.plays.find(elt => elt === part);
-  }
-
-  getSongBandInfo() {
-    return (this.song != null) ? this.song.bands.find(band => band.id == this.bandId) : null;
+    let bandSongInfo = this.band.songs.find(s => s.id == this.song.id);
+    let bandSongMusicianInfo = bandSongInfo.musicians.find(m => m.id == musicianId);
+    return bandSongMusicianInfo.plays.find(p => p === part);
   }
 
   getMusicianColor(musician) {
-    return (musician != null) ? musician.bands.find(element => element.id_band == this.bandId).color : null;
+    return (musician != null) ? this.band.musicians.find(m => m.id == musician.id).color : null;
   }
 }

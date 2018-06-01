@@ -18,6 +18,8 @@ export class BandsListComponent implements OnInit
 
   ngOnInit()
   {
+let test = true;
+
     this.bandService.getAll().subscribe((bands) => {
       this.bands = bands;
     });

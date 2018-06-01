@@ -1,9 +1,11 @@
+import { Band } from './../../bands/band';
 import { MusicianService } from './../../core/musician.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { SongParts } from '../../core/song-parts.enum';
 import { Musician } from '../../musicians/musician';
 import { ActivatedRoute } from '@angular/router';
 import { Song } from '../song';
+import { BandService } from '../../core/band.service';
 
 @Component({
   selector: 'wpw-songs-structure',
@@ -12,7 +14,7 @@ import { Song } from '../song';
 })
 export class SongsStructureComponent implements OnInit
 {
-  public bandId : number;
+  public band : Band;
   public musicians : Musician[];
 
   @Input()
@@ -21,11 +23,18 @@ export class SongsStructureComponent implements OnInit
   public availableParts : string[] = Object.keys(SongParts);
 
   constructor(private activatedRoute: ActivatedRoute,
+    private bandService: BandService,
     private musicianService: MusicianService) { }
 
-  ngOnInit() {
-    this.bandId = this.activatedRoute.parent.snapshot.params["id"];
-    this.musicianService.getAllByBand(this.bandId).subscribe((musicians) => {
+  ngOnInit()
+  {
+    let bandId = this.activatedRoute.parent.snapshot.params["id"];
+
+    this.bandService.getById(bandId).switchMap((band) => {
+      this.band = band;
+      return this.musicianService.getAllByBand(band);
+    })
+    .subscribe((musicians) => {
       this.musicians = musicians;
     });
   }
@@ -42,52 +51,39 @@ export class SongsStructureComponent implements OnInit
     }
 
     if (songPart === SongParts.Verse || songPart === SongParts.Solo) {
-      let verseOccurences = this.getSongStructure().filter((value) => {
+      let verseOccurences = this.song.structure.filter((value) => {
         return value.includes(songPart);
       }).length;
       songPart = songPart + " " + (verseOccurences + 1);
     }
 
-    this.getSongStructure().push(songPart);
+    this.song.structure.push(songPart);
   }
 
   clearSongParts() {
-    this.getSongStructure().length = 0;
+    this.song.structure.length = 0;
     this.availableParts = Object.keys(SongParts);
-    this.GetSongBandInfo().musicians = [];
-  }
-
-  getMusicianColor(musician) {
-    return (musician != null) ? musician.bands.find(element => element.id_band == this.bandId).color : null;
-  }
-
-  getSongStructure() {
-    let songBandInfo = this.GetSongBandInfo();
-    return songBandInfo != undefined ? songBandInfo.structure : null;
-  }
-
-  private GetSongBandInfo() {
-    return this.song.bands != undefined ? this.song.bands.find(elt => elt.id == this.bandId) : null;
+    this.song.musicians.forEach(musician => {
+      musician.plays = [];
+    });
   }
 
   doesMusicianPlayThisPart(part, musicianId) {
-    let songBandInfo = this.GetSongBandInfo();
-    let partsPlayedByTheMusician = songBandInfo.musicians.find(elt=> elt.id == musicianId);
-    return partsPlayedByTheMusician != undefined && partsPlayedByTheMusician.plays.find(elt => elt === part);
+    let songMusicianInfo = this.song.musicians.find(m => m.id == musicianId);
+    return songMusicianInfo != undefined ? songMusicianInfo.plays.find(p => p === part) : false;
   }
 
   updatePartForMusician(musician, part)
   {
-    let songInfoFromBand = this.GetSongBandInfo();
-    let musicianInfo = songInfoFromBand.musicians.find(info => info.id === musician.id);
-    if (musicianInfo) {
-      let partIdx = musicianInfo.plays.indexOf(part);
+    let songMusicianInfo = this.song.musicians.find(m => m.id == musician.id);
+    if (songMusicianInfo) {
+      let partIdx = songMusicianInfo.plays.indexOf(part);
       if (partIdx != -1)
-        musicianInfo.plays.splice(partIdx, 1);
+      songMusicianInfo.plays.splice(partIdx, 1);
       else
-        musicianInfo.plays.push(part);
+      songMusicianInfo.plays.push(part);
     } else {
-      songInfoFromBand.musicians.push({id: musician.id, plays:[part]});
+      songMusicianInfo.musicians.push({id: musician.id, plays:[part]});
     }
   }
 

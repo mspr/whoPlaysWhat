@@ -19,7 +19,7 @@ import { RolesHelper } from '../../core/roles-helper';
 })
 export class MusiciansListComponent implements OnInit, OnDestroy
 {
-  public bandId : number;
+  public band : Band;
   public musicians : Musician[] = new Array<Musician>();
   public retrieveMusiciansSubscription : Subscription;
   private componentDestroyed$: Subject<boolean> = new Subject();
@@ -31,9 +31,12 @@ export class MusiciansListComponent implements OnInit, OnDestroy
 
   ngOnInit()
   {
-    this.bandId = this.activatedRoute.snapshot.params['id'];
+    let bandId = this.activatedRoute.snapshot.params['id'];
 
-    this.retrieveMusicians();
+    this.bandService.getById(bandId).subscribe((band) => {
+      this.band = band
+      this.retrieveMusicians();
+    });
 
     this.musicianService.added.subscribe(() => {
       this.retrieveMusicians();
@@ -54,20 +57,16 @@ export class MusiciansListComponent implements OnInit, OnDestroy
   {
     this.musicianService.getById(id).switchMap((musician) =>
     {
-      let getBandByIdObservables = new Array<Observable<Band>>();
-      musician.bands.forEach(band => {
-        getBandByIdObservables.push(this.bandService.getById(band.id_band).switchMap((band) => {
-          band.musicianIds.splice(band.musicianIds.indexOf(musician.id), 1);
-          return this.bandService.update(band);
-        }));
-      })
-
-      return forkJoin(getBandByIdObservables);
+      this.band.musicians.splice(this.band.musicians.indexOf(musician.id), 1);
+      this.band.songs.forEach(song => {
+        song.musicians.splice(song.musicians.indexOf(musician.id), 1);
+      });
+      return this.bandService.update(this.band);
     })
     .switchMap(() => this.musicianService.remove(id))
     .subscribe(() => {
       this.musicianService.removed.emit();
-      this.router.navigate([`bands/${this.bandId}`, 'musicians']);
+      this.router.navigate([`bands/${this.band.id}`, 'musicians']);
     });
   }
 
@@ -77,7 +76,7 @@ export class MusiciansListComponent implements OnInit, OnDestroy
 
   private retrieveMusicians()
   {
-    this.musicianService.getAllByBand(this.bandId)
+    this.musicianService.getAllByBand(this.band)
       .takeUntil(this.componentDestroyed$)
       .subscribe((musicians) => {
         this.musicians = musicians;

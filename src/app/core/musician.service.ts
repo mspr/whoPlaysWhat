@@ -18,17 +18,20 @@ export class MusicianService
   constructor(private bandService: BandService,
     private httpClient: HttpClient) { }
 
-  getAllByBand(bandId) : Observable<Musician[]>
+  getAllByBand(band) : Observable<Musician[]>
   {
-    return this.bandService.getById(bandId).switchMap((band) =>
+    let getByIdObservables = new Array<Observable<Musician>>();
+    band.musicians.forEach(musician =>
     {
-      let getByIdObservables = new Array<Observable<Musician>>();
-      band.musicianIds.forEach(musicianId =>{
-        getByIdObservables.push(this.getById(musicianId));
+      let getByIdObservable = this.getById(musician.id).map((musician) => {
+        musician.color = band.musicians.find(m => m.id == musician.id).color;
+        return musician;
       });
 
-      return forkJoin<Musician[]>(getByIdObservables);
+      getByIdObservables.push(getByIdObservable);
     });
+
+    return forkJoin<Musician[]>(getByIdObservables);
   }
 
   getAll()

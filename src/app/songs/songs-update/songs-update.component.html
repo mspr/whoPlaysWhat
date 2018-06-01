@@ -4,12 +4,12 @@
       <input type="text" class="form-control" name="name" [(ngModel)]="song.name" required #name="ngModel" />
       <br/>
       <label for="tonalities">Tonality :</label>
-      <select class="form-control" name="tonalities" [(ngModel)]="tonality">
+      <select class="form-control" name="tonalities" [(ngModel)]="song.tonality">
         <option *ngFor="let tonality of tonalities">{{tonality}}</option>
       </select>
       <br/>
       <label for="tempo">Tempo :</label>
-      <input type="number" name="tempo" [(ngModel)]="tempo" />
+      <input type="number" name="tempo" [(ngModel)]="song.tempo" />
     </div>
     <br/>
     <wpw-songs-structure [song]="song"></wpw-songs-structure>

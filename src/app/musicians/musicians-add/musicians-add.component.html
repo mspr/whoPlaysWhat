@@ -8,8 +8,8 @@
     <br/>
     <label for="color">Color :</label>
     <br/>
-    <input [style.background]="color" [cpPresetColors]="['#fff', '#000', '#2889e9', '#e920e9', '#fff500', 'rgb(236,64,64)']" [(colorPicker)]="color"
-      [(ngModel)]="color" name="color" />
+    <input [style.background]="color" [cpPresetColors]="['#fff', '#000', '#2889e9', '#e920e9', '#fff500', 'rgb(236,64,64)']" [(colorPicker)]="musician.color"
+      [(ngModel)]="musician.color" name="color" />
   </div>
   <br/>
   <button type="submit" class="btn btn-primary">Submit</button>

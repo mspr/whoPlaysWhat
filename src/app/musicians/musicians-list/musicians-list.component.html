@@ -4,7 +4,7 @@
   <div class="col-md-3">
     <div class="row" *ngFor="let musician of musicians">
       <div class="col">
-        <a [routerLink]="['/bands', bandId, 'musicians', musician.id]" routerLinkActive="active" class="list-group-item list-group-item-action">
+        <a [routerLink]="['/bands', band.id, 'musicians', musician.id]" routerLinkActive="active" class="list-group-item list-group-item-action">
           {{musician.name}} <img *ngFor="let roleIconPath of getRolesIconsPaths(musician)" src="{{roleIconPath}}" width="30" height="30" />
         </a>
       </div>
@@ -13,7 +13,7 @@
       </div>
     </div>
     <br/>
-    <button [routerLink]="['/bands', bandId, 'musicians', 'add']" class="fa fa-user-plus"></button>
+    <button [routerLink]="['/bands', band?.id, 'musicians', 'add']" class="fa fa-user-plus"></button>
   </div>
   <div class="col-md">
     <router-outlet></router-outlet>

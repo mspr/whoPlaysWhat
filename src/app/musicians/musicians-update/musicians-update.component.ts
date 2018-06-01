@@ -1,3 +1,4 @@
+import { Band } from './../../bands/band';
 import { Roles } from './../../core/roles.enum';
 import { RolesHelper } from './../../core/roles-helper';
 import { IMultiSelectSettings, IMultiSelectTexts, IMultiSelectOption } from 'angular-2-dropdown-multiselect';
@@ -5,6 +6,7 @@ import { Musician } from './../musician';
 import { MusicianService } from './../../core/musician.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BandService } from '../../core/band.service';
 
 @Component({
   selector: 'wpw-musicians-update',
@@ -13,9 +15,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class MusiciansUpdateComponent implements OnInit
 {
-  public bandId : number;
+  public band : Band;
   public musician = new Musician();
-  public color;
 
   public optionsModel: number[] = [];
   public mySettings: IMultiSelectSettings = {};
@@ -24,6 +25,7 @@ export class MusiciansUpdateComponent implements OnInit
 
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
+    private bandService: BandService,
     private musicianService: MusicianService)
   {
     let options = [];
@@ -37,16 +39,20 @@ export class MusiciansUpdateComponent implements OnInit
 
   ngOnInit()
   {
+    let bandId = this.activatedRoute.parent.snapshot.params["id"];
     let musicianId = this.activatedRoute.snapshot.params["id"];
-    this.bandId = this.activatedRoute.parent.snapshot.params["id"];
-    this.musicianService.getById(musicianId).subscribe((musician) => {
-      this.musician = musician;
-      this.color = this.musician.bands.find(elt => elt.id_band == this.bandId).color;
 
+    this.musicianService.getById(musicianId).switchMap((musician) => {
+      this.musician = musician;
       let roles = RolesHelper.getRoles();
       this.musician.roles.forEach(role => {
         this.optionsModel.push(roles.indexOf(role) + 1);
       });
+
+      return this.bandService.getById(bandId);
+    })
+    .subscribe((band) => {
+      this.musician.color = band.musicians.find(m => m.id == this.musician.id).color;
     });
   }
 
@@ -56,16 +62,18 @@ export class MusiciansUpdateComponent implements OnInit
 
   update()
   {
-    this.musician.bands.find(elt => elt.id_band == this.bandId).color = this.color;
-
     this.musician.roles = [];
     this.optionsModel.forEach(roleIdx => {
       let keys = Object.keys(Roles);
       this.musician.roles.push(keys[roleIdx-1]);
     });
 
-    this.musicianService.update(this.musician).subscribe((musician) => {
-      this.router.navigate([`bands/${this.bandId}`, 'musicians', musician.id]);
+    this.musicianService.update(this.musician).switchMap((musician) => {
+      this.band.musicians.find(m => m.id == musician.id).color = musician.color;
+      return this.bandService.update(this.band);
+    })
+    .subscribe(() => {
+      this.router.navigate([`bands/${this.band.id}`, 'musicians', this.musician.id]);
     });
   }
 }

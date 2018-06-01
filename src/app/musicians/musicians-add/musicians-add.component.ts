@@ -17,7 +17,6 @@ import { IMultiSelectSettings, IMultiSelectTexts, IMultiSelectOption } from 'ang
 export class MusiciansAddComponent implements OnInit
 {
   public musician = new Musician();
-  public color;
 
   public optionsModel: number[] = [1];
   public mySettings: IMultiSelectSettings = {};
@@ -43,7 +42,6 @@ export class MusiciansAddComponent implements OnInit
   add()
   {
     let bandId = this.activatedRoute.parent.snapshot.params['id'];
-    this.musician.bands = [ { id_band: bandId, color: this.color } ];
 
     this.optionsModel.forEach(roleIdx => {
       let keys = Object.keys(Roles);
@@ -52,7 +50,10 @@ export class MusiciansAddComponent implements OnInit
 
     this.musicianService.add(this.musician).switchMap((musician) => {
       return this.bandService.getById(bandId).switchMap((band) => {
-        band.musicianIds.push(musician.id);
+        band.musicians.push( { id: musician.id, color: musician.color } );
+        band.songs.forEach(song => {
+          song.musicians.push( { id: musician.id } );
+        });
         return this.bandService.update(band).map(band => musician);
       });
     }).subscribe((musician) => {

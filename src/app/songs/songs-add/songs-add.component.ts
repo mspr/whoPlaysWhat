@@ -16,8 +16,6 @@ export class SongsAddComponent implements OnInit
   public bandId : number;
   public song = new Song();
   public tonalities = Object.keys(Tonalities);
-  public tonality : Tonalities = Tonalities.A;
-  public tempo : number = 90;
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -28,7 +26,6 @@ export class SongsAddComponent implements OnInit
 
   ngOnInit() {
     this.bandId = this.activatedRoute.parent.snapshot.params['id'];
-    this.song.bands = [{ id: this.bandId, structure: [], musicians: [] }];
   }
 
   updateSongLevel(songLevel) {
@@ -37,23 +34,15 @@ export class SongsAddComponent implements OnInit
 
   add()
   {
-    let songBandInfo = this.GetSongBandInfo(this.bandId);
-    songBandInfo.tonality = this.tonality;
-    songBandInfo.tempo = this.tempo;
-
     this.songService.add(this.song).switchMap((song) =>
     {
       return this.bandService.getById(this.bandId).switchMap((band) => {
-        band.songIds.push(song.id);
+        band.songs.push( { id: song.id, tempo: song.tempo, tonality: song.tonality } );
         return this.bandService.update(band).map(band => song);
       });
     }).subscribe((song) => {
         this.songService.added.emit(song);
         this.router.navigate([`bands/${this.bandId}`, 'songs', song.id]);
     });
-  }
-
-  private GetSongBandInfo(bandId : number) {
-    return this.song.bands != undefined ? this.song.bands.find(elt => elt.id == bandId) : null;
   }
 }

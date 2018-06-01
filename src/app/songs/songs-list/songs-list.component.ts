@@ -17,7 +17,7 @@ import { forkJoin } from 'rxjs/observable/forkJoin';
 export class SongsListComponent implements OnInit, OnDestroy
 {
   public songs : Song[] = new Array<Song>();
-  public bandId : number;
+  public band : Band;
   private componentDestroyed$: Subject<boolean> = new Subject();
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -27,9 +27,12 @@ export class SongsListComponent implements OnInit, OnDestroy
 
   ngOnInit()
   {
-    this.bandId = this.activatedRoute.snapshot.params['id'];
+    let bandId = this.activatedRoute.snapshot.params['id'];
 
-    this.retrieveSongs();
+    this.bandService.getById(bandId).subscribe((band) => {
+      this.band = band;
+      this.retrieveSongs();
+    })
 
     this.songService.removed.subscribe(() => {
       this.retrieveSongs();
@@ -50,30 +53,19 @@ export class SongsListComponent implements OnInit, OnDestroy
   {
     this.songService.getById(id).switchMap((song) =>
     {
-      return this.bandService.getAll().switchMap((bands) =>
-      {
-        let updateBandObservables = new Array<Observable<Band>>();
-        bands.forEach(band => {
-          let index = band.songIds.indexOf(song.id);
-          if (index != -1) {
-            band.songIds.splice(band.songIds.indexOf(song.id), 1);
-            updateBandObservables.push(this.bandService.update(band));
-          }
-        });
-
-        return forkJoin(updateBandObservables);
-      })
-      .switchMap(() => this.songService.remove(id))
+      this.band.songs.splice(this.band.songs.indexOf(song.id), 1);
+      return this.bandService.update(this.band);
     })
+    .switchMap(() => this.songService.remove(id))
     .subscribe(() => {
       this.songService.removed.emit();
-      this.router.navigate([`bands/${this.bandId}`, 'songs']);
+      this.router.navigate([`bands/${this.band.id}`, 'songs']);
     });
   }
 
   private retrieveSongs()
   {
-    this.songService.getAllByBand(this.bandId)
+    this.songService.getAllByBand(this.band)
       .takeUntil(this.componentDestroyed$)
       .subscribe((songs) => {
         this.songs = songs;

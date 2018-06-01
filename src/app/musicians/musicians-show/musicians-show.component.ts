@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Musician } from '../musician';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { BandService } from '../../core/band.service';
 
 @Component({
   selector: 'wpw-musicians-show',
@@ -13,9 +14,9 @@ export class MusiciansShowComponent implements OnInit
 {
   public bandId : number;
   public musician = new Musician();
-  public color;
 
   constructor(private activatedRoute: ActivatedRoute,
+    private bandService: BandService,
     private musicianService: MusicianService) { }
 
   ngOnInit()
@@ -24,9 +25,12 @@ export class MusiciansShowComponent implements OnInit
 
     this.activatedRoute.params.pipe(
       switchMap((params) => this.musicianService.getById(params.id))
-    ).subscribe((musician) => {
+    )
+    .switchMap((musician) => {
       this.musician = musician;
-      this.color = this.musician.bands.find(elt => elt.id_band == this.bandId).color;
+      return this.bandService.getById(this.bandId)
+    }).subscribe((band) => {
+      this.musician.color = band.musicians.find(m => m.id == this.musician.id).color;
     });
   }
 }

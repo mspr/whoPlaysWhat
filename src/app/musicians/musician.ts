@@ -3,4 +3,5 @@ export class Musician {
   public name : string = '';
   public roles: string[] = [];
   public bands;
+  public color;
 }

@@ -20,17 +20,14 @@ export class SongService
     return this.httpClient.get<Song>(environment.baseUrl + `/songs/${id}`);
   }
 
-  getAllByBand(bandId) : Observable<Song[]>
+  getAllByBand(band) : Observable<Song[]>
   {
-    return this.bandService.getById(bandId).switchMap((band) =>
-    {
-      let getByIdObservables = new Array<Observable<Song>>();
-      band.songIds.forEach(songId =>{
-        getByIdObservables.push(this.getById(songId));
-      });
-
-      return forkJoin<Song[]>(getByIdObservables);
+    let getByIdObservables = new Array<Observable<Song>>();
+    band.songs.forEach(song =>{
+      getByIdObservables.push(this.getById(song.id));
     });
+
+    return forkJoin<Song[]>(getByIdObservables);
   }
 
   add(song)

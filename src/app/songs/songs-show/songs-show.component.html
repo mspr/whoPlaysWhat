@@ -1,4 +1,4 @@
-<p><b>{{song?.name}}</b> <span *ngIf="getSongBandInfo(); let songBandInfo">({{songBandInfo.tonality}}<span *ngIf="songBandInfo.tempo"> / {{songBandInfo.tempo}} bpm</span>)</span></p>
+<p><b>{{song?.name}}</b> ({{song?.tonality}} / {{song?.tempo}} bpm)</p>
 <br/>
 <label for="level">Level :</label>
 <wpw-songs-level [readOnly]="true" [defaultLevel]="song?.level"></wpw-songs-level>
@@ -6,7 +6,7 @@
 <table cellpadding="10">
   <tr>
     <th></th>
-    <th *ngFor="let part of getSongBandInfo()?.structure; let j = index;">{{part}}</th>
+    <th *ngFor="let part of song?.structure; let j = index;">{{part}}</th>
   </tr>
   <tr *ngFor="let musician of musicians; let i = index;">
     <td [style.color]="getMusicianColor(musician)">
@@ -14,9 +14,9 @@
       <br/>
       <img *ngFor="let roleIconPath of getRolesIconsPaths(musician)" src="{{roleIconPath}}" width="30" height="30" />
     </td>
-    <td *ngFor="let part of getSongBandInfo()?.structure; let j = index;"
+    <td *ngFor="let part of song?.structure; let j = index;"
       [ngStyle]="{'background-color': doesMusicianPlayThisPart(part, musician.id) ? getMusicianColor(musician) : '#eff5f5'}"></td>
   </tr>
 </table>
 <br/>
-<button [routerLink]="['/bands', bandId, 'songs', song?.id, 'update']">Update</button>
+<button [routerLink]="['/bands', band?.id, 'songs', song?.id, 'update']">Update</button>
