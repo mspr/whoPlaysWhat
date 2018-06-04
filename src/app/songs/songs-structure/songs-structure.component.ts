@@ -76,15 +76,16 @@ export class SongsStructureComponent implements OnInit
   updatePartForMusician(musician, part)
   {
     let songMusicianInfo = this.song.musicians.find(m => m.id == musician.id);
-    if (songMusicianInfo) {
+    if (songMusicianInfo)
+    {
       let partIdx = songMusicianInfo.plays.indexOf(part);
       if (partIdx != -1)
-      songMusicianInfo.plays.splice(partIdx, 1);
+        songMusicianInfo.plays.splice(partIdx, 1);
       else
-      songMusicianInfo.plays.push(part);
-    } else {
-      songMusicianInfo.musicians.push({id: musician.id, plays:[part]});
+        songMusicianInfo.plays.push(part);
     }
+      else
+        this.song.musicians.push({id: musician.id, plays:[part]});
   }
 
   updatePartForMusicians(part) {
