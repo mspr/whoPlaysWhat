@@ -3,27 +3,40 @@
     {
       "id": 1,
       "name": "Maxime",
-      "roles": ["Guitarist", "Singer"]
+      "roles": [
+        "Guitarist",
+        "Singer"
+      ]
     },
     {
       "id": 3,
       "name": "Oriane",
-      "roles": ["Singer", "Violinist"]
+      "roles": [
+        "Singer",
+        "Violinist"
+      ]
     },
     {
       "id": 4,
       "name": "Anatole",
-      "roles": ["Guitarist"]
+      "roles": [
+        "Guitarist"
+      ]
     },
     {
       "id": 6,
       "name": "Hugo",
-      "roles": ["Drumer"]
+      "roles": [
+        "Drumer"
+      ]
     },
     {
       "id": 7,
       "name": "Roger",
-      "roles": ["Guitarist", "Drumer"]
+      "roles": [
+        "Guitarist",
+        "Drumer"
+      ]
     }
   ],
   "bands": [
@@ -100,9 +113,46 @@
           ]
         },
         {
-          "id": 3,
-          "tempo": 80,
-          "tonality": "C"
+          "id": 2,
+          "tempo": 90,
+          "tonality": "C",
+          "musicians": [
+            {
+              "id": 1,
+              "plays": [
+                "Introduction",
+                "Outro"
+              ]
+            },
+            {
+              "id": 3,
+              "plays": [
+                "Verse 1",
+                "Outro"
+              ]
+            },
+            {
+              "id": 7,
+              "plays": [
+                "Verse 1",
+                "Outro"
+              ]
+            },
+            {
+              "id": 4,
+              "plays": [
+                "Outro",
+                "Introduction"
+              ]
+            },
+            {
+              "id": 6,
+              "plays": [
+                "Outro",
+                "Introduction"
+              ]
+            }
+          ]
         }
       ],
       "musicians": [
@@ -159,15 +209,11 @@
     {
       "name": "Let it be",
       "level": 1,
-      "tempo": 80,
+      "tempo": 90,
       "tonality": "C",
       "structure": [
         "Introduction",
         "Verse 1",
-        "Chorus",
-        "Verse 2",
-        "Chorus",
-        "Solo 1",
         "Outro"
       ],
       "musicians": [
@@ -175,7 +221,6 @@
           "id": 1,
           "plays": [
             "Introduction",
-            "Chorus",
             "Outro"
           ]
         },
@@ -183,32 +228,32 @@
           "id": 3,
           "plays": [
             "Verse 1",
-            "Solo 1"
+            "Outro"
           ]
         },
         {
-          "id": 4,
+          "id": 7,
           "plays": [
             "Verse 1",
             "Outro"
           ]
         },
         {
-          "id": 6,
+          "id": 4,
           "plays": [
-            "Verse 1",
-            "Solo 1"
+            "Outro",
+            "Introduction"
           ]
         },
         {
-          "id": 7,
+          "id": 6,
           "plays": [
             "Outro",
-            "Verse 2"
+            "Introduction"
           ]
         }
       ],
-      "id": 3
+      "id": 2
     }
   ]
 }
