@@ -1,5 +1,4 @@
 import { BandService } from './../../core/band.service';
-import { RolesHelper } from './../../core/roles-helper';
 import { Musician } from './../../musicians/musician';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Song } from '../song';
@@ -17,7 +16,7 @@ import { Band } from '../../bands/band';
 export class SongsShowComponent implements OnInit, OnDestroy
 {
   public band : Band;
-  public song : Song;
+  public song : Song = new Song();
   public musicians : Musician[] = new Array<Musician>();
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -39,6 +38,7 @@ export class SongsShowComponent implements OnInit, OnDestroy
       this.song.tempo = bandSongInfo.tempo;
       this.song.tonality = bandSongInfo.tonality;
       this.song.structure = bandSongInfo.structure;
+      this.song.musicians = bandSongInfo.musicians;
       return this.musicianService.getAllByBand(band);
     }).subscribe((musicians) => {
       this.musicians = musicians;
@@ -47,19 +47,5 @@ export class SongsShowComponent implements OnInit, OnDestroy
 
   ngOnDestroy()
   {
-  }
-
-  getRolesIconsPaths(musician : Musician) {
-    return RolesHelper.getRolesIconsPaths(musician);
-  }
-
-  doesMusicianPlayThisPart(part, musicianId) {
-    let bandSongInfo = this.band.songs.find(s => s.id == this.song.id);
-    let bandSongMusicianInfo = bandSongInfo.musicians.find(m => m.id == musicianId);
-    return bandSongMusicianInfo.plays.find(p => p === part);
-  }
-
-  getMusicianColor(musician) {
-    return (musician != null) ? this.band.musicians.find(m => m.id == musician.id).color : null;
   }
 }

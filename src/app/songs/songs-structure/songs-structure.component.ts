@@ -1,3 +1,4 @@
+import { RolesHelper } from './../../core/roles-helper';
 import { Band } from './../../bands/band';
 import { MusicianService } from './../../core/musician.service';
 import { Component, OnInit, Input } from '@angular/core';
@@ -84,13 +85,17 @@ export class SongsStructureComponent implements OnInit
       else
         songMusicianInfo.plays.push(part);
     }
-      else
-        this.song.musicians.push({id: musician.id, plays:[part]});
+    else
+      this.song.musicians.push({id: musician.id, plays:[part]});
   }
 
   updatePartForMusicians(part) {
     this.musicians.forEach(musician => {
       this.updatePartForMusician(musician, part);
     });
+  }
+
+  getRolesIconsPaths(musician : Musician) {
+    return RolesHelper.getRolesIconsPaths(musician);
   }
 }

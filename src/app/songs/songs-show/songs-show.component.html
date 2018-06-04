@@ -3,20 +3,6 @@
 <label for="level">Level :</label>
 <wpw-songs-level [readOnly]="true" [defaultLevel]="song?.level"></wpw-songs-level>
 <br/>
-<table cellpadding="10">
-  <tr>
-    <th></th>
-    <th *ngFor="let part of song?.structure; let j = index;">{{part}}</th>
-  </tr>
-  <tr *ngFor="let musician of musicians; let i = index;">
-    <td [style.color]="getMusicianColor(musician)">
-      {{ musician.name }}
-      <br/>
-      <img *ngFor="let roleIconPath of getRolesIconsPaths(musician)" src="{{roleIconPath}}" width="30" height="30" />
-    </td>
-    <td *ngFor="let part of song?.structure; let j = index;"
-      [ngStyle]="{'background-color': doesMusicianPlayThisPart(part, musician.id) ? getMusicianColor(musician) : '#eff5f5'}"></td>
-  </tr>
-</table>
+<wpw-songs-structure [song]="song"></wpw-songs-structure>
 <br/>
 <button [routerLink]="['/bands', band?.id, 'songs', song?.id, 'update']">Update</button>

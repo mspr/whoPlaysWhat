@@ -6,11 +6,15 @@
 <table cellpadding="10">
   <tr>
     <th></th>
-    <th *ngFor="let part of song.structure; let j = index;" (click)="updatePartForMusicians(part)">{{part}}</th>
+    <th *ngFor="let part of song?.structure; let j = index;" (click)="updatePartForMusicians(part)">{{part}}</th>
   </tr>
   <tr *ngFor="let musician of musicians; let i = index;">
-    <td [style.color]="musician.color">{{ musician.name }}</td>
-    <td *ngFor="let part of song.structure; let j = index;" (click)="updatePartForMusician(musician, part)"
+    <td [style.color]="musician.color">
+      {{ musician.name }}
+      <br/>
+      <img *ngFor="let roleIconPath of getRolesIconsPaths(musician)" src="{{roleIconPath}}" width="30" height="30" />
+    </td>
+    <td *ngFor="let part of song?.structure; let j = index;" (click)="updatePartForMusician(musician, part)"
       [ngStyle]="{'background-color': doesMusicianPlayThisPart(part, musician.id) ? musician.color : '#eff5f5'}"></td>
   </tr>
 </table>

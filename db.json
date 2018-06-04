@@ -111,48 +111,6 @@
               ]
             }
           ]
-        },
-        {
-          "id": 2,
-          "tempo": 90,
-          "tonality": "C",
-          "musicians": [
-            {
-              "id": 1,
-              "plays": [
-                "Introduction",
-                "Outro"
-              ]
-            },
-            {
-              "id": 3,
-              "plays": [
-                "Verse 1",
-                "Outro"
-              ]
-            },
-            {
-              "id": 7,
-              "plays": [
-                "Verse 1",
-                "Outro"
-              ]
-            },
-            {
-              "id": 4,
-              "plays": [
-                "Outro",
-                "Introduction"
-              ]
-            },
-            {
-              "id": 6,
-              "plays": [
-                "Outro",
-                "Introduction"
-              ]
-            }
-          ]
         }
       ],
       "musicians": [
@@ -205,55 +163,6 @@
       "id": 1,
       "name": "Message in the bottle",
       "level": 3
-    },
-    {
-      "name": "Let it be",
-      "level": 1,
-      "tempo": 90,
-      "tonality": "C",
-      "structure": [
-        "Introduction",
-        "Verse 1",
-        "Outro"
-      ],
-      "musicians": [
-        {
-          "id": 1,
-          "plays": [
-            "Introduction",
-            "Outro"
-          ]
-        },
-        {
-          "id": 3,
-          "plays": [
-            "Verse 1",
-            "Outro"
-          ]
-        },
-        {
-          "id": 7,
-          "plays": [
-            "Verse 1",
-            "Outro"
-          ]
-        },
-        {
-          "id": 4,
-          "plays": [
-            "Outro",
-            "Introduction"
-          ]
-        },
-        {
-          "id": 6,
-          "plays": [
-            "Outro",
-            "Introduction"
-          ]
-        }
-      ],
-      "id": 2
     }
   ]
 }
