@@ -3,6 +3,6 @@
 <label for="level">Level :</label>
 <wpw-songs-level [readOnly]="true" [defaultLevel]="song?.level"></wpw-songs-level>
 <br/>
-<wpw-songs-structure [song]="song"></wpw-songs-structure>
+<wpw-songs-structure [song]="song" [readOnly]="true"></wpw-songs-structure>
 <br/>
 <button [routerLink]="['/bands', band?.id, 'songs', song?.id, 'update']">Update</button>

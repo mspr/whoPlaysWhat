@@ -19,9 +19,13 @@ export class SongsStructureComponent implements OnInit
   public musicians : Musician[];
 
   @Input()
-  public song : Song = new Song();
+  public song = new Song();
 
-  public availableParts : string[] = Object.keys(SongParts);
+  @Input()
+  public readOnly = false;
+
+  public songParts = Object.keys(SongParts);
+  public availableParts = Object.keys(SongParts);
 
   constructor(private activatedRoute: ActivatedRoute,
     private bandService: BandService,
@@ -42,16 +46,17 @@ export class SongsStructureComponent implements OnInit
 
   addSongPart(songPart)
   {
-    if (songPart === SongParts.Outro) {
+    if (songPart == SongParts.Introduction)
+    {
+      let introductionIdx = this.availableParts.indexOf(SongParts.Introduction);
+      if (introductionIdx != -1) {
+        this.availableParts.splice(introductionIdx, 1);
+      }
+    }
+    else if (songPart === SongParts.Outro)
       this.availableParts = [];
-    }
-
-    let introductionIdx = this.availableParts.indexOf(SongParts.Introduction);
-    if (introductionIdx != -1) {
-      this.availableParts.splice(introductionIdx, 1);
-    }
-
-    if (songPart === SongParts.Verse || songPart === SongParts.Solo) {
+    else if (songPart === SongParts.Verse || songPart === SongParts.Solo)
+    {
       let verseOccurences = this.song.structure.filter((value) => {
         return value.includes(songPart);
       }).length;
@@ -59,6 +64,10 @@ export class SongsStructureComponent implements OnInit
     }
 
     this.song.structure.push(songPart);
+  }
+
+  isPartAvailable(part : SongParts) {
+    return this.availableParts.indexOf(part) != -1;
   }
 
   clearSongParts() {
@@ -76,6 +85,9 @@ export class SongsStructureComponent implements OnInit
 
   updatePartForMusician(musician, part)
   {
+    if (this.readOnly)
+      return;
+
     let songMusicianInfo = this.song.musicians.find(m => m.id == musician.id);
     if (songMusicianInfo)
     {
