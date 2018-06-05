@@ -43,6 +43,10 @@ export class SongsUpdateComponent implements OnInit {
     });
   }
 
+  updateSongLevel(songLevel) {
+    this.song.level = songLevel;
+  }
+
   update()
   {
     this.songService.update(this.song).switchMap((song) => {
