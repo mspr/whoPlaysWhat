@@ -32,12 +32,20 @@
       ]
     },
     {
-      "id": 7,
       "name": "Roger",
       "roles": [
-        "Guitarist",
-        "Drumer"
-      ]
+        "Keyboarder"
+      ],
+      "color": "#fb61d3",
+      "id": 7
+    },
+    {
+      "name": "Francis",
+      "roles": [
+        "Bassist"
+      ],
+      "color": "#91ff4c",
+      "id": 8
     }
   ],
   "bands": [
@@ -101,82 +109,10 @@
               ]
             },
             {
-              "id": 7,
-              "plays": [
-                "Verse 1",
-                "Pre-chorus",
-                "Chorus",
-                "Verse 2",
-                "Bridge",
-                "Outro"
-              ]
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "tempo": 76,
-          "tonality": "C",
-          "structure": [
-            "Introduction",
-            "Verse 1",
-            "Chorus",
-            "Verse 2",
-            "Chorus",
-            "Solo 1",
-            "Chorus",
-            "Outro"
-          ],
-          "musicians": [
-            {
-              "id": 4,
-              "plays": [
-                "Introduction",
-                "Verse 1",
-                "Chorus",
-                "Verse 2",
-                "Outro"
-              ]
+              "id": 7
             },
             {
-              "id": 1,
-              "plays": [
-                "Introduction",
-                "Verse 1",
-                "Chorus",
-                "Verse 2",
-                "Solo 1",
-                "Outro"
-              ]
-            },
-            {
-              "id": 6,
-              "plays": [
-                "Introduction",
-                "Verse 1",
-                "Chorus",
-                "Verse 2",
-                "Outro"
-              ]
-            },
-            {
-              "id": 7,
-              "plays": [
-                "Introduction",
-                "Verse 1",
-                "Chorus",
-                "Verse 2",
-                "Outro"
-              ]
-            },
-            {
-              "id": 3,
-              "plays": [
-                "Verse 1",
-                "Chorus",
-                "Verse 2",
-                "Outro"
-              ]
+              "id": 8
             }
           ]
         }
@@ -200,7 +136,11 @@
         },
         {
           "id": 7,
-          "color": "#ebb0b0"
+          "color": "#fb61d3"
+        },
+        {
+          "id": 8,
+          "color": "#91ff4c"
         }
       ]
     },
@@ -231,75 +171,6 @@
       "id": 1,
       "name": "Message in the bottle",
       "level": 3
-    },
-    {
-      "name": "Let it be",
-      "level": 2,
-      "tempo": 76,
-      "tonality": "C",
-      "structure": [
-        "Introduction",
-        "Verse 1",
-        "Chorus",
-        "Verse 2",
-        "Chorus",
-        "Solo 1",
-        "Chorus",
-        "Outro"
-      ],
-      "musicians": [
-        {
-          "id": 4,
-          "plays": [
-            "Introduction",
-            "Verse 1",
-            "Chorus",
-            "Verse 2",
-            "Outro"
-          ]
-        },
-        {
-          "id": 1,
-          "plays": [
-            "Introduction",
-            "Verse 1",
-            "Chorus",
-            "Verse 2",
-            "Solo 1",
-            "Outro"
-          ]
-        },
-        {
-          "id": 6,
-          "plays": [
-            "Introduction",
-            "Verse 1",
-            "Chorus",
-            "Verse 2",
-            "Outro"
-          ]
-        },
-        {
-          "id": 7,
-          "plays": [
-            "Introduction",
-            "Verse 1",
-            "Chorus",
-            "Verse 2",
-            "Outro"
-          ]
-        },
-        {
-          "id": 3,
-          "plays": [
-            "Verse 1",
-            "Chorus",
-            "Verse 2",
-            "Outro"
-          ]
-        }
-      ],
-      "id": 2
     }
   ]
 }

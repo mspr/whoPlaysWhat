@@ -76,10 +76,13 @@ export class MusiciansListComponent implements OnInit, OnDestroy
 
   private retrieveMusicians()
   {
-    this.musicianService.getAllByBand(this.band)
-      .takeUntil(this.componentDestroyed$)
-      .subscribe((musicians) => {
-        this.musicians = musicians;
-      });
+    this.bandService.getById(this.band.id).switchMap((band) => {
+      this.band = band;
+      return this.musicianService.getAllByBand(this.band);
+    })
+    .takeUntil(this.componentDestroyed$)
+    .subscribe((musicians) => {
+      this.musicians = musicians;
+    });
   }
 }
