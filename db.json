@@ -7,7 +7,7 @@
         "Guitarist",
         "Singer"
       ],
-      "color": "#c8bb75"
+      "color": "#e7c925"
     },
     {
       "id": 3,
@@ -184,7 +184,7 @@
       "musicians": [
         {
           "id": 1,
-          "color": "#efe08e"
+          "color": "#e7c925"
         },
         {
           "id": 3,

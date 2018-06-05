@@ -52,6 +52,7 @@ export class MusiciansUpdateComponent implements OnInit
       return this.bandService.getById(bandId);
     })
     .subscribe((band) => {
+      this.band = band;
       this.musician.color = band.musicians.find(m => m.id == this.musician.id).color;
     });
   }
