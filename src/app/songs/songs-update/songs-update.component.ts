@@ -58,6 +58,7 @@ export class SongsUpdateComponent implements OnInit {
       return this.bandService.update(this.band);
     })
     .subscribe(() => {
+      this.songService.updated.emit();
       this.router.navigate([`bands/${this.band.id}`, 'songs', this.song.id]);
     });
   }

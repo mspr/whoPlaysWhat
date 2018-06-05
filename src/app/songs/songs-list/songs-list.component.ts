@@ -41,6 +41,10 @@ export class SongsListComponent implements OnInit, OnDestroy
     this.songService.added.subscribe(() => {
       this.retrieveSongs();
     });
+
+    this.songService.updated.subscribe(() => {
+      this.retrieveSongs();
+    });
   }
 
   ngOnDestroy()

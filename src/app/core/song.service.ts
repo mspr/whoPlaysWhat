@@ -11,6 +11,7 @@ export class SongService
 {
   public removed = new EventEmitter();
   public added = new EventEmitter<Song>();
+  public updated = new EventEmitter();
 
   constructor(private httpClient: HttpClient,
     private bandService: BandService) { }
