@@ -52,7 +52,7 @@ export class MusiciansAddComponent implements OnInit
       return this.bandService.getById(bandId).switchMap((band) => {
         band.musicians.push( { id: musician.id, color: musician.color } );
         band.songs.forEach(song => {
-          song.musicians.push( { id: musician.id } );
+          song.musicians.push( { id: musician.id, plays: [] } );
         });
         return this.bandService.update(band).map(band => musician);
       });
