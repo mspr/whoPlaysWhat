@@ -24,8 +24,7 @@ export class SongsStructureComponent implements OnInit
   @Input()
   public readOnly = false;
 
-  public songParts = Object.keys(SongParts);
-  public availableParts = Object.keys(SongParts);
+  public songParts = Object.keys(SongParts).filter(p => isNaN(<any>p));
 
   constructor(private activatedRoute: ActivatedRoute,
     private bandService: BandService,
@@ -44,18 +43,11 @@ export class SongsStructureComponent implements OnInit
     });
   }
 
-  addSongPart(songPart)
+  addSongPart(songPartIdx : number)
   {
-    if (songPart == SongParts.Introduction)
-    {
-      let introductionIdx = this.availableParts.indexOf(SongParts.Introduction);
-      if (introductionIdx != -1) {
-        this.availableParts.splice(introductionIdx, 1);
-      }
-    }
-    else if (songPart === SongParts.Outro)
-      this.availableParts = [];
-    else if (songPart === SongParts.Verse || songPart === SongParts.Solo)
+    var songPart = SongParts[songPartIdx];
+
+    if (songPartIdx === SongParts.Verse || songPartIdx === SongParts.Solo)
     {
       let verseOccurences = this.song.structure.filter((value) => {
         return value.includes(songPart);
@@ -66,13 +58,13 @@ export class SongsStructureComponent implements OnInit
     this.song.structure.push(songPart);
   }
 
-  isPartAvailable(part : SongParts) {
-    return this.availableParts.indexOf(part) != -1;
+  isPartAvailable(songPartIdx : number) {
+    return (this.song.structure.indexOf(SongParts[songPartIdx]) == -1 || songPartIdx === SongParts.Chorus || songPartIdx === SongParts.PreChorus)
+     && this.song.structure.indexOf(SongParts[SongParts.Outro]) == -1;
   }
 
   clearSongParts() {
     this.song.structure.length = 0;
-    this.availableParts = Object.keys(SongParts);
     this.song.musicians.forEach(musician => {
       musician.plays = [];
     });

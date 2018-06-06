@@ -1,10 +1,10 @@
 export enum SongParts
 {
-  Introduction = "Introduction",
-  PreChorus = "Pre-Chorus",
-  Chorus = "Chorus",
-  Verse = "Verse",
-  Bridge = "Bridge",
-  Solo = "Solo",
-  Outro = "Outro"
+  Introduction,
+  PreChorus,
+  Chorus,
+  Verse,
+  Bridge,
+  Solo,
+  Outro
 }

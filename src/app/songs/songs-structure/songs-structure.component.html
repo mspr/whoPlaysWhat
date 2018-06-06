@@ -1,7 +1,7 @@
 <label for="structure">Structure :</label>
 <div *ngIf="!readOnly">
-  <span *ngFor="let songPart of songParts">
-    <button type="button" (click)="addSongPart(songPart)" [disabled]="!isPartAvailable(songPart)">{{songPart}}</button>
+  <span *ngFor="let songPart of songParts; let i = index;">
+    <button type="button" (click)="addSongPart(i)" [disabled]="!isPartAvailable(i)">{{songPart}}</button>
   </span>
   <button type="button" (click)="clearSongParts()">X</button>
 </div>

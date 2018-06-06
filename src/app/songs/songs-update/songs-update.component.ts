@@ -13,8 +13,8 @@ import { Band } from '../../bands/band';
   templateUrl: './songs-update.component.html',
   styleUrls: ['./songs-update.component.scss']
 })
-export class SongsUpdateComponent implements OnInit {
-
+export class SongsUpdateComponent implements OnInit
+{
   public band : Band;
   public song = new Song();
   public tonalities = Object.keys(Tonalities);
