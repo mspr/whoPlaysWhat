@@ -49,6 +49,24 @@
       ],
       "color": "#9051d2",
       "id": 12
+    },
+    {
+      "name": "Maxime",
+      "roles": [
+        "Guitarist",
+        "Chorus",
+        "Singer"
+      ],
+      "color": "#74d0b6",
+      "id": 13
+    },
+    {
+      "name": "José",
+      "roles": [
+        "Drumer"
+      ],
+      "color": "#bdc84d",
+      "id": 14
     }
   ],
   "bands": [
@@ -205,8 +223,46 @@
       "id": 5,
       "name": "Dire Straits",
       "picture": "dire_straits.jpg",
-      "songs": [],
-      "musicians": []
+      "songs": [
+        {
+          "id": 3,
+          "tempo": 92,
+          "tonality": "Fs",
+          "structure": [
+            "Introduction",
+            "Solo 1",
+            "Solo 2",
+            "Solo 3"
+          ],
+          "musicians": [
+            {
+              "id": 13,
+              "plays": [
+                "Introduction",
+                "Solo 1",
+                "Solo 3"
+              ]
+            },
+            {
+              "id": 14,
+              "plays": [
+                "Introduction",
+                "Solo 2"
+              ]
+            }
+          ]
+        }
+      ],
+      "musicians": [
+        {
+          "id": 13,
+          "color": "#74d0b6"
+        },
+        {
+          "id": 14,
+          "color": "#bdc84d"
+        }
+      ]
     }
   ],
   "songs": [
@@ -336,6 +392,36 @@
         }
       ],
       "id": 2
+    },
+    {
+      "name": "Hello",
+      "level": 4,
+      "tempo": 92,
+      "tonality": "Fs",
+      "structure": [
+        "Introduction",
+        "Solo 1",
+        "Solo 2",
+        "Solo 3"
+      ],
+      "musicians": [
+        {
+          "id": 13,
+          "plays": [
+            "Introduction",
+            "Solo 1",
+            "Solo 3"
+          ]
+        },
+        {
+          "id": 14,
+          "plays": [
+            "Introduction",
+            "Solo 2"
+          ]
+        }
+      ],
+      "id": 3
     }
   ]
 }

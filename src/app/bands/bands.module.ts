@@ -1,3 +1,4 @@
+import { IncomingSongsModule } from './../incoming-songs/incoming-songs.module';
 import { BandsShowComponent } from './bands-show/bands-show.component';
 import { BandsListComponent } from './bands-list/bands-list.component';
 import { NgModule } from '@angular/core';
@@ -17,7 +18,8 @@ import { MusiciansModule } from '../musicians/musicians.module';
     BandsRoutingModule,
     FormsModule,
     SongsModule,
-    MusiciansModule
+    MusiciansModule,
+    IncomingSongsModule
   ],
   declarations: [
     BandsShowComponent,
