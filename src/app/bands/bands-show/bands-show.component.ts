@@ -1,7 +1,7 @@
 import { BandService } from './../../core/band.service';
 import { Band } from './../band';
 import { Component, OnInit, SimpleChanges } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
 
 @Component({
@@ -14,6 +14,7 @@ export class BandsShowComponent implements OnInit
   public band : Band;
 
   constructor(private activatedRoute: ActivatedRoute,
+    private router: Router,
     private bandService: BandService) { }
 
   ngOnInit()
@@ -22,6 +23,14 @@ export class BandsShowComponent implements OnInit
       switchMap((params) => this.bandService.getById(params.id))
     ).subscribe((band) => {
         this.band = band;
+    });
+  }
+
+  onRemove()
+  {
+    this.bandService.remove(this.band.id).subscribe(() => {
+      this.bandService.removed.emit();
+      this.router.navigate(['bands']);
     });
   }
 }

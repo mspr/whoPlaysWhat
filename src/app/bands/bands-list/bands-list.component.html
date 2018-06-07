@@ -1,11 +1,7 @@
 <div class="row">
     <div class="col-md-4" *ngFor="let band of bands" style="border: brown solid">
-      <a [routerLink]="['/bands', band.id]" routerLinkActive="active" class="list-group-item list-group-item-action"
-       [ngStyle]="{'background-image': 'url(' + 'assets/images/' + band.picture + ')', 'background-size': 'auto 100%', 'background-repeat': 'no-repeat'}">
-        {{band.name}}
+      <a [routerLink]="['/bands', band.id]" [title]="band.name" routerLinkActive="active" class="list-group-item list-group-item-action"
+       [ngStyle]="{'background-image': 'url(' + 'assets/images/' + band.picture + ')', 'background-size': 'auto 100%', 'background-repeat': 'no-repeat', 'height': '200px'}">
       </a>
-      <div class="col">
-        <button (click)="onRemove(band.id)" class="fa fa-times"></button>
-      </div>
     </div>
 </div>

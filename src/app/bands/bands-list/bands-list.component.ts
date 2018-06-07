@@ -13,13 +13,10 @@ export class BandsListComponent implements OnInit
 {
   public bands : Band[] = [];
 
-  constructor(private bandService: BandService,
-    private router: Router) { }
+  constructor(private bandService: BandService) { }
 
   ngOnInit()
   {
-let test = true;
-
     this.bandService.getAll().subscribe((bands) => {
       this.bands = bands;
     });
@@ -34,14 +31,6 @@ let test = true;
       this.bandService.getAll().subscribe((bands) => {
         this.bands = bands;
       });
-    });
-  }
-
-  onRemove(id)
-  {
-    this.bandService.remove(id).subscribe(() => {
-      this.bandService.removed.emit();
-      this.router.navigate(['bands']);
     });
   }
 }

@@ -7,11 +7,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { SongsModule } from '../songs/songs.module';
 
 const routes: Routes = [{
-  children: [
-  {
-    path: "add",
-    component: BandsAddComponent
-  }],
   path: '',
   component: BandsLayoutComponent
 }];
