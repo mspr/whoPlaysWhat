@@ -25,27 +25,30 @@
       ]
     },
     {
-      "id": 6,
-      "name": "Hugo",
-      "roles": [
-        "Drumer"
-      ]
-    },
-    {
       "name": "Roger",
       "roles": [
         "Keyboarder"
       ],
-      "color": "#fb61d3",
-      "id": 7
+      "color": "#87ed73",
+      "id": 9
     },
     {
       "name": "Francis",
       "roles": [
-        "Bassist"
+        "Guitarist",
+        "Singer"
       ],
-      "color": "#91ff4c",
-      "id": 8
+      "color": "#e07272",
+      "id": 11
+    },
+    {
+      "name": "Roger",
+      "roles": [
+        "Chorus",
+        "Violinist"
+      ],
+      "color": "#9051d2",
+      "id": 12
     }
   ],
   "bands": [
@@ -98,28 +101,12 @@
               ]
             },
             {
-              "id": 6,
-              "plays": [
-                "Verse 1",
-                "Pre-chorus",
-                "Chorus",
-                "Verse 2",
-                "Bridge",
-                "Outro"
-              ]
+              "id": 11,
+              "plays": []
             },
             {
-              "id": 7,
-              "plays": [
-                "Introduction"
-              ]
-            },
-            {
-              "id": 8,
-              "plays": [
-                "Verse 2",
-                "Pre-chorus"
-              ]
+              "id": 12,
+              "plays": []
             }
           ]
         },
@@ -148,18 +135,6 @@
               ]
             },
             {
-              "id": 7,
-              "plays": [
-                "Verse 1"
-              ]
-            },
-            {
-              "id": 8,
-              "plays": [
-                "Verse 2"
-              ]
-            },
-            {
               "id": 4,
               "plays": [
                 "Solo 1",
@@ -168,8 +143,23 @@
               ]
             },
             {
-              "id": 6,
-              "plays": []
+              "id": 11,
+              "plays": [
+                "Introduction",
+                "Verse 2",
+                "Chorus",
+                "Solo 1"
+              ]
+            },
+            {
+              "id": 12,
+              "plays": [
+                "Introduction",
+                "Chorus",
+                "Verse 2",
+                "Solo 1",
+                "Verse 1"
+              ]
             }
           ]
         }
@@ -188,16 +178,12 @@
           "color": "#cc3e51"
         },
         {
-          "id": 6,
-          "color": "#56d661"
+          "id": 11,
+          "color": "#e07272"
         },
         {
-          "id": 7,
-          "color": "#fb61d3"
-        },
-        {
-          "id": 8,
-          "color": "#91ff4c"
+          "id": 12,
+          "color": "#9051d2"
         }
       ]
     },
@@ -285,13 +271,6 @@
           "plays": [
             "Introduction"
           ]
-        },
-        {
-          "id": 8,
-          "plays": [
-            "Verse 2",
-            "Pre-chorus"
-          ]
         }
       ]
     },
@@ -321,18 +300,6 @@
           ]
         },
         {
-          "id": 7,
-          "plays": [
-            "Verse 1"
-          ]
-        },
-        {
-          "id": 8,
-          "plays": [
-            "Verse 2"
-          ]
-        },
-        {
           "id": 4,
           "plays": [
             "Solo 1",
@@ -342,7 +309,30 @@
         },
         {
           "id": 6,
-          "plays": []
+          "plays": [
+            "Introduction",
+            "Verse 2",
+            "Chorus"
+          ]
+        },
+        {
+          "id": 11,
+          "plays": [
+            "Introduction",
+            "Verse 2",
+            "Chorus",
+            "Solo 1"
+          ]
+        },
+        {
+          "id": 12,
+          "plays": [
+            "Introduction",
+            "Chorus",
+            "Verse 2",
+            "Solo 1",
+            "Verse 1"
+          ]
         }
       ],
       "id": 2
