@@ -7,12 +7,9 @@ import { SongsModule } from './songs/songs.module';
 import { MusiciansModule } from './musicians/musicians.module';
 import { BandsAddComponent } from './bands/bands-add/bands-add.component';
 import { BandsLayoutComponent } from './bands/bands-layout/bands-layout.component';
+import { IncomingSongsModule } from './incoming-songs/incoming-songs.module';
 
-const routes: Routes = [{
-    path: '',
-    redirectTo: 'bands',
-    pathMatch: 'full'
-  },
+const routes: Routes = [
   {
     path: 'bands',
     component: BandsLayoutComponent,
@@ -24,17 +21,27 @@ const routes: Routes = [{
   {
     path: 'bands/:id',
     children: [{
-      path: 'musicians',
-      loadChildren: () => MusiciansModule
-    },
-    {
-      path: 'songs',
-      loadChildren: () => SongsModule
-    },
-    {
-      path: '',
-      component: BandsShowComponent,
-    }]
+        path: 'musicians',
+        loadChildren: () => MusiciansModule
+      },
+      {
+        path: 'songs',
+        loadChildren: () => SongsModule
+      },
+      {
+        path: 'incoming-songs',
+        loadChildren: () => IncomingSongsModule
+      },
+      {
+        path: '',
+        component: BandsShowComponent,
+      }
+    ]
+  },
+  {
+    path: '',
+    redirectTo: 'bands',
+    pathMatch: 'full'
   },
   {
     path: '**',

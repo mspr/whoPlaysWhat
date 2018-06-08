@@ -1,3 +1,7 @@
-<p>
-  incoming-songs-list works!
-</p>
+<a *ngIf="band" [routerLink]="['/bands', band.id, 'incoming-songs', 'update']" routerLinkActive="active">
+  See incoming songs!
+</a>
+
+<!-- <div>
+  <router-outlet></router-outlet>
+</div> -->
