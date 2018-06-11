@@ -1,3 +1,4 @@
+import { IncomingSong } from './../incoming-song';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './incoming-songs-update.component.html',
   styleUrls: ['./incoming-songs-update.component.scss']
 })
-export class IncomingSongsUpdateComponent implements OnInit {
+export class IncomingSongsUpdateComponent implements OnInit
+{
+  public incomingSongs : IncomingSong[];
 
   constructor() { }
 
