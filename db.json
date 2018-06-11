@@ -182,36 +182,6 @@
           ]
         }
       ],
-      "incoming-songs": [
-        {
-          "title": "Hey Joe",
-          "level": 3,
-          "score": 14,
-          "proposer": 1,
-          "musicians": [
-            {
-              "id": 1,
-              "score": 4
-            },
-            {
-              "id": 3,
-              "score": 2
-            },
-            {
-              "id": 4,
-              "score": 3
-            },
-            {
-              "id": 11,
-              "score": 5
-            },
-            {
-              "id": 12,
-              "score": 0
-            }
-          ]
-        }
-      ],
       "musicians": [
         {
           "id": 1,
@@ -452,6 +422,98 @@
         }
       ],
       "id": 3
+    }
+  ],
+  "incoming-songs": [
+    {
+      "id": 1,
+      "bandId": 1,
+      "title": "Hey Joe",
+      "level": 3,
+      "score": 14,
+      "proposer": 1,
+      "musicians": [
+        {
+          "id": 1,
+          "score": 4
+        },
+        {
+          "id": 3,
+          "score": 2
+        },
+        {
+          "id": 4,
+          "score": 3
+        },
+        {
+          "id": 11,
+          "score": 5
+        },
+        {
+          "id": 12,
+          "score": 0
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "bandId": 1,
+      "title": "Sultan of Swing",
+      "level": 5,
+      "score": 21,
+      "proposer": 1,
+      "musicians": [
+        {
+          "id": 1,
+          "score": 4
+        },
+        {
+          "id": 3,
+          "score": 5
+        },
+        {
+          "id": 4,
+          "score": 3
+        },
+        {
+          "id": 11,
+          "score": 5
+        },
+        {
+          "id": 12,
+          "score": 4
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "bandId": 1,
+      "title": "Message in the bottle",
+      "level": 3,
+      "score": 14,
+      "proposer": 12,
+      "musicians": [
+        {
+          "id": 1,
+          "score": 4
+        },
+        {
+          "id": 3,
+          "score": 2
+        },
+        {
+          "id": 4,
+          "score": 3
+        },
+        {
+          "id": 11,
+          "score": 3
+        },
+        {
+          "id": 12,
+          "score": 2
+        }
+      ]
     }
   ]
 }

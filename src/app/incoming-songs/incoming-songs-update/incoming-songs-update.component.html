@@ -7,13 +7,31 @@
     <th>Total</th>
     <th>Winner</th>
   </tr>
-  <tr *ngFor="let musician of musicians; let i = index;">
-    <td [style.color]="musician.color">
-      {{ musician.name }}
-      <br/>
-      <!-- <img *ngFor="let roleIconPath of getRolesIconsPaths(musician)" src="{{roleIconPath}}" width="30" height="30" /> -->
+  <tr *ngFor="let musicianRow of musicians;">
+    <td [style.color]="musicianRow.color">
+      {{ musicianRow.name }}
     </td>
-    <!-- <td *ngFor="let part of song?.structure; let j = index;" (click)="updatePartForMusician(musician, part)"
-      [ngStyle]="{'background-color': doesMusicianPlayThisPart(part, musician.id) ? musician.color : '#eff5f5'}"></td> -->
+    <td>
+      <table>
+        <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
+          <td>{{ proposedSong.title }}</td>
+        </tr>
+      </table>
+    </td>
+    <td>-</td>
+    <td *ngFor="let musicianCol of musicians;" [style.color]="musicianCol.color">
+      <table>
+        <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
+          <td>{{ getSongScore(proposedSong, musicianCol) }}</td>
+        </tr>
+      </table>
+    </td>
+    <td>
+      <table>
+        <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
+          <td>{{ proposedSong.score }}</td>
+        </tr>
+      </table>
+    </td>
   </tr>
 </table>
