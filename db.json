@@ -187,6 +187,7 @@
           "title": "Hey Joe",
           "level": 3,
           "score": 14,
+          "proposer": 1,
           "musicians": [
             {
               "id": 1,

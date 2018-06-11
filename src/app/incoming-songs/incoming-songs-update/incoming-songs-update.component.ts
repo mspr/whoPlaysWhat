@@ -1,5 +1,10 @@
+import { BandService } from './../../core/band.service';
+import { MusicianService } from './../../core/musician.service';
+import { ActivatedRoute } from '@angular/router';
 import { IncomingSong } from './../incoming-song';
 import { Component, OnInit } from '@angular/core';
+import { Musician } from '../../musicians/musician';
+import { Band } from '../../bands/band';
 
 @Component({
   selector: 'wpw-incoming-songs-update',
@@ -8,11 +13,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IncomingSongsUpdateComponent implements OnInit
 {
+  public band : Band;
+  public musicians : Musician[];
   public incomingSongs : IncomingSong[];
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute,
+    private bandService: BandService,
+    private musicianService: MusicianService) { }
 
-  ngOnInit() {
+  ngOnInit()
+  {
+    let bandId = this.activatedRoute.snapshot.parent.params["id"];
+    this.bandService.getById(bandId).switchMap((band) => {
+      this.band = band;
+      return this.musicianService.getAllByBand(this.band);
+    })
+    .subscribe((musicians) => {
+      this.musicians = musicians;
+    });
   }
-
 }
