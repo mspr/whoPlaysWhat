@@ -47,4 +47,17 @@ export class IncomingSongsUpdateComponent implements OnInit
   getSongScore(song : IncomingSong, musician: Musician) {
     return song.musicians.find(m => m.id === musician.id).score;
   }
+
+  displaySongTitleWithHigherScoreFrom(musician : Musician) {
+    let songs = this.getSongsProposedBy(musician);
+    if (songs.length > 0)
+    {
+      songs.sort((s1 : IncomingSong, s2 : IncomingSong) => {
+        return s1.score >= s2.score ? -1 : 1;
+      });
+      return songs[0].title;
+    }
+    else
+      return null;
+  }
 }
