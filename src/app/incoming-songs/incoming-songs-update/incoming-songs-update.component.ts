@@ -45,8 +45,13 @@ export class IncomingSongsUpdateComponent implements OnInit
     return this.incomingSongs.filter(s => s.proposer === musician.id);
   }
 
-  getSongScore(song : IncomingSong, musician: Musician) {
+  getSongScore(song : IncomingSong, musician : Musician) {
     return song.musicians.find(m => m.id === musician.id).score;
+  }
+
+  getSongComment(song : IncomingSong, musician : Musician) {
+    let comment = song.musicians.find(m => m.id === musician.id).comment;
+    return comment != undefined ? comment : '';
   }
 
   updateSongScore(wheelEvent : WheelEvent, song : IncomingSong, musician : Musician)
