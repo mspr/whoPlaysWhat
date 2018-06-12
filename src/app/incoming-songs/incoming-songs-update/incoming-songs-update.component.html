@@ -22,7 +22,7 @@
     <td *ngFor="let musicianCol of musicians;" [style.color]="musicianCol.color">
       <table>
         <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
-          <td>{{ getSongScore(proposedSong, musicianCol) }}</td>
+          <td (mousewheel)="updateSongScore($event, proposedSong, musicianCol)">{{ getSongScore(proposedSong, musicianCol) }}</td>
         </tr>
       </table>
     </td>

@@ -17,6 +17,7 @@ export class IncomingSongsUpdateComponent implements OnInit
   public band : Band;
   public musicians : Musician[];
   public incomingSongs : IncomingSong[];
+  private scoreMax = 5;
 
   constructor(private activatedRoute: ActivatedRoute,
     private bandService: BandService,
@@ -46,6 +47,15 @@ export class IncomingSongsUpdateComponent implements OnInit
 
   getSongScore(song : IncomingSong, musician: Musician) {
     return song.musicians.find(m => m.id === musician.id).score;
+  }
+
+  updateSongScore(wheelEvent : WheelEvent, song : IncomingSong, musician : Musician)
+  {
+    let songInfoByMusician = song.musicians.find(m => m.id === musician.id);
+    wheelEvent.deltaY < 0 ? (songInfoByMusician.score < this.scoreMax ? songInfoByMusician.score++
+                                                                      : songInfoByMusician.score)
+                          : (songInfoByMusician.score > 0 ? songInfoByMusician.score--
+                                                          : songInfoByMusician.score);
   }
 
   displaySongTitleWithHigherScoreFrom(musician : Musician) {
