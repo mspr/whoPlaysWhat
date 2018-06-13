@@ -57,10 +57,18 @@ export class IncomingSongsUpdateComponent implements OnInit
   updateSongScore(wheelEvent : WheelEvent, song : IncomingSong, musician : Musician)
   {
     let songInfoByMusician = song.musicians.find(m => m.id === musician.id);
-    wheelEvent.deltaY < 0 ? (songInfoByMusician.score < this.scoreMax ? songInfoByMusician.score++
-                                                                      : songInfoByMusician.score)
-                          : (songInfoByMusician.score > 0 ? songInfoByMusician.score--
-                                                          : songInfoByMusician.score);
+
+    let stepValue = 1;
+    if (wheelEvent.deltaY >= 0)
+      stepValue *= -1;
+
+    let canUpdateScore = (songInfoByMusician.score > 0 && stepValue < 0) ||
+      (songInfoByMusician.score < this.scoreMax && stepValue > 0);
+
+    if (canUpdateScore) {
+      songInfoByMusician.score += stepValue;
+      song.score += stepValue;
+    }
   }
 
   displaySongTitleWithHigherScoreFrom(musician : Musician) {

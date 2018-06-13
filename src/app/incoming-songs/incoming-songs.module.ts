@@ -5,6 +5,7 @@ import { IncomingSongsListComponent } from './incoming-songs-list/incoming-songs
 import { IncomingSongsUpdateComponent } from './incoming-songs-update/incoming-songs-update.component';
 import { IncomingSongsRoutingModule } from './incoming-songs-routing.module';
 import { IncomingSongService } from '../core/incoming-song.service';
+import { IncomingSongsShowComponent } from './incoming-songs-show/incoming-songs-show.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { IncomingSongService } from '../core/incoming-song.service';
   ],
   declarations: [
     IncomingSongsListComponent,
-    IncomingSongsUpdateComponent
+    IncomingSongsUpdateComponent,
+    IncomingSongsShowComponent
   ],
   providers: [
     IncomingSongService
