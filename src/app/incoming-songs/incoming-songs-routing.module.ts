@@ -1,17 +1,23 @@
 import { IncomingSongsUpdateComponent } from './incoming-songs-update/incoming-songs-update.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { IncomingSongsListComponent } from './incoming-songs-list/incoming-songs-list.component';
+import { IncomingSongsShowComponent } from './incoming-songs-show/incoming-songs-show.component';
 
-const routes: Routes = [{
-  path: '',
-  component: IncomingSongsUpdateComponent,
-  children: [
+const routes: Routes = [
   {
-    path: "update",
+    path: '',
+    redirectTo: 'details',
+    pathMatch: 'full'
+  },
+  {
+    path: 'update',
     component: IncomingSongsUpdateComponent
-  }]
-}];
+  },
+  {
+    path: 'details',
+    component: IncomingSongsShowComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
