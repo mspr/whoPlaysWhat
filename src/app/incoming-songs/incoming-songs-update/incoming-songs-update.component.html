@@ -1,48 +1,51 @@
-<table cellpadding="10">
-  <tr>
-    <th></th>
-    <th>Title</th>
-    <th>Link</th>
-    <th *ngFor="let musician of musicians;" [style.color]="musician.color">{{ musician.name }}</th>
-    <th>Total</th>
-    <th>Winner</th>
-  </tr>
-  <tr *ngFor="let musicianRow of musicians;">
-    <td [style.color]="musicianRow.color">
-      {{ musicianRow.name }}
-    </td>
-    <td>
-      <table>
-        <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
-          <td><input [value]="proposedSong.title" /></td>
-        </tr>
-      </table>
-    </td>
-    <td>
-      <table>
+<form #form="ngForm" (submit)="update()">
+  <table cellpadding="10">
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Link</th>
+      <th *ngFor="let musician of musicians;" [style.color]="musician.color">{{ musician.name }}</th>
+      <th>Total</th>
+      <th>Winner</th>
+    </tr>
+    <tr *ngFor="let musicianRow of musicians;">
+      <td [style.color]="musicianRow.color">
+        {{ musicianRow.name }}
+      </td>
+      <td>
+        <table>
           <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
-            <td><input [value]="proposedSong.link" /></td>
+            <td><input [value]="proposedSong.title" /></td>
           </tr>
         </table>
       </td>
-    <td *ngFor="let musicianCol of musicians;" [style.color]="musicianCol.color">
-      <table>
-        <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
-          <td (mousewheel)="updateSongScore($event, proposedSong, musicianCol)" [title]="getSongComment(proposedSong, musicianCol)">
-            {{ getSongScore(proposedSong, musicianCol) }}
-          </td>
-        </tr>
-      </table>
-    </td>
-    <td>
-      <table>
-        <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
-          <td>{{ proposedSong.score }}</td>
-        </tr>
-      </table>
-    </td>
-    <td>
-      {{ displaySongTitleWithHigherScoreFrom(musicianRow) }}
-    </td>
-  </tr>
-</table>
+      <td>
+        <table>
+            <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
+              <td><input [value]="proposedSong.link" /></td>
+            </tr>
+          </table>
+        </td>
+      <td *ngFor="let musicianCol of musicians;" [style.color]="musicianCol.color">
+        <table>
+          <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
+            <td (mousewheel)="updateSongScore($event, proposedSong, musicianCol)" [title]="getSongComment(proposedSong, musicianCol)">
+              {{ getSongScore(proposedSong, musicianCol) }}
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td>
+        <table>
+          <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
+            <td>{{ proposedSong.score }}</td>
+          </tr>
+        </table>
+      </td>
+      <td>
+        {{ displaySongTitleWithHigherScoreFrom(musicianRow) }}
+      </td>
+    </tr>
+  </table>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

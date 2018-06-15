@@ -17,4 +17,9 @@ export class IncomingSongService {
   {
     return this.httpClient.get<IncomingSong[]>(environment.baseUrl + `/bands/${band.id}/incoming-songs`);
   }
+
+  update(band : Band, song : IncomingSong)
+  {
+    return this.httpClient.patch<IncomingSong>(environment.baseUrl + `/bands/${band.id}/incoming-songs/${song.id}`, song);
+  }
 }

@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { Musician } from './../../musicians/musician';
 import { BandService } from './../../core/band.service';
 import { MusicianService } from './../../core/musician.service';
@@ -6,6 +7,7 @@ import { IncomingSong } from './../incoming-song';
 import { Component, OnInit } from '@angular/core';
 import { Band } from '../../bands/band';
 import { IncomingSongService } from '../../core/incoming-song.service';
+import { forkJoin } from 'rxjs/observable/forkJoin';
 
 @Component({
   selector: 'wpw-incoming-songs-update',
@@ -18,6 +20,7 @@ export class IncomingSongsUpdateComponent implements OnInit
   public musicians : Musician[];
   public incomingSongs : IncomingSong[];
   private scoreMax = 5;
+  public songSuggestionNumber = 5;
 
   constructor(private activatedRoute: ActivatedRoute,
     private bandService: BandService,
@@ -82,5 +85,17 @@ export class IncomingSongsUpdateComponent implements OnInit
     }
     else
       return null;
+  }
+
+  update()
+  {
+    let updateObservables = new Array<Observable<IncomingSong>>();
+    this.incomingSongs.forEach(song => {
+      updateObservables.push(this.incomingSongService.update(this.band, song));
+    });
+
+    forkJoin<IncomingSong[]>(updateObservables).subscribe(() => {
+
+    });
   }
 }
