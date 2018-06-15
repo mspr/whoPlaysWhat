@@ -14,11 +14,17 @@
     <td>
       <table>
         <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
-          <td>{{ proposedSong.title }}</td>
+          <td><input [value]="proposedSong.title" /></td>
         </tr>
       </table>
     </td>
-    <td>-</td>
+    <td>
+      <table>
+          <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
+            <td><input [value]="proposedSong.link" /></td>
+          </tr>
+        </table>
+      </td>
     <td *ngFor="let musicianCol of musicians;" [style.color]="musicianCol.color">
       <table>
         <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
