@@ -5,4 +5,8 @@ export class IncomingSong {
   public link : string = '';
   public proposer : number;
   public musicians = [];
+
+  constructor(proposer : number) {
+
+  }
 }

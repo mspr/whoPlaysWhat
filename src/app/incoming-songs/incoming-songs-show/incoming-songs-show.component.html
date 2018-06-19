@@ -31,7 +31,7 @@
     <td>
       <table>
         <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
-          <td>{{ proposedSong.score }}</td>
+          <td>{{ getTotalScore(proposedSong) }}</td>
         </tr>
       </table>
     </td>

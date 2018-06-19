@@ -431,7 +431,6 @@
       "title": "Hey Joe",
       "link": "",
       "level": 3,
-      "score": 14,
       "proposer": 1,
       "musicians": [
         {
@@ -465,7 +464,6 @@
       "title": "Sultan of Swing",
       "link": "",
       "level": 5,
-      "score": 21,
       "proposer": 1,
       "musicians": [
         {
@@ -496,7 +494,6 @@
       "title": "Message in the bottle",
       "link": "",
       "level": 3,
-      "score": 14,
       "proposer": 12,
       "musicians": [
         {
@@ -518,6 +515,81 @@
         {
           "id": 12,
           "score": 2
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "bandId": 1,
+      "title": "Song 3",
+      "link": "",
+      "level": 3,
+      "proposer": 1,
+      "musicians": [
+        {
+          "id": 1
+        },
+        {
+          "id": 3
+        },
+        {
+          "id": 4
+        },
+        {
+          "id": 11
+        },
+        {
+          "id": 12
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "bandId": 1,
+      "title": "Song 4",
+      "link": "",
+      "level": 3,
+      "proposer": 1,
+      "musicians": [
+        {
+          "id": 1
+        },
+        {
+          "id": 3
+        },
+        {
+          "id": 4
+        },
+        {
+          "id": 11
+        },
+        {
+          "id": 12
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "bandId": 1,
+      "title": "Song 5",
+      "link": "",
+      "level": 3,
+      "proposer": 1,
+      "musicians": [
+        {
+          "id": 1
+        },
+        {
+          "id": 3
+        },
+        {
+          "id": 4
+        },
+        {
+          "id": 11
+        },
+        {
+          "id": 12
         }
       ]
     }

@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 import { Band } from '../../bands/band';
 import { IncomingSongService } from '../../core/incoming-song.service';
 import { forkJoin } from 'rxjs/observable/forkJoin';
+import { isDefined } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'wpw-incoming-songs-update',
@@ -49,7 +50,8 @@ export class IncomingSongsUpdateComponent implements OnInit
   }
 
   getSongScore(song : IncomingSong, musician : Musician) {
-    return song.musicians.find(m => m.id === musician.id).score;
+    let score = song.musicians.find(m => m.id === musician.id).score;
+    return score != undefined ? score : 0;
   }
 
   getSongComment(song : IncomingSong, musician : Musician) {
@@ -85,6 +87,14 @@ export class IncomingSongsUpdateComponent implements OnInit
     }
     else
       return null;
+  }
+
+  getTotalScore(song : IncomingSong) {
+    let score = 0;
+    song.musicians.forEach(musician => {
+      score += (musician.score != undefined) ? musician.score : 0;
+    });
+    return score;
   }
 
   update()

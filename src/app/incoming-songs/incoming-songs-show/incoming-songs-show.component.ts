@@ -54,6 +54,14 @@ export class IncomingSongsShowComponent implements OnInit
     return comment != undefined ? comment : '';
   }
 
+  getTotalScore(song : IncomingSong) {
+    let score = 0;
+    song.musicians.forEach(musician => {
+      score += musician.score != undefined ? musician.score : 0;
+    });
+    return score;
+  }
+
   displaySongTitleWithHigherScoreFrom(musician : Musician) {
     let songs = this.getSongsProposedBy(musician);
     if (songs.length > 0)
