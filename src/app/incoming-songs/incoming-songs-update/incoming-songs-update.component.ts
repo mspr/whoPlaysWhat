@@ -81,7 +81,7 @@ export class IncomingSongsUpdateComponent implements OnInit
     if (songs.length > 0)
     {
       songs.sort((s1 : IncomingSong, s2 : IncomingSong) => {
-        return s1.score >= s2.score ? -1 : 1;
+        return this.getTotalScore(s1) >= this.getTotalScore(s2) ? -1 : 1;
       });
       return songs[0].title;
     }

@@ -20,15 +20,15 @@
       <td>
         <table>
           <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
-            <td style="background-color: brown;"><input [value]="proposedSong.link" /></td>
+            <td><input [value]="proposedSong.link" /></td>
           </tr>
         </table>
       </td>
       <td *ngFor="let musicianCol of musicians;" [style.color]="musicianCol.color">
         <table>
           <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
-            <td style="background-color: brown;" (mousewheel)="updateSongScore($event, proposedSong, musicianCol)" [title]="getSongComment(proposedSong, musicianCol)">
-              {{ getSongScore(proposedSong, musicianCol) }}
+            <td (mousewheel)="updateSongScore($event, proposedSong, musicianCol)" [title]="getSongComment(proposedSong, musicianCol)">
+              <input [value]="getSongScore(proposedSong, musicianCol)" />
             </td>
           </tr>
         </table>
