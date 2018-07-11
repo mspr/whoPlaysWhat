@@ -1,7 +1,6 @@
 <div class="row">
-    <div class="col-md-4" *ngFor="let band of bands">
-      <a [routerLink]="['/bands', band.id]" [title]="band.name" routerLinkActive="active" class="list-group-item list-group-item-action"
-       [ngStyle]="{'background-image': 'url(' + 'assets/images/' + band.picture + ')', 'background-size': 'auto 100%', 'background-repeat': 'no-repeat', 'height': '200px'}">
-      </a>
-    </div>
+  <div class="band-item col-md-4 list-group-item list-group-item-action" *ngFor="let band of bands"
+    [routerLink]="['/bands', band.id]" [title]="band.name" routerLinkActive="active"
+    [ngStyle]="{'background-image': 'url(' + 'assets/images/' + band.picture + ')'}">
+  </div>
 </div>
