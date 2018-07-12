@@ -1,3 +1,11 @@
 [class*="col-"] {
-  border: solid 2px blue;
+  border: solid 1px black;
+  margin: 5px;
+  background-color: rgb(240, 230, 211);
+}
+
+button {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  cursor: pointer;
 }
