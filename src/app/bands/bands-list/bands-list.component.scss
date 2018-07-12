@@ -6,9 +6,12 @@ div .band-item {
   height: 300px;
   width: 100%;
   max-width: 600px;
+  cursor: pointer;
 }
 
-
+div .band-item:hover {
+  border: solid 1px;
+}
 
 div #add {
   background-color: rgba(0,0,0,0);
@@ -18,10 +21,10 @@ div #add {
   button {
     width: 100%;
     height: 100%;
-    cursor: pointer;
     background-color: rgba(0,0,0,0);
     font-size: 30px;
     border: none;
+    cursor: pointer;
   }
 
   button:hover {
