@@ -10,6 +10,7 @@ import { MusiciansAddComponent } from './musicians-add/musicians-add.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { MusiciansUpdateComponent } from './musicians-update/musicians-update.component';
+import { MusiciansOverviewComponent } from './musicians-overview/musicians-overview.component';
 
 @NgModule({
   imports: [
@@ -21,13 +22,14 @@ import { MusiciansUpdateComponent } from './musicians-update/musicians-update.co
     MultiselectDropdownModule
   ],
   exports: [
-    MusiciansListComponent
+    MusiciansOverviewComponent
   ],
   declarations: [
     MusiciansListComponent,
     MusiciansAddComponent,
     MusiciansShowComponent,
-    MusiciansUpdateComponent
+    MusiciansUpdateComponent,
+    MusiciansOverviewComponent
   ],
   providers: [
     MusicianService
