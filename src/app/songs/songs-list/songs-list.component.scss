@@ -1,5 +1,41 @@
-button {
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  cursor: pointer;
+div {
+  .row {
+    border: none;
+    min-width: 300px;
+    max-width: 350px;
+    align-items: center;
+  }
+
+  .song-item {
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .song-item:hover {
+    border: solid 1px;
+  }
+
+  button {
+    background-color: rgba(0,0,0,0);
+    background-position: center;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+  }
+
+  button#add-container {
+    text-align: center;
+  }
+
+  button#add {
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  button#add:hover {
+    border: solid 1px;
+    background-color: rgb(238, 235, 235);
+  }
 }

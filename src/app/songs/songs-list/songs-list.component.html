@@ -2,17 +2,23 @@
   <div class="col-md-4">
     <div class="row" *ngFor="let song of songs">
       <div class="col-md-10">
-        <a [routerLink]="['/bands', band?.id, 'songs', song.id]" routerLinkActive="active" class="list-group-item list-group-item-action">
-          {{song.name}}
-          <wpw-songs-level [readOnly]="true" [defaultLevel]="song.level"></wpw-songs-level>
-        </a>
+        <div class="song-item">
+          <div [routerLink]="['/bands', band?.id, 'songs', song.id]" routerLinkActive="active" class="list-group-item list-group-item-action">
+            {{song.name}}
+            <wpw-songs-level [readOnly]="true" [defaultLevel]="song.level"></wpw-songs-level>
+          </div>
+        </div>
       </div>
-      <div class="col">
+      <div class="col-md-2">
         <button (click)="onRemove(song.id)" class="fa fa-times"></button>
       </div>
     </div>
-    <br/>
-    <button [routerLink]="['/bands', band?.id, 'songs', 'add']">New Song</button>
+    <div class="row">
+      <div class="col-md-10">
+        <button id="add" class="fa fa-plus" [routerLink]="['/bands', band?.id, 'songs', 'add']">
+        </button>
+      </div>
+    </div>
   </div>
   <div class="col-md">
     <router-outlet></router-outlet>
