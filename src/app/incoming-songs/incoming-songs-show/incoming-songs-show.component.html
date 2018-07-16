@@ -8,12 +8,10 @@
     <th>Winner</th>
   </tr>
   <tr *ngFor="let musicianRow of musicians;">
-    <td [style.color]="musicianRow.color">
-      {{ musicianRow.name }}
-    </td>
+    <td [style.color]="musicianRow.color">{{ musicianRow.name }}</td>
     <td>
       <table>
-        <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
+        <tr *ngFor="let proposedSong of incomingSongsHelper.getSongsProposedBy(musicianRow)">
           <td>{{ proposedSong.title }}</td>
         </tr>
       </table>
@@ -21,24 +19,25 @@
     <td>-</td>
     <td *ngFor="let musicianCol of musicians;" [style.color]="musicianCol.color">
       <table>
-        <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
-          <td [title]="getSongComment(proposedSong, musicianCol)">
-            {{ getSongScore(proposedSong, musicianCol) }}
+        <tr *ngFor="let proposedSong of incomingSongsHelper.getSongsProposedBy(musicianRow)">
+          <td [title]="incomingSongsHelper.getSongComment(proposedSong, musicianCol)">
+            {{ incomingSongsHelper.getSongScore(proposedSong, musicianCol) }}
           </td>
         </tr>
       </table>
     </td>
     <td>
       <table>
-        <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
-          <td>{{ getTotalScore(proposedSong) }}</td>
+        <tr *ngFor="let proposedSong of incomingSongsHelper.getSongsProposedBy(musicianRow)">
+          <td>{{ incomingSongsHelper.getTotalScore(proposedSong) }}</td>
         </tr>
       </table>
     </td>
     <td>
-      {{ displaySongTitleWithHigherScoreFrom(musicianRow) }}
+      {{ incomingSongsHelper.displaySongTitleWithHigherScoreFrom(musicianRow) }}
     </td>
   </tr>
 </table>
 
+<br/>
 <button [routerLink]="['/bands', band?.id, 'incoming-songs', 'update']">Update</button>
