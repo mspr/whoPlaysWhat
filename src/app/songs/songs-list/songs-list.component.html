@@ -1,26 +1,28 @@
-<div class="row">
-  <div class="col-md-4" style="border-right: solid 1px;">
-    <div class="row" *ngFor="let song of songs">
-      <div class="col-md-10">
-        <div class="song-item">
-          <div [routerLink]="['/bands', band?.id, 'songs', song.id]" routerLinkActive="active" class="list-group-item list-group-item-action">
-            {{song.name}}
-            <wpw-songs-level [readOnly]="true" [defaultLevel]="song.level"></wpw-songs-level>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4" style="border-right: solid 1px;">
+      <div class="row" *ngFor="let song of songs">
+        <div class="col-md-10">
+          <div class="song-item">
+            <div [routerLink]="['/bands', band?.id, 'songs', song.id]" routerLinkActive="active" class="list-group-item list-group-item-action">
+              {{song.name}}
+              <wpw-songs-level [readOnly]="true" [defaultLevel]="song.level"></wpw-songs-level>
+            </div>
           </div>
         </div>
+        <div class="col-md-2">
+          <button (click)="onRemove(song.id)" class="fa fa-times"></button>
+        </div>
       </div>
-      <div class="col-md-2">
-        <button (click)="onRemove(song.id)" class="fa fa-times"></button>
+      <div class="row">
+        <div class="col-md-10">
+          <button id="add" class="fa fa-plus" [routerLink]="['/bands', band?.id, 'songs', 'add']">
+          </button>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-10">
-        <button id="add" class="fa fa-plus" [routerLink]="['/bands', band?.id, 'songs', 'add']">
-        </button>
-      </div>
+    <div class="col-md">
+      <router-outlet></router-outlet>
     </div>
-  </div>
-  <div class="col-md">
-    <router-outlet></router-outlet>
   </div>
 </div>
