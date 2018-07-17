@@ -1,6 +1,6 @@
 import { Band } from './../../bands/band';
 import { BandService } from './../../core/band.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Song } from '../song';
 import { SongService } from '../../core/song.service';
@@ -17,7 +17,6 @@ export class SongsOverviewComponent implements OnInit {
   public band : Band;
 
   constructor(private activatedRoute: ActivatedRoute,
-    private router: Router,
     private bandService: BandService,
     private songService: SongService,
     private navigationService: NavigationService) { }
