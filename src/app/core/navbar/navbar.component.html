@@ -5,6 +5,9 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['bands']" routerLinkActive="active">Bands</a>
         </li>
+        <li class="nav-item" *ngIf="containsStoredUrl()">
+          <a class="nav-link" [routerLink]="[storedUrl()]" routerLinkActive="active" (click)="removeStoredUrl()">{{ storedUrlName() }}</a>
+        </li>
       </ul>
     </div>
   </nav>
