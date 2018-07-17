@@ -34,8 +34,7 @@ export class SongsOverviewComponent implements OnInit {
     });
  }
 
-  navigateToSong(song: Song) {
+  storeUrlBeforeNavigation() {
     this.navigationService.storeParentRoute(this.activatedRoute, this.band.name);
-    this.router.navigate(['/bands', this.band.id, 'songs', song.id]);
   }
 }

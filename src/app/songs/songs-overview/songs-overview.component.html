@@ -4,15 +4,16 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-4" *ngFor="let song of songs">
-      <div class="song-item list-group-item list-group-item-action"
-        (click)="navigateToSong(song)" routerLinkActive="active">
+      <button class="song-item list-group-item list-group-item-action" (click)="storeUrlBeforeNavigation()"
+        [routerLink]="['/bands', band?.id, 'songs', 'song.id']" routerLinkActive="active">
         <label>{{song.name}}</label>
         <wpw-songs-level [readOnly]="true" [defaultLevel]="song.level"></wpw-songs-level>
-      </div>
+      </button>
     </div>
     <div class="col-md-4">
       <div id="add" class="song-item list-group-item list-group-item-action">
-        <button class="fa fa-plus" [routerLink]="['/bands', band?.id, 'songs', 'add']"></button>
+        <button class="fa fa-plus" [routerLink]="['/bands', band?.id, 'songs', 'add']" (click)="storeUrlBeforeNavigation()">
+        </button>
       </div>
     </div>
   </div>
