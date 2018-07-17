@@ -1,5 +1,32 @@
-button {
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  cursor: pointer;
+div {
+  .row {
+    border: none;
+    margin-bottom: 10px;
+  }
+
+  .musician-item {
+    cursor: pointer;
+  }
+
+  .musician-item:hover {
+    border: solid 1px;
+  }
+
+  button {
+    background-color: rgba(0,0,0,0);
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    height: 100%;
+  }
+
+  button#add {
+    cursor: pointer;
+    width: 100%;
+  }
+
+  button#add:hover {
+    border: solid 1px;
+    background-color: rgb(238, 235, 235);
+  }
 }

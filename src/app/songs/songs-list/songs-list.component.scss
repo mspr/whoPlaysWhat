@@ -2,11 +2,9 @@ div {
   .row {
     border: none;
     margin-bottom: 10px;
-    margin-left: 1px;
   }
 
   .song-item {
-    padding: 0;
     cursor: pointer;
   }
 
@@ -16,7 +14,6 @@ div {
 
   button {
     background-color: rgba(0,0,0,0);
-    background-position: center;
     font-size: 15px;
     border: none;
     cursor: pointer;
@@ -24,7 +21,6 @@ div {
   }
 
   button#add {
-    font-size: 15px;
     cursor: pointer;
     width: 100%;
   }
