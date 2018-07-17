@@ -10,7 +10,7 @@
         <img *ngFor="let roleIconPath of getRolesIconsPaths(musician)" src="{{roleIconPath}}" width="30" height="30" />
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md">
       <div id="add" class="musician-item list-group-item list-group-item-action">
         <button class="fa fa-plus" [routerLink]="['/bands', band?.id, 'musicians', 'add']"></button>
       </div>

@@ -10,7 +10,7 @@
         <wpw-songs-level [readOnly]="true" [defaultLevel]="song.level"></wpw-songs-level>
       </button>
     </div>
-    <div class="col-md-4">
+    <div class="col-md">
       <div id="add" class="song-item list-group-item list-group-item-action">
         <button class="fa fa-plus" [routerLink]="['/bands', band?.id, 'songs', 'add']" (click)="storeUrlBeforeNavigation()">
         </button>
