@@ -1,13 +1,19 @@
 <h4>Musicians</h4>
 <br/>
 
-<div class="row">
-  <div class="musician-item col-md-4 list-group-item list-group-item-action" *ngFor="let musician of musicians"
-    [routerLink]="['/bands', band.id, 'musicians', musician.id]" routerLinkActive="active">
-    <label>{{musician.name}}</label>
-    <img *ngFor="let roleIconPath of getRolesIconsPaths(musician)" src="{{roleIconPath}}" width="30" height="30" />
-  </div>
-  <div id="add" class="musician-item col-md-4 list-group-item list-group-item-action">
-    <button class="fa fa-plus" [routerLink]="['/bands', band?.id, 'musicians', 'add']"></button>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let musician of musicians">
+      <div class="musician-item list-group-item list-group-item-action"
+        [routerLink]="['/bands', band.id, 'musicians', musician.id]" routerLinkActive="active">
+        <label>{{musician.name}}</label>
+        <img *ngFor="let roleIconPath of getRolesIconsPaths(musician)" src="{{roleIconPath}}" width="30" height="30" />
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div id="add" class="musician-item list-group-item list-group-item-action">
+        <button class="fa fa-plus" [routerLink]="['/bands', band?.id, 'musicians', 'add']"></button>
+      </div>
+    </div>
   </div>
 </div>

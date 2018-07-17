@@ -1,14 +1,14 @@
 <div class="row">
   <div class="col-md-3">
     <div class="row" *ngFor="let musician of musicians">
-      <div class="col">
+      <div class="col-md">
         <a [routerLink]="['/bands', band.id, 'musicians', musician.id]" routerLinkActive="active" class="list-group-item list-group-item-action">
           {{musician.name}}
           <br/>
           <img *ngFor="let roleIconPath of getRolesIconsPaths(musician)" src="{{roleIconPath}}" width="30" height="30" />
         </a>
       </div>
-      <div class="col">
+      <div class="col-md">
         <button (click)="onRemove(musician.id)" class="fa fa-times"></button>
       </div>
     </div>

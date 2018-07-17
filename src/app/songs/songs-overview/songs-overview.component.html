@@ -1,13 +1,19 @@
 <h4>Songs</h4>
 <br/>
 
-<div class="row">
-  <div class="song-item col-md-4 list-group-item list-group-item-action" *ngFor="let song of songs"
-    (click)="navigateToSong(song)" routerLinkActive="active">
-    <label>{{song.name}}</label>
-    <wpw-songs-level [readOnly]="true" [defaultLevel]="song.level"></wpw-songs-level>
-  </div>
-  <div id="add" class="song-item col-md-4 list-group-item list-group-item-action">
-    <button class="fa fa-plus" [routerLink]="['/bands', band?.id, 'songs', 'add']"></button>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let song of songs">
+      <div class="song-item list-group-item list-group-item-action"
+        (click)="navigateToSong(song)" routerLinkActive="active">
+        <label>{{song.name}}</label>
+        <wpw-songs-level [readOnly]="true" [defaultLevel]="song.level"></wpw-songs-level>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div id="add" class="song-item list-group-item list-group-item-action">
+        <button class="fa fa-plus" [routerLink]="['/bands', band?.id, 'songs', 'add']"></button>
+      </div>
+    </div>
   </div>
 </div>

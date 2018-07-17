@@ -1,24 +1,22 @@
-<div class="row" style="text-align: center;">
-  <div id="band-header" class="col-md-12">
-    <h2>{{band?.name}}</h2>
-    <button (click)="onRemove()" class="fa fa-times"></button>
-  </div>
-</div>
-<br/>
-<div class="row">
-  <div class="col-md-6">
-    <div class="row">
-      <div class="col">
-        <wpw-songs-overview></wpw-songs-overview>
-      </div>
+<div class="container-fluid">
+  <div class="row" style="text-align: center;">
+    <div id="band-header" class="col-md-12">
+      <h2>{{band?.name}}</h2>
+      <button (click)="onRemove()" class="fa fa-times"></button>
     </div>
   </div>
-  <div class="col-md">
-    <wpw-musicians-overview></wpw-musicians-overview>
+  <br/>
+  <div class="row">
+    <div class="col-md">
+      <wpw-songs-overview></wpw-songs-overview>
+    </div>
+    <div class="col-md">
+      <wpw-musicians-overview></wpw-musicians-overview>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <wpw-incoming-songs-list [band]="band"></wpw-incoming-songs-list>
+  <div class="row">
+    <div class="col-md">
+      <wpw-incoming-songs-list [band]="band"></wpw-incoming-songs-list>
+    </div>
   </div>
 </div>
