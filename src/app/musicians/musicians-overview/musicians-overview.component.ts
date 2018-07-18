@@ -1,3 +1,4 @@
+import { NavigationService } from './../../core/navigation.service';
 import { MusicianService } from './../../core/musician.service';
 import { BandService } from './../../core/band.service';
 import { RolesHelper } from './../../core/roles-helper';
@@ -18,7 +19,8 @@ export class MusiciansOverviewComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     private bandService: BandService,
-    private musicianService: MusicianService) { }
+    private musicianService: MusicianService,
+    private navigationService: NavigationService) { }
 
   ngOnInit() {
     let bandId = this.activatedRoute.snapshot.params['id'];
@@ -36,4 +38,7 @@ export class MusiciansOverviewComponent implements OnInit {
     return RolesHelper.getRolesIconsPaths(musician);
   }
 
+  storeUrlBeforeNavigation() {
+    this.navigationService.storeParentRoute(this.activatedRoute, this.band.name);
+  }
 }

@@ -4,15 +4,15 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-4" *ngFor="let musician of musicians">
-      <div class="musician-item list-group-item list-group-item-action"
-        [routerLink]="['/bands', band.id, 'musicians', musician.id]" routerLinkActive="active">
+      <button class="musician-item list-group-item list-group-item-action"
+        [routerLink]="['/bands', band.id, 'musicians', musician.id]" routerLinkActive="active" (click)="storeUrlBeforeNavigation()">
         <label>{{musician.name}}</label>
         <img *ngFor="let roleIconPath of getRolesIconsPaths(musician)" src="{{roleIconPath}}" width="30" height="30" />
-      </div>
+      </button>
     </div>
     <div class="col-md">
       <div id="add" class="musician-item list-group-item list-group-item-action">
-        <button class="fa fa-plus" [routerLink]="['/bands', band?.id, 'musicians', 'add']"></button>
+        <button class="fa fa-plus" [routerLink]="['/bands', band?.id, 'musicians', 'add']" (click)="storeUrlBeforeNavigation()"></button>
       </div>
     </div>
   </div>
