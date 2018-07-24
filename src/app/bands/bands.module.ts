@@ -11,6 +11,7 @@ import { BandService } from '../core/band.service';
 import { BandsLayoutComponent } from './bands-layout/bands-layout.component';
 import { SongsModule } from '../songs/songs.module';
 import { MusiciansModule } from '../musicians/musicians.module';
+import { CalendarModule } from '../calendar/calendar.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { MusiciansModule } from '../musicians/musicians.module';
     FormsModule,
     SongsModule,
     MusiciansModule,
-    IncomingSongsModule
+    IncomingSongsModule,
+    CalendarModule
   ],
   declarations: [
     BandsShowComponent,
