@@ -69,13 +69,11 @@ export class SongsListComponent implements OnInit, OnDestroy
 
   private retrieveSongs()
   {
-    this.bandService.getById(this.band.id).switchMap((band) => {
+    this.bandService.getById(this.band.id)
+      .takeUntil(this.componentDestroyed$)
+      .subscribe((band) => {
       this.band = band;
-      return this.songService.getAllByBand(this.band)
-    })
-    .takeUntil(this.componentDestroyed$)
-    .subscribe((songs) => {
-      this.songs = songs;
+      this.songs = band.songs;
     })
   }
 }

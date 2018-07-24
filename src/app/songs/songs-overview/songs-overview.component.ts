@@ -24,13 +24,11 @@ export class SongsOverviewComponent implements OnInit {
   ngOnInit() {
     let bandId = this.activatedRoute.snapshot.params['id'];
 
-    this.bandService.getById(bandId).switchMap((band) => {
+    this.bandService.getById(bandId)
+      .subscribe((band) => {
       this.band = band;
-      return this.songService.getAllByBand(this.band)
+      this.songs = band.songs;
     })
-    .subscribe((songs) => {
-      this.songs = songs;
-    });
  }
 
   storeUrlBeforeNavigation() {
