@@ -76,4 +76,8 @@ export class SongsListComponent implements OnInit, OnDestroy
       this.songs = band.songs;
     })
   }
+
+  getSongProgressionStyle(song : Song) {
+    return { 'background': '-webkit-linear-gradient(left, rgb(168, 190, 168) ' + song.progression + '%, white ' + song.progression + '%)' };
+  }
 }

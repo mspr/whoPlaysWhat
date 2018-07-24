@@ -4,8 +4,8 @@
       <div class="row" *ngFor="let song of songs">
         <div class="col-md-10">
           <div class="song-item">
-            <div [routerLink]="['/bands', band?.id, 'songs', song.id]" routerLinkActive="active" class="list-group-item list-group-item-action"
-              style="background: -webkit-linear-gradient(left, rgb(168, 190, 168) 75%, white 75%);">
+            <div [routerLink]="['/bands', band?.id, 'songs', song.id]" routerLinkActive="active"
+              class="list-group-item list-group-item-action" [ngStyle]="getSongProgressionStyle(song)">
               <label>{{song.title}}</label>
               <wpw-songs-level [readOnly]="true" [defaultLevel]="song.level"></wpw-songs-level>
             </div>
