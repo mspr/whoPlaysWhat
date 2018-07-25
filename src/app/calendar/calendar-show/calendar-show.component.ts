@@ -1,4 +1,6 @@
+import { DateHelper } from './../../core/date-helper';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'wpw-calendar-show',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarShowComponent implements OnInit {
 
+  public dayShortNames = DateHelper.getDayShortNames();
+
   constructor() { }
 
   ngOnInit() {
   }
-
 }
