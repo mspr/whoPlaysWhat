@@ -1,1 +1,19 @@
-<div *ngFor="let day of dayShortNames">{{day}}</div>
+<div class="container-fluid">
+  <div class="row">
+    <label>{{currentMonth}}&nbsp;{{currentYear}}</label>
+  </div>
+  <div class="row">
+    <table>
+      <tr>
+        <th *ngFor="let day of dayShortNames">
+          {{day}}
+        </th>
+      </tr>
+      <tr *ngFor="let weekDays of daysPerWeek">
+        <td *ngFor="let day of weekDays" [ngClass]="isCurrentDay(day) ? 'current-day' : 'day'">
+          {{day}}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

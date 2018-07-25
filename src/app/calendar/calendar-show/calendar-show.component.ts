@@ -10,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 export class CalendarShowComponent implements OnInit {
 
   public dayShortNames = DateHelper.getDayShortNames();
+  public daysPerWeek = DateHelper.getCurrentMonthDays();
+  public currentMonth = DateHelper.getCurrentMonth();
+  public currentYear = DateHelper.getCurrentYear();
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+  }
+
+  isCurrentDay(day) {
+    console.log(day);
+    return DateHelper.isCurrentDay(day);
   }
 }
