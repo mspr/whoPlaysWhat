@@ -3,25 +3,31 @@
     <th></th>
     <th>Title</th>
     <th>Link</th>
-    <th *ngFor="let musician of musicians;" [style.color]="musician.color">{{ musician.name }}</th>
+    <th *ngFor="let musician of musicians;">
+      <label [style.color]="musician.color">{{ musician.name }}</label>
+    </th>
     <th>Total</th>
     <th>Winner</th>
   </tr>
   <tr *ngFor="let musicianRow of musicians;">
-    <td [style.color]="musicianRow.color">{{ musicianRow.name }}</td>
+    <td>
+      <label [style.color]="musicianRow.color">{{ musicianRow.name }}</label>
+    </td>
     <td>
       <table>
         <tr *ngFor="let proposedSong of incomingSongsHelper.getSongsProposedBy(musicianRow)">
-          <td>{{ proposedSong.title }}</td>
+          <td>
+            <label>{{ proposedSong.title }}</label>
+          </td>
         </tr>
       </table>
     </td>
     <td>-</td>
-    <td *ngFor="let musicianCol of musicians;" [style.color]="musicianCol.color">
+    <td *ngFor="let musicianCol of musicians;">
       <table>
         <tr *ngFor="let proposedSong of incomingSongsHelper.getSongsProposedBy(musicianRow)">
           <td [title]="incomingSongsHelper.getSongComment(proposedSong, musicianCol)">
-            {{ incomingSongsHelper.getSongScore(proposedSong, musicianCol) }}
+            <label [style.color]="musicianCol.color">{{ incomingSongsHelper.getSongScore(proposedSong, musicianCol) }}</label>
           </td>
         </tr>
       </table>
@@ -29,12 +35,14 @@
     <td>
       <table>
         <tr *ngFor="let proposedSong of incomingSongsHelper.getSongsProposedBy(musicianRow)">
-          <td>{{ incomingSongsHelper.getTotalScore(proposedSong) }}</td>
+          <td>
+            <label>{{ incomingSongsHelper.getTotalScore(proposedSong) }}</label>
+          </td>
         </tr>
       </table>
     </td>
     <td>
-      {{ incomingSongsHelper.displaySongTitleWithHigherScoreFrom(musicianRow) }}
+      <label>{{ incomingSongsHelper.displaySongTitleWithHigherScoreFrom(musicianRow) }}</label>
     </td>
   </tr>
 </table>
