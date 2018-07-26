@@ -32,11 +32,8 @@ export class IncomingSongsShowComponent implements OnInit
     this.bandService.getById(bandId)
     .switchMap((band) => {
       this.band = band;
-      return this.incomingSongService.getAllByBand(this.band);
-    })
-    .switchMap((incomingSongs) => {
-      this.incomingSongs = incomingSongs;
-      this.incomingSongsHelper = new IncomingSongsHelper(incomingSongs);
+      this.incomingSongs = band.incomingSongs;
+      this.incomingSongsHelper = new IncomingSongsHelper(this.incomingSongs);
       return this.musicianService.getAllByBand(this.band);
     })
     .subscribe((musicians) => {

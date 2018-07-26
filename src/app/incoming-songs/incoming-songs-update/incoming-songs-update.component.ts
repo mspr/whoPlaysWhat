@@ -15,6 +15,7 @@ import { isDefined } from '@angular/compiler/src/util';
   templateUrl: './incoming-songs-update.component.html',
   styleUrls: ['./incoming-songs-update.component.scss']
 })
+
 export class IncomingSongsUpdateComponent implements OnInit
 {
   public band : Band;
@@ -34,18 +35,16 @@ export class IncomingSongsUpdateComponent implements OnInit
     this.bandService.getById(bandId)
     .switchMap((band) => {
       this.band = band;
-      return this.incomingSongService.getAllByBand(this.band);
-    })
-    .switchMap((incomingSongs) => {
-      this.incomingSongs = incomingSongs;
-      return this.musicianService.getAllByBand(this.band);
+      this.incomingSongs = band.incomingSongs;
+      return this.musicianService.getAllByBand(band);
     })
     .subscribe((musicians) => {
       this.musicians = musicians;
     });
   }
 
-  getSongsProposedBy(musician : Musician) {
+  getSongsProposedBy(musician : Musician)
+{
     return this.incomingSongs.filter(s => s.proposer === musician.id);
   }
 

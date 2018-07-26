@@ -188,27 +188,191 @@
           ]
         }
       ],
-      "musicians": [
+      "incomingSongs": [
         {
           "id": 1,
-          "color": "#e7c925"
+          "title": "Hey Joe",
+          "link": "",
+          "level": 3,
+          "proposer": 1,
+          "musicians": [
+            {
+              "id": 1,
+              "score": 4,
+              "comment": "Yeaaahhhh it rocks!"
+            },
+            {
+              "id": 3,
+              "score": 2,
+              "comment": "Not really interesting for my level..."
+            },
+            {
+              "id": 4,
+              "score": 3,
+              "comment": ""
+            },
+            {
+              "id": 11,
+              "score": 5
+            },
+            {
+              "id": 12,
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Sultan of Swing",
+          "link": "",
+          "level": 5,
+          "proposer": 1,
+          "musicians": [
+            {
+              "id": 1,
+              "score": 4
+            },
+            {
+              "id": 3,
+              "score": 5
+            },
+            {
+              "id": 4,
+              "score": 3
+            },
+            {
+              "id": 11,
+              "score": 5
+            },
+            {
+              "id": 12,
+              "score": 4
+            }
+          ]
         },
         {
           "id": 3,
-          "color": "#46d6f3"
+          "title": "Message in the bottle",
+          "link": "",
+          "level": 3,
+          "proposer": 12,
+          "musicians": [
+            {
+              "id": 1,
+              "score": 4
+            },
+            {
+              "id": 3,
+              "score": 2
+            },
+            {
+              "id": 4,
+              "score": 3
+            },
+            {
+              "id": 11,
+              "score": 3
+            },
+            {
+              "id": 12,
+              "score": 2
+            }
+          ]
         },
         {
           "id": 4,
-          "color": "#cc3e51"
+          "title": "Song 3",
+          "link": "",
+          "level": 3,
+          "proposer": 1,
+          "musicians": [
+            {
+              "id": 1
+            },
+            {
+              "id": 3
+            },
+            {
+              "id": 4
+            },
+            {
+              "id": 11
+            },
+            {
+              "id": 12
+            }
+          ]
         },
         {
-          "id": 11,
-          "color": "#e07272"
+          "id": 5,
+          "title": "Song 4",
+          "link": "",
+          "level": 3,
+          "proposer": 1,
+          "musicians": [
+            {
+              "id": 1
+            },
+            {
+              "id": 3
+            },
+            {
+              "id": 4
+            },
+            {
+              "id": 11
+            },
+            {
+              "id": 12
+            }
+          ]
         },
         {
-          "id": 12,
-          "color": "#9051d2"
+          "id": 6,
+          "title": "Song 5",
+          "link": "",
+          "level": 3,
+          "proposer": 1,
+          "musicians": [
+            {
+              "id": 1
+            },
+            {
+              "id": 3
+            },
+            {
+              "id": 4
+            },
+            {
+              "id": 11
+            },
+            {
+              "id": 12
+            }
+          ]
         }
+      ],
+      "musicians": [
+          {
+            "id": 1,
+            "color": "#e7c925"
+          },
+          {
+            "id": 3,
+            "color": "#46d6f3"
+          },
+          {
+            "id": 4,
+            "color": "#cc3e51"
+          },
+          {
+            "id": 11,
+            "color": "#e07272"
+          },
+          {
+            "id": 12,
+            "color": "#9051d2"
+          }
       ]
     },
     {
@@ -268,176 +432,6 @@
         {
           "id": 14,
           "color": "#bdc84d"
-        }
-      ]
-    }
-  ],
-  "incoming-songs": [
-    {
-      "id": 1,
-      "bandId": 1,
-      "title": "Hey Joe",
-      "link": "",
-      "level": 3,
-      "proposer": 1,
-      "musicians": [
-        {
-          "id": 1,
-          "score": 4,
-          "comment": "Yeaaahhhh it rocks!"
-        },
-        {
-          "id": 3,
-          "score": 2,
-          "comment": "Not really interesting for my level..."
-        },
-        {
-          "id": 4,
-          "score": 3,
-          "comment": ""
-        },
-        {
-          "id": 11,
-          "score": 5
-        },
-        {
-          "id": 12,
-          "score": 0
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "bandId": 1,
-      "title": "Sultan of Swing",
-      "link": "",
-      "level": 5,
-      "proposer": 1,
-      "musicians": [
-        {
-          "id": 1,
-          "score": 4
-        },
-        {
-          "id": 3,
-          "score": 5
-        },
-        {
-          "id": 4,
-          "score": 3
-        },
-        {
-          "id": 11,
-          "score": 5
-        },
-        {
-          "id": 12,
-          "score": 4
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "bandId": 1,
-      "title": "Message in the bottle",
-      "link": "",
-      "level": 3,
-      "proposer": 12,
-      "musicians": [
-        {
-          "id": 1,
-          "score": 4
-        },
-        {
-          "id": 3,
-          "score": 2
-        },
-        {
-          "id": 4,
-          "score": 3
-        },
-        {
-          "id": 11,
-          "score": 3
-        },
-        {
-          "id": 12,
-          "score": 2
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "bandId": 1,
-      "title": "Song 3",
-      "link": "",
-      "level": 3,
-      "proposer": 1,
-      "musicians": [
-        {
-          "id": 1
-        },
-        {
-          "id": 3
-        },
-        {
-          "id": 4
-        },
-        {
-          "id": 11
-        },
-        {
-          "id": 12
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "bandId": 1,
-      "title": "Song 4",
-      "link": "",
-      "level": 3,
-      "proposer": 1,
-      "musicians": [
-        {
-          "id": 1
-        },
-        {
-          "id": 3
-        },
-        {
-          "id": 4
-        },
-        {
-          "id": 11
-        },
-        {
-          "id": 12
-        }
-      ]
-    },
-    {
-      "id": 6,
-      "bandId": 1,
-      "title": "Song 5",
-      "link": "",
-      "level": 3,
-      "proposer": 1,
-      "musicians": [
-        {
-          "id": 1
-        },
-        {
-          "id": 3
-        },
-        {
-          "id": 4
-        },
-        {
-          "id": 11
-        },
-        {
-          "id": 12
         }
       ]
     }
