@@ -33,6 +33,7 @@ td.no-day {
   cursor: not-allowed;
 }
 
-td:hover {
+td.day:hover, td.current-day:hover {
   background-color: rgb(235, 209, 241);
+  cursor: pointer;
 }
