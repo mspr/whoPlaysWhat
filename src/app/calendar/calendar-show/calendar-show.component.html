@@ -11,7 +11,7 @@
       </tr>
       <tr *ngFor="let weekDays of daysPerWeek">
         <td *ngFor="let day of weekDays" [ngClass]="isCurrentDay(day) ? 'current-day' : day > 0 ? 'day' : 'no-day'">
-          {{day}}
+          <label>{{day}}</label>
         </td>
       </tr>
     </table>
