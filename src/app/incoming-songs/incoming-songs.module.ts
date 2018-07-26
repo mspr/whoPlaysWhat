@@ -1,7 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IncomingSongsListComponent } from './incoming-songs-list/incoming-songs-list.component';
+import { IncomingSongsOverviewComponent } from './incoming-songs-overview/incoming-songs-overview.component';
 import { IncomingSongsUpdateComponent } from './incoming-songs-update/incoming-songs-update.component';
 import { IncomingSongsRoutingModule } from './incoming-songs-routing.module';
 import { IncomingSongService } from '../core/incoming-song.service';
@@ -16,10 +16,10 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   exports: [
-    IncomingSongsListComponent
+    IncomingSongsOverviewComponent
   ],
   declarations: [
-    IncomingSongsListComponent,
+    IncomingSongsOverviewComponent,
     IncomingSongsUpdateComponent,
     IncomingSongsShowComponent
   ],

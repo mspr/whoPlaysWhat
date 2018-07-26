@@ -4,11 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'wpw-incoming-songs-list',
-  templateUrl: './incoming-songs-list.component.html',
-  styleUrls: ['./incoming-songs-list.component.scss']
+  selector: 'wpw-incoming-songs-overview',
+  templateUrl: './incoming-songs-overview.component.html',
+  styleUrls: ['./incoming-songs-overview.component.scss']
 })
-export class IncomingSongsListComponent implements OnInit
+
+export class IncomingSongsOverviewComponent implements OnInit
 {
   @Input()
   public band : Band;
