@@ -28,6 +28,11 @@ td.current-day {
   background-color: rgb(213, 167, 223);
 }
 
+td.no-day {
+  background-color: rgba(95, 95, 95, 0.589);
+  cursor: not-allowed;
+}
+
 td:hover {
   background-color: rgb(235, 209, 241);
 }

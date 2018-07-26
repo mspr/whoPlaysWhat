@@ -51,7 +51,7 @@ export class DateHelper {
 
     // Merge between last days of last month and first days of current month
     for (var i=0; i<firstDayOffset; ++i)
-      currentMonthDays.push(0);
+      currentMonthDays.push(undefined);
 
     // Populate current month days
     for (var i=1; i<=weekDayCount; ++i)
@@ -59,7 +59,7 @@ export class DateHelper {
 
     // Merge between last days of current month and first days of next month
     for (var i=0; i<currentMonthDaysLength - (weekDayCount + firstDayOffset); ++i)
-      currentMonthDays.push(0);
+      currentMonthDays.push(undefined);
 
     // Split days per week
     var currentMonthDaysPerWeek = [];
