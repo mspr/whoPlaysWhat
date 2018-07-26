@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-md-4" *ngFor="let song of songs">
       <button class="song-item list-group-item list-group-item-action" (click)="storeUrlBeforeNavigation()"
-        [routerLink]="['/bands', band?.id, 'songs', song.id]" routerLinkActive="active">
+        [routerLink]="['/bands', band?.id, 'songs', song.id]" routerLinkActive="active" [ngStyle]="getSongProgressionStyle(song)">
         <label>{{song.title}}</label>
         <wpw-songs-level [readOnly]="true" [defaultLevel]="song.level"></wpw-songs-level>
       </button>

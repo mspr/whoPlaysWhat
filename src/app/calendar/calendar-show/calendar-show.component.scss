@@ -9,10 +9,15 @@ label {
 table {
   width: 100%;
   border: solid 1px black;
+  min-height: 350px;
 }
 
 td {
   padding: 10px;
+  border: solid 1px black;
+  text-align: right;
+  vertical-align: top;
+  font-size: small;
 }
 
 th {
@@ -21,4 +26,8 @@ th {
 
 td.current-day {
   background-color: rgb(213, 167, 223);
+}
+
+td:hover {
+  background-color: rgb(235, 209, 241);
 }

@@ -7,7 +7,9 @@
       <button class="musician-item list-group-item list-group-item-action"
         [routerLink]="['/bands', band.id, 'musicians', musician.id]" routerLinkActive="active" (click)="storeUrlBeforeNavigation()">
         <label>{{musician.name}}</label>
-        <img *ngFor="let roleIconPath of getRolesIconsPaths(musician)" src="{{roleIconPath}}" width="30" height="30" />
+        <div>
+          <img *ngFor="let roleIconPath of getRolesIconsPaths(musician)" src="{{roleIconPath}}" width="30" height="30" />
+        </div>
       </button>
     </div>
     <div class="col-md">
