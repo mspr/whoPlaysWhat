@@ -1,3 +1,4 @@
+import { IncomingSongService } from './../../core/incoming-song.service';
 import { BandService } from './../../core/band.service';
 import { Band } from './../../bands/band';
 import { ActivatedRoute } from '@angular/router';
@@ -14,8 +15,17 @@ export class IncomingSongsOverviewComponent implements OnInit
   @Input()
   public band : Band;
 
-  constructor() { }
+  constructor(private incomingSongService: IncomingSongService)
+  {
+  }
 
-  ngOnInit() {
+  ngOnInit()
+  {
+  }
+
+  getTopThreeSongs()
+  {
+    var topSongs = this.band != undefined ? this.incomingSongService.getTopSongs(this.band, 3) : null;
+    return topSongs;
   }
 }

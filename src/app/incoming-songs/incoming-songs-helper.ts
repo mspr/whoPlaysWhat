@@ -33,20 +33,11 @@ export class IncomingSongsHelper
     if (songs.length > 0)
     {
       songs.sort((s1 : IncomingSong, s2 : IncomingSong) => {
-        return this.getTotalScore(s1) >= this.getTotalScore(s2) ? -1 : 1;
+        return s1.score() >= s2.score() ? -1 : 1;
       });
       return songs[0].title;
     }
     else
       return null;
-  }
-
-  getTotalScore(song : IncomingSong)
-  {
-    let score = 0;
-    song.musicians.forEach(musician => {
-      score += (musician.score != undefined) ? musician.score : 0;
-    });
-    return score;
   }
 }

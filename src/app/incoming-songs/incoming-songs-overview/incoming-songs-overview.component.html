@@ -4,3 +4,5 @@
 <a *ngIf="band" [routerLink]="['/bands', band.id, 'incoming-songs', 'details']" routerLinkActive="active">
   See incoming songs!
 </a>
+
+<div *ngFor="let topSong of getTopThreeSongs()">{{topSong.title}}</div>

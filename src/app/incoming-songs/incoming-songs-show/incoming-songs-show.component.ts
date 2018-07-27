@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './incoming-songs-show.component.html',
   styleUrls: ['./incoming-songs-show.component.scss']
 })
+
 export class IncomingSongsShowComponent implements OnInit
 {
   public band : Band;
@@ -24,7 +25,9 @@ export class IncomingSongsShowComponent implements OnInit
   constructor(private activatedRoute: ActivatedRoute,
     private bandService: BandService,
     private musicianService: MusicianService,
-    private incomingSongService: IncomingSongService) { }
+    private incomingSongService: IncomingSongService)
+  {
+  }
 
   ngOnInit()
   {

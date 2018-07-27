@@ -69,10 +69,10 @@ export class IncomingSongsUpdateComponent implements OnInit
     let canUpdateScore = (songInfoByMusician.score > 0 && stepValue < 0) ||
       (songInfoByMusician.score < this.scoreMax && stepValue > 0);
 
-    if (canUpdateScore) {
-      songInfoByMusician.score += stepValue;
-      song.score += stepValue;
-    }
+    // if (canUpdateScore) {
+    //   songInfoByMusician.score += stepValue;
+    //   song.score += stepValue;
+    // }
   }
 
   displaySongTitleWithHigherScoreFrom(musician : Musician) {
@@ -80,7 +80,7 @@ export class IncomingSongsUpdateComponent implements OnInit
     if (songs.length > 0)
     {
       songs.sort((s1 : IncomingSong, s2 : IncomingSong) => {
-        return this.getTotalScore(s1) >= this.getTotalScore(s2) ? -1 : 1;
+        return this.getScore(s1) >= this.getScore(s2) ? -1 : 1;
       });
       return songs[0].title;
     }
@@ -88,7 +88,7 @@ export class IncomingSongsUpdateComponent implements OnInit
       return null;
   }
 
-  getTotalScore(song : IncomingSong) {
+  getScore(song : IncomingSong) {
     let score = 0;
     song.musicians.forEach(musician => {
       score += (musician.score != undefined) ? musician.score : 0;
