@@ -37,7 +37,9 @@ export class MusiciansAddComponent implements OnInit
     this.myOptions = options;
   }
 
-  ngOnInit() {}
+  ngOnInit()
+  {
+  }
 
   add()
   {
@@ -62,7 +64,8 @@ export class MusiciansAddComponent implements OnInit
     });
   }
 
-  onChange(role) {
+  onChange(role)
+  {
     console.log(role);
   }
 }

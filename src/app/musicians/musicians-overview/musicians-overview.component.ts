@@ -12,8 +12,8 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './musicians-overview.component.html',
   styleUrls: ['./musicians-overview.component.scss']
 })
-export class MusiciansOverviewComponent implements OnInit {
-
+export class MusiciansOverviewComponent implements OnInit
+{
   public band : Band;
   public musicians : Musician[] = new Array<Musician>();
 
@@ -22,7 +22,8 @@ export class MusiciansOverviewComponent implements OnInit {
     private musicianService: MusicianService,
     private navigationService: NavigationService) { }
 
-  ngOnInit() {
+  ngOnInit()
+  {
     let bandId = this.activatedRoute.snapshot.params['id'];
 
     this.bandService.getById(bandId).switchMap((band) => {
@@ -34,11 +35,13 @@ export class MusiciansOverviewComponent implements OnInit {
     });
   }
 
-  getRolesIconsPaths(musician : Musician) {
+  getRolesIconsPaths(musician : Musician)
+  {
     return RolesHelper.getRolesIconsPaths(musician);
   }
 
-  storeUrlBeforeNavigation() {
+  storeUrlBeforeNavigation()
+  {
     this.navigationService.storeParentRoute(this.activatedRoute, this.band.name);
   }
 }

@@ -76,7 +76,8 @@ export class MusiciansListComponent implements OnInit, OnDestroy
     });
   }
 
-  getRolesIconsPaths(musician : Musician) {
+  getRolesIconsPaths(musician : Musician)
+  {
     return RolesHelper.getRolesIconsPaths(musician);
   }
 

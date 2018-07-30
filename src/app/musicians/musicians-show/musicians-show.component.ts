@@ -17,7 +17,9 @@ export class MusiciansShowComponent implements OnInit
 
   constructor(private activatedRoute: ActivatedRoute,
     private bandService: BandService,
-    private musicianService: MusicianService) { }
+    private musicianService: MusicianService)
+  {
+  }
 
   ngOnInit()
   {

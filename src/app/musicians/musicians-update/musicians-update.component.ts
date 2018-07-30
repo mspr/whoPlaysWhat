@@ -57,7 +57,8 @@ export class MusiciansUpdateComponent implements OnInit
     });
   }
 
-  onChange(role) {
+  onChange(role)
+  {
     console.log(role);
   }
 
