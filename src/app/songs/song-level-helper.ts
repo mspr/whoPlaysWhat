@@ -16,11 +16,13 @@ export class SongLevelHelper
     return songLevelNames;
   }
 
-  static getSongLevelNames() {
+  static getSongLevelNames()
+  {
     return Array.from(this.songLevelNames.values());
   }
 
-  static getSongLevelName(i : number) {
+  static getSongLevelName(i : number)
+  {
     return this.songLevelNames[i];
   }
 }

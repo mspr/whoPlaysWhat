@@ -13,6 +13,7 @@ import { Band } from '../../bands/band';
   templateUrl: './songs-show.component.html',
   styleUrls: ['./songs-show.component.scss']
 })
+
 export class SongsShowComponent implements OnInit, OnDestroy
 {
   public band : Band;
@@ -22,7 +23,9 @@ export class SongsShowComponent implements OnInit, OnDestroy
   constructor(private activatedRoute: ActivatedRoute,
     private musicianService: MusicianService,
     private bandService: BandService,
-    private songService: SongService) {}
+    private songService: SongService)
+  {
+  }
 
   ngOnInit()
   {

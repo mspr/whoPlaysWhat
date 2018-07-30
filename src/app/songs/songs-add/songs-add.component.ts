@@ -11,6 +11,7 @@ import { BandService } from '../../core/band.service';
   templateUrl: './songs-add.component.html',
   styleUrls: ['./songs-add.component.scss']
 })
+
 export class SongsAddComponent implements OnInit
 {
   public bandId : number;
@@ -24,11 +25,13 @@ export class SongsAddComponent implements OnInit
   {
   }
 
-  ngOnInit() {
+  ngOnInit()
+  {
     this.bandId = this.activatedRoute.parent.snapshot.params['id'];
   }
 
-  updateSongLevel(songLevel) {
+  updateSongLevel(songLevel)
+  {
     this.song.level = songLevel;
   }
 

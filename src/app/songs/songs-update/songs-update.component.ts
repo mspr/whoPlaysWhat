@@ -13,6 +13,7 @@ import { Band } from '../../bands/band';
   templateUrl: './songs-update.component.html',
   styleUrls: ['./songs-update.component.scss']
 })
+
 export class SongsUpdateComponent implements OnInit
 {
   public band : Band;
@@ -22,7 +23,9 @@ export class SongsUpdateComponent implements OnInit
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
     private bandService: BandService,
-    private songService: SongService) { }
+    private songService: SongService)
+  {
+  }
 
   ngOnInit()
   {
@@ -43,7 +46,8 @@ export class SongsUpdateComponent implements OnInit
     });
   }
 
-  updateSongLevel(songLevel) {
+  updateSongLevel(songLevel)
+  {
     this.song.level = songLevel;
   }
 

@@ -7,6 +7,7 @@ import { SongLevel } from '../song-level.enum';
   templateUrl: './songs-level.component.html',
   styleUrls: ['./songs-level.component.scss']
 })
+
 export class SongsLevelComponent implements OnInit, OnChanges
 {
   @Input()
@@ -20,33 +21,42 @@ export class SongsLevelComponent implements OnInit, OnChanges
   @Output()
   public onSongLevelClick = new EventEmitter<number>();
 
-  constructor() { }
+  constructor()
+  {
+  }
 
-  ngOnInit() {
+  ngOnInit()
+  {
     this.hoveredLevel = this.defaultLevel;
   }
 
-  ngOnChanges() {
+  ngOnChanges()
+  {
     this.hoveredLevel = this.defaultLevel;
   }
 
-  getLevelNames() {
+  getLevelNames()
+  {
     return SongLevelHelper.getSongLevelNames();
   }
 
-  updateHoveredLevel(idx : number) {
+  updateHoveredLevel(idx : number)
+  {
     this.hoveredLevel = idx;
   }
 
-  isLevelGreaterThanHovered(idx : number) {
+  isLevelGreaterThanHovered(idx : number)
+  {
     return idx > this.hoveredLevel;
   }
 
-  onLevelClick() {
+  onLevelClick()
+  {
     this.onSongLevelClick.emit(this.hoveredLevel);
   }
 
-  resetLevel() {
+  resetLevel()
+  {
     this.hoveredLevel = this.defaultLevel;
   }
 }

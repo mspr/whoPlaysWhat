@@ -14,6 +14,7 @@ import { forkJoin } from 'rxjs/observable/forkJoin';
   templateUrl: './songs-list.component.html',
   styleUrls: ['./songs-list.component.scss']
 })
+
 export class SongsListComponent implements OnInit, OnDestroy
 {
   public songs : Song[] = new Array<Song>();
@@ -23,7 +24,9 @@ export class SongsListComponent implements OnInit, OnDestroy
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
     private bandService: BandService,
-    private songService: SongService) { }
+    private songService: SongService)
+  {
+  }
 
   ngOnInit()
   {
@@ -77,7 +80,8 @@ export class SongsListComponent implements OnInit, OnDestroy
     })
   }
 
-  getSongProgressionStyle(song : Song) {
+  getSongProgressionStyle(song : Song)
+  {
     return { 'background': '-webkit-linear-gradient(left, rgb(168, 190, 168) ' + song.progression + '%, white ' + song.progression + '%)' };
   }
 }

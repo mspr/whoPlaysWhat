@@ -13,6 +13,7 @@ import { BandService } from '../../core/band.service';
   templateUrl: './songs-structure.component.html',
   styleUrls: ['./songs-structure.component.scss']
 })
+
 export class SongsStructureComponent implements OnInit
 {
   public band : Band;
@@ -28,7 +29,9 @@ export class SongsStructureComponent implements OnInit
 
   constructor(private activatedRoute: ActivatedRoute,
     private bandService: BandService,
-    private musicianService: MusicianService) { }
+    private musicianService: MusicianService)
+  {
+  }
 
   ngOnInit()
   {
@@ -58,19 +61,22 @@ export class SongsStructureComponent implements OnInit
     this.song.structure.push(songPart);
   }
 
-  isPartAvailable(songPartIdx : number) {
+  isPartAvailable(songPartIdx : number)
+  {
     return (this.song.structure.indexOf(SongParts[songPartIdx]) == -1 || songPartIdx === SongParts.Chorus || songPartIdx === SongParts.PreChorus)
      && this.song.structure.indexOf(SongParts[SongParts.Outro]) == -1;
   }
 
-  clearSongParts() {
+  clearSongParts()
+  {
     this.song.structure.length = 0;
     this.song.musicians.forEach(musician => {
       musician.plays = [];
     });
   }
 
-  doesMusicianPlayThisPart(part, musicianId) {
+  doesMusicianPlayThisPart(part, musicianId)
+  {
     let songMusicianInfo = this.song.musicians.find(m => m.id == musicianId);
     return songMusicianInfo != undefined ? songMusicianInfo.plays.find(p => p === part) : false;
   }
@@ -93,13 +99,15 @@ export class SongsStructureComponent implements OnInit
       this.song.musicians.push({id: musician.id, plays:[part]});
   }
 
-  updatePartForMusicians(part) {
+  updatePartForMusicians(part)
+  {
     this.musicians.forEach(musician => {
       this.updatePartForMusician(musician, part);
     });
   }
 
-  getRolesIconsPaths(musician : Musician) {
+  getRolesIconsPaths(musician : Musician)
+  {
     return RolesHelper.getRolesIconsPaths(musician);
   }
 }

@@ -11,17 +11,21 @@ import { NavigationService } from '../../core/navigation.service';
   templateUrl: './songs-overview.component.html',
   styleUrls: ['./songs-overview.component.scss']
 })
-export class SongsOverviewComponent implements OnInit {
 
+export class SongsOverviewComponent implements OnInit
+{
   public songs : Song[];
   public band : Band;
 
   constructor(private activatedRoute: ActivatedRoute,
     private bandService: BandService,
     private songService: SongService,
-    private navigationService: NavigationService) { }
+    private navigationService: NavigationService)
+  {
+  }
 
-  ngOnInit() {
+  ngOnInit()
+  {
     let bandId = this.activatedRoute.snapshot.params['id'];
 
     this.bandService.getById(bandId)
@@ -31,11 +35,13 @@ export class SongsOverviewComponent implements OnInit {
     })
  }
 
-  storeUrlBeforeNavigation() {
+  storeUrlBeforeNavigation()
+  {
     this.navigationService.storeParentRoute(this.activatedRoute, this.band.name);
   }
 
-  getSongProgressionStyle(song : Song) {
+  getSongProgressionStyle(song : Song)
+  {
     return { 'background': '-webkit-linear-gradient(left, rgb(168, 190, 168) ' + song.progression + '%, white ' + song.progression + '%)' };
   }
 }

@@ -1,6 +1,8 @@
 import { Tonalities } from './../core/tonalities.enum';
 import { SongLevel } from './song-level.enum';
-export class Song {
+
+export class Song
+{
   public id? : number;
   public title = '';
   public level = SongLevel.Easy;
