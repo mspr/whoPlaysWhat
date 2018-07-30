@@ -193,7 +193,7 @@
           "id": 1,
           "title": "Hey Joe",
           "link": "",
-          "level": 3,
+          "level": 2,
           "proposer": 1,
           "musicians": [
             {
@@ -225,7 +225,7 @@
           "id": 2,
           "title": "Sultan of Swing",
           "link": "",
-          "level": 5,
+          "level": 4,
           "proposer": 1,
           "musicians": [
             {

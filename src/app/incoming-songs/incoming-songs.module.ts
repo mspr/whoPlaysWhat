@@ -7,13 +7,15 @@ import { IncomingSongsRoutingModule } from './incoming-songs-routing.module';
 import { IncomingSongService } from '../core/incoming-song.service';
 import { IncomingSongsShowComponent } from './incoming-songs-show/incoming-songs-show.component';
 import { FormsModule } from '@angular/forms';
+import { SongsModule } from '../songs/songs.module';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     IncomingSongsRoutingModule,
-    FormsModule
+    FormsModule,
+    SongsModule
   ],
   exports: [
     IncomingSongsOverviewComponent

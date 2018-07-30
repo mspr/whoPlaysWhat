@@ -1,4 +1,5 @@
 import { Musician } from '../musicians/musician';
+import { SongLevel } from '../songs/song-level.enum';
 
 export class IncomingSong
 {
@@ -6,6 +7,7 @@ export class IncomingSong
   public title : string = '';
   public link : string = '';
   public proposer : number;
+  public level = SongLevel.Easy;
   public musicians = [];
 
   constructor(proposer : number)
@@ -19,6 +21,7 @@ export class IncomingSong
     song.title = info.title;
     song.link = info.link;
     song.musicians = info.musicians;
+    song.level = info.level;
     return song;
   }
 

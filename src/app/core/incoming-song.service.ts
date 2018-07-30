@@ -27,13 +27,13 @@ export class IncomingSongService
 
     while (topSongs.length < topNumber)
     {
-      var higherScore = 0;
-      var songWithHigherScore;
+      let higherScore = 0;
+      let songWithHigherScore;
 
       incomingSongs.forEach(songInfo => {
-        var song = IncomingSong.fromInfo(songInfo);
-        var score = song.score();
-        var topSongFound = topSongs.find(s => s.id === song.id);
+        let song = IncomingSong.fromInfo(songInfo);
+        let score = song.score();
+        let topSongFound = topSongs.find(s => s.id === song.id);
         if (score >= higherScore && topSongFound === undefined) {
           higherScore = score;
           songWithHigherScore = song;

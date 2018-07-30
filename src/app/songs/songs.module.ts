@@ -28,7 +28,8 @@ import { SongsOverviewComponent } from './songs-overview/songs-overview.componen
     SongsOverviewComponent
   ],
   exports: [
-    SongsOverviewComponent
+    SongsOverviewComponent,
+    SongsLevelComponent
   ],
   providers: [
     BandService,
