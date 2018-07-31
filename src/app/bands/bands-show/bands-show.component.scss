@@ -15,3 +15,11 @@ button {
 #band-header {
   border: none;
 }
+
+div .col-md > div .col-md {
+  border: none;
+}
+
+hr {
+  border-top: black solid 1px;
+}
