@@ -16,7 +16,18 @@
   </div>
   <div class="row">
     <div class="col-md">
-      <wpw-incoming-songs-overview [band]="band"></wpw-incoming-songs-overview>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md">
+            <wpw-incoming-songs-overview [band]="band"></wpw-incoming-songs-overview>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md">
+            <wpw-notes-update></wpw-notes-update>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-md">
       <wpw-calendar-show></wpw-calendar-show>
