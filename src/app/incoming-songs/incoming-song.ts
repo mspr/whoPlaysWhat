@@ -22,6 +22,7 @@ export class IncomingSong
     song.link = info.link;
     song.musicians = info.musicians;
     song.level = info.level;
+    song.proposer = info.proposer;
     return song;
   }
 

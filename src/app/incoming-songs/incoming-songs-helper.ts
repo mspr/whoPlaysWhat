@@ -3,7 +3,7 @@ import { Musician } from '../musicians/musician';
 
 export class IncomingSongsHelper
 {
-  private incomingSongs : IncomingSong[];
+  private incomingSongs = new Array<IncomingSong>();
 
   constructor(incomingSongs : IncomingSong[])
   {

@@ -18,7 +18,7 @@ export class IncomingSongsShowComponent implements OnInit
 {
   public band : Band;
   public musicians : Musician[];
-  public incomingSongs : IncomingSong[];
+  public incomingSongs = new Array<IncomingSong>();
   private scoreMax = 5;
   public incomingSongsHelper : IncomingSongsHelper;
 
@@ -35,7 +35,7 @@ export class IncomingSongsShowComponent implements OnInit
     this.bandService.getById(bandId)
     .switchMap((band) => {
       this.band = band;
-      this.incomingSongs = band.incomingSongs;
+      band.incomingSongs.forEach(song => this.incomingSongs.push(IncomingSong.fromInfo(song)));
       this.incomingSongsHelper = new IncomingSongsHelper(this.incomingSongs);
       return this.musicianService.getAllByBand(this.band);
     })
