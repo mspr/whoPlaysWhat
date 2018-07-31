@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class NotesUpdateComponent implements OnInit
 {
   public notes = new Array<string>("Need to practice 120 bpm", "Need to bring the acoustic for last session");
+  public newNote = "";
 
   constructor()
   {
@@ -16,5 +17,11 @@ export class NotesUpdateComponent implements OnInit
 
   ngOnInit()
   {
+  }
+
+  addNote(note)
+  {
+    this.notes.push(this.newNote);
+    this.newNote = "";
   }
 }

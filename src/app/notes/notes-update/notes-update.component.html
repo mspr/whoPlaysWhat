@@ -4,4 +4,8 @@
 
 <ul>
   <li *ngFor="let note of notes">{{note}}</li>
+  <li>
+    <input [(ngModel)]="newNote">
+    <button class="fa fa-plus" *ngIf="newNote.length > 0" (click)="addNote()"></button>
+  </li>
 </ul>
