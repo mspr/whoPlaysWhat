@@ -40,14 +40,17 @@ export class DateHelper {
     var month = DateHelper._date.getMonth();
     var firstDateOfMonth = new Date(year, month, 1);
     var lastDateOfMonth = new Date(year, month+1, 0);
-    var firstDayOfMonth = firstDateOfMonth.getDay();
-    var lastDayOfMonth = lastDateOfMonth.getDay();
-    var weekDayCount = firstDayOfMonth + lastDateOfMonth.getDate();
+    var firstDayOfMonth = firstDateOfMonth.getDate();
+    var lastDayOfMonth = lastDateOfMonth.getDate();
+    var weekDayCount = lastDayOfMonth;
     var weekCount = Math.ceil(weekDayCount/7) + 1;
 
     var currentMonthDaysLength = weekCount*7;
     var currentMonthDays = new Array();
-    var firstDayOffset = 7 - firstDateOfMonth.getDate();
+
+    var firstDayOffset = firstDateOfMonth.getDay() - 1;
+    if (firstDayOffset == -1)
+      firstDayOffset = 6;
 
     // Merge between last days of last month and first days of current month
     for (var i=0; i<firstDayOffset; ++i)
