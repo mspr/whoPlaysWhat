@@ -43,7 +43,7 @@ export class DateHelper {
     var firstDayOfMonth = firstDateOfMonth.getDate();
     var lastDayOfMonth = lastDateOfMonth.getDate();
     var weekDayCount = lastDayOfMonth;
-    var weekCount = Math.ceil(weekDayCount/7) + 1;
+    var weekCount = Math.ceil(weekDayCount/7);
 
     var currentMonthDaysLength = weekCount*7;
     var currentMonthDays = new Array();
