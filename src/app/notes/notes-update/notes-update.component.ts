@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { BandService } from './../../core/band.service';
+import { Band } from './../../bands/band';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'wpw-notes-update',
@@ -8,10 +10,12 @@ import { Component, OnInit } from '@angular/core';
 
 export class NotesUpdateComponent implements OnInit
 {
-  public notes = new Array<string>("Need to practice 120 bpm", "Need to bring the acoustic for last session");
+  @Input()
+  public band : Band;
+
   public newNote = "";
 
-  constructor()
+  constructor(private bandService: BandService)
   {
   }
 
@@ -21,7 +25,8 @@ export class NotesUpdateComponent implements OnInit
 
   addNote(note)
   {
-    this.notes.push(this.newNote);
+    this.band.notes.push(this.newNote);
     this.newNote = "";
+    this.bandService.update(this.band).subscribe();
   }
 }

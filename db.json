@@ -353,26 +353,32 @@
         }
       ],
       "musicians": [
-          {
-            "id": 1,
-            "color": "#e7c925"
-          },
-          {
-            "id": 3,
-            "color": "#46d6f3"
-          },
-          {
-            "id": 4,
-            "color": "#cc3e51"
-          },
-          {
-            "id": 11,
-            "color": "#e07272"
-          },
-          {
-            "id": 12,
-            "color": "#9051d2"
-          }
+        {
+          "id": 1,
+          "color": "#e7c925"
+        },
+        {
+          "id": 3,
+          "color": "#46d6f3"
+        },
+        {
+          "id": 4,
+          "color": "#cc3e51"
+        },
+        {
+          "id": 11,
+          "color": "#e07272"
+        },
+        {
+          "id": 12,
+          "color": "#9051d2"
+        }
+      ],
+      "notes": [
+        "Bring the acoustic guitar for next session",
+        "Improve the accuracy at 120 bpm",
+        "Work reverse chords",
+        "Buy a new jack cable"
       ]
     },
     {
