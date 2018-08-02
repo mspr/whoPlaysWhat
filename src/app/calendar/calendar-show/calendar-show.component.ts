@@ -1,5 +1,5 @@
 import { DateHelper } from './../../core/date-helper';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { CalendarEventService } from '../../core/calendar-event.service';
 
 @Component({
@@ -10,6 +10,9 @@ import { CalendarEventService } from '../../core/calendar-event.service';
 
 export class CalendarShowComponent implements OnInit
 {
+  @Output()
+  public daySelected = new EventEmitter<number>();
+
   public dayShortNames = DateHelper.getDayShortNames();
   public daysPerWeek = DateHelper.getCurrentMonthDays();
   public currentMonth = DateHelper.getCurrentMonth();
@@ -48,5 +51,10 @@ export class CalendarShowComponent implements OnInit
     var date = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
 
     return this.calendarEventService.getEvents(date);
+  }
+
+  selectDay(day: number)
+  {
+    this.daySelected.emit(day);
   }
 }

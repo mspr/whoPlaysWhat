@@ -9,7 +9,8 @@
         </th>
       </tr>
       <tr *ngFor="let weekDays of daysPerWeek">
-        <td *ngFor="let day of weekDays" [ngClass]="isCurrentDay(day) ? 'current-day' : day > 0 ? 'day' : 'no-day'">
+        <td *ngFor="let day of weekDays" [ngClass]="isCurrentDay(day) ? 'current-day' : day > 0 ? 'day' : 'no-day'"
+            (click)="selectDay(day)">
           <label>{{day}}</label>
           <div *ngIf="hasDayEvents(day)">
             <label *ngFor="let event of events(day)">{{event.title}}</label>

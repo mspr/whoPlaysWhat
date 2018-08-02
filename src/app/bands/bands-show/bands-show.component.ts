@@ -1,8 +1,9 @@
 import { BandService } from './../../core/band.service';
 import { Band } from './../band';
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit, SimpleChanges, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
+import { Key } from 'protractor';
 
 @Component({
   selector: 'wpw-bands-show',
@@ -12,6 +13,14 @@ import { map, switchMap } from 'rxjs/operators';
 export class BandsShowComponent implements OnInit
 {
   public band : Band;
+  public dayEventsToDisplay = false;
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent)
+  {
+    if (event.keyCode === 27)
+      this.dayEventsToDisplay = false;
+  }
 
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
