@@ -1,6 +1,7 @@
 import { BandService } from './../../core/band.service';
 import { Band } from './../../bands/band';
 import { Component, OnInit, Input } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'wpw-notes-update',
@@ -28,5 +29,13 @@ export class NotesUpdateComponent implements OnInit
     this.band.notes.push(this.newNote);
     this.newNote = "";
     this.bandService.update(this.band).subscribe();
+  }
+
+  removeNote(index : number)
+  {
+    setTimeout(() => {
+      this.band.notes.splice(index, 1);
+      this.bandService.update(this.band).subscribe();
+    }, 500);
   }
 }

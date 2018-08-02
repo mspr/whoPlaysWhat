@@ -1,3 +1,14 @@
 li {
   text-align: left;
 }
+
+label:hover {
+  text-decoration: line-through;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: rgba(0,0,0,0);
+}

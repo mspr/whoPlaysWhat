@@ -3,7 +3,9 @@
 <br/>
 
 <ul>
-  <li *ngFor="let note of band?.notes">{{note}}</li>
+  <li *ngFor="let note of band?.notes; let i = index;">
+    <label (click)="removeNote(i)">{{note}}</label>
+  </li>
   <li>
     <input [(ngModel)]="newNote">
     <button class="fa fa-plus" *ngIf="newNote.length > 0" (click)="addNote()"></button>
