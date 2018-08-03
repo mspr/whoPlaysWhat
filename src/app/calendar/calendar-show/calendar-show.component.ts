@@ -28,8 +28,13 @@ export class CalendarShowComponent implements OnInit
 
   isCurrentDay(day)
   {
+    if (day == undefined)
+      return false;
+
     var date = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), day);
-    return this._currentDate.getDate() === date.getDate();
+    var currentDate = new Date(this._currentDate.getFullYear(), this._currentDate.getMonth(), this._currentDate.getDate(), 0);
+
+    return currentDate.getTime() === date.getTime();
   }
 
   hasDayEvents(day: number)
@@ -37,8 +42,7 @@ export class CalendarShowComponent implements OnInit
     if (day == undefined)
       return false;
 
-    var currentDate = new Date();
-    var date = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+    var date = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), day);
 
     return this.calendarEventService.hasDayEvents(date);
   }
