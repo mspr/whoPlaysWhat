@@ -15,8 +15,8 @@ export class CalendarShowComponent implements OnInit
 
   public dayShortNames = DateHelper.getDayShortNames();
   public daysPerWeek = DateHelper.getCurrentMonthDays();
-  public currentMonth = DateHelper.getCurrentMonth();
-  public currentYear = DateHelper.getCurrentYear();
+  private _currentDate = new Date();
+  public selectedDate = new Date();
 
   constructor(private calendarEventService: CalendarEventService)
   {
@@ -28,7 +28,8 @@ export class CalendarShowComponent implements OnInit
 
   isCurrentDay(day)
   {
-    return DateHelper.isCurrentDay(day);
+    var date = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), day);
+    return this._currentDate.getDate() === date.getDate();
   }
 
   hasDayEvents(day: number)
@@ -56,5 +57,19 @@ export class CalendarShowComponent implements OnInit
   selectDay(day: number)
   {
     this.daySelected.emit(day);
+  }
+
+  switchToLastMonth()
+  {
+    var lastMonth = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth() - 1);
+    this.daysPerWeek = DateHelper.getMonthDays(lastMonth);
+    this.selectedDate = lastMonth;
+  }
+
+  switchToNextMonth()
+  {
+    var nextMonth = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth() + 1);
+    this.daysPerWeek = DateHelper.getMonthDays(nextMonth);
+    this.selectedDate = nextMonth;
   }
 }

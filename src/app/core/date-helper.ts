@@ -1,43 +1,45 @@
-export class DateHelper {
-
+export class DateHelper
+{
   private static _date = new Date();
   private static _monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   private static _monthShortNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   private static _dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   private static _dayShortNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-  static isCurrentDay(day) {
+  static isCurrentDay(day)
+  {
     return DateHelper._date.getDate() === day;
   }
 
-  static getCurrentYear() {
-    return DateHelper._date.getFullYear();
-  }
-
-  static getMonthNames() {
+  static getMonthNames()
+  {
     return DateHelper._monthNames;
   }
 
-  static getMonthShortNames() {
+  static getMonthShortNames()
+  {
     return DateHelper._monthShortNames;
   }
 
-  static getDayNames() {
+  static getDayNames()
+  {
     return DateHelper._dayNames;
   }
 
-  static getDayShortNames() {
+  static getDayShortNames()
+  {
     return DateHelper._dayShortNames;
   }
 
-  static getCurrentMonth() {
-    return DateHelper._monthNames[DateHelper._date.getMonth()];
+  static getCurrentMonth()
+  {
+    return DateHelper._date.getMonth();
   }
 
-  static getCurrentMonthDays()
+  static getMonthDays(date : Date)
   {
     var year = DateHelper._date.getFullYear();
-    var month = DateHelper._date.getMonth();
+    var month = date.getMonth();
     var firstDateOfMonth = new Date(year, month, 1);
     var lastDateOfMonth = new Date(year, month+1, 0);
     var firstDayOfMonth = firstDateOfMonth.getDate();
@@ -70,5 +72,10 @@ export class DateHelper {
       currentMonthDaysPerWeek.push(currentMonthDays.splice(0, 7));
 
     return currentMonthDaysPerWeek;
+  }
+
+  static getCurrentMonthDays()
+  {
+    return DateHelper.getMonthDays(DateHelper._date);
   }
 }

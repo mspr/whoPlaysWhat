@@ -1,7 +1,7 @@
 <div class="calendar-header">
-  <button class="fa fa-caret-left"></button>&nbsp;
-  <h5>{{currentMonth}}&nbsp;{{currentYear}}</h5>&nbsp;
-  <button class="fa fa-caret-right"></button>
+  <button class="fa fa-caret-left" (click)="switchToLastMonth()"></button>&nbsp;
+  <h5>{{selectedDate | date:'MMMM'}}&nbsp;{{selectedDate | date:'y'}}</h5>&nbsp;
+  <button class="fa fa-caret-right" (click)="switchToNextMonth()"></button>
 </div>
 
 <br/>
