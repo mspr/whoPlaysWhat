@@ -76,4 +76,10 @@ export class CalendarShowComponent implements OnInit
     this.daysPerWeek = DateHelper.getMonthDays(nextMonth);
     this.selectedDate = nextMonth;
   }
+
+  switchToCurrentMonth()
+  {
+    this.daysPerWeek = DateHelper.getMonthDays(this._currentDate);
+    this.selectedDate = this._currentDate;
+  }
 }

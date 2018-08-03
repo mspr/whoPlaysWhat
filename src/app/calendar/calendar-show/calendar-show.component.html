@@ -1,7 +1,16 @@
 <div class="calendar-header">
-  <button class="fa fa-caret-left" (click)="switchToLastMonth()"></button>&nbsp;
+  <!-- <button>
+    <i class="fa fa-caret-left"></i>
+    <i class="fa fa-caret-left"></i>
+  </button>&nbsp; -->
+  <button class="fa fa-caret-left" (click)="switchToLastMonth()" title="Switch to the last month"></button>&nbsp;
   <h5>{{selectedDate | date:'MMMM'}}&nbsp;{{selectedDate | date:'y'}}</h5>&nbsp;
-  <button class="fa fa-caret-right" (click)="switchToNextMonth()"></button>
+  <button class="fa fa-caret-right" (click)="switchToNextMonth()" title="Switch to the next month"></button>&nbsp;
+  <button class="fa fa-bullseye" (click)="switchToCurrentMonth()" title="Switch to current month"></button>
+  <!-- <button>
+    <i class="fa fa-caret-right"></i>
+    <i class="fa fa-caret-right"></i>
+  </button> -->
 </div>
 
 <br/>
