@@ -10,7 +10,7 @@ label {
 table {
   width: 100%;
   border: solid 1px black;
-  min-height: 350px;
+  min-height: 400px;
 }
 
 td {
@@ -37,4 +37,15 @@ td.no-day {
 td.day:hover, td.current-day:hover {
   background-color: rgb(235, 209, 241);
   cursor: pointer;
+}
+
+div.calendar-header {
+  display: inline-flex;
+}
+
+button {
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(0,0,0,0);
 }
