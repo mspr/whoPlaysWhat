@@ -14,8 +14,8 @@ export class CalendarDayEventsUpdateComponent implements OnInit, AfterContentChe
   @Input()
   public selectedDate : Date;
 
-  public morning = Array.from(Array(12).keys());
-  public afternoon = Array.from(Array(12).keys());
+  public morning = Array.from({length: 12}, (v, k) => k);
+  public afternoon = Array.from({length: 12}, (v, k) => k + 12);
   public events = new Array<CalendarEvent>();
 
   constructor(private calendarEventService: CalendarEventService)
@@ -24,12 +24,26 @@ export class CalendarDayEventsUpdateComponent implements OnInit, AfterContentChe
 
   ngOnInit()
   {
+  }
+
+  ngAfterContentChecked()
+  {
     if (this.selectedDate != undefined)
       this.events = this.calendarEventService.getEvents(this.selectedDate);
   }
 
-  ngAfterContentChecked() {
-    if (this.selectedDate != undefined)
-      this.events = this.calendarEventService.getEvents(this.selectedDate);
+  hasEvents(hour: number)
+  {
+    if (this.selectedDate == undefined)
+      return false;
+
+    var date = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), this.selectedDate.getDate(), hour);
+    return this.calendarEventService.hasDayEvents(date);
+  }
+
+  getEvents(hour: number)
+  {
+    var date = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), this.selectedDate.getDate(), hour);
+    return this.calendarEventService.getEvents(date);
   }
 }

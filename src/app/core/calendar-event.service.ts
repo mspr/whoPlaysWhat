@@ -11,7 +11,7 @@ export class CalendarEventService
   {
     var currentDate = new Date();
     var startDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), 0);
-    var endDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), 23);
+    var endDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), 12);
     this._fakeEvent = new CalendarEvent("Yeahhh Holidays", CalendarEventType.Holidays, startDate, endDate);
   }
 

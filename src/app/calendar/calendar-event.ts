@@ -6,6 +6,7 @@ export class CalendarEvent
   public type : CalendarEventType;
   public start : Date;
   public end : Date;
+  public picture : string;
 
   constructor(title : string, type : CalendarEventType, start : Date, end : Date)
   {
@@ -15,7 +16,8 @@ export class CalendarEvent
     this.end = end;
   }
 
-  public isTakingPlace(day : Date) {
+  public isTakingPlace(day : Date)
+  {
     var startTime = this.start.getTime();
     var endTime = this.end.getTime();
     var time = day.getTime();
