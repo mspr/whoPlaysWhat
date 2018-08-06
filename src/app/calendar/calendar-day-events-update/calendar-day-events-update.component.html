@@ -5,12 +5,8 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md hour" *ngFor="let hour of morning">
-        {{hour}}
-      </div>
-    </div>
-    <div class="row">
       <div class="col-md cell" *ngFor="let hour of morning">
+        <label>{{hour}}</label>
         <div *ngIf="hasEvents(hour)">
           <label *ngFor="let event of getEvents(hour)">{{event.title}}</label>
         </div>
@@ -22,12 +18,8 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md hour" *ngFor="let hour of afternoon">
-        {{hour}}
-      </div>
-    </div>
-    <div class="row">
       <div class="col-md cell" *ngFor="let hour of afternoon">
+        <label>{{hour}}</label>
         <div *ngIf="hasEvents(hour)">
           <label *ngFor="let event of getEvents(hour)">{{event.title}}</label>
         </div>
