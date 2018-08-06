@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { CalendarEvent } from './../calendar-event';
+import { CalendarEventService } from './../../core/calendar-event.service';
+import { Component, OnInit, Input, AfterContentChecked } from '@angular/core';
+import { DateHelper } from '../../core/date-helper';
 
 @Component({
   selector: 'wpw-calendar-day-events-update',
@@ -6,13 +9,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calendar-day-events-update.component.scss']
 })
 
-export class CalendarDayEventsUpdateComponent implements OnInit
+export class CalendarDayEventsUpdateComponent implements OnInit, AfterContentChecked
 {
-  constructor()
+  @Input()
+  public selectedDate : Date;
+
+  public morning = Array.from(Array(12).keys());
+  public afternoon = Array.from(Array(12).keys());
+  public events = new Array<CalendarEvent>();
+
+  constructor(private calendarEventService: CalendarEventService)
   {
   }
 
   ngOnInit()
   {
+    if (this.selectedDate != undefined)
+      this.events = this.calendarEventService.getEvents(this.selectedDate);
+  }
+
+  ngAfterContentChecked() {
+    if (this.selectedDate != undefined)
+      this.events = this.calendarEventService.getEvents(this.selectedDate);
   }
 }

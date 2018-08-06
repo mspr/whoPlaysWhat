@@ -14,6 +14,7 @@ export class BandsShowComponent implements OnInit
 {
   public band : Band;
   public dayEventsToDisplay = false;
+  public selectedDate : Date;
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent)
@@ -41,5 +42,11 @@ export class BandsShowComponent implements OnInit
       this.bandService.removed.emit();
       this.router.navigate(['bands']);
     });
+  }
+
+  displayEventsForDate(date: Date)
+  {
+    this.dayEventsToDisplay = true;
+    this.selectedDate = date;
   }
 }

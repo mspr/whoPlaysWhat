@@ -1,4 +1,4 @@
-div {
+div.main {
   position: fixed;
   z-index: 1;
   width: 90%;
@@ -7,4 +7,26 @@ div {
   left: 50%;
   background-color: rgba(179, 145, 118, 0.8);
   transform: translate(-50%, -50%);
+}
+
+h3 {
+  text-align: center;
+}
+
+div.row {
+  margin: 20px;
+}
+
+span {
+  display: inline-block;
+}
+
+div.hour {
+  padding: 0;
+  margin: 0;
+}
+
+div.cell {
+  border: solid 1px black;
+  // background-color: red;
 }

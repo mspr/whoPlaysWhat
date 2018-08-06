@@ -31,9 +31,9 @@
       </div>
     </div>
     <div class="col-md">
-      <wpw-calendar-show (daySelected)="dayEventsToDisplay = true;"></wpw-calendar-show>
+      <wpw-calendar-show (dateSelected)="displayEventsForDate($event)"></wpw-calendar-show>
     </div>
   </div>
 </div>
 
-<wpw-calendar-day-events-update [hidden]="!dayEventsToDisplay"></wpw-calendar-day-events-update>
+<wpw-calendar-day-events-update [hidden]="!dayEventsToDisplay" [selectedDate]="selectedDate"></wpw-calendar-day-events-update>

@@ -11,7 +11,7 @@ import { CalendarEventService } from '../../core/calendar-event.service';
 export class CalendarShowComponent implements OnInit
 {
   @Output()
-  public daySelected = new EventEmitter<number>();
+  public dateSelected = new EventEmitter<Date>();
 
   public dayShortNames = DateHelper.getDayShortNames();
   public daysPerWeek = DateHelper.getCurrentMonthDays();
@@ -58,9 +58,10 @@ export class CalendarShowComponent implements OnInit
     return this.calendarEventService.getEvents(date);
   }
 
-  selectDay(day: number)
+  selectDate(day: number)
   {
-    this.daySelected.emit(day);
+    this.selectedDate = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), day);
+    this.dateSelected.emit(this.selectedDate);
   }
 
   switchToLastMonth()
