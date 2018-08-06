@@ -17,6 +17,7 @@ export class CalendarDayEventsUpdateComponent implements OnInit, AfterContentChe
   public morning = Array.from({length: 12}, (v, k) => k);
   public afternoon = Array.from({length: 12}, (v, k) => k + 12);
   public events = new Array<CalendarEvent>();
+  public eventsToDisplay = false;
 
   constructor(private calendarEventService: CalendarEventService)
   {
@@ -28,8 +29,6 @@ export class CalendarDayEventsUpdateComponent implements OnInit, AfterContentChe
 
   ngAfterContentChecked()
   {
-    if (this.selectedDate != undefined)
-      this.events = this.calendarEventService.getEvents(this.selectedDate);
   }
 
   hasEvents(hour: number)
@@ -45,5 +44,12 @@ export class CalendarDayEventsUpdateComponent implements OnInit, AfterContentChe
   {
     var date = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), this.selectedDate.getDate(), hour);
     return this.calendarEventService.getEvents(date);
+  }
+
+  displayEvents(hour: number)
+  {
+    var date = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), this.selectedDate.getDate(), hour);
+    this.events = this.calendarEventService.getEvents(date);
+    this.eventsToDisplay = true;
   }
 }

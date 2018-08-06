@@ -29,5 +29,9 @@ div.hour {
 div.cell {
   border: solid 1px black;
   min-height: 80px;
-  // background-color: red;
+  cursor: pointer;
+}
+
+div.cell label {
+  cursor: pointer;
 }
