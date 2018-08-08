@@ -1,37 +1,9 @@
-<div class="main">
-  <h3>Events</h3>
-
+<div>
+  <label>Title :&nbsp;</label>
+  <input type="text" />
   <br/>
-
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md cell" *ngFor="let hour of morning" (click)="displayEvents(hour)">
-        <label>{{hour}}</label>
-        <div *ngIf="hasEvents(hour)">
-          <label *ngFor="let event of getEvents(hour)">{{event.title}}</label>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <br/>
-
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md cell" *ngFor="let hour of afternoon" (click)="displayEvents(hour)">
-        <label>{{hour}}</label>
-        <div *ngIf="hasEvents(hour)">
-          <label *ngFor="let event of getEvents(hour)">{{event.title}}</label>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <label>Description :</label>
   <br/>
-
-  <div *ngIf="eventsToDisplay">
-    <div *ngFor="let event of events">
-      {{event.title}}
-    </div>
-  </div>
+  <textarea rows="4"></textarea>
 </div>

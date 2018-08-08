@@ -17,6 +17,7 @@ export class CalendarDayEventsOverviewComponent implements OnInit
   public afternoon = Array.from({length: 12}, (v, k) => k + 12);
   public events = new Array<CalendarEvent>();
   public eventsToDisplay = false;
+  public eventsToCreate = false;
 
   constructor(private calendarEventService: CalendarEventService)
   {
@@ -45,10 +46,19 @@ export class CalendarDayEventsOverviewComponent implements OnInit
     return this.calendarEventService.getEvents(date);
   }
 
-  displayEvents(hour: number)
+  displayOrCreateEvents(hour: number)
   {
-    var date = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), this.selectedDate.getDate(), hour);
-    this.events = this.calendarEventService.getEvents(date);
-    this.eventsToDisplay = true;
+    if (this.hasEvents(hour))
+    {
+      var date = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), this.selectedDate.getDate(), hour);
+      this.events = this.calendarEventService.getEvents(date);
+      this.eventsToDisplay = true;
+      this.eventsToCreate = false;
+    }
+    else
+    {
+      this.eventsToCreate = true;
+      this.eventsToDisplay = false;
+    }
   }
 }

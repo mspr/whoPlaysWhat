@@ -5,7 +5,7 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md cell" *ngFor="let hour of morning" (click)="displayEvents(hour)">
+      <div class="col-md cell" *ngFor="let hour of morning" (click)="displayOrCreateEvents(hour)">
         <label>{{hour}}</label>
         <div *ngIf="hasEvents(hour)">
           <label *ngFor="let event of getEvents(hour)">{{event.title}}</label>
@@ -18,7 +18,7 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md cell" *ngFor="let hour of afternoon" (click)="displayEvents(hour)">
+      <div class="col-md cell" *ngFor="let hour of afternoon" (click)="displayOrCreateEvents(hour)">
         <label>{{hour}}</label>
         <div *ngIf="hasEvents(hour)">
           <label *ngFor="let event of getEvents(hour)">{{event.title}}</label>
@@ -30,4 +30,5 @@
   <br/>
 
   <wpw-calendar-day-events-show *ngIf="eventsToDisplay" [events]="events"></wpw-calendar-day-events-show>
+  <wpw-calendar-day-events-update *ngIf="eventsToCreate"></wpw-calendar-day-events-update>
 </div>
