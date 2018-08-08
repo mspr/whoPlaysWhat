@@ -6,4 +6,11 @@
   <label>Description :</label>
   <br/>
   <textarea rows="4"></textarea>
+  <br/>
+  <label>Frequency :</label>
+  <div class="frequency">
+    <div *ngFor="let frequency of frequencies; let idx = index;" (mouseenter)="updateFrequency(idx)" [ngStyle]="{'background-color': frequencyColors[idx]}">
+      {{frequency}}
+    </div>
+  </div>
 </div>
