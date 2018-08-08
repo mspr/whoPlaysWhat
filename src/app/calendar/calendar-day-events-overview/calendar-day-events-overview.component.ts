@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './calendar-day-events-overview.component.html',
   styleUrls: ['./calendar-day-events-overview.component.scss']
 })
+
 export class CalendarDayEventsOverviewComponent implements OnInit
 {
   @Input()

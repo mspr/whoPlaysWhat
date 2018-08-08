@@ -24,4 +24,5 @@ import { CalendarDayEventsShowComponent } from './calendar-day-events-show/calen
     CalendarEventService
   ]
 })
+
 export class CalendarModule { }

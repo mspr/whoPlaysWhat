@@ -29,9 +29,5 @@
 
   <br/>
 
-  <div *ngIf="eventsToDisplay">
-    <div *ngFor="let event of events">
-      {{event.title}}
-    </div>
-  </div>
+  <wpw-calendar-day-events-show *ngIf="eventsToDisplay" [events]="events"></wpw-calendar-day-events-show>
 </div>
