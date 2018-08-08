@@ -10,6 +10,7 @@ export class CalendarDayEventsUpdateComponent implements OnInit
 {
   public frequencies = ["Once", "Once per month", "Once per week", "Every day"];
   public frequencyColors = ["rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)"];
+  public selectedFrequencyIdx : number = -1;
 
   constructor()
   {
@@ -19,9 +20,13 @@ export class CalendarDayEventsUpdateComponent implements OnInit
   {
   }
 
-  updateFrequency(idx: number)
+  updateFrequencyColors(idx: number)
   {
-    if (idx == 0)
+    if (idx == -1)
+    {
+      this.frequencyColors = ["rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)"];
+    }
+    else if (idx == 0)
     {
       this.frequencyColors = ["rgba(205, 234, 125, 0.5)", "rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)"];
     }
@@ -37,5 +42,15 @@ export class CalendarDayEventsUpdateComponent implements OnInit
     {
       this.frequencyColors = ["rgba(255, 84, 46, 0.5)", "rgba(255, 84, 46, 0.5)", "rgba(255, 84, 46, 0.5)", "rgba(255, 84, 46, 0.5)"];
     }
+  }
+
+  resetFrequencyColors()
+  {
+    this.updateFrequencyColors(this.selectedFrequencyIdx);
+  }
+
+  updateFrequency(idx: number)
+  {
+    this.selectedFrequencyIdx = idx;
   }
 }

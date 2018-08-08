@@ -8,9 +8,10 @@
   <textarea rows="4"></textarea>
   <br/>
   <label>Frequency :</label>
-  <div class="frequency">
-    <div *ngFor="let frequency of frequencies; let idx = index;" (mouseenter)="updateFrequency(idx)" [ngStyle]="{'background-color': frequencyColors[idx]}">
+  <div class="frequency" (mouseleave)="resetFrequencyColors()">
+    <button *ngFor="let frequency of frequencies; let idx = index;" (mouseenter)="updateFrequencyColors(idx)" (click)="updateFrequency(idx)"
+      [ngStyle]="{'background-color': frequencyColors[idx]}">
       {{frequency}}
-    </div>
+  </button>
   </div>
 </div>
