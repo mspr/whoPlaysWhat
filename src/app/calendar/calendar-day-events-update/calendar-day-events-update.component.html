@@ -1,17 +1,21 @@
-<div>
-  <label>Title :&nbsp;</label>
-  <input type="text" />
-  <br/>
-  <br/>
-  <label>Description :</label>
-  <br/>
-  <textarea rows="4"></textarea>
-  <br/>
-  <label>Frequency :</label>
-  <div class="frequency" (mouseleave)="resetFrequencyColors()">
-    <button *ngFor="let frequency of frequencies; let idx = index;" (mouseenter)="updateFrequencyColors(idx)" (click)="updateFrequency(idx)"
-      [ngStyle]="{'background-color': frequencyColors[idx]}">
-      {{frequency}}
-  </button>
+<form #form="ngForm" (submit)="add()">
+  <div>
+    <label>Title :&nbsp;</label>
+    <input type="text" />
+    <br/>
+    <br/>
+    <label>Description :</label>
+    <br/>
+    <textarea rows="4"></textarea>
+    <br/>
+    <label>Frequency :</label>
+    <div class="frequency" (mouseleave)="resetFrequencyColors()">
+      <button type="button" *ngFor="let frequency of frequencies; let idx = index;" (mouseenter)="updateFrequencyColors(idx)" (click)="updateFrequency(idx)"
+        [ngStyle]="{'background-color': frequencyColors[idx]}">
+        {{frequency}}
+      </button>
+    </div>
+    <br/>
+    <button class="submit" type="submit">Create</button>
   </div>
-</div>
+</form>
