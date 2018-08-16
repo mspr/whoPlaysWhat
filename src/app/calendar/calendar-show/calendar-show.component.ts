@@ -11,12 +11,12 @@ import { CalendarEventService } from '../../core/calendar-event.service';
 export class CalendarShowComponent implements OnInit
 {
   @Output()
-  public dateSelected = new EventEmitter<Date>();
+  public daySelected = new EventEmitter<Date>();
 
   public dayShortNames = DateHelper.getDayShortNames();
   public daysPerWeek = DateHelper.getCurrentMonthDays();
-  private _currentDate = new Date();
-  public selectedDate = new Date();
+  private _currentDay = new Date();
+  public selectedDay = new Date();
 
   constructor(private calendarEventService: CalendarEventService)
   {
@@ -31,8 +31,8 @@ export class CalendarShowComponent implements OnInit
     if (day == undefined)
       return false;
 
-    var date = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), day);
-    var currentDate = new Date(this._currentDate.getFullYear(), this._currentDate.getMonth(), this._currentDate.getDate(), 0);
+    var date = new Date(this.selectedDay.getFullYear(), this.selectedDay.getMonth(), day);
+    var currentDate = new Date(this.selectedDay.getFullYear(), this.selectedDay.getMonth(), this.selectedDay.getDate(), 0);
 
     return currentDate.getTime() === date.getTime();
   }
@@ -42,7 +42,7 @@ export class CalendarShowComponent implements OnInit
     if (day == undefined)
       return false;
 
-    var date = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), day);
+    var date = new Date(this.selectedDay.getFullYear(), this.selectedDay.getMonth(), day);
 
     return this.calendarEventService.hasDayEvents(date);
   }
@@ -60,27 +60,27 @@ export class CalendarShowComponent implements OnInit
 
   selectDate(day: number)
   {
-    this.selectedDate = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), day);
-    this.dateSelected.emit(this.selectedDate);
+    this.selectedDay = new Date(this.selectedDay.getFullYear(), this.selectedDay.getMonth(), day);
+    this.daySelected.emit(this.selectedDay);
   }
 
   switchToLastMonth()
   {
-    var lastMonth = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth() - 1);
+    var lastMonth = new Date(this.selectedDay.getFullYear(), this.selectedDay.getMonth() - 1);
     this.daysPerWeek = DateHelper.getMonthDays(lastMonth);
-    this.selectedDate = lastMonth;
+    this.selectedDay = lastMonth;
   }
 
   switchToNextMonth()
   {
-    var nextMonth = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth() + 1);
+    var nextMonth = new Date(this.selectedDay.getFullYear(), this.selectedDay.getMonth() + 1);
     this.daysPerWeek = DateHelper.getMonthDays(nextMonth);
-    this.selectedDate = nextMonth;
+    this.selectedDay = nextMonth;
   }
 
   switchToCurrentMonth()
   {
-    this.daysPerWeek = DateHelper.getMonthDays(this._currentDate);
-    this.selectedDate = this._currentDate;
+    this.daysPerWeek = DateHelper.getMonthDays(this._currentDay);
+    this.selectedDay = this._currentDay;
   }
 }

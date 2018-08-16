@@ -9,4 +9,5 @@ export class Band
   public incomingSongs : IncomingSong[] = [];
   public musicians = [];
   public notes = [];
+  public events = [];
 }

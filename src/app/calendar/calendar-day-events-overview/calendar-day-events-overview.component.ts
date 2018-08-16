@@ -1,3 +1,4 @@
+import { Band } from './../../bands/band';
 import { CalendarEventService } from './../../core/calendar-event.service';
 import { CalendarEvent } from './../calendar-event';
 import { Component, OnInit, Input } from '@angular/core';
@@ -11,10 +12,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CalendarDayEventsOverviewComponent implements OnInit
 {
   @Input()
-  public selectedDate : Date;
+  public selectedDay : Date;
+
+  @Input()
+  public band : Band;
 
   public morning = Array.from({length: 12}, (v, k) => k);
   public afternoon = Array.from({length: 12}, (v, k) => k + 12);
+  public selectedHour : Date;
   public events = new Array<CalendarEvent>();
   public eventsToDisplay = false;
   public eventsToCreate = false;
@@ -33,25 +38,26 @@ export class CalendarDayEventsOverviewComponent implements OnInit
 
   hasEvents(hour: number)
   {
-    if (this.selectedDate == undefined)
+    if (this.selectedDay == undefined)
       return false;
 
-    var date = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), this.selectedDate.getDate(), hour);
+    var date = new Date(this.selectedDay.getFullYear(), this.selectedDay.getMonth(), this.selectedDay.getDate(), hour);
     return this.calendarEventService.hasDayEvents(date);
   }
 
   getEvents(hour: number)
   {
-    var date = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), this.selectedDate.getDate(), hour);
+    var date = new Date(this.selectedDay.getFullYear(), this.selectedDay.getMonth(), this.selectedDay.getDate(), hour);
     return this.calendarEventService.getEvents(date);
   }
 
   displayOrCreateEvents(hour: number)
   {
+    this.selectedHour = new Date(this.selectedDay.getFullYear(), this.selectedDay.getMonth(), this.selectedDay.getDate(), hour);
+
     if (this.hasEvents(hour))
     {
-      var date = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), this.selectedDate.getDate(), hour);
-      this.events = this.calendarEventService.getEvents(date);
+      this.events = this.calendarEventService.getEvents(this.selectedHour);
       this.eventsToDisplay = true;
       this.eventsToCreate = false;
     }

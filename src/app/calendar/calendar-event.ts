@@ -3,14 +3,16 @@ import { CalendarEventType } from './calendar-event-type.enum';
 export class CalendarEvent
 {
   public title = '';
+  public description = '';
   public type : CalendarEventType;
-  public start : Date;
-  public end : Date;
+  public start : number;
+  public end : number;
   public picture : string;
 
-  constructor(title : string, type : CalendarEventType, start : Date, end : Date)
+  constructor(title : string, description : string, type : CalendarEventType, start : number, end : number)
   {
     this.title = title;
+    this.description = description;
     this.type = type;
     this.start = start;
     this.end = end;
@@ -18,9 +20,7 @@ export class CalendarEvent
 
   public isTakingPlace(day : Date)
   {
-    var startTime = this.start.getTime();
-    var endTime = this.end.getTime();
     var time = day.getTime();
-    return time >= startTime && time <= endTime;
+    return time >= this.start && time <= this.end;
   }
 }

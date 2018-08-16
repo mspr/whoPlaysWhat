@@ -1,12 +1,12 @@
-<form #form="ngForm" (submit)="add()">
+<form #form="ngForm" (submit)="createEvent()">
   <div>
-    <label>Title :&nbsp;</label>
-    <input type="text" />
+    <label for="title">Title :&nbsp;</label>
+    <input type="text" name="title" [(ngModel)]="newEvent.title" required #name="ngModel" />
     <br/>
     <br/>
-    <label>Description :</label>
+    <label for="description">Description :</label>
     <br/>
-    <textarea rows="4"></textarea>
+    <textarea rows="4" name="description" [(ngModel)]="newEvent.description" required #name="ngModel"></textarea>
     <br/>
     <label>Frequency :</label>
     <div class="frequency" (mouseleave)="resetFrequencyColors()">

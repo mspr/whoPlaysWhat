@@ -30,5 +30,5 @@
   <br/>
 
   <wpw-calendar-day-events-show *ngIf="eventsToDisplay" [events]="events"></wpw-calendar-day-events-show>
-  <wpw-calendar-day-events-update *ngIf="eventsToCreate"></wpw-calendar-day-events-update>
+  <wpw-calendar-day-events-update *ngIf="eventsToCreate" [band]="band" [selectedHour]="selectedHour"></wpw-calendar-day-events-update>
 </div>

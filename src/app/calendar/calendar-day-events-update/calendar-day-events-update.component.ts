@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Band } from './../../bands/band';
+import { CalendarEvent } from './../calendar-event';
+import { Component, OnInit, Input } from '@angular/core';
+import { CalendarEventType } from '../calendar-event-type.enum';
+import { BandService } from '../../core/band.service';
 
 @Component({
   selector: 'wpw-calendar-day-events-update',
@@ -8,11 +12,18 @@ import { Component, OnInit } from '@angular/core';
 
 export class CalendarDayEventsUpdateComponent implements OnInit
 {
+  @Input()
+  public band : Band;
+
+  @Input()
+  public selectedHour : Date;
+
   public frequencies = ["Once", "Once per month", "Once per week", "Every day"];
   public frequencyColors = ["rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)"];
   public selectedFrequencyIdx : number = -1;
+  public newEvent = new CalendarEvent("", "", CalendarEventType.Rehearsal, 0, 0);
 
-  constructor()
+  constructor(private bandService: BandService)
   {
   }
 
@@ -52,5 +63,17 @@ export class CalendarDayEventsUpdateComponent implements OnInit
   updateFrequency(idx: number)
   {
     this.selectedFrequencyIdx = idx;
+  }
+
+  createEvent()
+  {
+    let frequency = this.frequencies[this.selectedFrequencyIdx];
+
+    this.newEvent.start = this.selectedHour.getTime();
+    this.newEvent.end = new Date(this.selectedHour.getFullYear(), this.selectedHour.getMonth(), this.selectedHour.getDate(), this.selectedHour.getHours() + 1).getTime();
+
+    this.band.events.push(this.newEvent);
+    this.bandService.update(this.band).subscribe((band) => {
+    });
   }
 }
