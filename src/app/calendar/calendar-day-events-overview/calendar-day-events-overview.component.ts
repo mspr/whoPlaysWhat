@@ -1,5 +1,4 @@
 import { Band } from './../../bands/band';
-import { CalendarEventService } from './../../core/calendar-event.service';
 import { CalendarEvent } from './../calendar-event';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -24,7 +23,7 @@ export class CalendarDayEventsOverviewComponent implements OnInit
   public eventsToDisplay = false;
   public eventsToCreate = false;
 
-  constructor(private calendarEventService: CalendarEventService)
+  constructor()
   {
   }
 
@@ -42,13 +41,13 @@ export class CalendarDayEventsOverviewComponent implements OnInit
       return false;
 
     var date = new Date(this.selectedDay.getFullYear(), this.selectedDay.getMonth(), this.selectedDay.getDate(), hour);
-    return this.calendarEventService.hasDayEvents(date);
+    return this.band.hasEventsAt(date);
   }
 
   getEvents(hour: number)
   {
     var date = new Date(this.selectedDay.getFullYear(), this.selectedDay.getMonth(), this.selectedDay.getDate(), hour);
-    return this.calendarEventService.getEvents(date);
+    return this.band.getEventsAt(date);
   }
 
   displayOrCreateEvents(hour: number)
@@ -57,7 +56,7 @@ export class CalendarDayEventsOverviewComponent implements OnInit
 
     if (this.hasEvents(hour))
     {
-      this.events = this.calendarEventService.getEvents(this.selectedHour);
+      this.events = this.band.getEventsAt(this.selectedHour);
       this.eventsToDisplay = true;
       this.eventsToCreate = false;
     }

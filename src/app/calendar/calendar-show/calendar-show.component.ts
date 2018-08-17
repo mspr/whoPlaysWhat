@@ -1,6 +1,6 @@
 import { DateHelper } from './../../core/date-helper';
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { CalendarEventService } from '../../core/calendar-event.service';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Band } from '../../bands/band';
 
 @Component({
   selector: 'wpw-calendar-show',
@@ -10,6 +10,9 @@ import { CalendarEventService } from '../../core/calendar-event.service';
 
 export class CalendarShowComponent implements OnInit
 {
+  @Input()
+  public band : Band;
+
   @Output()
   public daySelected = new EventEmitter<Date>();
 
@@ -18,7 +21,7 @@ export class CalendarShowComponent implements OnInit
   private _currentDay = new Date();
   public selectedDay = new Date();
 
-  constructor(private calendarEventService: CalendarEventService)
+  constructor()
   {
   }
 
@@ -39,23 +42,23 @@ export class CalendarShowComponent implements OnInit
 
   hasDayEvents(day: number)
   {
-    if (day == undefined)
+    if (day == undefined || this.band == undefined)
       return false;
 
     var date = new Date(this.selectedDay.getFullYear(), this.selectedDay.getMonth(), day);
 
-    return this.calendarEventService.hasDayEvents(date);
+    return this.band.hasDayEvents(date);
   }
 
   events(day: number)
   {
-    if (day == undefined)
+    if (day == undefined || this.band == undefined)
       return;
 
     var currentDate = new Date();
     var date = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
 
-    return this.calendarEventService.getEvents(date);
+    return this.band.getDayEvents(date);
   }
 
   selectDate(day: number)

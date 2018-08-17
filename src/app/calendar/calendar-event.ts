@@ -2,6 +2,7 @@ import { CalendarEventType } from './calendar-event-type.enum';
 
 export class CalendarEvent
 {
+  public id? : number;
   public title = '';
   public description = '';
   public type : CalendarEventType;
@@ -18,9 +19,25 @@ export class CalendarEvent
     this.end = end;
   }
 
-  public isTakingPlace(day : Date)
+  static fromInfo(info)
   {
-    var time = day.getTime();
-    return time >= this.start && time <= this.end;
+    return new CalendarEvent(info.title, info.description, info.type, info.start, info.end);
+  }
+
+  public isTakingPlaceOnDay(day : Date)
+  {
+    var dayStart = day.getTime();
+    var dayEnd = dayStart + 86400000;
+    let eventBeginsOnDay = this.start >= dayStart && this.start <= dayEnd;
+    let eventEndsOnDay = this.end >= dayStart && this.end <= dayEnd;
+    let eventBeginsBeforeAndEndsAfterDay = this.start < dayStart && this.end > dayEnd;
+
+    return eventBeginsOnDay || eventEndsOnDay || eventBeginsBeforeAndEndsAfterDay;
+  }
+
+  public isTakingPlaceAt(hour : Date)
+  {
+    var hourInMs = hour.getTime();
+    return this.start <= hourInMs && this.end >= hourInMs;
   }
 }

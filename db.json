@@ -381,11 +381,11 @@
       ],
       "events": [
         {
-          "id": 1,
-          "title": "Holidays in Corsica",
-          "Description": "I'm in Corsica for 2 weeks!",
-          "start": 0,
-          "end": 0
+          "title": "Off",
+          "description": "Je suis off",
+          "type": 2,
+          "start": 1534510800000,
+          "end": 1534514400000
         }
       ]
     },
