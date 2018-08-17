@@ -32,17 +32,14 @@ export class SongsUpdateComponent implements OnInit
     let bandId = this.activatedRoute.parent.snapshot.params["id"];
     let songId = this.activatedRoute.snapshot.params["id"];
 
-    this.songService.getById(songId).switchMap((song) => {
-      this.song = song;
-      return this.bandService.getById(bandId);
-    })
-    .subscribe((band) => {
+    this.bandService.getById(bandId).subscribe((band) => {
       this.band = band;
-      let songBandInfo = band.songs.find(s => s.id == this.song.id);
-      this.song.tempo = songBandInfo.tempo;
-      this.song.tonality = songBandInfo.tonality;
-      this.song.structure = songBandInfo.structure;
-      this.song.musicians = songBandInfo.musicians;
+      let songInfo = band.songs.find(s => s.id == songId);
+      this.song.tempo = songInfo.tempo;
+      this.song.tonality = songInfo.tonality;
+      this.song.structure = songInfo.structure;
+      this.song.musicians = songInfo.musicians;
+      this.song.title = songInfo.title;
     });
   }
 
@@ -54,11 +51,11 @@ export class SongsUpdateComponent implements OnInit
   update()
   {
     this.songService.update(this.song).switchMap((song) => {
-      let songBandInfo = this.band.songs.find(s => s.id == song.id);
-      songBandInfo.tempo = song.tempo;
-      songBandInfo.tonality = song.tonality;
-      songBandInfo.structure = song.structure;
-      songBandInfo.musicians = song.musicians;
+      let songInfo = this.band.songs.find(s => s.id == song.id);
+      songInfo.tempo = song.tempo;
+      songInfo.tonality = song.tonality;
+      songInfo.structure = song.structure;
+      songInfo.musicians = song.musicians;
       return this.bandService.update(this.band);
     })
     .subscribe(() => {
