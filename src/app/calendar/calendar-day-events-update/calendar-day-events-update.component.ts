@@ -3,6 +3,8 @@ import { CalendarEvent } from './../calendar-event';
 import { Component, OnInit, Input } from '@angular/core';
 import { CalendarEventType } from '../calendar-event-type.enum';
 import { BandService } from '../../core/band.service';
+import { CalendarEventFrequency } from '../calendar-event-frequency.enum';
+import { CalendarEventFrequencyHelper } from '../calendar-event-frequency-helper';
 
 @Component({
   selector: 'wpw-calendar-day-events-update',
@@ -18,10 +20,9 @@ export class CalendarDayEventsUpdateComponent implements OnInit
   @Input()
   public selectedHour : Date;
 
-  public frequencies = ["Once", "Once per month", "Once per week", "Every day"];
+  public frequencies = CalendarEventFrequencyHelper.getFrequencyNames();
   public frequencyColors = ["rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)"];
-  public selectedFrequencyIdx : number = -1;
-  public newEvent = new CalendarEvent("", "", CalendarEventType.Rehearsal, 0, 0);
+  public newEvent = new CalendarEvent("", "", CalendarEventType.Rehearsal, 0, 0, CalendarEventFrequency.Once);
 
   constructor(private bandService: BandService)
   {
@@ -33,42 +34,21 @@ export class CalendarDayEventsUpdateComponent implements OnInit
 
   updateFrequencyColors(idx: number)
   {
-    if (idx == -1)
-    {
-      this.frequencyColors = ["rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)"];
-    }
-    else if (idx == 0)
-    {
-      this.frequencyColors = ["rgba(205, 234, 125, 0.5)", "rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)"];
-    }
-    else if (idx == 1)
-    {
-      this.frequencyColors = ["rgba(255, 234, 125, 0.5)", "rgba(255, 234, 125, 0.5)", "rgba(0,0,0,0)", "rgba(0,0,0,0)"];
-    }
-    else if (idx == 2)
-    {
-      this.frequencyColors = ["rgba(242, 172, 46, 0.5)", "rgba(242, 172, 46, 0.5)", "rgba(242, 172, 46, 0.5)", "rgba(0,0,0,0)"];
-    }
-    else if (idx == 3)
-    {
-      this.frequencyColors = ["rgba(255, 84, 46, 0.5)", "rgba(255, 84, 46, 0.5)", "rgba(255, 84, 46, 0.5)", "rgba(255, 84, 46, 0.5)"];
-    }
+    this.frequencyColors = CalendarEventFrequencyHelper.getFrequencyColor(idx);
   }
 
   resetFrequencyColors()
   {
-    this.updateFrequencyColors(this.selectedFrequencyIdx);
+    this.updateFrequencyColors(this.newEvent.frequency);
   }
 
   updateFrequency(idx: number)
   {
-    this.selectedFrequencyIdx = idx;
+    this.newEvent.frequency = idx;
   }
 
   createEvent()
   {
-    let frequency = this.frequencies[this.selectedFrequencyIdx];
-
     this.newEvent.start = this.selectedHour.getTime();
     this.newEvent.end = new Date(this.selectedHour.getFullYear(), this.selectedHour.getMonth(), this.selectedHour.getDate(), this.selectedHour.getHours() + 1).getTime();
 

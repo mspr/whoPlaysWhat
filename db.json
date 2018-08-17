@@ -385,7 +385,8 @@
           "description": "Je suis off",
           "type": 2,
           "start": 1534510800000,
-          "end": 1534514400000
+          "end": 1534514400000,
+          "frequency": 1
         }
       ]
     },
