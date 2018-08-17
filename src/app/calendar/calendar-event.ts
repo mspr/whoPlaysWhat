@@ -38,6 +38,6 @@ export class CalendarEvent
   public isTakingPlaceAt(hour : Date)
   {
     var hourInMs = hour.getTime();
-    return this.start <= hourInMs && this.end >= hourInMs;
+    return this.start <= hourInMs && this.end > hourInMs;
   }
 }
