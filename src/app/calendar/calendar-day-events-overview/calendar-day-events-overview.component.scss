@@ -35,3 +35,7 @@ div.cell {
 div.cell label {
   cursor: pointer;
 }
+
+label {
+  user-select: none;
+}

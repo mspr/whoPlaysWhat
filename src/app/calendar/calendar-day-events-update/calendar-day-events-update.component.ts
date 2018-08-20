@@ -23,6 +23,8 @@ export class CalendarDayEventsUpdateComponent implements OnInit
   public frequencies = CalendarEventFrequencyHelper.getFrequencyNames();
   public frequencyColors = ["rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)"];
   public newEvent = new CalendarEvent("", "", CalendarEventType.Rehearsal, 0, 0, CalendarEventFrequency.Once);
+  public startModeActivated = false;
+  public endModeActivated = false;
 
   constructor(private bandService: BandService)
   {
@@ -55,5 +57,15 @@ export class CalendarDayEventsUpdateComponent implements OnInit
     this.band.events.push(this.newEvent);
     this.bandService.update(this.band).subscribe((band) => {
     });
+  }
+
+  activateStartMode()
+  {
+    this.startModeActivated = true;
+  }
+
+  activateEndMode()
+  {
+    this.endModeActivated = true;
   }
 }

@@ -8,7 +8,7 @@
       <div class="col-md cell" *ngFor="let hour of morning" (click)="displayOrCreateEvents(hour)">
         <label>{{hour}}</label>
         <div *ngIf="hasEvents(hour)">
-          <label *ngFor="let event of getEvents(hour)">{{event.title}}</label>
+          <label *ngFor="let evt of getEvents(hour)">{{evt.title}}</label>
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@
       <div class="col-md cell" *ngFor="let hour of afternoon" (click)="displayOrCreateEvents(hour)">
         <label>{{hour}}</label>
         <div *ngIf="hasEvents(hour)">
-          <label *ngFor="let event of getEvents(hour)">{{event.title}}</label>
+          <label *ngFor="let evt of getEvents(hour)">{{evt.title}}</label>
         </div>
       </div>
     </div>

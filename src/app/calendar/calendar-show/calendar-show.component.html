@@ -4,7 +4,7 @@
     <i class="fa fa-caret-left"></i>
   </button>&nbsp; -->
   <button class="fa fa-caret-left" (click)="switchToLastMonth()" title="Switch to the last month"></button>&nbsp;
-  <h5>{{selectedDate | date:'MMMM'}}&nbsp;{{selectedDate | date:'y'}}</h5>&nbsp;
+  <h5>{{selectedDay | date:'MMMM'}}&nbsp;{{selectedDay | date:'y'}}</h5>&nbsp;
   <button class="fa fa-caret-right" (click)="switchToNextMonth()" title="Switch to the next month"></button>&nbsp;
   <button class="fa fa-bullseye" (click)="switchToCurrentMonth()" title="Switch to current month"></button>
   <!-- <button>

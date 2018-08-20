@@ -5,6 +5,7 @@ textarea {
 
 h5 {
   margin: 15px;
+  display: inline;
 }
 
 div {
@@ -23,4 +24,9 @@ button {
 
 button.submit {
   float: right;
+}
+
+span.duration > button {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
 }

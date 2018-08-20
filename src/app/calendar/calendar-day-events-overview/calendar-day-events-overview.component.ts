@@ -1,6 +1,7 @@
 import { Band } from './../../bands/band';
 import { CalendarEvent } from './../calendar-event';
 import { Component, OnInit, Input } from '@angular/core';
+import { BandService } from '../../core/band.service';
 
 @Component({
   selector: 'wpw-calendar-day-events-overview',
@@ -21,9 +22,8 @@ export class CalendarDayEventsOverviewComponent implements OnInit
   public selectedHour : Date;
   public events = new Array<CalendarEvent>();
   public eventsToDisplay = false;
-  public eventsToCreate = false;
 
-  constructor()
+  constructor(private bandService: BandService)
   {
   }
 
@@ -58,12 +58,59 @@ export class CalendarDayEventsOverviewComponent implements OnInit
     {
       this.events = this.band.getEventsAt(this.selectedHour);
       this.eventsToDisplay = true;
-      this.eventsToCreate = false;
     }
     else
     {
-      this.eventsToCreate = true;
       this.eventsToDisplay = false;
     }
+  }
+
+  allowDropEvent(event)
+  {
+    event.preventDefault();
+
+    var srcHour = event.dataTransfer.getData("text");
+    var targetHour = event.target.dataset.hour;
+    var hourEvents = this.getEvents(srcHour);
+    var hourDiff = targetHour - srcHour;
+    console.log(hourDiff);
+
+    hourEvents.forEach(hourEvent => {
+      if (hourDiff > 0)
+      {
+        let startDate = new Date(hourEvent.end + 3600000);
+        if (hourEvent.isTakingPlaceAt(startDate))
+          event.stopPropagation();
+      }
+    });
+  }
+
+  onDropEvent(event)
+  {
+    event.preventDefault();
+    var srcHour = event.dataTransfer.getData("text");
+    var targetHour = event.target.dataset.hour;
+    var hourEvents = this.getEvents(srcHour);
+    var hourDiff = targetHour - srcHour;
+
+    this.band.events.forEach(eventInfo => {
+      let hourEvent = hourEvents.find(e => e.id === eventInfo.id);
+      if (hourEvent != undefined)
+      {
+        if (hourDiff > 0)
+          eventInfo.end += hourDiff * 3600000;
+        else if (hourDiff < 0)
+          eventInfo.start -= hourDiff * 3600000;
+      }
+    });
+
+    this.bandService.update(this.band).subscribe((band) => {
+    });
+  }
+
+  dragEvent(event)
+  {
+    let data = event.target.dataset.hour;
+    event.dataTransfer.setData("text", data);
   }
 }
