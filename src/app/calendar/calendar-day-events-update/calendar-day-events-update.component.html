@@ -4,10 +4,10 @@
   <span class="duration">(
     <label>Start :</label>
     <button class="fa fa-bullseye" (click)="activateStartMode()"></button>&nbsp;
-    <label></label>
+    <label>{{startTime | date:'hh:mm a'}}</label>&nbsp;|&nbsp;&nbsp;
     <label>End :</label>
     <button class="fa fa-bullseye" (click)="activateEndMode()"></button>
-    <label></label>)
+    <label>{{endTime | date:'hh:mm a'}}</label>)
   </span>
 
   <form #form="ngForm" (submit)="createEvent()">

@@ -1,6 +1,6 @@
 import { Band } from './../../bands/band';
 import { CalendarEvent } from './../calendar-event';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { BandService } from '../../core/band.service';
 
 @Component({
@@ -23,6 +23,9 @@ export class CalendarDayEventsOverviewComponent implements OnInit
   public events = new Array<CalendarEvent>();
   public eventsToDisplay = false;
   public startModeActivated = false;
+  public endModeActivated = false;
+  public startTime : Date;
+  public endTime : Date;
 
   constructor(private bandService: BandService)
   {
@@ -55,19 +58,33 @@ export class CalendarDayEventsOverviewComponent implements OnInit
   {
     this.selectedHour = new Date(this.selectedDay.getFullYear(), this.selectedDay.getMonth(), this.selectedDay.getDate(), hour);
 
-    if (this.hasEvents(hour))
+    if (this.startModeActivated)
     {
-      this.events = this.band.getEventsAt(this.selectedHour);
-      this.eventsToDisplay = true;
+      this.startModeActivated = false;
+      this.startTime = this.selectedHour;
+    }
+    else if (this.endModeActivated)
+    {
+      this.endModeActivated = false;
+      this.endTime = this.selectedHour;
     }
     else
     {
-      this.eventsToDisplay = false;
+      if (this.hasEvents(hour))
+      {
+        this.events = this.band.getEventsAt(this.selectedHour);
+        this.eventsToDisplay = true;
+      }
     }
   }
 
-  activateStartMode()
+  switchStartMode()
   {
-    this.startModeActivated = true
+    this.startModeActivated = !this.startModeActivated;
+  }
+
+  switchEndMode()
+  {
+    this.endModeActivated = !this.endModeActivated;
   }
 }

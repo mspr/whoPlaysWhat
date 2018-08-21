@@ -16,18 +16,21 @@ export class CalendarDayEventsUpdateComponent implements OnInit
 {
   @Input()
   public band : Band;
-
   @Input()
   public selectedHour : Date;
+  @Input()
+  public startTime : Date;
+  @Input()
+  public endTime : Date;
 
   public frequencies = CalendarEventFrequencyHelper.getFrequencyNames();
   public frequencyColors = ["rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)"];
   public newEvent = new CalendarEvent("", "", CalendarEventType.Rehearsal, 0, 0, CalendarEventFrequency.Once);
 
   @Output()
-  public startModeActivated = new EventEmitter();
-
-  public endModeActivated = new EventEmitter();
+  public startModeUpdated = new EventEmitter();
+  @Output()
+  public endModeUpdated = new EventEmitter();
 
   constructor(private bandService: BandService)
   {
@@ -64,11 +67,11 @@ export class CalendarDayEventsUpdateComponent implements OnInit
 
   activateStartMode()
   {
-    this.startModeActivated.emit();
+    this.startModeUpdated.emit();
   }
 
   activateEndMode()
   {
-    this.endModeActivated.emit();
+    this.endModeUpdated.emit();
   }
 }
