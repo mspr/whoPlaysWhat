@@ -17,6 +17,14 @@ div.row {
   margin: 20px;
 }
 
+div.startMode {
+  cursor: crosshair;
+}
+
+div.selectionMode {
+  cursor: pointer;
+}
+
 span {
   display: inline-block;
 }
@@ -29,7 +37,6 @@ div.hour {
 div.cell {
   border: solid 1px black;
   min-height: 80px;
-  cursor: pointer;
 }
 
 div.cell label {
@@ -38,4 +45,8 @@ div.cell label {
 
 label {
   user-select: none;
+}
+
+label.startMode {
+  cursor: crosshair;
 }

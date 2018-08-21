@@ -1,6 +1,6 @@
 import { Band } from './../../bands/band';
 import { CalendarEvent } from './../calendar-event';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { CalendarEventType } from '../calendar-event-type.enum';
 import { BandService } from '../../core/band.service';
 import { CalendarEventFrequency } from '../calendar-event-frequency.enum';
@@ -23,8 +23,11 @@ export class CalendarDayEventsUpdateComponent implements OnInit
   public frequencies = CalendarEventFrequencyHelper.getFrequencyNames();
   public frequencyColors = ["rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)"];
   public newEvent = new CalendarEvent("", "", CalendarEventType.Rehearsal, 0, 0, CalendarEventFrequency.Once);
-  public startModeActivated = false;
-  public endModeActivated = false;
+
+  @Output()
+  public startModeActivated = new EventEmitter();
+
+  public endModeActivated = new EventEmitter();
 
   constructor(private bandService: BandService)
   {
@@ -61,11 +64,11 @@ export class CalendarDayEventsUpdateComponent implements OnInit
 
   activateStartMode()
   {
-    this.startModeActivated = true;
+    this.startModeActivated.emit();
   }
 
   activateEndMode()
   {
-    this.endModeActivated = true;
+    this.endModeActivated.emit();
   }
 }

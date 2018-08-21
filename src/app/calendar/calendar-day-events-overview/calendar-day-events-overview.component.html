@@ -1,37 +1,41 @@
 <div class="main">
-  <h3>Events</h3>
+  <div [ngClass]="{'startMode': startModeActivated}">
+    <h3>Events</h3>
 
-  <br/>
+    <br/>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md cell" *ngFor="let hour of morning" (click)="displayOrCreateEvents(hour)">
-        <label>{{hour}}</label>
-        <div *ngIf="hasEvents(hour)">
-          <label *ngFor="let evt of getEvents(hour)">{{evt.title}}</label>
+    <div class="container-fluid">
+      <div class="row">
+        <div [ngClass]="{'col-md cell': true, 'startMode': startModeActivated, 'selectionMode': !startModeActivated}"
+          *ngFor="let hour of morning" (click)="displayOrCreateEvents(hour)">
+          <label>{{hour}}</label>
+          <div *ngIf="hasEvents(hour)">
+            <label *ngFor="let evt of getEvents(hour)">{{evt.title}}</label>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <br/>
+    <br/>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md cell" *ngFor="let hour of afternoon" (click)="displayOrCreateEvents(hour)">
-        <label>{{hour}}</label>
-        <div *ngIf="hasEvents(hour)">
-          <label *ngFor="let evt of getEvents(hour)">{{evt.title}}</label>
+    <div class="container-fluid">
+      <div class="row">
+        <div [ngClass]="{'col-md cell': true, 'startMode': startModeActivated, 'selectionMode': !startModeActivated}"
+          *ngFor="let hour of afternoon" (click)="displayOrCreateEvents(hour)">
+          <label>{{hour}}</label>
+          <div *ngIf="hasEvents(hour)">
+            <label *ngFor="let evt of getEvents(hour)">{{evt.title}}</label>
+          </div>
         </div>
       </div>
     </div>
+
+    <br/>
+
+    <wpw-calendar-day-events-show *ngIf="eventsToDisplay" [events]="events"></wpw-calendar-day-events-show>
+
+    <br/>
+
+    <wpw-calendar-day-events-update [band]="band" [selectedHour]="selectedHour" (startModeActivated)="activateStartMode()"></wpw-calendar-day-events-update>
   </div>
-
-  <br/>
-
-  <wpw-calendar-day-events-show *ngIf="eventsToDisplay" [events]="events"></wpw-calendar-day-events-show>
-
-  <br/>
-
-  <wpw-calendar-day-events-update [band]="band" [selectedHour]="selectedHour"></wpw-calendar-day-events-update>
 </div>
