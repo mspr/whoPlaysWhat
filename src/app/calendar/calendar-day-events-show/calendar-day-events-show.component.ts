@@ -1,5 +1,7 @@
+import { Band } from './../../bands/band';
 import { Component, OnInit, Input } from '@angular/core';
 import { CalendarEvent } from '../calendar-event';
+import { CalendarService } from '../../core/calendar.service';
 
 @Component({
   selector: 'wpw-calendar-day-events-show',
@@ -10,13 +12,22 @@ import { CalendarEvent } from '../calendar-event';
 export class CalendarDayEventsShowComponent implements OnInit
 {
   @Input()
-  public events : Array<CalendarEvent>;
+  public band : Band;
 
-  constructor()
+  @Input()
+  public selectedHour : Date;
+
+  constructor(private calendarService : CalendarService)
   {
   }
 
   ngOnInit()
   {
+  }
+
+  removeEvent(eventId : number)
+  {
+    this.calendarService.removeEvent(this.band, eventId).subscribe((band) => {
+    });
   }
 }

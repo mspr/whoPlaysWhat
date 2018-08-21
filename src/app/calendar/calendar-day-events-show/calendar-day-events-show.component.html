@@ -1,5 +1,8 @@
 <h5>Events :</h5>
 
-<div *ngFor="let event of events">
-  {{event.title}}
+<div *ngFor="let event of band?.getEventsAt(selectedHour)">
+  <label>{{event.title}}</label>&nbsp;
+  <button (click)="removeEvent(event.id)" class="fa fa-times"></button>
+  <br/>
+  <textarea rows="4" name="description" readonly>{{event.description}}</textarea>
 </div>

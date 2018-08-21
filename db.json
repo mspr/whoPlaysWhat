@@ -379,16 +379,7 @@
         "Improve the accuracy at 120 bpm",
         "Buy a new jack cable"
       ],
-      "events": [
-        {
-          "title": "Off",
-          "description": "Je suis off",
-          "type": 2,
-          "start": 1534518000000,
-          "end": 1534539600000,
-          "frequency": 1
-        }
-      ]
+      "events": []
     },
     {
       "id": 2,

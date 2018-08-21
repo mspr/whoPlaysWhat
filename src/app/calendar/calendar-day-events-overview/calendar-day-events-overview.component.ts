@@ -20,8 +20,6 @@ export class CalendarDayEventsOverviewComponent implements OnInit
   public morning = Array.from({length: 12}, (v, k) => k);
   public afternoon = Array.from({length: 12}, (v, k) => k + 12);
   public selectedHour : Date;
-  public events = new Array<CalendarEvent>();
-  public eventsToDisplay = false;
   public startModeActivated = false;
   public endModeActivated = false;
   public startTime : Date;
@@ -70,11 +68,6 @@ export class CalendarDayEventsOverviewComponent implements OnInit
     }
     else
     {
-      if (this.hasEvents(hour))
-      {
-        this.events = this.band.getEventsAt(this.selectedHour);
-        this.eventsToDisplay = true;
-      }
     }
   }
 

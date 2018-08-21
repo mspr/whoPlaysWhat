@@ -30,11 +30,7 @@
       </div>
     </div>
 
-    <br/>
-
-    <wpw-calendar-day-events-show *ngIf="eventsToDisplay" [events]="events"></wpw-calendar-day-events-show>
-
-    <br/>
+    <wpw-calendar-day-events-show [band]="band" [selectedHour]="selectedHour" *ngIf="band?.hasEventsAt(selectedHour)"></wpw-calendar-day-events-show>
 
     <wpw-calendar-day-events-update [band]="band" [selectedHour]="selectedHour"
       [startTime]="startTime" [endTime]="endTime" (startModeUpdated)="switchStartMode()" (endModeUpdated)="switchEndMode()">
