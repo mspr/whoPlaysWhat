@@ -34,8 +34,8 @@ export class CalendarShowComponent implements OnInit
     if (day == undefined)
       return false;
 
-    var date = new Date(this.selectedDay.getFullYear(), this.selectedDay.getMonth(), day);
-    var currentDate = new Date(this.selectedDay.getFullYear(), this.selectedDay.getMonth(), this.selectedDay.getDate(), 0);
+    var date = new Date(this._currentDay.getFullYear(), this._currentDay.getMonth(), day);
+    var currentDate = new Date(this._currentDay.getFullYear(), this._currentDay.getMonth(), this._currentDay.getDate(), 0);
 
     return currentDate.getTime() === date.getTime();
   }
