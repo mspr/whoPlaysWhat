@@ -28,7 +28,9 @@
             (click)="selectDate(day)">
           <label>{{day}}</label>
           <div *ngIf="hasDayEvents(day)">
-            <label *ngFor="let event of events(day)">{{event.title}}</label>
+            <div *ngFor="let event of events(day)">
+              <label>{{event.title}}</label><br/>
+            </div>
           </div>
         </td>
       </tr>

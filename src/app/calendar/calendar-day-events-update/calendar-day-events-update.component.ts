@@ -62,6 +62,7 @@ export class CalendarDayEventsUpdateComponent implements OnInit
 
     this.band.events.push(this.newEvent);
     this.bandService.update(this.band).subscribe((band) => {
+      this.newEvent = new CalendarEvent("", "", CalendarEventType.Rehearsal, 0, 0, CalendarEventFrequency.Once);
     });
   }
 

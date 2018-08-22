@@ -10,7 +10,9 @@
           *ngFor="let hour of morning" (click)="displayOrCreateEvents(hour)">
           <label>{{hour}}</label>
           <div *ngIf="hasEvents(hour)">
-            <label *ngFor="let evt of getEvents(hour)">{{evt.title}}</label>
+            <div *ngFor="let event of getEvents(hour)">
+              <label>{{event.title}}</label><br/>
+            </div>
           </div>
         </div>
       </div>
@@ -24,13 +26,15 @@
           *ngFor="let hour of afternoon" (click)="displayOrCreateEvents(hour)">
           <label>{{hour}}</label>
           <div *ngIf="hasEvents(hour)">
-            <label *ngFor="let evt of getEvents(hour)">{{evt.title}}</label>
+            <div *ngFor="let event of getEvents(hour)">
+              <label>{{event.title}}</label><br/>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <wpw-calendar-day-events-show [band]="band" [selectedHour]="selectedHour" *ngIf="band?.hasEventsAt(selectedHour)"></wpw-calendar-day-events-show>
+    <wpw-calendar-day-events-show [band]="band" [selectedHour]="selectedHour" *ngIf="selectedHour && band?.hasEventsAt(selectedHour)"></wpw-calendar-day-events-show>
 
     <wpw-calendar-day-events-update [band]="band" [selectedHour]="selectedHour"
       [startTime]="startTime" [endTime]="endTime" (startModeUpdated)="switchStartMode()" (endModeUpdated)="switchEndMode()">

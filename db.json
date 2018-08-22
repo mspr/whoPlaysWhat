@@ -379,7 +379,32 @@
         "Improve the accuracy at 120 bpm",
         "Buy a new jack cable"
       ],
-      "events": []
+      "events": [
+        {
+          "title": "lkljkmmlmlm",
+          "description": "mlmlkmlmkm",
+          "type": 2,
+          "start": 1533906000000,
+          "end": 1533909600000,
+          "frequency": 2
+        },
+        {
+          "title": "kjkhk",
+          "description": "kkkkkkkjjjjjjjjjj",
+          "type": 2,
+          "start": 1533916800000,
+          "end": 1533920400000,
+          "frequency": 0
+        },
+        {
+          "title": "lllll",
+          "description": "mmmmmmmmm",
+          "type": 2,
+          "start": 1533916800000,
+          "end": 1533920400000,
+          "frequency": 2
+        }
+      ]
     },
     {
       "id": 2,
