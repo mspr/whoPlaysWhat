@@ -17,8 +17,6 @@ export class CalendarDayEventsUpdateComponent implements OnInit
   @Input()
   public band : Band;
   @Input()
-  public selectedHour : Date;
-  @Input()
   public startTime : Date;
   @Input()
   public endTime : Date;
@@ -57,8 +55,8 @@ export class CalendarDayEventsUpdateComponent implements OnInit
 
   createEvent()
   {
-    this.newEvent.start = this.selectedHour.getTime();
-    this.newEvent.end = new Date(this.selectedHour.getFullYear(), this.selectedHour.getMonth(), this.selectedHour.getDate(), this.selectedHour.getHours() + 1).getTime();
+    this.newEvent.start = this.startTime.getTime();
+    this.newEvent.end = this.endTime.getTime();
 
     this.band.events.push(this.newEvent);
     this.bandService.update(this.band).subscribe((band) => {

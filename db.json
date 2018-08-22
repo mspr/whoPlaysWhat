@@ -403,6 +403,14 @@
           "start": 1533916800000,
           "end": 1533920400000,
           "frequency": 2
+        },
+        {
+          "title": "coffee",
+          "description": "Let's take a coffee together.",
+          "type": 2,
+          "start": 1533866400000,
+          "end": 1533877200000,
+          "frequency": 0
         }
       ]
     },
