@@ -1,0 +1,35 @@
+div {
+  position: relative;
+}
+
+img {
+  max-height: 300px;
+  width: 100%;
+  opacity: 0.5;
+}
+
+h4 {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+}
+
+p {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+}
+
+button.previous {
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  z-index: 1;
+}
+
+button.next {
+  position: absolute;
+  top: 50%;
+  right: 2%;
+  z-index: 1;
+}
