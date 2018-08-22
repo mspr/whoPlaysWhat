@@ -34,10 +34,17 @@
       </div>
     </div>
 
-    <wpw-calendar-day-events-show [band]="band" [selectedHour]="selectedHour" *ngIf="selectedHour && band?.hasEventsAt(selectedHour)"></wpw-calendar-day-events-show>
-
-    <wpw-calendar-day-events-update [band]="band" [selectedHour]="selectedHour"
-      [startTime]="startTime" [endTime]="endTime" (startModeUpdated)="switchStartMode()" (endModeUpdated)="switchEndMode()">
-    </wpw-calendar-day-events-update>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md" *ngIf="selectedHour && band?.hasEventsAt(selectedHour)">
+          <wpw-calendar-day-events-show [band]="band" [selectedHour]="selectedHour"></wpw-calendar-day-events-show>
+        </div>
+        <div class="col-md">
+          <wpw-calendar-day-events-update [band]="band" [selectedHour]="selectedHour"
+            [startTime]="startTime" [endTime]="endTime" (startModeUpdated)="switchStartMode()" (endModeUpdated)="switchEndMode()">
+          </wpw-calendar-day-events-update>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
