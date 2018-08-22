@@ -11,24 +11,33 @@
   </span>
 
   <form #form="ngForm" (submit)="createEvent()">
-    <div>
-      <label for="title">Title :&nbsp;</label>
-      <input type="text" name="title" [(ngModel)]="newEvent.title" required #name="ngModel" />
-      <br/>
-      <br/>
-      <label for="description">Description :</label>
-      <br/>
-      <textarea rows="4" name="description" [(ngModel)]="newEvent.description" required #name="ngModel"></textarea>
-      <br/>
-      <label>Frequency :</label>
-      <div class="frequency" (mouseleave)="resetFrequencyColors()">
-        <button type="button" *ngFor="let frequency of frequencies; let idx = index;" (mouseenter)="updateFrequencyColors(idx)" (click)="updateFrequency(idx)"
-          [ngStyle]="{'background-color': frequencyColors[idx]}">
-          {{frequency}}
-        </button>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md">
+          <label for="title">Title :&nbsp;</label>
+          <input type="text" name="title" [(ngModel)]="newEvent.title" required #name="ngModel" />
+          <br/>
+          <br/>
+          <img src="assets/images/events/unknown.png">
+        </div>
+        <div class="col-md">
+          <label for="description">Description :</label>
+          <br/>
+          <textarea rows="4" name="description" [(ngModel)]="newEvent.description" required #name="ngModel"></textarea>
+        </div>
       </div>
-      <br/>
-      <button class="submit" type="submit">Create</button>
+      <div class="row">
+        <div class="col-md">
+          <label>Frequency :</label>
+          <div class="frequency" (mouseleave)="resetFrequencyColors()">
+            <button type="button" *ngFor="let frequency of frequencies; let idx = index;" (mouseenter)="updateFrequencyColors(idx)" (click)="updateFrequency(idx)"
+              [ngStyle]="{'background-color': frequencyColors[idx]}">
+              {{frequency}}
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
+    <button class="submit" type="submit">Create</button>
   </form>
 </div>
