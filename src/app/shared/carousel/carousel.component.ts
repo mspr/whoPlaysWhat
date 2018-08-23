@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'wpw-carousel',
@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class CarouselComponent implements OnInit
 {
+  @Input()
   public items = [];
   public currentItemIdx = 0;
 
@@ -17,9 +18,6 @@ export class CarouselComponent implements OnInit
 
   ngOnInit()
   {
-    this.items.push({title: "title1", description: "description1", image:"assets/images/the_beatles.jpg"});
-    this.items.push({title: "title2", description: "description2", image:"assets/images/the_creedence.jpg"});
-    this.items.push({title: "title3", description: "description3", image:"assets/images/dire_straits.jpg"});
   }
 
   previous()
@@ -36,5 +34,14 @@ export class CarouselComponent implements OnInit
       this.currentItemIdx++;
     else
       this.currentItemIdx = 0;
+  }
+
+  getImageOrDefault()
+  {
+    var image = this.items[this.currentItemIdx].image;
+    if (image === undefined)
+      image = "assets/images/events/unknown.png";
+
+    return image;
   }
 }

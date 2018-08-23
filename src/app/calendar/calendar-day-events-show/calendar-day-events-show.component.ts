@@ -30,4 +30,17 @@ export class CalendarDayEventsShowComponent implements OnInit
     this.calendarService.removeEvent(this.band, eventId).subscribe((band) => {
     });
   }
+
+  getEvents()
+  {
+    var eventItems = [];
+
+    if (this.band === undefined)
+      return;
+
+    var events = this.band.getEventsAt(this.selectedHour);
+    events.forEach(event => eventItems.push({title: event.title, description: event.description, image: event.picture}));
+
+    return eventItems;
+  }
 }
