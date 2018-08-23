@@ -33,3 +33,14 @@ button.next {
   right: 2%;
   z-index: 1;
 }
+
+span.fa-circle.empty {
+  -webkit-text-fill-color: rgba(0,0,0,0);
+  -webkit-text-stroke-width: 1px;
+}
+
+div.slide-indicator {
+  position: absolute;
+  bottom: 10%;
+  left: 45%;
+}

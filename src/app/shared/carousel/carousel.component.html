@@ -4,4 +4,7 @@
   <button class="fa fa-chevron-right next" (click)="next()"></button>
   <h4>{{items[currentItemIdx].title}}</h4>
   <p>{{items[currentItemIdx].description}}</p>
+  <div class="slide-indicator">
+    <span *ngFor="let item of items; let i = index;" [ngClass]="i ===currentItemIdx ? 'fa fa-circle' : 'fa fa-circle empty'"></span>
+  </div>
 </div>
