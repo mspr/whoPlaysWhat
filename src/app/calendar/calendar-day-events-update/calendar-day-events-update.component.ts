@@ -5,6 +5,7 @@ import { CalendarEventType } from '../calendar-event-type.enum';
 import { BandService } from '../../core/band.service';
 import { CalendarEventFrequency } from '../calendar-event-frequency.enum';
 import { CalendarEventFrequencyHelper } from '../calendar-event-frequency-helper';
+import { CalendarEventTypeHelper } from '../calendar-event-type-helper';
 
 @Component({
   selector: 'wpw-calendar-day-events-update',
@@ -29,6 +30,8 @@ export class CalendarDayEventsUpdateComponent implements OnInit
   public startModeUpdated = new EventEmitter();
   @Output()
   public endModeUpdated = new EventEmitter();
+
+  public eventTypeImage = CalendarEventTypeHelper.getDefaultImage();
 
   constructor(private bandService: BandService)
   {
@@ -72,5 +75,11 @@ export class CalendarDayEventsUpdateComponent implements OnInit
   activateEndMode()
   {
     this.endModeUpdated.emit();
+  }
+
+  searchTypeInTitle(event)
+  {
+    var title = event.srcElement.value;
+    this.eventTypeImage = CalendarEventTypeHelper.getImageFromTitle(title);
   }
 }

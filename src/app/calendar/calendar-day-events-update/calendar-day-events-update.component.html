@@ -15,10 +15,10 @@
       <div class="row">
         <div class="col-md">
           <label for="title">Title :&nbsp;</label>
-          <input type="text" name="title" [(ngModel)]="newEvent.title" required #name="ngModel" />
+          <input type="text" name="title" [(ngModel)]="newEvent.title" required #name="ngModel" (keyup)="searchTypeInTitle($event)" />
           <br/>
           <br/>
-          <img src="assets/images/events/unknown.png">
+          <img [src]="eventTypeImage">
         </div>
         <div class="col-md">
           <label for="description">Description :</label>
