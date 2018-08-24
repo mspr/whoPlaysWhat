@@ -39,6 +39,10 @@ div.cell {
   min-height: 80px;
 }
 
+div.cell:hover {
+  background-color: rgba(243, 214, 191, 0.8);
+}
+
 div.cell label {
   cursor: pointer;
 }
