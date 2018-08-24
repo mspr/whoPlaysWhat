@@ -7,4 +7,5 @@
   <div class="slide-indicator">
     <span *ngFor="let item of items; let i = index;" [ngClass]="i ===currentItemIdx ? 'fa fa-circle' : 'fa fa-circle empty'"></span>
   </div>
+  <button class="fa fa-remove" (click)="remove()"></button>
 </div>

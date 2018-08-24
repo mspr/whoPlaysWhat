@@ -24,7 +24,12 @@ export class CalendarEvent
 
   static fromInfo(info)
   {
-    return new CalendarEvent(info.title, info.description, info.type, info.start, info.end, info.frequency);
+    var event = new CalendarEvent(info.title, info.description, info.type, info.start, info.end, info.frequency);
+
+    event.id = info.id;
+    event.picture = info.picture;
+
+    return event;
   }
 
   public isTakingPlaceOnDay(day : Date)

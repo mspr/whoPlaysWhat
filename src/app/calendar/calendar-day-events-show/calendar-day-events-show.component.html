@@ -2,6 +2,6 @@
   <h5>Events :</h5>
 
   <div class="carousel">
-      <wpw-carousel [items]="getEvents()"></wpw-carousel>
+      <wpw-carousel [items]="getEvents()" (removed)="removeEvent($event)"></wpw-carousel>
   </div>
 </div>

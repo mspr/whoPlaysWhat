@@ -39,7 +39,7 @@ export class CalendarDayEventsShowComponent implements OnInit
       return;
 
     var events = this.band.getEventsAt(this.selectedHour);
-    events.forEach(event => eventItems.push({title: event.title, description: event.description, image: event.picture}));
+    events.forEach(event => eventItems.push({title: event.title, description: event.description, image: event.picture, id: event.id}));
 
     return eventItems;
   }

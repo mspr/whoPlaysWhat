@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'wpw-carousel',
@@ -11,6 +11,9 @@ export class CarouselComponent implements OnInit
   @Input()
   public items = [];
   public currentItemIdx = 0;
+
+  @Output()
+  public removed = new EventEmitter<number>();
 
   constructor()
   {
@@ -43,5 +46,11 @@ export class CarouselComponent implements OnInit
       image = "assets/images/events/unknown.png";
 
     return image;
+  }
+
+  remove()
+  {
+    this.removed.emit(this.items[this.currentItemIdx].id);
+    this.currentItemIdx = 0;
   }
 }
