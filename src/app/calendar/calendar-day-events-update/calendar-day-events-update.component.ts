@@ -31,8 +31,6 @@ export class CalendarDayEventsUpdateComponent implements OnInit
   @Output()
   public endModeUpdated = new EventEmitter();
 
-  public eventTypeImage = CalendarEventTypeHelper.getDefaultImage();
-
   constructor(private bandService: BandService)
   {
   }
@@ -60,7 +58,6 @@ export class CalendarDayEventsUpdateComponent implements OnInit
   {
     this.newEvent.start = this.startTime.getTime();
     this.newEvent.end = this.endTime.getTime();
-    this.newEvent.picture = this.eventTypeImage;
 
     this.band.events.push(this.newEvent);
     this.bandService.update(this.band).subscribe((band) => {
@@ -81,6 +78,7 @@ export class CalendarDayEventsUpdateComponent implements OnInit
   searchTypeInTitle(event)
   {
     var title = event.srcElement.value;
-    this.eventTypeImage = CalendarEventTypeHelper.getImageFromTitle(title);
+    this.newEvent.type = CalendarEventTypeHelper.getTypeFromTitle(title);
+    this.newEvent.picture = CalendarEventTypeHelper.getImageFromType(this.newEvent.type);
   }
 }

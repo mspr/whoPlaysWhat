@@ -382,20 +382,21 @@
       "events": [
         {
           "title": "holidays",
-          "description": "test",
-          "type": 2,
-          "start": 1535133600000,
-          "end": 1535140800000,
-          "frequency": 0
-        },
-        {
-          "title": "holidays",
           "description": "fghgfhfgh",
           "type": 2,
           "start": 1535112000000,
           "end": 1535122800000,
           "frequency": 1,
           "picture": "assets/images/events/holidays.jpg"
+        },
+        {
+          "title": "recording",
+          "description": "reording yougou",
+          "type": 2,
+          "start": 1535104800000,
+          "end": 1535126400000,
+          "frequency": 0,
+          "picture": "assets/images/events/recording.jpg"
         }
       ]
     },

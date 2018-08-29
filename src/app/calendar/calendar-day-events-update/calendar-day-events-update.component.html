@@ -18,7 +18,7 @@
           <input type="text" name="title" [(ngModel)]="newEvent.title" required #name="ngModel" (keyup)="searchTypeInTitle($event)" />
           <br/>
           <br/>
-          <img [src]="eventTypeImage">
+          <img [src]="newEvent.picture">
         </div>
         <div class="col-md">
           <label for="description">Description :</label>

@@ -32,26 +32,35 @@ export class CalendarEventTypeHelper
     return Array.from(this._names.values());
   }
 
-  static getImage(i : number)
+  static getImageAt(i : number)
   {
     return "assets/images/events/" + this._images.get(i);
   }
 
-  static getImageFromTitle(title : string)
+  static getImageFromType(value : CalendarEventType)
   {
-    var image = this.getDefaultImage();
+    for (let i=0; i < this._images.size; ++i)
+    {
+      let type = this._names.keys[i];
+      if (type === value)
+      {
+        return "assets/images/events/" + this._images.get(i);
+      }
+    }
 
+    return this.getDefaultImage();
+  }
+
+  static getTypeFromTitle(title : string)
+  {
     for (let i=0; i < this._names.size; ++i)
     {
       let name = this._names.get(i).toLowerCase();
       if (title.toLowerCase().indexOf(name) >= 0)
-      {
-        image = "assets/images/events/" + this._images.get(i);
-        break;
-      }
+        return this._images.keys[i];
     }
 
-    return image;
+    return CalendarEventType.Unknown;
   }
 
   static getDefaultImage()

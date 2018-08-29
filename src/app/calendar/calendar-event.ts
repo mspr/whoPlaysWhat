@@ -1,5 +1,6 @@
 import { CalendarEventType } from './calendar-event-type.enum';
 import { CalendarEventFrequency } from './calendar-event-frequency.enum';
+import { CalendarEventTypeHelper } from './calendar-event-type-helper';
 
 export class CalendarEvent
 {
@@ -20,6 +21,7 @@ export class CalendarEvent
     this.start = start;
     this.end = end;
     this.frequency = frequency;
+    this.picture = CalendarEventTypeHelper.getDefaultImage();
   }
 
   static fromInfo(info)
