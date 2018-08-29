@@ -60,6 +60,7 @@ export class CalendarDayEventsUpdateComponent implements OnInit
   {
     this.newEvent.start = this.startTime.getTime();
     this.newEvent.end = this.endTime.getTime();
+    this.newEvent.picture = this.eventTypeImage;
 
     this.band.events.push(this.newEvent);
     this.bandService.update(this.band).subscribe((band) => {
