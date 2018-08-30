@@ -32,11 +32,14 @@ export class Band
   {
     var events = new Array<CalendarEvent>();
 
-    this.events.forEach(eventInfo => {
-      let event = CalendarEvent.fromInfo(eventInfo);
-      if (event.isTakingPlaceOnDay(day))
-        events.push(event);
-    });
+    if (this.events != undefined)
+    {
+      this.events.forEach(eventInfo => {
+        let event = CalendarEvent.fromInfo(eventInfo);
+        if (event.isTakingPlaceOnDay(day))
+          events.push(event);
+      });
+    }
 
     return events;
   }
@@ -45,11 +48,14 @@ export class Band
   {
     var events = new Array<CalendarEvent>();
 
-    this.events.forEach(eventInfo => {
-      let event = CalendarEvent.fromInfo(eventInfo);
-      if (event.isTakingPlaceAt(hour))
-        events.push(event);
-    });
+    if (this.events != undefined)
+    {
+      this.events.forEach(eventInfo => {
+        let event = CalendarEvent.fromInfo(eventInfo);
+        if (event.isTakingPlaceAt(hour))
+          events.push(event);
+      });
+    }
 
     return events;
   }

@@ -22,25 +22,28 @@ export class IncomingSongService
 
   getTopSongs(band: Band, topNumber : number)
   {
-    var incomingSongs = band.incomingSongs;
     var topSongs = new Array<IncomingSong>();
 
-    while (topSongs.length < topNumber)
+    var incomingSongs = band.incomingSongs;
+    if (incomingSongs != undefined)
     {
-      let higherScore = 0;
-      let songWithHigherScore;
+      while (topSongs.length < topNumber)
+      {
+        let higherScore = 0;
+        let songWithHigherScore;
 
-      incomingSongs.forEach(songInfo => {
-        let song = IncomingSong.fromInfo(songInfo);
-        let score = song.score();
-        let topSongFound = topSongs.find(s => s.id === song.id);
-        if (score >= higherScore && topSongFound === undefined) {
-          higherScore = score;
-          songWithHigherScore = song;
-        }
-      });
+        incomingSongs.forEach(songInfo => {
+          let song = IncomingSong.fromInfo(songInfo);
+          let score = song.score();
+          let topSongFound = topSongs.find(s => s.id === song.id);
+          if (score >= higherScore && topSongFound === undefined) {
+            higherScore = score;
+            songWithHigherScore = song;
+          }
+        });
 
-      topSongs.push(songWithHigherScore);
+        topSongs.push(songWithHigherScore);
+      }
     }
 
     return topSongs;

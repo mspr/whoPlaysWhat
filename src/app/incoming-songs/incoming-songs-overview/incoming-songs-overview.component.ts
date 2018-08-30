@@ -25,7 +25,7 @@ export class IncomingSongsOverviewComponent implements OnInit
 
   getTopThreeSongs()
   {
-    var topSongs = this.band != undefined ? this.incomingSongService.getTopSongs(this.band, 3) : null;
+    var topSongs = this.band != undefined ? this.incomingSongService.getTopSongs(this.band, 3) : [];
     return topSongs;
   }
 }
