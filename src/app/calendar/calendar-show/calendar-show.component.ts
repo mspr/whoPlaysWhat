@@ -56,7 +56,7 @@ export class CalendarShowComponent implements OnInit
       return;
 
     var currentDate = new Date();
-    var date = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+    var date = new Date(this.selectedDay.getFullYear(), this.selectedDay.getMonth(), day);
 
     return this.band.getDayEvents(date);
   }
