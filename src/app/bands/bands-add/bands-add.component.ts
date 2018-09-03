@@ -8,14 +8,19 @@ import { Router } from '@angular/router';
   templateUrl: './bands-add.component.html',
   styleUrls: ['./bands-add.component.scss']
 })
+
 export class BandsAddComponent implements OnInit
 {
   public band = new Band();
 
   constructor(private bandService : BandService,
-    private router: Router) { }
+    private router: Router)
+  {
 
-  ngOnInit() {
+  }
+
+  ngOnInit()
+  {
   }
 
   add()
@@ -24,5 +29,12 @@ export class BandsAddComponent implements OnInit
       this.bandService.added.emit(band);
       this.router.navigate(['bands', band.id]);
     })
+  }
+
+  updateImage(event)
+  {
+    var files = event.srcElement.files;
+    if (files.length === 1)
+      this.band.picture = "./assets/images/bands/" + files[0].name;
   }
 }

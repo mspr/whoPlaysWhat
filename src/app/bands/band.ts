@@ -12,6 +12,11 @@ export class Band
   public notes = [];
   public events = [];
 
+  constructor()
+  {
+    this.picture = "./assets/images/bands/unknown.png";
+  }
+
   static fromInfo(info)
   {
     let band = new Band();

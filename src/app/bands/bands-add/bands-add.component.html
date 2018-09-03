@@ -3,6 +3,7 @@
     <label for="name">Name</label>
     <input type="text" class="form-control" name="name" [(ngModel)]="band.name" required #name="ngModel">
   </div>
-  <img src="./assets/images/bands/unknown.png" />
+  <input type="file" #imageInput class="image-input" accept=".jpg, .jpeg, .png" (change)="updateImage($event)" />
+  <img [src]="band.picture" (click)="imageInput.click()" />
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
