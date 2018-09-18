@@ -37,10 +37,26 @@ export class CalendarEvent
   public isTakingPlaceOnDay(day : Date)
   {
     var dayStart = day.getTime();
-    var dayEnd = dayStart + 86400000;
+    var dayInMs = 86400000;
+    var dayEnd = dayStart + dayInMs;
     let eventBeginsOnDay = this.start >= dayStart && this.start <= dayEnd;
     let eventEndsOnDay = this.end >= dayStart && this.end <= dayEnd;
     let eventBeginsBeforeAndEndsAfterDay = this.start < dayStart && this.end > dayEnd;
+
+    if (this.frequency === CalendarEventFrequency.OncePerWeek)
+    {
+      var weekDay = day.getDay();
+      var startDate = new Date(this.start);
+      var startWeekDay = startDate.getDay();
+      return (startWeekDay - weekDay) % 7 == 0;
+    }
+    else if (this.frequency === CalendarEventFrequency.OncePerMonth)
+    {
+    }
+    else if (this.frequency === CalendarEventFrequency.EveryDay)
+    {
+      return true;
+    }
 
     return eventBeginsOnDay || eventEndsOnDay || eventBeginsBeforeAndEndsAfterDay;
   }
@@ -48,6 +64,19 @@ export class CalendarEvent
   public isTakingPlaceAt(hour : Date)
   {
     var hourInMs = hour.getTime();
+
+    if (!this.isTakingPlaceOnDay(hour))
+      return false;
+
+    if (this.frequency === CalendarEventFrequency.OncePerWeek)
+    {
+      var startDate = new Date(this.start);
+      var start = new Date(hour.getFullYear(), hour.getMonth(), hour.getDate(), startDate.getHours());
+      var endDate = new Date(this.end);
+      var end = new Date(hour.getFullYear(), hour.getMonth(), hour.getDate(), endDate.getHours());
+      return start.getTime() <= hourInMs && end.getTime() > hourInMs;
+    }
+
     return this.start <= hourInMs && this.end > hourInMs;
   }
 }

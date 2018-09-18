@@ -63,6 +63,9 @@ export class CalendarShowComponent implements OnInit
 
   selectDate(day: number)
   {
+    if (day == undefined)
+      return;
+
     this.selectedDay = new Date(this.selectedDay.getFullYear(), this.selectedDay.getMonth(), day);
     this.daySelected.emit(this.selectedDay);
   }
