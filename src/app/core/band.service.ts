@@ -9,7 +9,9 @@ export class BandService
   public removed = new EventEmitter();
   public added = new EventEmitter<Band>();
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient)
+  {
+  }
 
   getAll()
   {
