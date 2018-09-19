@@ -68,15 +68,10 @@ export class CalendarEvent
     if (!this.isTakingPlaceOnDay(hour))
       return false;
 
-    if (this.frequency === CalendarEventFrequency.OncePerWeek)
-    {
-      var startDate = new Date(this.start);
-      var start = new Date(hour.getFullYear(), hour.getMonth(), hour.getDate(), startDate.getHours());
-      var endDate = new Date(this.end);
-      var end = new Date(hour.getFullYear(), hour.getMonth(), hour.getDate(), endDate.getHours());
-      return start.getTime() <= hourInMs && end.getTime() > hourInMs;
-    }
-
-    return this.start <= hourInMs && this.end > hourInMs;
+    var startDate = new Date(this.start);
+    var start = new Date(hour.getFullYear(), hour.getMonth(), hour.getDate(), startDate.getHours());
+    var endDate = new Date(this.end);
+    var end = new Date(hour.getFullYear(), hour.getMonth(), hour.getDate(), endDate.getHours());
+    return start.getTime() <= hourInMs && end.getTime() > hourInMs;
   }
 }
