@@ -9,6 +9,9 @@ let bands = ["The Beatles", "Dire Straits"];
 //Connect to mongoDB server
 mongoose.connect('mongodb://localhost/whoPlaysWhat');
 mongoose.set('debug', true);
+//Require the models
+require('./models/Task');
+require('./models/Todo');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
