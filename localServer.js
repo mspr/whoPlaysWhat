@@ -1,9 +1,25 @@
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
 var express = require('express')
 var app = express()
 
 let bands = ["The Beatles", "Dire Straits"];
 
+//Connect to mongoDB server
+mongoose.connect('mongodb://localhost/whoPlaysWhat');
+mongoose.set('debug', true);
+
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
+
+//Enable CORS
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  next();
+});
 
 app.get('/', function (req, res) {
   console.log('Hello');
