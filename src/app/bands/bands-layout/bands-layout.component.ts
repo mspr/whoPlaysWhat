@@ -1,3 +1,4 @@
+import { TodoService } from './../../core/todo.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,11 +6,22 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './bands-layout.component.html',
   styleUrls: ['./bands-layout.component.scss']
 })
+
 export class BandsLayoutComponent implements OnInit
 {
-  constructor() { }
+  newTodo: any;
 
-  ngOnInit() {
+  constructor(private todoService : TodoService)
+  {
   }
 
+  ngOnInit()
+  {
+    this.newTodo = { title: 'play guitar', tasks: [] }
+
+    this.todoService.createTodo(this.newTodo).subscribe((res) => {
+      console.log(res);
+      this.newTodo = {};
+    });
+  }
 }

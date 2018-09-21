@@ -1,3 +1,4 @@
+import { TodoService } from './../core/todo.service';
 import { IncomingSongsModule } from './../incoming-songs/incoming-songs.module';
 import { BandsShowComponent } from './bands-show/bands-show.component';
 import { BandsListComponent } from './bands-list/bands-list.component';
@@ -32,7 +33,8 @@ import { NotesModule } from '../notes/notes.module';
     BandsLayoutComponent
   ],
   providers: [
-    BandService
+    BandService,
+    TodoService
   ]
 })
 export class BandsModule { }
