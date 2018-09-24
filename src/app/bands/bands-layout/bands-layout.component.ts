@@ -19,9 +19,13 @@ export class BandsLayoutComponent implements OnInit
   {
     this.newTodo = { title: 'play guitar', tasks: [] }
 
-    this.todoService.createTodo(this.newTodo).subscribe((res) => {
+    // this.todoService.createTodo(this.newTodo).subscribe((res) => {
+    //   console.log(res);
+    //   this.newTodo = {};
+    // });
+
+    this.todoService.getTodos().subscribe((res) => {
       console.log(res);
-      this.newTodo = {};
     });
   }
 }
