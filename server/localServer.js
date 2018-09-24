@@ -12,9 +12,12 @@ let bands = ["The Beatles", "Dire Straits"];
 //Connect to mongoDB server
 mongoose.connect('mongodb://localhost/whoPlaysWhat');
 mongoose.set('debug', true);
+
 //Require the models
 require('./models/Task');
 require('./models/Todo');
+require('./models/Song');
+require('./models/Band');
 
 //Get our API routes
 const api = require('./api/index');

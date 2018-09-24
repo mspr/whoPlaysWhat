@@ -3,7 +3,7 @@ const Song = mongoose.model('Song');
 
 let BandSchema = new mongoose.Schema({
   name: { type: String, required: [true, "can't be blank"], index: true},
-  picture: { data: Buffer, contentType: string },
+  picture: { data: Buffer, contentType: String },
   musicians: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Musician' }],
   songs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Song' }]
 }, { timestamps: true });

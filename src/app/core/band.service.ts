@@ -23,9 +23,14 @@ export class BandService
     return this.httpClient.get<Band>(environment.baseUrl + `/bands/${id}`);
   }
 
-  add(band)
+  add_deprecated(band)
   {
     return this.httpClient.post<Band>(environment.baseUrl + '/bands', band);
+  }
+
+  add(band)
+  {
+    return this.httpClient.post<Band>(environment.api + '/band', band);
   }
 
   remove(id)
