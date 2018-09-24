@@ -13,9 +13,14 @@ export class BandService
   {
   }
 
-  getAll()
+  getAll_deprecated()
   {
     return this.httpClient.get<Band[]>(environment.baseUrl + '/bands');
+  }
+
+  getAll()
+  {
+    return this.httpClient.get<any>(environment.api + '/band');
   }
 
   getById(id)

@@ -10,12 +10,14 @@ app.use(bodyParser.urlencoded({extended:false}));
 let bands = ["The Beatles", "Dire Straits"];
 
 //Connect to mongoDB server
-mongoose.connect('mongodb://localhost/whoPlaysWhat');
+mongoose.connect('mongodb://localhost/whoPlaysWhat', { useNewUrlParser: true });
 mongoose.set('debug', true);
+mongoose.set('useCreateIndex', true);
 
 //Require the models
 require('./models/Task');
 require('./models/Todo');
+require('./models/Musician');
 require('./models/Song');
 require('./models/Band');
 

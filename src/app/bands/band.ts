@@ -11,6 +11,7 @@ export class Band
   public musicians = [];
   public notes = [];
   public events = [];
+  public pictureBuffer : Blob;
 
   constructor()
   {
@@ -29,6 +30,7 @@ export class Band
     band.notes = info.notes;
     band.events = info.events;
     band.musicians = info.musicians;
+    band.pictureBuffer = info.pictureBuffer;
 
     return band;
   }

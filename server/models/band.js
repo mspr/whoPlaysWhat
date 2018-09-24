@@ -17,6 +17,8 @@ BandSchema.methods.toDto = function () {
   return {
     id: this._id,
     name: this.name,
+    picture: this.picture.contentType,
+    pictureBuffer: this.picture.data,
     musicians: this.musicians.map((musician) => { return musician.toDto(); }),
     songs: this.songs.map((song) => { return song.toDto(); })
   }
