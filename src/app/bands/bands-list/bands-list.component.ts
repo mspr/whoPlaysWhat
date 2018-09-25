@@ -12,6 +12,7 @@ import { environment } from '../../../environments/environment';
 export class BandsListComponent implements OnInit
 {
   public bands;
+  public imagetest;
 
   constructor(private bandService: BandService) { }
 
@@ -30,6 +31,8 @@ export class BandsListComponent implements OnInit
         };
         reader.readAsDataURL(blob);
         console.log(reader.result);
+        this.imagetest = URL.createObjectURL(blob);
+
         let err = reader.error;
       });
     });

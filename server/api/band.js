@@ -13,9 +13,9 @@ router.get('/', (req, res) =>
       if (!bands)
         return res.sendStatus(404);
 
-      return res.json({
+      return res.status(200).json({
         bands: bands.map((band) => { return band.toDto(); })
-      }).statusCode(200);
+      });
     });
 });
 

@@ -27,11 +27,11 @@ router.get('/', (req, res) => {
       .then((todos) => {
           if (!todos) { return res.sendStatus(404); }
 
-          return res.json({
+          return res.status(200).json({
               todos: todos.map((todo) => {
                   return todo.toDto();
               })
-          }).statusCode(200);
+          });
       });
 });
 
