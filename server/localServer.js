@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+var chalk = require('chalk');
 
 var express = require('express')
 
@@ -33,6 +34,13 @@ mongoose.set('useCreateIndex', true);
 mongoose.set('useNewUrlParser', true);
 mongoose.connection.on('error', function (err) { console.log('Error while trying to connect with mongodb') });
 mongoose.connect('mongodb://localhost/whoPlaysWhat');
+
+process.on('SIGINT', function() {
+  mongoose.connection.close(function() {
+    console.log(chalk.bold.magenta("Mongoose default connection is disconnected due to application termination"));
+    process.exit(0)
+  });
+});
 
 // app.get('/', function (req, res) {
 //   console.log('Hello');
