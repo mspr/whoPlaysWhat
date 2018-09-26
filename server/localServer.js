@@ -7,13 +7,6 @@ var app = express()
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
-let bands = ["The Beatles", "Dire Straits"];
-
-//Connect to mongoDB server
-mongoose.connect('mongodb://localhost/whoPlaysWhat', { useNewUrlParser: true });
-mongoose.set('debug', true);
-mongoose.set('useCreateIndex', true);
-
 //Require the models
 require('./models/Task');
 require('./models/Todo');
@@ -27,12 +20,19 @@ const api = require('./api/index');
 app.use('/api', api);
 
 // //Enable CORS
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-//   next();
-// });
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  next();
+});
+
+//Connect to mongoDB server
+mongoose.set('debug', true);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useNewUrlParser', true);
+mongoose.on('error', function (err) { console.log('Error while trying to connect with mongodb') });
+mongoose.connect('mongodb://localhost/whoPlaysWhat');
 
 // app.get('/', function (req, res) {
 //   console.log('Hello');
