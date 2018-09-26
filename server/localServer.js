@@ -31,7 +31,7 @@ app.use(function(req, res, next) {
 mongoose.set('debug', true);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useNewUrlParser', true);
-mongoose.on('error', function (err) { console.log('Error while trying to connect with mongodb') });
+mongoose.connection.on('error', function (err) { console.log('Error while trying to connect with mongodb') });
 mongoose.connect('mongodb://localhost/whoPlaysWhat');
 
 // app.get('/', function (req, res) {
