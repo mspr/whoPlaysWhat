@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
       .then((todos) => {
           if (!todos) { return res.sendStatus(404); }
 
-          return res.status(200).json({
+          return res.statusCode(200).json({
               todos: todos.map((todo) => {
                   return todo.toDto();
               })

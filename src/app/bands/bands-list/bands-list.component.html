@@ -2,9 +2,9 @@
   <div class="row">
     <div class="band-item col-md-4 list-group-item list-group-item-action" *ngFor="let band of bands"
       [routerLink]="['/bands', band.id]" [title]="band.name" routerLinkActive="active"
-      [ngStyle]="{'background-image': 'url(' + 'assets/images/bands/' + band.picture + ')'}">
-      <img [src]="imagetest">
+      [ngStyle]="{'background-image': test}">
     </div>
+    <img [src]="test" />
     <div id="add" class="band-item col-md-4 list-group-item list-group-item-action">
       <button class="fa fa-plus" [routerLink]="['add']"></button>
     </div>

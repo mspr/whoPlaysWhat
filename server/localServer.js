@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 var chalk = require('chalk');
-
-var express = require('express')
+var express = require('express');
+var multer = require('multer');
+var path = require('path');
 
 var app = express()
 app.use(bodyParser.json());
@@ -42,14 +43,26 @@ process.on('SIGINT', function() {
   });
 });
 
-// app.get('/', function (req, res) {
-//   console.log('Hello');
-// });
+// app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'uploads')));
 
-// app.get('/bands', function (req, res) {
-//   console.log(bands);
-//   res.json(bands);
-// });
+var storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './uploads/');
+  },
+  filename: function(req, file, cb) {
+    var ext = path.extname(file.originalname);
+    cb(null, path.basename(file.originalname, ext) + "-" + Date.now() + ext);
+  }
+});
+
+var upload = multer({ storage: storage });
+
+app.post('/upload', upload.single('picture'), (req, res, next) =>
+{
+  console.log('file', req.file);
+  return res.json(req.file.path);
+});
 
 // app.get('/login', function (req, res) {
 //   const email = req.body.email;

@@ -1,8 +1,6 @@
 import { BandService } from './../../core/band.service';
 import { Band } from './../band';
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
-import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'wpw-bands-list',
@@ -11,30 +9,15 @@ import { environment } from '../../../environments/environment';
 })
 export class BandsListComponent implements OnInit
 {
-  public bands;
-  public imagetest;
+  public bands = new Array<Band>();
+  public test = 'uploads\\the_beatles-1538149622492.jpg';
 
   constructor(private bandService: BandService) { }
 
   ngOnInit()
   {
     this.bandService.getAll().subscribe((res) => {
-      console.log(res);
       this.bands = res.bands;
-      this.bands.forEach(band => {
-        let reader = new FileReader();
-        let buff = band.pictureBuffer;
-        var blob = new Blob( [ buff ], { type: "image/jpg" } );
-        let bufftype = buff.type;
-        reader.onloadend = () => {
-          console.log(reader.result);
-        };
-        reader.readAsDataURL(blob);
-        console.log(reader.result);
-        this.imagetest = URL.createObjectURL(blob);
-
-        let err = reader.error;
-      });
     });
 
     this.bandService.removed.subscribe(() => {

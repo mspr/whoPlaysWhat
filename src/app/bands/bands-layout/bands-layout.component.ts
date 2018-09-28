@@ -17,7 +17,7 @@ export class BandsLayoutComponent implements OnInit
 
   ngOnInit()
   {
-    this.newTodo = { title: 'play guitar', tasks: [] }
+    // this.newTodo = { title: 'play guitar', tasks: [] }
 
     // this.todoService.createTodo(this.newTodo).subscribe((res) => {
     //   console.log(res);

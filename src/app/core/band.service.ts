@@ -1,6 +1,6 @@
 import { Band } from './../bands/band';
 import { Injectable, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -21,6 +21,11 @@ export class BandService
   getAll()
   {
     return this.httpClient.get<any>(environment.api + '/band');
+  }
+
+  upload(formData)
+  {
+    return this.httpClient.post('http://localhost:8080/upload', formData);
   }
 
   getById(id)
