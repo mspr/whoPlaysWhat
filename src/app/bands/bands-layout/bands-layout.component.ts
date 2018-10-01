@@ -24,8 +24,8 @@ export class BandsLayoutComponent implements OnInit
     //   this.newTodo = {};
     // });
 
-    this.todoService.getTodos().subscribe((res) => {
-      console.log(res);
-    });
+    // this.todoService.getTodos().subscribe((res) => {
+    //   console.log(res);
+    // });
   }
 }

@@ -1,0 +1,12 @@
+{
+  "dbConfig":
+  {
+    "host": "localhost",
+    "port": 8080,
+    "dbName": "mongodb://localhost/whoPlaysWhat"
+  },
+  "uploadConfig":
+  {
+    "targetDir": "./public"
+  }
+}

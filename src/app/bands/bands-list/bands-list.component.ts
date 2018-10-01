@@ -10,7 +10,6 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 export class BandsListComponent implements OnInit
 {
   public bands = new Array<Band>();
-  public test = 'uploads\\the_beatles-1538149622492.jpg';
 
   constructor(private bandService: BandService) { }
 
@@ -18,6 +17,9 @@ export class BandsListComponent implements OnInit
   {
     this.bandService.getAll().subscribe((res) => {
       this.bands = res.bands;
+      // this.bands.forEach(band => {
+      //   console.log(band.picture);
+      // });
     });
 
     this.bandService.removed.subscribe(() => {

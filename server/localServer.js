@@ -4,6 +4,7 @@ var chalk = require('chalk');
 var express = require('express');
 var multer = require('multer');
 var path = require('path');
+var config = require('config');
 
 var app = express()
 app.use(bodyParser.json());
@@ -30,6 +31,8 @@ app.use(function(req, res, next) {
 });
 
 //Connect to mongoDB server
+var dbConfig = config.get('dbConfig');
+// db.connect(dbConfig, ...);
 mongoose.set('debug', true);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useNewUrlParser', true);
@@ -43,12 +46,10 @@ process.on('SIGINT', function() {
   });
 });
 
-// app.use(express.static('public'));
-app.use(express.static(path.join(__dirname, 'uploads')));
-
+var uploadConfig = config.get('uploadConfig');
 var storage = multer.diskStorage({
   destination: function(req, file, cb) {
-    cb(null, './uploads/');
+    cb(null, uploadConfig.targetDir + '/assets/images/bands/');
   },
   filename: function(req, file, cb) {
     var ext = path.extname(file.originalname);
@@ -61,7 +62,7 @@ var upload = multer({ storage: storage });
 app.post('/upload', upload.single('picture'), (req, res, next) =>
 {
   console.log('file', req.file);
-  return res.json(req.file.path);
+  return res.json('assets/images/bands/' + req.file.filename);
 });
 
 // app.get('/login', function (req, res) {
@@ -85,6 +86,6 @@ app.post('/upload', upload.single('picture'), (req, res, next) =>
 //   }
 // });
 
-app.listen(8080, function() {
+app.listen(dbConfig.port, function() {
   console.log('serving...');
 });
