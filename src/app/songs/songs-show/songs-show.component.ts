@@ -35,7 +35,7 @@ export class SongsShowComponent implements OnInit, OnDestroy
     this.activatedRoute.params
       .switchMap((params) => {
         songId = params.id;
-        return this.bandService.getById(bandId)
+        return this.bandService.getById_deprecated(bandId)
       }).switchMap((band) => {
         this.band = band;
         this.song = this.band.songs.find(s => s.id == songId);

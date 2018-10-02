@@ -33,7 +33,7 @@ export class MusiciansListComponent implements OnInit, OnDestroy
   {
     let bandId = this.activatedRoute.snapshot.params['id'];
 
-    this.bandService.getById(bandId).subscribe((band) => {
+    this.bandService.getById_deprecated(bandId).subscribe((band) => {
       this.band = band
       this.retrieveMusicians();
     });
@@ -83,7 +83,7 @@ export class MusiciansListComponent implements OnInit, OnDestroy
 
   private retrieveMusicians()
   {
-    this.bandService.getById(this.band.id).switchMap((band) => {
+    this.bandService.getById_deprecated(this.band.id).switchMap((band) => {
       this.band = band;
       return this.musicianService.getAllByBand(this.band);
     })

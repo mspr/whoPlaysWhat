@@ -32,7 +32,7 @@ export class SongsListComponent implements OnInit, OnDestroy
   {
     let bandId = this.activatedRoute.snapshot.params['id'];
 
-    this.bandService.getById(bandId).subscribe((band) => {
+    this.bandService.getById_deprecated(bandId).subscribe((band) => {
       this.band = band;
       this.retrieveSongs();
     })
@@ -72,7 +72,7 @@ export class SongsListComponent implements OnInit, OnDestroy
 
   private retrieveSongs()
   {
-    this.bandService.getById(this.band.id)
+    this.bandService.getById_deprecated(this.band.id)
       .takeUntil(this.componentDestroyed$)
       .subscribe((band) => {
       this.band = band;

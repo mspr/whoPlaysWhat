@@ -20,7 +20,7 @@ export class BandService
 
   getAll()
   {
-    return this.httpClient.get<any>(environment.api + '/band');
+    return this.httpClient.get<any>(environment.api + '/bands');
   }
 
   upload(formData)
@@ -28,9 +28,14 @@ export class BandService
     return this.httpClient.post('http://localhost:8080/upload', formData);
   }
 
-  getById(id)
+  getById_deprecated(id)
   {
     return this.httpClient.get<Band>(environment.baseUrl + `/bands/${id}`);
+  }
+
+  getById(id)
+  {
+    return this.httpClient.get<Band>(environment.api + `/bands/${id}`);
   }
 
   add_deprecated(band)

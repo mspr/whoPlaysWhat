@@ -19,6 +19,23 @@ router.get('/', (req, res) =>
     });
 });
 
+router.get('/:id', (req, res) =>
+{
+  if (!req.params.id.match(/^[0-9a-fA-F]{24}$/))
+    return res.sendStatus(422);
+
+  Band.findById(req.params.id)
+    .populate('musicians')
+    .populate('songs')
+    .then((band) =>
+    {
+      if (!band)
+        return res.sendStatus(404);
+
+      return res.status(200).json(band);
+    });
+});
+
 router.post('/', (req, res) =>
 {
   if (!req.body.name)

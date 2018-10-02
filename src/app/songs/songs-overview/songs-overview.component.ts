@@ -28,7 +28,7 @@ export class SongsOverviewComponent implements OnInit
   {
     let bandId = this.activatedRoute.snapshot.params['id'];
 
-    this.bandService.getById(bandId)
+    this.bandService.getById_deprecated(bandId)
       .subscribe((band) => {
       this.band = band;
       this.songs = band.songs;
