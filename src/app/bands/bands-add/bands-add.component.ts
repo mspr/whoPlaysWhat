@@ -46,6 +46,10 @@ export class BandsAddComponent implements OnInit
 
     this.picture = pictures[0];
     if (pictures.length === 1)
-      this.band.picture = "./assets/images/bands/" + this.picture.name;
+    {
+      let reader = new FileReader();
+      reader.onload = (e: any) => { this.band.picture = e.target.result }
+      reader.readAsDataURL(this.picture);
+    }
   }
 }

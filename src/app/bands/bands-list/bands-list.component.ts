@@ -17,9 +17,6 @@ export class BandsListComponent implements OnInit
   {
     this.bandService.getAll().subscribe((res) => {
       this.bands = res.bands;
-      // this.bands.forEach(band => {
-      //   console.log(band.picture);
-      // });
     });
 
     this.bandService.removed.subscribe(() => {

@@ -45,7 +45,7 @@ export class BandService
 
   add(band)
   {
-    return this.httpClient.post<Band>(environment.api + '/band', band);
+    return this.httpClient.post<Band>(environment.api + '/bands', band);
   }
 
   remove(id)

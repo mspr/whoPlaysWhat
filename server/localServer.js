@@ -65,27 +65,6 @@ app.post('/upload', upload.single('picture'), (req, res, next) =>
   return res.json('assets/images/bands/' + req.file.filename);
 });
 
-// app.get('/login', function (req, res) {
-//   const email = req.body.email;
-//   const password = req.body.password;
-
-//   if (validateEmailAndPassword()) {
-//     const userId = findUserIdForEmail(email);
-//     const jwtBearerToken = jwt.sign({}, RSA_PRIVATE_KEY, {
-//       algorithm: 'RS256',
-//       expiresIn: 120,
-//       subject: userId
-//     });
-
-//     res.status(200).json({
-//       idToken: jwtBearerToken
-//     });
-//   }
-//   else {
-//     res.sendStatus(401);
-//   }
-// });
-
 app.listen(dbConfig.port, function() {
   console.log('serving...');
 });
