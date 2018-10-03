@@ -50,4 +50,17 @@ router.post('/', (req, res) =>
   })
 });
 
+router.delete('/:id', (req, res) =>
+{
+  console.log("id", req.params.id);
+
+  Band.deleteOne({_id: req.params.id}, (err, band) =>
+  {
+    if (err)
+      res.send(err);
+
+    res.json("Band " + band.name + " has been removed.");
+  });
+});
+
 module.exports = router;

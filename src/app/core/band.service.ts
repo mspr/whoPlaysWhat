@@ -50,7 +50,7 @@ export class BandService
 
   remove(id)
   {
-    return this.httpClient.delete<Band>(environment.baseUrl + `/bands/${id}`);
+    return this.httpClient.delete<Band>(environment.api + `/bands/${id}`);
   }
 
   update(band)
