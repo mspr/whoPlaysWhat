@@ -36,17 +36,17 @@ export class MusicianService
 
   getAll()
   {
-    return this.httpClient.get<Musician[]>(environment.baseUrl + `/musicians`);
+    return this.httpClient.get<Musician[]>(environment.api + `/musicians`);
   }
 
   getById(musicianId)
   {
-    return this.httpClient.get<Musician>(environment.baseUrl + `/musicians/${musicianId}`);
+    return this.httpClient.get<Musician>(environment.api + `/musicians/${musicianId}`);
   }
 
   add(musician)
   {
-    return this.httpClient.post<Musician>(environment.baseUrl + '/musicians', musician);
+    return this.httpClient.post<Musician>(environment.api + '/musicians', musician);
   }
 
   remove(id)

@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const router = require('express').Router();
-
 const Band = mongoose.model('Band');
 
 router.get('/', (req, res) =>
