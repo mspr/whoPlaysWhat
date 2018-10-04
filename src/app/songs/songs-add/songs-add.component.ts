@@ -39,14 +39,14 @@ export class SongsAddComponent implements OnInit
   {
     this.songService.add(this.song).switchMap((song) =>
     {
-      return this.bandService.getById_deprecated(this.bandId).switchMap((band) => {
-        band.songs.push( { id: song.id, tempo: song.tempo, tonality: song.tonality, structure: song.structure, musicians: song.musicians } );
-
-        return this.bandService.update(band).map(band => song);
-      });
+      return this.bandService.getById(this.bandId)
+        .switchMap((band) => {
+          band.songs.push( { id: song.id, tempo: song.tempo, tonality: song.tonality, structure: song.structure, musicians: song.musicians } );
+          return this.bandService.update(band).map(band => song);
+        });
     }).subscribe((song) => {
-        this.songService.added.emit(song);
-        this.router.navigate([`bands/${this.bandId}`, 'songs', song.id]);
+      this.songService.added.emit(song);
+      this.router.navigate([`bands/${this.bandId}`, 'songs', song.id]);
     });
   }
 }

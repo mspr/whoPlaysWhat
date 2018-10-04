@@ -32,9 +32,9 @@ export class IncomingSongsUpdateComponent implements OnInit
   ngOnInit()
   {
     let bandId = this.activatedRoute.snapshot.parent.params["id"];
-    this.bandService.getById_deprecated(bandId)
+    this.bandService.getById(bandId)
     .switchMap((band) => {
-      this.band = band;
+      this.band = Band.fromInfo(band);
       this.incomingSongs = band.incomingSongs;
       return this.musicianService.getAllByBand(band);
     })

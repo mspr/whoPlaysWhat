@@ -13,11 +13,6 @@ export class BandService
   {
   }
 
-  getAll_deprecated()
-  {
-    return this.httpClient.get<Band[]>(environment.baseUrl + '/bands');
-  }
-
   getAll()
   {
     return this.httpClient.get<any>(environment.api + '/bands');
@@ -28,19 +23,9 @@ export class BandService
     return this.httpClient.post('http://localhost:8080/upload', formData);
   }
 
-  getById_deprecated(id)
-  {
-    return this.httpClient.get<Band>(environment.baseUrl + `/bands/${id}`);
-  }
-
   getById(id)
   {
     return this.httpClient.get<Band>(environment.api + `/bands/${id}`);
-  }
-
-  add_deprecated(band)
-  {
-    return this.httpClient.post<Band>(environment.baseUrl + '/bands', band);
   }
 
   add(band)
@@ -55,6 +40,6 @@ export class BandService
 
   update(band)
   {
-    return this.httpClient.patch<Band>(environment.baseUrl + `/bands/${band.id}`, band)
+    return this.httpClient.patch<Band>(environment.api + `/bands/${band.id}`, band)
   }
 }

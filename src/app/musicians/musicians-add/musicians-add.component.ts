@@ -51,7 +51,7 @@ export class MusiciansAddComponent implements OnInit
     });
 
     this.musicianService.add(this.musician).switchMap((musician) => {
-      return this.bandService.getById_deprecated(bandId).switchMap((band) => {
+      return this.bandService.getById(bandId).switchMap((band) => {
         band.musicians.push( { id: musician.id, color: musician.color } );
         band.songs.forEach(song => {
           song.musicians.push( { id: musician.id, plays: [] } );

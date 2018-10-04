@@ -32,7 +32,7 @@ export class SongsUpdateComponent implements OnInit
     let bandId = this.activatedRoute.parent.snapshot.params["id"];
     let songId = this.activatedRoute.snapshot.params["id"];
 
-    this.bandService.getById_deprecated(bandId).subscribe((band) => {
+    this.bandService.getById(bandId).subscribe((band) => {
       this.band = band;
       let songInfo = band.songs.find(s => s.id == songId);
       this.song.tempo = songInfo.tempo;

@@ -49,10 +49,10 @@ export class MusiciansUpdateComponent implements OnInit
         this.optionsModel.push(roles.indexOf(role) + 1);
       });
 
-      return this.bandService.getById_deprecated(bandId);
+      return this.bandService.getById(bandId);
     })
     .subscribe((band) => {
-      this.band = band;
+      this.band = Band.fromInfo(band);
       this.musician.color = band.musicians.find(m => m.id == this.musician.id).color;
     });
   }

@@ -27,7 +27,7 @@ export class MusiciansOverviewComponent implements OnInit
     let bandId = this.activatedRoute.snapshot.params['id'];
 
     this.bandService.getById(bandId).switchMap((band) => {
-      this.band = band;
+      this.band = Band.fromInfo(band);
       return this.musicianService.getAllByBand(this.band)
     })
     .subscribe((musicians) => {

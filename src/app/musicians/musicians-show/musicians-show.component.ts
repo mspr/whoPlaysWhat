@@ -10,6 +10,7 @@ import { BandService } from '../../core/band.service';
   templateUrl: './musicians-show.component.html',
   styleUrls: ['./musicians-show.component.scss']
 })
+
 export class MusiciansShowComponent implements OnInit
 {
   public bandId : number;
@@ -30,7 +31,7 @@ export class MusiciansShowComponent implements OnInit
     )
     .switchMap((musician) => {
       this.musician = musician;
-      return this.bandService.getById_deprecated(this.bandId)
+      return this.bandService.getById(this.bandId)
     }).subscribe((band) => {
       this.musician.color = band.musicians.find(m => m.id == this.musician.id).color;
     });

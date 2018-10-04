@@ -37,7 +37,7 @@ export class SongsStructureComponent implements OnInit
   {
     let bandId = this.activatedRoute.parent.snapshot.params["id"];
 
-    this.bandService.getById_deprecated(bandId).switchMap((band) => {
+    this.bandService.getById(bandId).switchMap((band) => {
       this.band = band;
       return this.musicianService.getAllByBand(band);
     })
