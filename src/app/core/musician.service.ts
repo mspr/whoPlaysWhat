@@ -21,8 +21,9 @@ export class MusicianService
   getAllByBand(band) : Observable<Musician[]>
   {
     let getByIdObservables = new Array<Observable<Musician>>();
-    band.musicians.forEach(musician =>
+    band.musicians.forEach(musicianInfo =>
     {
+      var musician = Musician.fromInfo(musicianInfo);
       let getByIdObservable = this.getById(musician.id).map((musician) => {
         musician.color = band.musicians.find(m => m.id == musician.id).color;
         return musician;

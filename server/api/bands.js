@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const router = require('express').Router();
 const Band = mongoose.model('Band');
+const Musician = mongoose.model('Musician');
 
 router.get('/', (req, res) =>
 {
@@ -47,6 +48,66 @@ router.post('/', (req, res) =>
   band.save().then(() => {
     res.status(201).json(band.toDto());
   })
+});
+
+router.patch('/:id', (req, res) =>
+{
+  Band.findById(req.params.id, (err, band) =>
+  {
+    if (err)
+      res.send(err);
+
+    console.log("***********************");
+    console.log("BOODYYYY", req.body);
+    console.log("***********************");
+
+    band.name = req.body.name;
+    band.picture = req.body.picture;
+
+    var pushMusicians = [];
+    var pushMusician = (musicianId) => {
+      return new Promise((resolve, reject) => {
+        console.log(">> my promise for ", musicianId);
+        Musician.findById(musicianId, (err, musician) =>
+        {
+          if (err)
+            reject(err);
+
+          console.log("Musician found!!! ", musician);
+          band.musicians.push(musician);
+          resolve();
+        });
+    })};
+
+    req.body.musicians.forEach(musician => {
+      pushMusicians.push(pushMusician(musician.id));
+    });
+
+    console.log("***********************");
+    console.log("BBAAAANNNNDDD", band);
+    console.log("***********************");
+
+    Promise.all(pushMusicians).then(() =>
+    {
+      console.log("*****PROMISE ALL OK********");
+      console.log("BAND", band);
+
+      band.save((err) =>
+      {
+        if (err)
+        {
+          console.log("err", err);
+          res.send(err);
+        }
+        else
+        {
+          console.log("*****SAVE********");
+          res.json(band.toDto());
+        }
+      });
+    }).catch(err => {
+    });
+  });
 });
 
 router.delete('/:id', (req, res) =>

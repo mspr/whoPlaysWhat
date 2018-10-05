@@ -84,7 +84,7 @@ export class MusiciansListComponent implements OnInit, OnDestroy
   private retrieveMusicians()
   {
     this.bandService.getById(this.band.id).switchMap((band) => {
-      this.band = band;
+      this.band = Band.fromInfo(band);
       return this.musicianService.getAllByBand(this.band);
     })
     .takeUntil(this.componentDestroyed$)

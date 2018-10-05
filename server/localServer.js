@@ -5,10 +5,12 @@ var express = require('express');
 var multer = require('multer');
 var path = require('path');
 var config = require('config');
+var cors = require('cors');
 
 var app = express()
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(cors());
 
 //Require the models
 require('./models/Task');
@@ -21,14 +23,6 @@ require('./models/Band');
 const api = require('./api/index');
 //Set API routes
 app.use('/api', api);
-
-// //Enable CORS
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  next();
-});
 
 //Connect to mongoDB server
 var dbConfig = config.get('dbConfig');

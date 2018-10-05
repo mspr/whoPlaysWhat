@@ -16,6 +16,7 @@ import { IMultiSelectSettings, IMultiSelectTexts, IMultiSelectOption } from 'ang
 })
 export class MusiciansAddComponent implements OnInit
 {
+  public band : Band;
   public musician = new Musician();
 
   public optionsModel: number[] = [1];
@@ -50,13 +51,14 @@ export class MusiciansAddComponent implements OnInit
       this.musician.roles.push(keys[roleIdx-1]);
     });
 
-    this.musicianService.add(this.musician).switchMap((musician) => {
-      return this.bandService.getById(bandId).switchMap((band) => {
-        band.musicians.push( { id: musician.id, color: musician.color } );
-        band.songs.forEach(song => {
-          song.musicians.push( { id: musician.id, plays: [] } );
-        });
-        return this.bandService.update(band).map(band => musician);
+    this.musicianService.add(this.musician).switchMap((musician) =>
+    {
+      return this.bandService.getById(bandId).switchMap((band) =>
+      {
+        this.band = Band.fromInfo(band);
+        this.band.musicians.push( { id: musician.id, color: musician.color } );
+        this.band.songs.forEach(song => song.musicians.push( { id: musician.id, plays: [] } ));
+        return this.bandService.update(this.band).map(band => musician);
       });
     }).subscribe((musician) => {
         this.musicianService.added.emit(musician);
