@@ -1,7 +1,7 @@
 export class Musician
 {
   public id? : number;
-  public name : string = '';
+  public name = '';
   public roles: string[] = [];
   public bands;
   public color;
