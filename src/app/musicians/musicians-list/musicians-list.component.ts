@@ -55,14 +55,15 @@ export class MusiciansListComponent implements OnInit, OnDestroy
 
   onRemove(id)
   {
-    this.musicianService.getById(id).switchMap((musician) =>
+    this.musicianService.getById(id).switchMap((musicianInfo) =>
     {
-      let bandMusicianInfo = this.band.musicians.find(m => m.id === musician.id);
-      let bandMusicianIdx = this.band.musicians.indexOf(bandMusicianInfo);
+      var musician = Musician.fromInfo(musicianInfo);
+      let musicianBandInfo = this.band.musicians.find(m => m._id === musician.id);
+      let bandMusicianIdx = this.band.musicians.indexOf(musicianBandInfo);
       this.band.musicians.splice(bandMusicianIdx, 1);
 
       this.band.songs.forEach(song => {
-        let songMusicianInfo = song.musicians.find(m => m.id === musician.id);
+        let songMusicianInfo = song.musicians.find(m => m._id === musician.id);
         let songMusicianIdx = song.musicians.indexOf(songMusicianInfo);
         song.musicians.splice(songMusicianIdx, 1);
       });

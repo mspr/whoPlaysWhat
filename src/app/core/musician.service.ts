@@ -16,16 +16,19 @@ export class MusicianService
   public added = new EventEmitter<Musician>();
 
   constructor(private bandService: BandService,
-    private httpClient: HttpClient) { }
+    private httpClient: HttpClient)
+  {
+  }
 
   getAllByBand(band) : Observable<Musician[]>
   {
     let getByIdObservables = new Array<Observable<Musician>>();
-    band.musicians.forEach(musicianInfo =>
+    band.musicians.forEach(musicianBandInfo =>
     {
-      var musician = Musician.fromInfo(musicianInfo);
-      let getByIdObservable = this.getById(musician.id).map((musician) => {
-        musician.color = band.musicians.find(m => m.id == musician.id).color;
+      let getByIdObservable = this.getById(musicianBandInfo._id).map((musicianInfo) =>
+      {
+        var musician = Musician.fromInfo(musicianInfo);
+        musician.color = musicianBandInfo.color;
         return musician;
       });
 
@@ -52,11 +55,11 @@ export class MusicianService
 
   remove(id)
   {
-    return this.httpClient.delete<Musician>(environment.baseUrl + `/musicians/${id}`);
+    return this.httpClient.delete<Musician>(environment.api + `/musicians/${id}`);
   }
 
   update(musician)
   {
-    return this.httpClient.patch<Musician>(environment.baseUrl + `/musicians/${musician.id}`, musician);
+    return this.httpClient.patch<Musician>(environment.api + `/musicians/${musician.id}`, musician);
   }
 }

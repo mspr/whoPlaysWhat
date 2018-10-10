@@ -45,4 +45,15 @@ router.post('/', (req, res) =>
   });
 });
 
+router.delete('/:id', (req, res) =>
+{
+  Musician.deleteOne({_id: req.params.id}, (err, musician) =>
+  {
+    if (err)
+      res.send(err);
+
+    res.json("Musician " + musician.name + " has been removed.");
+  });
+});
+
 module.exports = router;

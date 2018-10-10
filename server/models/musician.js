@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const roles = ['Guitarist', 'Singer', 'Keyboarder', 'Bassist', 'Drumer', 'Saxophonist', 'Chorus'];
+const roles = ['Guitarist', 'Singer', 'Keyboarder', 'Bassist', 'Drumer', 'Saxophonist', 'Chorus', 'Violinist'];
 
 function colorValidator(color)
 {

@@ -59,44 +59,43 @@ router.patch('/:id', (req, res) =>
 
     console.log("***********************");
     console.log("BOODYYYY", req.body);
-    console.log("***********************");
+    console.log("PARAMS", req.params);
 
     band.name = req.body.name;
     band.picture = req.body.picture;
+    band.musicians = [];
 
-    var pushMusicians = [];
-    var pushMusician = (musicianId) => {
-      return new Promise((resolve, reject) => {
-        console.log(">> my promise for ", musicianId);
+    var findMusicianThenPush = (musicianId) =>
+    {
+      return new Promise((resolve, reject) =>
+      {
         Musician.findById(musicianId, (err, musician) =>
         {
           if (err)
             reject(err);
 
-          console.log("Musician found!!! ", musician);
+          console.log("Musician found!!! ", musician, musicianId);
           band.musicians.push(musician);
           resolve();
         });
     })};
 
+    var pushMusicians = [];
     req.body.musicians.forEach(musician => {
-      pushMusicians.push(pushMusician(musician.id));
+      pushMusicians.push(findMusicianThenPush(musician._id));
     });
 
     console.log("***********************");
-    console.log("BBAAAANNNNDDD", band);
-    console.log("***********************");
+    console.log("*********BBAAAANNNNDDD**************", band);
 
     Promise.all(pushMusicians).then(() =>
     {
-      console.log("*****PROMISE ALL OK********");
-      console.log("BAND", band);
+      console.log("PROMISE ALL OK BAND", band);
 
       band.save((err) =>
       {
         if (err)
         {
-          console.log("err", err);
           res.send(err);
         }
         else
