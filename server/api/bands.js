@@ -57,10 +57,6 @@ router.patch('/:id', (req, res) =>
     if (err)
       res.send(err);
 
-    console.log("***********************");
-    console.log("BOODYYYY", req.body);
-    console.log("PARAMS", req.params);
-
     band.name = req.body.name;
     band.picture = req.body.picture;
     band.musicians = [];
@@ -74,7 +70,6 @@ router.patch('/:id', (req, res) =>
           if (err)
             reject(err);
 
-          console.log("Musician found!!! ", musician, musicianId);
           band.musicians.push(musician);
           resolve();
         });
@@ -95,11 +90,12 @@ router.patch('/:id', (req, res) =>
         }
         else
         {
-          console.log("*****SAVE********");
+          band.musiciansColor = req.body.musiciansColor;
           res.json(band.toDto());
         }
       });
-    }).catch(err => {
+    })
+    .catch(err => {
     });
   });
 });

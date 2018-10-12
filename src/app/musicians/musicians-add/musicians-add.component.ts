@@ -56,7 +56,8 @@ export class MusiciansAddComponent implements OnInit
       return this.bandService.getById(bandId).switchMap((band) =>
       {
         this.band = Band.fromInfo(band);
-        this.band.musicians.push( { _id: musician.id, name: musician.name, color: musician.color, roles: musician.roles } );
+        this.band.musicians.push( { _id: musician.id } );
+        this.band.musiciansColor.push( { _id: musician.id, color: musician.color } );
         this.band.songs.forEach(song => song.musicians.push( { _id: musician.id, plays: [] } ));
         return this.bandService.update(this.band).map(band => musician);
       });

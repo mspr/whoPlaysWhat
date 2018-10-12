@@ -29,11 +29,13 @@ export class MusiciansShowComponent implements OnInit
     this.activatedRoute.params.pipe(
       switchMap((params) => this.musicianService.getById(params.id))
     )
-    .switchMap((musician) => {
-      this.musician = musician;
+    .switchMap((musicianInfo) =>
+    {
+      this.musician = Musician.fromInfo(musicianInfo);
       return this.bandService.getById(this.bandId)
-    }).subscribe((band) => {
-      this.musician.color = band.musicians.find(m => m.id == this.musician.id).color;
+    })
+    .subscribe((band) => {
+      this.musician.color = band.musiciansColor.find(m => m.id == this.musician.id).color;
     });
   }
 }

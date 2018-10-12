@@ -6,6 +6,7 @@ let BandSchema = new mongoose.Schema(
     name: { type: String, required: [true, "can't be blank"], index: true},
     picture: { type: String },
     musicians: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Musician' }],
+    musiciansColor: [],
     songs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Song' }]
   },
   {
@@ -26,6 +27,7 @@ BandSchema.methods.toDto = function ()
     name: this.name,
     picture: this.picture,
     musicians: this.musicians.map((musician) => { console.log("toDto", musician); return musician.toDto(); }),
+    musiciansColor: this.musiciansColor,
     songs: this.songs.map((song) => { return song.toDto(); })
   }
 }

@@ -37,7 +37,6 @@ router.post('/', (req, res) =>
 
   let musician = new Musician();
   musician.name = req.body.name;
-  musician.color = req.body.color;
   musician.roles = req.body.roles;
 
   musician.save().then(() => {

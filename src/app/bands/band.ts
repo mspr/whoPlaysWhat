@@ -9,6 +9,7 @@ export class Band
   public songs = [];
   public incomingSongs : IncomingSong[] = [];
   public musicians = [];
+  public musiciansColor = [];
   public notes = [];
   public events = [];
 
@@ -29,6 +30,7 @@ export class Band
     band.notes = info.notes;
     band.events = info.events;
     band.musicians = info.musicians;
+    band.musiciansColor = info.musiciansColor;
 
     return band;
   }
