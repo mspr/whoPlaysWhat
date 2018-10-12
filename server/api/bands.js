@@ -82,6 +82,11 @@ router.patch('/:id', (req, res) =>
 
     Promise.all(pushMusicians).then(() =>
     {
+      band.musiciansColor = [];
+      req.body.musiciansColor.forEach(musicianColor => {
+        band.musiciansColor.push(musicianColor);
+      });
+
       band.save((err) =>
       {
         if (err)
@@ -90,7 +95,6 @@ router.patch('/:id', (req, res) =>
         }
         else
         {
-          band.musiciansColor = req.body.musiciansColor;
           res.json(band.toDto());
         }
       });
