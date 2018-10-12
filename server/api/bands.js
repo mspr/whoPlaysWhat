@@ -85,13 +85,8 @@ router.patch('/:id', (req, res) =>
       pushMusicians.push(findMusicianThenPush(musician._id));
     });
 
-    console.log("***********************");
-    console.log("*********BBAAAANNNNDDD**************", band);
-
     Promise.all(pushMusicians).then(() =>
     {
-      console.log("PROMISE ALL OK BAND", band);
-
       band.save((err) =>
       {
         if (err)
@@ -111,8 +106,6 @@ router.patch('/:id', (req, res) =>
 
 router.delete('/:id', (req, res) =>
 {
-  console.log("id", req.params.id);
-
   Band.deleteOne({_id: req.params.id}, (err, band) =>
   {
     if (err)
