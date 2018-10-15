@@ -26,7 +26,7 @@ BandSchema.methods.toDto = function ()
     id: this._id,
     name: this.name,
     picture: this.picture,
-    musicians: this.musicians.map((musician) => { console.log("toDto", musician); return musician.toDto(); }),
+    musicians: this.musicians.map((musician) => { return musician.toDto(); }),
     musiciansColor: this.musiciansColor,
     songs: this.songs.map((song) => { return song.toDto(); })
   }
