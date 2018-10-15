@@ -58,13 +58,15 @@ export class SongsListComponent implements OnInit, OnDestroy
 
   onRemove(id)
   {
-    this.songService.getById(id).switchMap((song) =>
+    this.songService.getById(id).switchMap((songInfo) =>
     {
+      let song = Song.fromInfo(songInfo);
       this.band.songs.splice(this.band.songs.indexOf(song.id), 1);
       return this.bandService.update(this.band);
     })
     .switchMap(() => this.songService.remove(id))
-    .subscribe(() => {
+    .subscribe(() =>
+    {
       this.songService.removed.emit();
       this.router.navigate([`bands/${this.band.id}`, 'songs']);
     });
@@ -76,7 +78,9 @@ export class SongsListComponent implements OnInit, OnDestroy
       .takeUntil(this.componentDestroyed$)
       .subscribe((band) => {
       this.band = Band.fromInfo(band);
-      this.songs = band.songs;
+      this.band.songs.forEach(songInfo => {
+        this.songs.push(Song.fromInfo(songInfo));
+      });
     })
   }
 

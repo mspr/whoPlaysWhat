@@ -32,15 +32,18 @@ export class SongsShowComponent implements OnInit, OnDestroy
     let bandId = this.activatedRoute.parent.snapshot.params['id'];
     let songId;
 
-    this.activatedRoute.params
-      .switchMap((params) => {
-        songId = params.id;
-        return this.bandService.getById(bandId)
-      }).switchMap((band) => {
-        this.band = Band.fromInfo(band);
-        this.song = this.band.songs.find(s => s.id == songId);
-        return this.musicianService.getAllByBand(this.band);
-      }).subscribe((musicians) => this.musicians = musicians );
+    this.activatedRoute.params.switchMap((params) =>
+    {
+      songId = params.id;
+      return this.bandService.getById(bandId)
+    })
+    .switchMap((band) =>
+    {
+      this.band = Band.fromInfo(band);
+      this.song = Song.fromInfo(this.band.songs.find(s => s._id == songId));
+      return this.musicianService.getAllByBand(this.band);
+    })
+    .subscribe((musicians) => this.musicians = musicians);
   }
 
   ngOnDestroy()
