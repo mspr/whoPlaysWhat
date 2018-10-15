@@ -8,7 +8,7 @@
     <br/>
     <label for="tonalities">Tonality :</label>
     <select class="form-control" name="tonalities" [(ngModel)]="song.tonality">
-      <option *ngFor="let tonality of tonalities">{{tonality}}</option>
+      <option *ngFor="let tonality of getTonalityNames()">{{tonality}}</option>
     </select>
     <br/>
     <label for="tempo">Tempo :</label>

@@ -1,5 +1,6 @@
+import { Band } from './../../bands/band';
+import { SongTonalityHelper } from './../song-tonality-helper';
 import { Musician } from './../../musicians/musician';
-import { Tonalities } from './../../core/tonalities.enum';
 import { Component, OnInit } from '@angular/core';
 import { Song } from '../song';
 import { SongService } from '../../core/song.service';
@@ -14,9 +15,8 @@ import { BandService } from '../../core/band.service';
 
 export class SongsAddComponent implements OnInit
 {
-  public bandId : number;
+  public band : Band;
   public song = new Song();
-  public tonalities = Object.keys(Tonalities);
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -27,7 +27,6 @@ export class SongsAddComponent implements OnInit
 
   ngOnInit()
   {
-    this.bandId = this.activatedRoute.parent.snapshot.params['id'];
   }
 
   updateSongLevel(songLevel)
@@ -35,18 +34,28 @@ export class SongsAddComponent implements OnInit
     this.song.level = songLevel;
   }
 
+  getTonalityNames()
+  {
+    return SongTonalityHelper.getSongTonalityNames();
+  }
+
   add()
   {
+    let bandId = this.activatedRoute.parent.snapshot.params['id'];
+
     this.songService.add(this.song).switchMap((song) =>
     {
-      return this.bandService.getById(this.bandId)
-        .switchMap((band) => {
-          band.songs.push( { id: song.id, tempo: song.tempo, tonality: song.tonality, structure: song.structure, musicians: song.musicians } );
-          return this.bandService.update(band).map(band => song);
-        });
-    }).subscribe((song) => {
-      this.songService.added.emit(song);
-      this.router.navigate([`bands/${this.bandId}`, 'songs', song.id]);
+      this.song = Song.fromInfo(song);
+      return this.bandService.getById(bandId).switchMap((bandInfo) =>
+      {
+        this.band = Band.fromInfo(bandInfo);
+        this.band.songs.push( { _id: song.id, tempo: song.tempo, tonality: song.tonality, structure: song.structure, musicians: song.musicians } );
+        return this.bandService.update(this.band);
+      });
+    }).subscribe(() =>
+    {
+      this.songService.added.emit(this.song);
+      this.router.navigate([`bands/${this.band.id}`, 'songs', this.song.id]);
     });
   }
 }

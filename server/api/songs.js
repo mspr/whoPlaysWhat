@@ -11,7 +11,7 @@ router.get('/', (req, res) =>
         return res.sendStatus(404);
 
       return res.status(200).json({
-        songs: songs.map((song) => {return song.toDto(); })
+        songs: songs.map((song) => { return song.toDto(); })
       });
     });
 });
@@ -32,14 +32,14 @@ router.get('/:id', (req, res) =>
 
 router.post('/', (req, res) =>
 {
-  if (!req.body.name)
-    res.sendStatus(422);
-
   let song = new Song();
   song.title = req.body.title;
+  song.level = Song.levels()[req.body.level];
+  song.tonality = req.body.tonality;
+  song.tempo = req.body.tempo;
 
   song.save().then(() => {
-    res.status(201).json(song.toDto());
+    return res.status(201).json(song.toDto());
   });
 });
 

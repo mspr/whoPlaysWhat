@@ -18,7 +18,7 @@ export class SongService
 
   getById(id)
   {
-    return this.httpClient.get<Song>(environment.baseUrl + `/songs/${id}`);
+    return this.httpClient.get<Song>(environment.api + `/songs/${id}`);
   }
 
   getAllByBand(band) : Observable<Song[]>
@@ -33,16 +33,16 @@ export class SongService
 
   add(song)
   {
-    return this.httpClient.post<Song>(environment.baseUrl + '/songs', song);
+    return this.httpClient.post<Song>(environment.api + '/songs', song);
   }
 
   update(song)
   {
-    return this.httpClient.patch<Song>(environment.baseUrl + `/songs/${song.id}`, song);
+    return this.httpClient.patch<Song>(environment.api + `/songs/${song.id}`, song);
   }
 
   remove(id)
   {
-    return this.httpClient.delete<Song>(environment.baseUrl + `/songs/${id}`);
+    return this.httpClient.delete<Song>(environment.api + `/songs/${id}`);
   }
 }

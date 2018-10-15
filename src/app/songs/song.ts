@@ -1,4 +1,4 @@
-import { Tonalities } from './../core/tonalities.enum';
+import { SongTonality } from './song-tonality.enum';
 import { SongLevel } from './song-level.enum';
 
 export class Song
@@ -7,8 +7,24 @@ export class Song
   public title = '';
   public level = SongLevel.Easy;
   public tempo = 90;
-  public tonality = Tonalities.A;
+  public tonality = SongTonality.A;
   public structure = [];
   public musicians = [];
   public progression = 0;
+
+  static fromInfo(info)
+  {
+    let song = new Song();
+
+    song.title = info.title;
+    song.id = info.id;
+    song.level = info.level;
+    song.tempo = info.tempo;
+    song.tonality = info.tonality;
+    song.structure = info.structure;
+    song.musicians = info.musicians;
+    song.progression = info.progression;
+
+    return song;
+  }
 }

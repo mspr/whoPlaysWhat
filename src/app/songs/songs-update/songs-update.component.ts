@@ -1,6 +1,6 @@
+import { SongTonalityHelper } from './../song-tonality-helper';
 import { Musician } from './../../musicians/musician';
 import { SongService } from './../../core/song.service';
-import { Tonalities } from './../../core/tonalities.enum';
 import { Component, OnInit } from '@angular/core';
 import { Song } from '../song';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,7 +18,6 @@ export class SongsUpdateComponent implements OnInit
 {
   public band : Band;
   public song = new Song();
-  public tonalities = Object.keys(Tonalities);
 
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -46,6 +45,11 @@ export class SongsUpdateComponent implements OnInit
   updateSongLevel(songLevel)
   {
     this.song.level = songLevel;
+  }
+
+  getTonalityNames()
+  {
+    return SongTonalityHelper.getSongTonalityNames();
   }
 
   update()

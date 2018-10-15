@@ -11,7 +11,7 @@ router.get('/', (req, res) =>
         return res.sendStatus(404);
 
       return res.status(200).json({
-        musicians: musicians.map((musician) => {return musician.toDto(); })
+        musicians: musicians.map((musician) => { return musician.toDto(); })
       });
     });
 });
@@ -33,14 +33,14 @@ router.get('/:id', (req, res) =>
 router.post('/', (req, res) =>
 {
   if (!req.body.name)
-    res.sendStatus(422);
+    return res.sendStatus(422);
 
   let musician = new Musician();
   musician.name = req.body.name;
   musician.roles = req.body.roles;
 
   musician.save().then(() => {
-    res.status(201).json(musician.toDto());
+    return res.status(201).json(musician.toDto());
   });
 });
 

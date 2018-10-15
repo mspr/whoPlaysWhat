@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
 
+const tonalities = ['A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'G#'];
+const levels = ['very simple', 'simple', 'advanced', 'hard', 'evil'];
+
 let SongSchema = new mongoose.Schema(
   {
     title: { type: String, required: [true, "can't be blank"], index: true},
     tempo: { type: Number },
-    level: { type: String, enum: ['very simple', 'simple', 'advanced', 'hard', 'evil'] },
+    level: { type: String, enum: levels },
     progression: { type: Number, min: 0, max: 100 },
-    tonality: { type: String, enum: ['A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'G#'] }
+    tonality: { type: String, enum: tonalities }
   },
   {
     timestamps: true
@@ -19,10 +22,18 @@ SongSchema.methods.toDto = function ()
     id: this._id,
     title: this.title,
     tempo: this.tempo,
-    level: this.evil,
-    progression: this.progression,
-    tonality: this.tonality
+    level: this.level,
+    tonality: this.tonality,
+    progression: this.progression
   }
 }
+
+SongSchema.statics.levels = function () {
+  return levels;
+};
+
+SongSchema.statics.tonalities = function() {
+  return tonalities;
+};
 
 mongoose.model('Song', SongSchema);

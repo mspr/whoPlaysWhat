@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const router = require('express').Router();
 const Band = mongoose.model('Band');
 const Musician = mongoose.model('Musician');
+const Song = mongoose.model('Song');
 
 router.get('/', (req, res) =>
 {
@@ -41,6 +42,8 @@ router.post('/', (req, res) =>
   if (!req.body.name)
     res.sendStatus(422);
 
+  console.log("*BODY: ", req.body);
+
   let band = new Band();
   band.name = req.body.name;
   band.picture = req.body.picture;
@@ -52,10 +55,13 @@ router.post('/', (req, res) =>
 
 router.patch('/:id', (req, res) =>
 {
+  console.log("***********BAND PATCH******** params ", req.params);
+  console.log("***********BAND PATCH******** body ", req.body);
+
   Band.findById(req.params.id, (err, band) =>
   {
     if (err)
-      res.send(err);
+      return res.send(err);
 
     band.name = req.body.name;
     band.picture = req.body.picture;
@@ -73,30 +79,64 @@ router.patch('/:id', (req, res) =>
           band.musicians.push(musician);
           resolve();
         });
-    })};
+      });
+    };
 
     var pushMusicians = [];
     req.body.musicians.forEach(musician => {
       pushMusicians.push(findMusicianThenPush(musician._id));
     });
 
+    band.songs = [];
+
+    var findSongThenPush = (songId) =>
+    {
+      return new Promise((resolve, reject) =>
+      {
+        Song.findById(songId, (err, song) =>
+        {
+          if (err)
+            reject(err);
+
+          band.songs.push(song);
+          resolve();
+        });
+      });
+    };
+
+    var pushSongs = [];
+    req.body.songs.forEach(song => {
+      pushSongs.push(findSongThenPush(song._id));
+    });
+
+    console.log("pushSongs: ", pushSongs);
+
     Promise.all(pushMusicians).then(() =>
     {
+      console.log("Promise all musicians");
+
       band.musiciansColor = [];
       req.body.musiciansColor.forEach(musicianColor => {
         band.musiciansColor.push(musicianColor);
       });
 
-      band.save((err) =>
+      Promise.all(pushSongs).then(() =>
       {
-        if (err)
+        console.log("Promise all songs");
+
+        band.save((err) =>
         {
-          res.send(err);
-        }
-        else
-        {
-          res.json(band.toDto());
-        }
+          if (err)
+          {
+            res.send(err);
+          }
+          else
+          {
+            res.json(band.toDto());
+          }
+        });
+      })
+      .catch(err => {
       });
     })
     .catch(err => {
