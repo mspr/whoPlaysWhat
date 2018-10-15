@@ -14,7 +14,7 @@ import { NavigationService } from '../../core/navigation.service';
 
 export class SongsOverviewComponent implements OnInit
 {
-  public songs : Song[];
+  public songs = new Array<Song>();
   public band : Band;
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -28,9 +28,12 @@ export class SongsOverviewComponent implements OnInit
   {
     let bandId = this.activatedRoute.snapshot.params['id'];
 
-    this.bandService.getById(bandId).subscribe((band) => {
+    this.bandService.getById(bandId).subscribe((band) =>
+    {
       this.band = Band.fromInfo(band);
-      this.songs = band.songs;
+      this.band.songs.forEach((songInfo) => {
+        this.songs.push(Song.fromInfo(songInfo));
+      })
     })
  }
 
