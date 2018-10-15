@@ -40,7 +40,7 @@ export class SongsShowComponent implements OnInit, OnDestroy
     .switchMap((band) =>
     {
       this.band = Band.fromInfo(band);
-      this.song = Song.fromInfo(this.band.songs.find(s => s._id == songId));
+      this.song = Song.fromInfo(this.band.songs.find(s => s.id == songId));
       return this.musicianService.getAllByBand(this.band);
     })
     .subscribe((musicians) => this.musicians = musicians);

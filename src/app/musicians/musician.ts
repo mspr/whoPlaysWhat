@@ -11,7 +11,7 @@ export class Musician
     let musician = new Musician();
 
     musician.name = info.name;
-    musician.id = info._id;
+    musician.id = info.id;
     musician.roles = info.roles;
     musician.bands = info.bands;
     musician.color = info.color;

@@ -26,7 +26,7 @@ router.get('/:id', (req, res) =>
     if (!song)
       return res.sendStatus(404);
 
-    return res.status(200).json(song);
+    return res.status(200).json(song.toDto());
   });
 });
 

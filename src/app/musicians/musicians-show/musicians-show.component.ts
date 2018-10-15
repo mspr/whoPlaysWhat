@@ -35,7 +35,7 @@ export class MusiciansShowComponent implements OnInit
       return this.bandService.getById(this.bandId)
     })
     .subscribe((band) => {
-      this.musician.color = band.musiciansColor.find(m => m._id == this.musician.id).color;
+      this.musician.color = band.musiciansColor.find(m => m.id == this.musician.id).color;
     });
   }
 }

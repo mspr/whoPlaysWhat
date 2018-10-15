@@ -23,7 +23,7 @@ export class Band
     let band = new Band();
 
     band.name = info.name;
-    band.id = info._id;
+    band.id = info.id;
     band.picture = info.picture;
     band.songs = info.songs;
     band.incomingSongs = info.incomingSongs;

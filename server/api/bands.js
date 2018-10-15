@@ -33,7 +33,7 @@ router.get('/:id', (req, res) =>
       if (!band)
         return res.sendStatus(404);
 
-      return res.status(200).json(band);
+      return res.status(200).json(band.toDto());
     });
 });
 
@@ -49,7 +49,7 @@ router.post('/', (req, res) =>
   band.picture = req.body.picture;
 
   band.save().then(() => {
-    res.status(201).json(band.toDto());
+    return res.status(201).json(band.toDto());
   })
 });
 

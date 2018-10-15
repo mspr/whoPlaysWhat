@@ -18,7 +18,7 @@ export class Song
     let song = new Song();
 
     song.title = info.title;
-    song.id = info._id;
+    song.id = info.id;
     song.level = SongLevelHelper.getSongLevelIndex(info.level);
     song.tempo = info.tempo;
     song.tonality = info.tonality;
