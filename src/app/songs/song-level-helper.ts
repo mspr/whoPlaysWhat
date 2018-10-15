@@ -11,7 +11,7 @@ export class SongLevelHelper
     songLevelNames.set(SongLevel.FingerInTheNose, "Finger in the nose");
     songLevelNames.set(SongLevel.Easy, "Easy");
     songLevelNames.set(SongLevel.NotSoSimple, "Not so simple");
-    songLevelNames.set(SongLevel.HardOne, "Hard one");
+    songLevelNames.set(SongLevel.HardOne, "Hard");
     songLevelNames.set(SongLevel.GoodLuck, "Good luck!");
     return songLevelNames;
   }
@@ -24,5 +24,16 @@ export class SongLevelHelper
   static getSongLevelName(i : number)
   {
     return this.songLevelNames[i];
+  }
+
+  static getSongLevelIndex(levelName : string)
+  {
+    for (let entry of Array.from(this.songLevelNames.entries()))
+    {
+      if (entry[1] === levelName)
+        return entry[0];
+    }
+
+    return SongLevel.NotSoSimple;
   }
 }

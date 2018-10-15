@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const tonalities = ['A', 'Bb', 'B', 'C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'G#'];
-const levels = ['very simple', 'simple', 'advanced', 'hard', 'evil'];
+const levels = ['Finger in the nose', 'Easy', 'Not so simple', 'Hard', 'Good luck!'];
 
 let SongSchema = new mongoose.Schema(
   {

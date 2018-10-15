@@ -1,3 +1,4 @@
+import { SongLevelHelper } from './song-level-helper';
 import { SongTonality } from './song-tonality.enum';
 import { SongLevel } from './song-level.enum';
 
@@ -18,7 +19,7 @@ export class Song
 
     song.title = info.title;
     song.id = info._id;
-    song.level = info.level;
+    song.level = SongLevelHelper.getSongLevelIndex(info.level);
     song.tempo = info.tempo;
     song.tonality = info.tonality;
     song.structure = info.structure;

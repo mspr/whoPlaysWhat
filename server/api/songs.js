@@ -37,6 +37,7 @@ router.post('/', (req, res) =>
   song.level = Song.levels()[req.body.level];
   song.tonality = req.body.tonality;
   song.tempo = req.body.tempo;
+  song.progression = req.body.progression;
 
   song.save().then(() => {
     return res.status(201).json(song.toDto());
