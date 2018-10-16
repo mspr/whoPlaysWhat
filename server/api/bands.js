@@ -55,9 +55,6 @@ router.post('/', (req, res) =>
 
 router.patch('/:id', (req, res) =>
 {
-  console.log("***********BAND PATCH******** params ", req.params);
-  console.log("***********BAND PATCH******** body ", req.body);
-
   Band.findById(req.params.id, (err, band) =>
   {
     if (err)
@@ -110,12 +107,8 @@ router.patch('/:id', (req, res) =>
       pushSongs.push(findSongThenPush(song.id));
     });
 
-    console.log("pushSongs: ", pushSongs);
-
     Promise.all(pushMusicians).then(() =>
     {
-      console.log("Promise all musicians");
-
       band.musiciansColor = [];
       req.body.musiciansColor.forEach(musicianColor => {
         band.musiciansColor.push(musicianColor);
@@ -123,8 +116,6 @@ router.patch('/:id', (req, res) =>
 
       Promise.all(pushSongs).then(() =>
       {
-        console.log("Promise all songs");
-
         band.save((err) =>
         {
           if (err)
@@ -133,7 +124,6 @@ router.patch('/:id', (req, res) =>
           }
           else
           {
-            console.log("Save");
             return res.json(band.toDto());
           }
         });

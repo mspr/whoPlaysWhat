@@ -49,7 +49,7 @@ export class SongsAddComponent implements OnInit
       return this.bandService.getById(bandId).switchMap((bandInfo) =>
       {
         this.band = Band.fromInfo(bandInfo);
-        this.band.songs.push( { _id: song.id, tempo: song.tempo, tonality: song.tonality, structure: song.structure, musicians: song.musicians } );
+        this.band.songs.push( { id: song.id, tempo: song.tempo, tonality: song.tonality, structure: song.structure, musicians: song.musicians } );
         return this.bandService.update(this.band);
       });
     }).subscribe(() =>
