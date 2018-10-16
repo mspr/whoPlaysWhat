@@ -76,12 +76,14 @@ export class SongsListComponent implements OnInit, OnDestroy
   {
     this.bandService.getById(this.band.id)
       .takeUntil(this.componentDestroyed$)
-      .subscribe((band) => {
-      this.band = Band.fromInfo(band);
-      this.band.songs.forEach(songInfo => {
-        this.songs.push(Song.fromInfo(songInfo));
-      });
-    })
+      .subscribe((band) =>
+      {
+        this.band = Band.fromInfo(band);
+        this.songs = [];
+        this.band.songs.forEach(songInfo => {
+          this.songs.push(Song.fromInfo(songInfo));
+        });
+      })
   }
 
   getSongProgressionStyle(song : Song)

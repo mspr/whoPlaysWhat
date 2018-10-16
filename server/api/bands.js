@@ -133,6 +133,7 @@ router.patch('/:id', (req, res) =>
           }
           else
           {
+            console.log("Save");
             return res.json(band.toDto());
           }
         });
