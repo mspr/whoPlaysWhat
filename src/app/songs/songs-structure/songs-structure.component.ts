@@ -37,12 +37,10 @@ export class SongsStructureComponent implements OnInit
   {
     let bandId = this.activatedRoute.parent.snapshot.params["id"];
 
-    this.bandService.getById(bandId).switchMap((band) => {
+    this.bandService.getById(bandId).subscribe((band) =>
+    {
       this.band = band;
-      return this.musicianService.getAllByBand(band);
-    })
-    .subscribe((musicians) => {
-      this.musicians = musicians;
+      this.musicians = this.band.musicians;
     });
   }
 

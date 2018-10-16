@@ -14,28 +14,11 @@ export class MusicianService
 {
   public removed = new EventEmitter();
   public added = new EventEmitter<Musician>();
+  public updated = new EventEmitter<Musician>();
 
   constructor(private bandService: BandService,
     private httpClient: HttpClient)
   {
-  }
-
-  getAllByBand(band) : Observable<Musician[]>
-  {
-    let getByIdObservables = new Array<Observable<Musician>>();
-    band.musicians.forEach(musicianBandInfo =>
-    {
-      let getByIdObservable = this.getById(musicianBandInfo.id).map((musicianInfo) =>
-      {
-        var musician = Musician.fromInfo(musicianInfo);
-        musician.color = musicianBandInfo.color;
-        return musician;
-      });
-
-      getByIdObservables.push(getByIdObservable);
-    });
-
-    return forkJoin<Musician[]>(getByIdObservables);
   }
 
   getAll()

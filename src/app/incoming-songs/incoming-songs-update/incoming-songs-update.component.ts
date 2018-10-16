@@ -27,33 +27,34 @@ export class IncomingSongsUpdateComponent implements OnInit
   constructor(private activatedRoute: ActivatedRoute,
     private bandService: BandService,
     private musicianService: MusicianService,
-    private incomingSongService: IncomingSongService) { }
+    private incomingSongService: IncomingSongService)
+  {
+  }
 
   ngOnInit()
   {
     let bandId = this.activatedRoute.snapshot.parent.params["id"];
-    this.bandService.getById(bandId)
-    .switchMap((band) => {
-      this.band = Band.fromInfo(band);
+    this.bandService.getById(bandId).subscribe((band) =>
+    {
+      this.band = band;
       this.incomingSongs = band.incomingSongs;
-      return this.musicianService.getAllByBand(band);
-    })
-    .subscribe((musicians) => {
-      this.musicians = musicians;
+      this.musicians = this.band.musicians;
     });
   }
 
   getSongsProposedBy(musician : Musician)
-{
+  {
     return this.incomingSongs.filter(s => s.proposer === musician.id);
   }
 
-  getSongScore(song : IncomingSong, musician : Musician) {
+  getSongScore(song : IncomingSong, musician : Musician)
+  {
     let score = song.musicians.find(m => m.id === musician.id).score;
     return score != undefined ? score : 0;
   }
 
-  getSongComment(song : IncomingSong, musician : Musician) {
+  getSongComment(song : IncomingSong, musician : Musician)
+  {
     let comment = song.musicians.find(m => m.id === musician.id).comment;
     return comment != undefined ? comment : '';
   }
@@ -75,7 +76,8 @@ export class IncomingSongsUpdateComponent implements OnInit
     // }
   }
 
-  displaySongTitleWithHigherScoreFrom(musician : Musician) {
+  displaySongTitleWithHigherScoreFrom(musician : Musician)
+  {
     let songs = this.getSongsProposedBy(musician);
     if (songs.length > 0)
     {
@@ -88,7 +90,8 @@ export class IncomingSongsUpdateComponent implements OnInit
       return null;
   }
 
-  getScore(song : IncomingSong) {
+  getScore(song : IncomingSong)
+  {
     let score = 0;
     song.musicians.forEach(musician => {
       score += (musician.score != undefined) ? musician.score : 0;

@@ -18,7 +18,7 @@ export class SongsShowComponent implements OnInit, OnDestroy
 {
   public band : Band;
   public song : Song = new Song();
-  public musicians : Musician[] = new Array<Musician>();
+  public musicians = new Array<Musician>();
 
   constructor(private activatedRoute: ActivatedRoute,
     private musicianService: MusicianService,
@@ -37,13 +37,12 @@ export class SongsShowComponent implements OnInit, OnDestroy
       songId = params.id;
       return this.bandService.getById(bandId)
     })
-    .switchMap((band) =>
+    .subscribe((band) =>
     {
       this.band = Band.fromInfo(band);
-      this.song = Song.fromInfo(this.band.songs.find(s => s.id == songId));
-      return this.musicianService.getAllByBand(this.band);
-    })
-    .subscribe((musicians) => this.musicians = musicians);
+      this.song = Song.fromInfo(this.band.songs.find(s => s.id === songId));
+      this.musicians = this.band.musicians;
+    });
   }
 
   ngOnDestroy()

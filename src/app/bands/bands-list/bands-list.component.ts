@@ -7,6 +7,7 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
   templateUrl: './bands-list.component.html',
   styleUrls: ['./bands-list.component.scss']
 })
+
 export class BandsListComponent implements OnInit
 {
   public bands = new Array<Band>();

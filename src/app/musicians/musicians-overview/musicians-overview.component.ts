@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './musicians-overview.component.html',
   styleUrls: ['./musicians-overview.component.scss']
 })
+
 export class MusiciansOverviewComponent implements OnInit
 {
   public band : Band;
@@ -20,18 +21,21 @@ export class MusiciansOverviewComponent implements OnInit
   constructor(private activatedRoute: ActivatedRoute,
     private bandService: BandService,
     private musicianService: MusicianService,
-    private navigationService: NavigationService) { }
+    private navigationService: NavigationService)
+  {
+  }
 
   ngOnInit()
   {
     let bandId = this.activatedRoute.snapshot.params['id'];
 
-    this.bandService.getById(bandId).switchMap((band) => {
-      this.band = Band.fromInfo(band);
-      return this.musicianService.getAllByBand(this.band)
-    })
-    .subscribe((musicians) => {
-      this.musicians = musicians;
+    this.bandService.getById(bandId).subscribe((band) =>
+    {
+      this.band = band;
+      this.band.musicians.forEach(musician => {
+        musician.color = this.band.musiciansColor.find(m => m.id === musician.id).color;
+        this.musicians.push(musician);
+      })
     });
   }
 

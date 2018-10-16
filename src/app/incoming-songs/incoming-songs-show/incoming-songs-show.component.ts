@@ -5,7 +5,6 @@ import { Musician } from './../../musicians/musician';
 import { Band } from './../../bands/band';
 import { Component, OnInit } from '@angular/core';
 import { IncomingSong } from '../incoming-song';
-import { MusicianService } from '../../core/musician.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -16,7 +15,6 @@ import { ActivatedRoute } from '@angular/router';
 
 export class IncomingSongsShowComponent implements OnInit
 {
-  public band : Band;
   public musicians : Musician[];
   public incomingSongs = new Array<IncomingSong>();
   private scoreMax = 5;
@@ -24,7 +22,6 @@ export class IncomingSongsShowComponent implements OnInit
 
   constructor(private activatedRoute: ActivatedRoute,
     private bandService: BandService,
-    private musicianService: MusicianService,
     private incomingSongService: IncomingSongService)
   {
   }
@@ -32,15 +29,11 @@ export class IncomingSongsShowComponent implements OnInit
   ngOnInit()
   {
     let bandId = this.activatedRoute.snapshot.parent.params["id"];
-    this.bandService.getById(bandId)
-    .switchMap((band) => {
-      this.band = Band.fromInfo(band);
+    this.bandService.getById(bandId).subscribe((band) =>
+    {
       band.incomingSongs.forEach(song => this.incomingSongs.push(IncomingSong.fromInfo(song)));
       this.incomingSongsHelper = new IncomingSongsHelper(this.incomingSongs);
-      return this.musicianService.getAllByBand(this.band);
-    })
-    .subscribe((musicians) => {
-      this.musicians = musicians;
+      this.musicians = band.musicians;
     });
   }
 }

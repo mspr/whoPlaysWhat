@@ -14,6 +14,7 @@ import { IMultiSelectSettings, IMultiSelectTexts, IMultiSelectOption } from 'ang
   templateUrl: './musicians-add.component.html',
   styleUrls: ['./musicians-add.component.scss']
 })
+
 export class MusiciansAddComponent implements OnInit
 {
   public band : Band;

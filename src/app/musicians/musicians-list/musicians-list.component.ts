@@ -11,12 +11,14 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
 import { BandService } from '../../core/band.service';
 import { RolesHelper } from '../../core/roles-helper';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'wpw-musicians-list',
   templateUrl: './musicians-list.component.html',
   styleUrls: ['./musicians-list.component.scss']
 })
+
 export class MusiciansListComponent implements OnInit, OnDestroy
 {
   public band : Band;
@@ -27,18 +29,27 @@ export class MusiciansListComponent implements OnInit, OnDestroy
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
     private bandService: BandService,
-    private musicianService: MusicianService) { }
+    private musicianService: MusicianService)
+  {
+  }
 
   ngOnInit()
   {
     let bandId = this.activatedRoute.snapshot.params['id'];
 
-    this.bandService.getById(bandId).subscribe((band) => {
-      this.band = Band.fromInfo(band);
+    this.activatedRoute.params
+      .switchMap(params => this.bandService.getById(params.id))
+      .subscribe(band =>
+      {
+        this.band = band;
+        this.retrieveMusicians();
+      });
+
+    this.musicianService.added.subscribe(() => {
       this.retrieveMusicians();
     });
 
-    this.musicianService.added.subscribe(() => {
+    this.musicianService.updated.subscribe(() => {
       this.retrieveMusicians();
     });
 
@@ -84,13 +95,17 @@ export class MusiciansListComponent implements OnInit, OnDestroy
 
   private retrieveMusicians()
   {
-    this.bandService.getById(this.band.id).switchMap((band) => {
-      this.band = Band.fromInfo(band);
-      return this.musicianService.getAllByBand(this.band);
-    })
-    .takeUntil(this.componentDestroyed$)
-    .subscribe((musicians) => {
-      this.musicians = musicians;
-    });
+    this.musicians = [];
+
+    this.bandService.getById(this.band.id)
+      .takeUntil(this.componentDestroyed$)
+      .subscribe((band) =>
+      {
+        this.band = band;
+        band.musicians.forEach(musician => {
+          musician.color = band.musiciansColor.find(m => m.id === musician.id).color;
+          this.musicians.push(musician);
+        });
+      });
   }
 }

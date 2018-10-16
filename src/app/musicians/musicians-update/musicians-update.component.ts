@@ -80,6 +80,7 @@ export class MusiciansUpdateComponent implements OnInit
     })
     .subscribe(() =>
     {
+      this.musicianService.updated.emit(this.musician);
       this.router.navigate([`bands/${this.band.id}`, 'musicians', this.musician.id]);
     });
   }
