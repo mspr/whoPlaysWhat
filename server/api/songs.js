@@ -38,6 +38,7 @@ router.post('/', (req, res) =>
   song.tonality = req.body.tonality;
   song.tempo = req.body.tempo;
   song.progression = req.body.progression;
+  song.structure = req.body.structure;
 
   song.save().then(() => {
     return res.status(201).json(song.toDto());
@@ -49,9 +50,9 @@ router.delete('/:id', (req, res) =>
   Song.deleteOne({_id: req.params.id}, (err, song) =>
   {
     if (err)
-      res.send(err);
+      return res.send(err);
 
-    res.json("Song " + song.title + " has been removed.");
+    return res.json("Song " + song.title + " has been removed.");
   });
 });
 

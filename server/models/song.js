@@ -9,7 +9,8 @@ let SongSchema = new mongoose.Schema(
     tempo: { type: Number },
     level: { type: String, enum: levels },
     progression: { type: Number, min: 0, max: 100 },
-    tonality: { type: String, enum: tonalities }
+    tonality: { type: String, enum: tonalities },
+    structure: [{ type: String }]
   },
   {
     timestamps: true
@@ -24,7 +25,8 @@ SongSchema.methods.toDto = function ()
     tempo: this.tempo,
     level: this.level,
     tonality: this.tonality,
-    progression: this.progression
+    progression: this.progression,
+    structure: this.structure
   }
 }
 
