@@ -31,14 +31,10 @@ export class SongsUpdateComponent implements OnInit
     let bandId = this.activatedRoute.parent.snapshot.params["id"];
     let songId = this.activatedRoute.snapshot.params["id"];
 
-    this.bandService.getById(bandId).subscribe((band) => {
+    this.bandService.getById(bandId).subscribe((band) =>
+    {
       this.band = band;
-      let songInfo = band.songs.find(s => s.id == songId);
-      this.song.tempo = songInfo.tempo;
-      this.song.tonality = songInfo.tonality;
-      this.song.structure = songInfo.structure;
-      this.song.musicians = songInfo.musicians;
-      this.song.title = songInfo.title;
+      this.song = band.songs.find(s => s.id == songId);
     });
   }
 
@@ -54,15 +50,8 @@ export class SongsUpdateComponent implements OnInit
 
   update()
   {
-    this.songService.update(this.song).switchMap((song) => {
-      let songInfo = this.band.songs.find(s => s.id == song.id);
-      songInfo.tempo = song.tempo;
-      songInfo.tonality = song.tonality;
-      songInfo.structure = song.structure;
-      songInfo.musicians = song.musicians;
-      return this.bandService.update(this.band);
-    })
-    .subscribe(() => {
+    this.songService.update(this.song).subscribe((song) =>
+    {
       this.songService.updated.emit();
       this.router.navigate([`bands/${this.band.id}`, 'songs', this.song.id]);
     });

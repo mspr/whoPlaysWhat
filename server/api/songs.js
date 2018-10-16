@@ -45,6 +45,30 @@ router.post('/', (req, res) =>
   });
 });
 
+router.patch('/:id', (req, res) =>
+{
+  Song.findById(req.params.id, (err, song) =>
+  {
+    if (err)
+      return res.send(err);
+
+    song.title = req.body.title;
+    song.level = Song.levels()[req.body.level];
+    song.tonality = req.body.tonality;
+    song.tempo = req.body.tempo;
+    song.progression = req.body.progression;
+    song.structure = req.body.structure;
+
+    song.save((err) =>
+    {
+      if (err)
+        return res.send(err);
+      else
+        return res.json(song.toDto());
+    });
+  });
+});
+
 router.delete('/:id', (req, res) =>
 {
   Song.deleteOne({_id: req.params.id}, (err, song) =>

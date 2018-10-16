@@ -13,6 +13,7 @@ import { BandService } from '../../core/band.service';
   templateUrl: './musicians-update.component.html',
   styleUrls: ['./musicians-update.component.scss']
 })
+
 export class MusiciansUpdateComponent implements OnInit
 {
   public band : Band;
@@ -42,7 +43,8 @@ export class MusiciansUpdateComponent implements OnInit
     let bandId = this.activatedRoute.parent.snapshot.params["id"];
     let musicianId = this.activatedRoute.snapshot.params["id"];
 
-    this.musicianService.getById(musicianId).switchMap((musician) => {
+    this.musicianService.getById(musicianId).switchMap((musician) =>
+    {
       this.musician = musician;
       let roles = RolesHelper.getRoles();
       this.musician.roles.forEach(role => {
@@ -51,8 +53,9 @@ export class MusiciansUpdateComponent implements OnInit
 
       return this.bandService.getById(bandId);
     })
-    .subscribe((band) => {
-      this.band = Band.fromInfo(band);
+    .subscribe((band) =>
+    {
+      this.band = band;
       this.musician.color = band.musicians.find(m => m.id == this.musician.id).color;
     });
   }
@@ -70,11 +73,13 @@ export class MusiciansUpdateComponent implements OnInit
       this.musician.roles.push(keys[roleIdx-1]);
     });
 
-    this.musicianService.update(this.musician).switchMap((musician) => {
+    this.musicianService.update(this.musician).switchMap((musician) =>
+    {
       this.band.musicians.find(m => m.id == musician.id).color = musician.color;
       return this.bandService.update(this.band);
     })
-    .subscribe(() => {
+    .subscribe(() =>
+    {
       this.router.navigate([`bands/${this.band.id}`, 'musicians', this.musician.id]);
     });
   }
