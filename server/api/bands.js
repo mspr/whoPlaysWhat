@@ -65,6 +65,7 @@ router.patch('/:id', (req, res) =>
 
     band.name = req.body.name;
     band.picture = req.body.picture;
+    band.notes = req.body.notes;
     band.musicians = [];
 
     var findMusicianThenPush = (musicianId) =>
@@ -84,7 +85,7 @@ router.patch('/:id', (req, res) =>
 
     var pushMusicians = [];
     req.body.musicians.forEach(musician => {
-      pushMusicians.push(findMusicianThenPush(musician._id));
+      pushMusicians.push(findMusicianThenPush(musician.id));
     });
 
     band.songs = [];
@@ -106,7 +107,7 @@ router.patch('/:id', (req, res) =>
 
     var pushSongs = [];
     req.body.songs.forEach(song => {
-      pushSongs.push(findSongThenPush(song._id));
+      pushSongs.push(findSongThenPush(song.id));
     });
 
     console.log("pushSongs: ", pushSongs);
@@ -128,11 +129,11 @@ router.patch('/:id', (req, res) =>
         {
           if (err)
           {
-            res.send(err);
+            return res.send(err);
           }
           else
           {
-            res.json(band.toDto());
+            return res.json(band.toDto());
           }
         });
       })

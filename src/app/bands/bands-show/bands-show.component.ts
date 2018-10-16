@@ -10,6 +10,7 @@ import { Key } from 'protractor';
   templateUrl: './bands-show.component.html',
   styleUrls: ['./bands-show.component.scss']
 })
+
 export class BandsShowComponent implements OnInit
 {
   public band : Band;
@@ -25,7 +26,9 @@ export class BandsShowComponent implements OnInit
 
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
-    private bandService: BandService) { }
+    private bandService: BandService)
+  {
+  }
 
   ngOnInit()
   {
