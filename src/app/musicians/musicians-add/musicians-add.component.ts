@@ -61,7 +61,8 @@ export class MusiciansAddComponent implements OnInit
         this.band.songs.forEach(song => song.musicians.push( { _id: musician.id, plays: [] } ));
         return this.bandService.update(this.band).map(band => musician);
       });
-    }).subscribe((musician) => {
+    }).subscribe((musician) =>
+    {
         this.musicianService.added.emit(musician);
         this.router.navigate([`bands/${bandId}`, 'musicians', musician.id]);
     });

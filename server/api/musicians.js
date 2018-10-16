@@ -44,6 +44,26 @@ router.post('/', (req, res) =>
   });
 });
 
+router.patch('/:id', (req, res) =>
+{
+  Musician.findById(req.params.id, (err, musician) =>
+  {
+    if (err)
+      return res.send(err);
+
+    musician.name = req.body.name;
+    musician.roles = req.body.roles;
+
+    musician.save((err) =>
+    {
+      if (err)
+        return res.send(err);
+      else
+        return res.json(musician.toDto());
+    });
+  });
+});
+
 router.delete('/:id', (req, res) =>
 {
   Musician.deleteOne({_id: req.params.id}, (err, musician) =>

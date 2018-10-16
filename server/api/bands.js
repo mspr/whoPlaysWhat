@@ -109,6 +109,8 @@ router.patch('/:id', (req, res) =>
 
     Promise.all(pushMusicians).then(() =>
     {
+      console.log("req.body.musiciansColor ", req.body.musiciansColor);
+
       band.musiciansColor = [];
       req.body.musiciansColor.forEach(musicianColor => {
         band.musiciansColor.push(musicianColor);

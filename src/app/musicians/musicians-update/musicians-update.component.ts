@@ -56,7 +56,7 @@ export class MusiciansUpdateComponent implements OnInit
     .subscribe((band) =>
     {
       this.band = band;
-      this.musician.color = band.musicians.find(m => m.id == this.musician.id).color;
+      this.musician.color = band.musiciansColor.find(m => m.id == this.musician.id).color;
     });
   }
 
@@ -75,7 +75,7 @@ export class MusiciansUpdateComponent implements OnInit
 
     this.musicianService.update(this.musician).switchMap((musician) =>
     {
-      this.band.musicians.find(m => m.id == musician.id).color = musician.color;
+      this.band.musiciansColor.find(m => m.id == musician.id).color = this.musician.color;
       return this.bandService.update(this.band);
     })
     .subscribe(() =>
