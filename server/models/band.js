@@ -8,7 +8,8 @@ let BandSchema = new mongoose.Schema(
     musicians: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Musician' }],
     musiciansColor: [],
     songs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Song' }],
-    notes: [{ type: String }]
+    notes: [{ type: String }],
+    events: [{ type: mongoose.Schema.Types.ObjectId, ref: 'CalendarEvent' }]
   },
   {
     timestamps: true
@@ -30,7 +31,8 @@ BandSchema.methods.toDto = function ()
     musicians: this.musicians.map((musician) => { return musician.toDto(); }),
     musiciansColor: this.musiciansColor,
     songs: this.songs.map((song) => { return song.toDto(); }),
-    notes: this.notes
+    notes: this.notes,
+    events: this.events.map((event) => { return event.toDto(); })
   }
 }
 
