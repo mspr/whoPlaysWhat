@@ -13,8 +13,6 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(cors());
 
 //Require the models
-require('./models/Task');
-require('./models/Todo');
 require('./models/Musician');
 require('./models/Song');
 require('./models/Band');
