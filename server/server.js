@@ -16,6 +16,7 @@ app.use(cors());
 require('./models/Musician');
 require('./models/Song');
 require('./models/Band');
+require('./models/CalendarEvent');
 
 //Get our API routes
 const api = require('./api/index');

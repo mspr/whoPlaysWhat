@@ -143,9 +143,9 @@ router.delete('/:id', (req, res) =>
   Band.deleteOne({_id: req.params.id}, (err, band) =>
   {
     if (err)
-      res.send(err);
+      return res.send(err);
 
-    res.json("Band " + band.name + " has been removed.");
+    return res.json("Band " + band.name + " has been removed.");
   });
 });
 
