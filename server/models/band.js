@@ -17,7 +17,7 @@ let BandSchema = new mongoose.Schema(
 
 BandSchema.pre('remove', (next) =>
 {
-  Song.remove({ bandIs: this._id }).exec();
+  Song.remove({ bandId: this._id }).exec();
   next();
 })
 
