@@ -39,7 +39,7 @@ export class SongsShowComponent implements OnInit, OnDestroy
     })
     .subscribe((band) =>
     {
-      this.band = Band.fromInfo(band);
+      this.band = band;
       this.song = Song.fromInfo(this.band.songs.find(s => s.id === songId));
       this.musicians = this.band.musicians;
     });

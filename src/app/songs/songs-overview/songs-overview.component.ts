@@ -30,7 +30,7 @@ export class SongsOverviewComponent implements OnInit
 
     this.bandService.getById(bandId).subscribe((band) =>
     {
-      this.band = Band.fromInfo(band);
+      this.band = band;
       this.band.songs.forEach((songInfo) => {
         this.songs.push(Song.fromInfo(songInfo));
       })

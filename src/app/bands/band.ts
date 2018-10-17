@@ -18,7 +18,7 @@ export class Band
     this.picture = "./assets/images/bands/unknown.png";
   }
 
-  static fromInfo(info)
+  static fromJSON(info)
   {
     let band = new Band();
 

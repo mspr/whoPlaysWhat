@@ -33,7 +33,7 @@ export class SongsListComponent implements OnInit, OnDestroy
     let bandId = this.activatedRoute.snapshot.params['id'];
 
     this.bandService.getById(bandId).subscribe((band) => {
-      this.band = Band.fromInfo(band);
+      this.band = band;
       this.retrieveSongs();
     })
 
@@ -78,7 +78,7 @@ export class SongsListComponent implements OnInit, OnDestroy
       .takeUntil(this.componentDestroyed$)
       .subscribe((band) =>
       {
-        this.band = Band.fromInfo(band);
+        this.band = band;
         this.songs = [];
         this.band.songs.forEach(songInfo => {
           this.songs.push(Song.fromInfo(songInfo));

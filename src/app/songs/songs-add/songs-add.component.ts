@@ -46,10 +46,10 @@ export class SongsAddComponent implements OnInit
     this.songService.add(this.song).switchMap((song) =>
     {
       this.song = Song.fromInfo(song);
-      return this.bandService.getById(bandId).switchMap((bandInfo) =>
+      return this.bandService.getById(bandId).switchMap((band) =>
       {
-        this.band = Band.fromInfo(bandInfo);
-        this.band.songs.push( { id: song.id, tempo: song.tempo, tonality: song.tonality, structure: song.structure, musicians: song.musicians } );
+        this.band = band;
+        this.band.songs.push(this.song);
         return this.bandService.update(this.band);
       });
     }).subscribe(() =>

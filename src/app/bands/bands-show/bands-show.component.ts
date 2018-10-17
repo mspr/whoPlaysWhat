@@ -34,8 +34,8 @@ export class BandsShowComponent implements OnInit
   {
     this.activatedRoute.params.pipe(
       switchMap((params) => this.bandService.getById(params.id))
-    ).subscribe((bandInfo) => {
-        this.band = Band.fromInfo(bandInfo);
+    ).subscribe((band) => {
+        this.band = Band.fromJSON(band);
     });
   }
 
