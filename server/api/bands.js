@@ -9,6 +9,7 @@ router.get('/', (req, res) =>
   Band.find()
     .populate('musicians')
     .populate('songs')
+    .populate('events')
     .then((bands) =>
     {
       if (!bands)
