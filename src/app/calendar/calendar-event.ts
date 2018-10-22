@@ -8,27 +8,28 @@ export class CalendarEvent
   public title = '';
   public description = '';
   public type : CalendarEventType;
-  public start : number;
-  public end : number;
+  public start : Date;
+  public end : Date;
   public picture : string;
   public frequency : CalendarEventFrequency;
 
-  constructor(title : string, description : string, type : CalendarEventType, start : number, end : number, frequency : CalendarEventFrequency)
+  constructor()
   {
-    this.title = title;
-    this.description = description;
-    this.type = type;
-    this.start = start;
-    this.end = end;
-    this.frequency = frequency;
     this.picture = CalendarEventTypeHelper.getDefaultImage();
+    this.type = CalendarEventType.Rehearsal;
+    this.frequency = CalendarEventFrequency.Once;
   }
 
   static fromInfo(info)
   {
-    var event = new CalendarEvent(info.title, info.description, info.type, info.start, info.end, info.frequency);
+    var event = new CalendarEvent();
 
+    event.title = info.title;
     event.id = info.id;
+    event.description = info.description;
+    event.start = new Date(info.start);
+    event.end = new Date(info.end);
+    event.frequency = info.frequency;
     event.picture = info.picture;
 
     return event;
@@ -38,10 +39,12 @@ export class CalendarEvent
   {
     var dayStart = day.getTime();
     var dayInMs = 86400000;
+    var startTime = this.start.getTime();
+    var endTime = this.end.getTime();
     var dayEnd = dayStart + dayInMs;
-    let eventBeginsOnDay = this.start >= dayStart && this.start <= dayEnd;
-    let eventEndsOnDay = this.end >= dayStart && this.end <= dayEnd;
-    let eventBeginsBeforeAndEndsAfterDay = this.start < dayStart && this.end > dayEnd;
+    let eventBeginsOnDay = startTime >= dayStart && startTime <= dayEnd;
+    let eventEndsOnDay = endTime >= dayStart && endTime <= dayEnd;
+    let eventBeginsBeforeAndEndsAfterDay = startTime < dayStart && endTime > dayEnd;
 
     if (this.frequency === CalendarEventFrequency.OncePerWeek)
     {
