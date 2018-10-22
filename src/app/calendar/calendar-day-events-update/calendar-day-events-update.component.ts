@@ -61,9 +61,9 @@ export class CalendarDayEventsUpdateComponent implements OnInit
     this.newEvent.start = this.startTime;
     this.newEvent.end = this.endTime;
 
-    // this.band.events.push(this.newEvent);
     this.calendarService.add(this.newEvent, this.band).subscribe(() => {
       this.newEvent = new CalendarEvent();
+      this.calendarService.added.emit(this.newEvent);
     });
   }
 

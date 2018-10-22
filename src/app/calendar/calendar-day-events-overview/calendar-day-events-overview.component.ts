@@ -1,7 +1,6 @@
 import { Band } from './../../bands/band';
 import { CalendarEvent } from './../calendar-event';
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { BandService } from '../../core/band.service';
 
 @Component({
   selector: 'wpw-calendar-day-events-overview',
@@ -25,7 +24,7 @@ export class CalendarDayEventsOverviewComponent implements OnInit
   public startTime : Date;
   public endTime : Date;
 
-  constructor(private bandService: BandService)
+  constructor()
   {
   }
 

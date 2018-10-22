@@ -1,5 +1,5 @@
 import { Band } from './../bands/band';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { BandService } from './band.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
@@ -8,6 +8,8 @@ import { CalendarEvent } from '../calendar/calendar-event';
 @Injectable()
 export class CalendarService
 {
+  public added = new EventEmitter<CalendarEvent>();
+
   constructor(private httpClient: HttpClient,
     private bandService : BandService)
   {

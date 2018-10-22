@@ -1,3 +1,4 @@
+import { CalendarService } from './../../core/calendar.service';
 import { BandService } from './../../core/band.service';
 import { Band } from './../band';
 import { Component, OnInit, SimpleChanges, HostListener } from '@angular/core';
@@ -26,7 +27,8 @@ export class BandsShowComponent implements OnInit
 
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
-    private bandService: BandService)
+    private bandService: BandService,
+    private calendarService: CalendarService)
   {
   }
 
@@ -36,6 +38,12 @@ export class BandsShowComponent implements OnInit
       switchMap((params) => this.bandService.getById(params.id))
     ).subscribe((band) => {
         this.band = Band.fromJSON(band);
+    });
+
+    this.calendarService.added.subscribe((event) => {
+      this.bandService.getById(this.band.id).subscribe((band) => {
+        this.band = Band.fromJSON(band);
+      })
     });
   }
 
