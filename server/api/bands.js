@@ -28,6 +28,7 @@ router.get('/:id', (req, res) =>
   Band.findById(req.params.id)
     .populate('musicians')
     .populate('songs')
+    .populate('events')
     .then((band) =>
     {
       if (!band)

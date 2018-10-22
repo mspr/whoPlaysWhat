@@ -1,12 +1,21 @@
 import { Band } from './../bands/band';
 import { Injectable } from '@angular/core';
 import { BandService } from './band.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { CalendarEvent } from '../calendar/calendar-event';
 
 @Injectable()
 export class CalendarService
 {
-  constructor(private bandService : BandService)
+  constructor(private httpClient: HttpClient,
+    private bandService : BandService)
   {
+  }
+
+  add(event : CalendarEvent, band : Band)
+  {
+    return this.httpClient.post<Band>(environment.api + '/calendarEvents', {event: event, bandId: band.id});
   }
 
   removeEvent(band : Band, id : number)

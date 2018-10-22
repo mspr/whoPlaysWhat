@@ -26,6 +26,7 @@ CalendarEventSchema.methods.toDto = function ()
     description: this.description,
     start: this.start,
     end: this.end,
+    frequency: this.frequency,
     picture: this.picture
   }
 }

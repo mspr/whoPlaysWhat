@@ -1,3 +1,4 @@
+import { CalendarService } from './../../core/calendar.service';
 import { Band } from './../../bands/band';
 import { CalendarEvent } from './../calendar-event';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
@@ -31,7 +32,8 @@ export class CalendarDayEventsUpdateComponent implements OnInit
   @Output()
   public endModeUpdated = new EventEmitter();
 
-  constructor(private bandService: BandService)
+  constructor(private bandService: BandService,
+    private calendarService: CalendarService)
   {
   }
 
@@ -60,7 +62,8 @@ export class CalendarDayEventsUpdateComponent implements OnInit
     this.newEvent.end = this.endTime.getTime();
 
     this.band.events.push(this.newEvent);
-    this.bandService.update(this.band).subscribe((band) => {
+    // this.bandService.update(this.band).subscribe((band) => {
+    this.calendarService.add(this.newEvent, this.band).subscribe(() => {
       this.newEvent = new CalendarEvent("", "", CalendarEventType.Rehearsal, 0, 0, CalendarEventFrequency.Once);
     });
   }
