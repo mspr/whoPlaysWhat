@@ -37,6 +37,7 @@ export class CalendarEvent
 
   public isTakingPlaceOnDay(day : Date)
   {
+    day = new Date(day.getFullYear(), day.getMonth(), day.getDate(), 0);
     var dayStart = day.getTime();
     var dayInMs = 86400000;
     var startTime = this.start.getTime();
@@ -71,10 +72,9 @@ export class CalendarEvent
     if (!this.isTakingPlaceOnDay(hour))
       return false;
 
-    var startDate = new Date(this.start);
-    var start = new Date(hour.getFullYear(), hour.getMonth(), hour.getDate(), startDate.getHours());
-    var endDate = new Date(this.end);
-    var end = new Date(hour.getFullYear(), hour.getMonth(), hour.getDate(), endDate.getHours());
+    var start = new Date(hour.getFullYear(), hour.getMonth(), hour.getDate(), this.start.getHours());
+    var end = new Date(hour.getFullYear(), hour.getMonth(), hour.getDate(), this.end.getHours());
+
     return start.getTime() <= hourInMs && end.getTime() > hourInMs;
   }
 }
