@@ -15,6 +15,7 @@ app.use(cors());
 //Require the models
 require('./models/Musician');
 require('./models/Song');
+require('./models/IncomingSong');
 require('./models/Band');
 require('./models/CalendarEvent');
 
