@@ -24,7 +24,7 @@ export class CalendarDayEventsUpdateComponent implements OnInit
   public endTime : Date;
 
   public frequencies = CalendarEventFrequencyHelper.getFrequencyNames();
-  public frequencyColors = ["rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)"];
+  public frequencyColors = ["rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)"];
   public newEvent = new CalendarEvent();
 
   @Output()

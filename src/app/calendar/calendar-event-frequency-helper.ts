@@ -11,7 +11,6 @@ export class CalendarEventFrequencyHelper
     let frequencyNames = new Map<CalendarEventFrequency, string>();
     frequencyNames.set(CalendarEventFrequency.Once, "Once");
     frequencyNames.set(CalendarEventFrequency.OncePerWeek, "Once per week");
-    frequencyNames.set(CalendarEventFrequency.OncePerMonth, "Once per month");
     frequencyNames.set(CalendarEventFrequency.EveryDay, "Every day");
     return frequencyNames;
   }
@@ -21,7 +20,6 @@ export class CalendarEventFrequencyHelper
     let frequencyColors = new Map<CalendarEventFrequency, string[]>();
     frequencyColors.set(CalendarEventFrequency.Once, ["rgba(205, 234, 125, 0.5)", "rgba(0,0,0,0)", "rgba(0,0,0,0)", "rgba(0,0,0,0)"]);
     frequencyColors.set(CalendarEventFrequency.OncePerWeek, ["rgba(255, 234, 125, 0.5)", "rgba(255, 234, 125, 0.5)", "rgba(0,0,0,0)", "rgba(0,0,0,0)"]);
-    frequencyColors.set(CalendarEventFrequency.OncePerMonth, ["rgba(242, 172, 46, 0.5)", "rgba(242, 172, 46, 0.5)", "rgba(242, 172, 46, 0.5)", "rgba(0,0,0,0)"]);
     frequencyColors.set(CalendarEventFrequency.EveryDay, ["rgba(255, 84, 46, 0.5)", "rgba(255, 84, 46, 0.5)", "rgba(255, 84, 46, 0.5)", "rgba(255, 84, 46, 0.5)"]);
     return frequencyColors;
   }

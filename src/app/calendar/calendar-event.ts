@@ -54,9 +54,6 @@ export class CalendarEvent
       var startWeekDay = startDate.getDay();
       return (startWeekDay - weekDay) % 7 == 0;
     }
-    else if (this.frequency === CalendarEventFrequency.OncePerMonth)
-    {
-    }
     else if (this.frequency === CalendarEventFrequency.EveryDay)
     {
       return true;
