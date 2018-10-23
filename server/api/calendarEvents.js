@@ -5,9 +5,6 @@ const Band = mongoose.model('Band');
 
 router.post('/', (req, res) =>
 {
-  console.log("PARAMS: ", req.params);
-  console.log("BODY: ", req.body);
-
   if (!req.body.event.title)
     return res.sendStatus(422);
 
@@ -23,8 +20,6 @@ router.post('/', (req, res) =>
   {
     Band.findById(req.body.bandId, (err, band) =>
     {
-      console.log("Band found ", band);
-
       if (err)
       {
         CalendarEvent.deleteOne({ _id: event._id }, (deleteErr, event) =>
@@ -40,8 +35,6 @@ router.post('/', (req, res) =>
         band.events.push(event);
         band.save((err) =>
         {
-          console.log("band saved ", band);
-
           if (err)
             return res.send(err);
           else
