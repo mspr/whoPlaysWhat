@@ -8,6 +8,7 @@ let BandSchema = new mongoose.Schema(
     musicians: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Musician' }],
     musiciansColor: [],
     songs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Song' }],
+    incomingSongs: [{ type: mongoose.Schema.Types.ObjectId, red: 'IncomingSong' }],
     notes: [{ type: String }],
     events: [{ type: mongoose.Schema.Types.ObjectId, ref: 'CalendarEvent' }]
   },
@@ -19,6 +20,8 @@ let BandSchema = new mongoose.Schema(
 BandSchema.pre('remove', (next) =>
 {
   Song.remove({ bandId: this._id }).exec();
+  IncomingSong.remove({ bandId: this._id }).exec();
+  CalendarEvent.remove({ bandId: this._id }).exec();
   next();
 })
 
@@ -31,6 +34,7 @@ BandSchema.methods.toDto = function ()
     musicians: this.musicians.map((musician) => { return musician.toDto(); }),
     musiciansColor: this.musiciansColor,
     songs: this.songs.map((song) => { return song.toDto(); }),
+    incomingSongs: this.incomingSongs.map((song) => { return song.toDto(); }),
     notes: this.notes,
     events: this.events.map((event) => { return event.toDto(); })
   }

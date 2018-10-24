@@ -9,6 +9,7 @@ router.get('/', (req, res) =>
   Band.find()
     .populate('musicians')
     .populate('songs')
+    .populate('incomingSongs')
     .populate('events')
     .then((bands) =>
     {
@@ -29,6 +30,7 @@ router.get('/:id', (req, res) =>
   Band.findById(req.params.id)
     .populate('musicians')
     .populate('songs')
+    .populate('incomingSongs')
     .populate('events')
     .then((band) =>
     {

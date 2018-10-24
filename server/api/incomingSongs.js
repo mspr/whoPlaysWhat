@@ -1,30 +1,48 @@
 const mongoose = require('mongoose');
 const router = require('express').Router();
 const IncomingSong = mongoose.model('IncomingSong');
+const Band = mongoose.model('Band');
 const Musician = mongoose.model('Musician');
 
 router.post('/', (req, res) =>
 {
   let musicianId = req.body.song.proposer;
 
-  Musician.findById(req.body.song.proposer, (err, musician) =>
+  Band.findById(req.body.bandId, (bandFindErr, band) =>
   {
-    if (err)
-      return res.send(err);
+    if (bandFindErr)
+      return res.send(bandFindErr);
     else
     {
-      let song = new IncomingSong();
-      song.title = req.body.song.title;
-      song.level = req.body.song.level;
-      song.proposer = musician;
-      song.musiciansFeedback = req.body.song.musiciansFeedback;
-
-      song.save((songErr) =>
+      Musician.findById(req.body.song.proposer, (musicianFindErr, musician) =>
       {
-        if (songErr)
-          return res.send(songErr);
+        if (musicianFindErr)
+          return res.send(musicianFindErr);
         else
-          return res.status(201).json(song.toDto());
+        {
+          let song = new IncomingSong();
+          song.title = req.body.song.title;
+          song.level = req.body.song.level;
+          song.proposer = musician;
+          song.musiciansFeedback = req.body.song.musiciansFeedback;
+
+          song.save((songSaveErr) =>
+          {
+            if (songSaveErr)
+              return res.send(songSaveErr);
+            else
+            {
+              band.incomingSongs.push(song);
+              band.save((bandSaveErr) =>
+              {
+                if (bandSaveErr)
+                  return res.send(bandSaveErr);
+                else
+                  return res.status(201).json(song.toDto());
+              });
+            }
+          });
+        }
       });
     }
   });
