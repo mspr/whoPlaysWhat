@@ -15,6 +15,8 @@ import { ActivatedRoute } from '@angular/router';
 
 export class IncomingSongsShowComponent implements OnInit
 {
+  public band : Band;
+
   public musicians : Musician[];
   public incomingSongs = new Array<IncomingSong>();
   private scoreMax = 5;
@@ -31,9 +33,10 @@ export class IncomingSongsShowComponent implements OnInit
     let bandId = this.activatedRoute.snapshot.parent.params["id"];
     this.bandService.getById(bandId).subscribe((band) =>
     {
-      band.incomingSongs.forEach(song => this.incomingSongs.push(IncomingSong.fromInfo(song)));
+      this.band = band;
+      this.band.incomingSongs.forEach(song => this.incomingSongs.push(IncomingSong.fromInfo(song)));
       this.incomingSongsHelper = new IncomingSongsHelper(this.incomingSongs);
-      this.musicians = band.musicians;
+      this.musicians = this.band.musicians;
     });
   }
 }
