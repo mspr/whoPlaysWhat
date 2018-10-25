@@ -15,11 +15,6 @@ export class IncomingSongService
   {
   }
 
-  getAllByBand(band : Band)
-  {
-    return this.httpClient.get<IncomingSong[]>(environment.baseUrl + `/bands/${band.id}/incoming-songs`);
-  }
-
   getTopSongs(band: Band, topNumber : number)
   {
     var topSongs = new Array<IncomingSong>();
@@ -52,8 +47,13 @@ export class IncomingSongService
     return topSongs;
   }
 
+  add(band : Band, song : IncomingSong)
+  {
+    return this.httpClient.post<IncomingSong>(environment.api + '/incomingSongs', { song: song, bandId: band.id });
+  }
+
   update(band : Band, song : IncomingSong)
   {
-    return this.httpClient.patch<IncomingSong>(environment.baseUrl + `/bands/${band.id}/incoming-songs/${song.id}`, song);
+    return this.httpClient.patch<IncomingSong>(environment.api + `/incomingSongs/${song.id}`, { song: song, bandId: band.id });
   }
 }

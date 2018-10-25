@@ -111,13 +111,17 @@ export class IncomingSongsUpdateComponent implements OnInit
 
   update()
   {
-    let updateObservables = new Array<Observable<IncomingSong>>();
-    this.incomingSongs.forEach(song => {
-      updateObservables.push(this.incomingSongService.update(this.band, song));
+    let updateOrCreateSongs = new Array<Observable<IncomingSong>>();
+    this.incomingSongs.forEach(song =>
+    {
+      if (song.id != undefined)
+        updateOrCreateSongs.push(this.incomingSongService.update(this.band, song));
+      else
+        updateOrCreateSongs.push(this.incomingSongService.add(this.band, song));
     });
 
-    forkJoin<IncomingSong[]>(updateObservables).subscribe(() => {
-
+    forkJoin<IncomingSong[]>(updateOrCreateSongs).subscribe(() =>
+    {
     });
   }
 }
