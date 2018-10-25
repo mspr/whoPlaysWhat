@@ -25,24 +25,27 @@ export class IncomingSongService
     var topSongs = new Array<IncomingSong>();
 
     var incomingSongs = band.incomingSongs;
-    if (incomingSongs != undefined)
+    if (incomingSongs != undefined && incomingSongs.length > 0)
     {
       while (topSongs.length < topNumber)
       {
         let higherScore = 0;
         let songWithHigherScore;
 
-        incomingSongs.forEach(songInfo => {
+        incomingSongs.forEach(songInfo =>
+        {
           let song = IncomingSong.fromInfo(songInfo);
           let score = song.score();
           let topSongFound = topSongs.find(s => s.id === song.id);
-          if (score >= higherScore && topSongFound === undefined) {
+          if (score >= higherScore && topSongFound === undefined)
+          {
             higherScore = score;
             songWithHigherScore = song;
           }
         });
 
-        topSongs.push(songWithHigherScore);
+        if (songWithHigherScore != undefined)
+          topSongs.push(songWithHigherScore);
       }
     }
 
