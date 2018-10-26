@@ -8,7 +8,7 @@ let BandSchema = new mongoose.Schema(
     musicians: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Musician' }],
     musiciansColor: [],
     songs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Song' }],
-    incomingSongs: [{ type: mongoose.Schema.Types.ObjectId, red: 'IncomingSong' }],
+    incomingSongs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'IncomingSong' }],
     notes: [{ type: String }],
     events: [{ type: mongoose.Schema.Types.ObjectId, ref: 'CalendarEvent' }]
   },

@@ -34,6 +34,8 @@ router.get('/:id', (req, res) =>
     .populate('events')
     .then((band) =>
     {
+      console.log("band ", band);
+
       if (!band)
         return res.sendStatus(404);
 

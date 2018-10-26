@@ -22,7 +22,7 @@ router.post('/', (req, res) =>
         {
           let song = new IncomingSong();
           song.title = req.body.song.title;
-          song.level = req.body.song.level;
+          song.level = IncomingSong.levels()[req.body.song.level];
           song.proposer = musician;
           song.musiciansFeedback = req.body.song.musiciansFeedback;
 
@@ -33,6 +33,7 @@ router.post('/', (req, res) =>
             else
             {
               band.incomingSongs.push(song);
+
               band.save((bandSaveErr) =>
               {
                 if (bandSaveErr)

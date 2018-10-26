@@ -4,7 +4,7 @@ const levels = ['Finger in the nose', 'Easy', 'Not so simple', 'Hard', 'Good luc
 
 let IncomingSongSchema = new mongoose.Schema(
   {
-    title: { type: String, required: [true, "can't be blank"], index: true},
+    title: { type: String },
     level: { type: String, enum: levels },
     proposer: { type: mongoose.Schema.Types.ObjectId, red: 'Musician' },
     musiciansFeedback: []

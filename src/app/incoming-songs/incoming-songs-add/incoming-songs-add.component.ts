@@ -4,6 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { Band } from '../../bands/band';
 import { ActivatedRoute } from '@angular/router';
 import { BandService } from '../../core/band.service';
+import { IncomingSongService } from '../../core/incoming-song.service';
+import { Observable } from 'rxjs/Observable';
+import { forkJoin } from 'rxjs/observable/forkJoin';
 
 @Component({
   selector: 'wpw-incoming-songs-add',
@@ -19,7 +22,8 @@ export class IncomingSongsAddComponent implements OnInit
   public songSuggestionNumber = 5;
 
   constructor(private activatedRoute: ActivatedRoute,
-    private bandService: BandService)
+    private bandService: BandService,
+    private incomingSongService: IncomingSongService)
   {
   }
 
@@ -45,6 +49,16 @@ export class IncomingSongsAddComponent implements OnInit
 
   add()
   {
-    this.band.incomingSongs = this.newIncomingSongs;
+    let addSongs = new Array<Observable<IncomingSong>>();
+    this.newIncomingSongs.forEach(song => {
+      // addSongs.push(this.incomingSongService.add(this.band, song));
+    });
+
+    // forkJoin<IncomingSong[]>(addSongs).subscribe(() =>
+    // {
+    //   this.bandService.getById(this.band.id).subscribe((band) => {
+    //     this.band = band;
+    //   })
+    // });
   }
 }
