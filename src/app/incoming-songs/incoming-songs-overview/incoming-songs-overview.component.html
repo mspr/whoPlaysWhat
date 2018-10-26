@@ -2,17 +2,23 @@
 
 <br/>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-4" *ngFor="let topSong of getTopThreeSongs()">
-      <label>{{topSong.title}}</label>
-      <wpw-songs-level [readOnly]="true" [defaultLevel]="topSong.level"></wpw-songs-level>
+<div *ngIf="hasIncomingSongs(); else addIncomingSongs">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let topSong of getTopThreeSongs()">
+        <label>{{topSong.title}}</label>
+        <wpw-songs-level [readOnly]="true" [defaultLevel]="topSong.level"></wpw-songs-level>
+      </div>
     </div>
   </div>
+
+  <a *ngIf="band" [routerLink]="['/bands', band.id, 'incoming-songs', 'show']" routerLinkActive="active">
+    See incoming songs!
+  </a>
 </div>
 
-<br/>
-
-<a *ngIf="band" [routerLink]="['/bands', band.id, 'incoming-songs', 'details']" routerLinkActive="active">
-  See incoming songs!
-</a>
+<ng-template #addIncomingSongs>
+  <a *ngIf="band" [routerLink]="['/bands', band.id, 'incoming-songs', 'add']" routerLinkActive="active">
+    Add incoming songs!
+  </a>
+</ng-template>

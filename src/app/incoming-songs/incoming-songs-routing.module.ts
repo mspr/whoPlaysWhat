@@ -2,11 +2,12 @@ import { IncomingSongsUpdateComponent } from './incoming-songs-update/incoming-s
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IncomingSongsShowComponent } from './incoming-songs-show/incoming-songs-show.component';
+import { IncomingSongsAddComponent } from './incoming-songs-add/incoming-songs-add.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'details',
+    redirectTo: 'show',
     pathMatch: 'full'
   },
   {
@@ -14,8 +15,12 @@ const routes: Routes = [
     component: IncomingSongsUpdateComponent
   },
   {
-    path: 'details',
+    path: 'show',
     component: IncomingSongsShowComponent
+  },
+  {
+    path: 'add',
+    component: IncomingSongsAddComponent
   }
 ];
 
@@ -23,4 +28,7 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class IncomingSongsRoutingModule { }
+
+export class IncomingSongsRoutingModule
+{
+}

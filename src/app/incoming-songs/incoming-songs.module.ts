@@ -8,6 +8,7 @@ import { IncomingSongService } from '../core/incoming-song.service';
 import { IncomingSongsShowComponent } from './incoming-songs-show/incoming-songs-show.component';
 import { FormsModule } from '@angular/forms';
 import { SongsModule } from '../songs/songs.module';
+import { IncomingSongsAddComponent } from './incoming-songs-add/incoming-songs-add.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { SongsModule } from '../songs/songs.module';
   declarations: [
     IncomingSongsOverviewComponent,
     IncomingSongsUpdateComponent,
-    IncomingSongsShowComponent
+    IncomingSongsShowComponent,
+    IncomingSongsAddComponent
   ],
   providers: [
     IncomingSongService

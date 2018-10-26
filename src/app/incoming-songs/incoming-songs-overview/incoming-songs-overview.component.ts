@@ -30,4 +30,12 @@ export class IncomingSongsOverviewComponent implements OnInit
 
     return this.incomingSongService.getTopSongs(this.band, 3);
   }
+
+  hasIncomingSongs()
+  {
+    if (this.band == undefined)
+      return false;
+
+    return this.band.incomingSongs.length > 0;
+  }
 }

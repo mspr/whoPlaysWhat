@@ -44,11 +44,7 @@ export class IncomingSongsUpdateComponent implements OnInit
 
   getSongsProposedBy(musician : Musician)
   {
-    var songs = this.incomingSongs.filter(s => s.proposer === musician.id);
-    while (songs.length <= this.songSuggestionNumber)
-      songs.push(new IncomingSong(musician.id));
-
-    return songs;
+    return this.incomingSongs.filter(s => s.proposer === musician.id);
   }
 
   getSongScore(song : IncomingSong, musician : Musician)
@@ -111,16 +107,12 @@ export class IncomingSongsUpdateComponent implements OnInit
 
   update()
   {
-    let updateOrCreateSongs = new Array<Observable<IncomingSong>>();
-    this.incomingSongs.forEach(song =>
-    {
-      if (song.id != undefined)
-        updateOrCreateSongs.push(this.incomingSongService.update(this.band, song));
-      else
-        updateOrCreateSongs.push(this.incomingSongService.add(this.band, song));
+    let updateSongs = new Array<Observable<IncomingSong>>();
+    this.incomingSongs.forEach(song => {
+      updateSongs.push(this.incomingSongService.update(this.band, song));
     });
 
-    forkJoin<IncomingSong[]>(updateOrCreateSongs).subscribe(() =>
+    forkJoin<IncomingSong[]>(updateSongs).subscribe(() =>
     {
     });
   }
