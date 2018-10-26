@@ -18,7 +18,7 @@ export class IncomingSongsAddComponent implements OnInit
 {
   public band : Band;
   public musicians = new Array<Musician>();
-  public newIncomingSongs = new Array<IncomingSong>();
+  public newIncomingSongsPerMusician = new Map<number, Array<IncomingSong>>();
   public songSuggestionNumber = 5;
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -35,30 +35,30 @@ export class IncomingSongsAddComponent implements OnInit
       this.band = band;
       this.musicians = this.band.musicians;
 
-      this.musicians.forEach(musician => {
+      this.musicians.forEach(musician =>
+      {
+        var songs = new Array<IncomingSong>(this.songSuggestionNumber);
         for (var i=0; i < this.songSuggestionNumber; ++i)
-          this.newIncomingSongs.push(new IncomingSong(musician.id));
+          songs[i] = new IncomingSong(musician.id);
+        this.newIncomingSongsPerMusician.set(musician.id, songs);
       });
     });
-  }
-
-  getSongsProposedBy(musician : Musician)
-  {
-    return this.newIncomingSongs.filter(s => s.proposer === musician.id);
   }
 
   add()
   {
     let addSongs = new Array<Observable<IncomingSong>>();
-    this.newIncomingSongs.forEach(song => {
-      // addSongs.push(this.incomingSongService.add(this.band, song));
+    this.newIncomingSongsPerMusician.forEach(songs => {
+      songs.forEach(song => {
+        addSongs.push(this.incomingSongService.add(this.band, song));
+      });
     });
 
-    // forkJoin<IncomingSong[]>(addSongs).subscribe(() =>
-    // {
-    //   this.bandService.getById(this.band.id).subscribe((band) => {
-    //     this.band = band;
-    //   })
-    // });
+    forkJoin<IncomingSong[]>(addSongs).subscribe(() =>
+    {
+      this.bandService.getById(this.band.id).subscribe((band) => {
+        this.band = band;
+      })
+    });
   }
 }

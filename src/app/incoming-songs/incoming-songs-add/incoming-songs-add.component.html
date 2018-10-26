@@ -9,15 +9,15 @@
         <td [style.color]="musicianRow.color">{{ musicianRow.name }}</td>
         <td>
           <table>
-            <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
-              <td><input [value]="proposedSong.title" /></td>
+            <tr *ngFor="let proposedSong of newIncomingSongsPerMusician.get(musicianRow.id)">
+              <td><input name="title" [(ngModel)]="proposedSong.title" /></td>
             </tr>
           </table>
         </td>
         <td>
           <table>
-            <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
-              <td><input [value]="proposedSong.link" /></td>
+            <tr *ngFor="let proposedSong of newIncomingSongsPerMusician.get(musicianRow.id)">
+              <td><input name="link" [(ngModel)]="proposedSong.link" /></td>
             </tr>
           </table>
         </td>
