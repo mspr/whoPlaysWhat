@@ -12,6 +12,7 @@ export class IncomingSong
 
   constructor(proposer : number)
   {
+    this.proposer = proposer;
   }
 
   static fromInfo(info)

@@ -1,3 +1,27 @@
-<p>
-  incoming-songs-add works!
-</p>
+<form #form="ngForm" (submit)="add()">
+    <table cellpadding="10">
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Link</th>
+      </tr>
+      <tr *ngFor="let musicianRow of musicians;">
+        <td [style.color]="musicianRow.color">{{ musicianRow.name }}</td>
+        <td>
+          <table>
+            <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
+              <td><input [value]="proposedSong.title" /></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr *ngFor="let proposedSong of getSongsProposedBy(musicianRow)">
+              <td><input [value]="proposedSong.link" /></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>

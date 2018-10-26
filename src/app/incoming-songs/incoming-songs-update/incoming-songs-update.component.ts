@@ -22,7 +22,6 @@ export class IncomingSongsUpdateComponent implements OnInit
   public musicians : Musician[];
   public incomingSongs : IncomingSong[];
   private scoreMax = 5;
-  public songSuggestionNumber = 5;
 
   constructor(private activatedRoute: ActivatedRoute,
     private bandService: BandService,
