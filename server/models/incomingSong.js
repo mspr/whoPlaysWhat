@@ -6,6 +6,7 @@ let IncomingSongSchema = new mongoose.Schema(
   {
     title: { type: String },
     level: { type: String, enum: levels },
+    link: { type: String },
     proposer: { type: mongoose.Schema.Types.ObjectId, red: 'Musician' },
     musiciansFeedback: []
   },
@@ -20,6 +21,7 @@ IncomingSongSchema.methods.toDto = function ()
     id: this._id,
     title: this.title,
     level: this.level,
+    link: this.link,
     proposer: this.proposer,
     musiciansFeedback: this.musiciansFeedback
   }

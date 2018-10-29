@@ -22,7 +22,15 @@
         </tr>
       </table>
     </td>
-    <td>-</td>
+    <td>
+      <table>
+        <tr *ngFor="let proposedSong of incomingSongsHelper.getSongsProposedBy(musicianRow)">
+          <td>
+            <label>{{ proposedSong.link }}</label>
+          </td>
+        </tr>
+      </table>
+    </td>
     <td *ngFor="let musicianCol of musicians;">
       <table>
         <tr *ngFor="let proposedSong of incomingSongsHelper.getSongsProposedBy(musicianRow)">

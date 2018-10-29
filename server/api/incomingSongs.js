@@ -23,6 +23,7 @@ router.post('/', (req, res) =>
           let song = new IncomingSong();
           song.title = req.body.song.title;
           song.level = IncomingSong.levels()[req.body.song.level];
+          song.link = req.body.song.link;
           song.proposer = musician;
           song.musiciansFeedback = req.body.song.musiciansFeedback;
 
