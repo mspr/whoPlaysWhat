@@ -50,4 +50,28 @@ router.post('/', (req, res) =>
   });
 });
 
+router.patch('/:id', (req, res) =>
+{
+  IncomingSong.findById(req.params.id, (songFindErr, song) =>
+  {
+    if (songFindErr)
+      return res.send(songFindErr);
+    else
+    {
+      song.title = req.body.song.title;
+      song.level = IncomingSong.levels()[req.body.song.level];
+      song.link = req.body.song.link;
+      song.musiciansFeedback = req.body.song.musiciansFeedback;
+
+      song.save((songSaveErr) =>
+      {
+        if (songSaveErr)
+          return res.send(songSaveErr);
+        else
+          return res.status(201).json(song.toDto());
+      });
+    }
+  });
+});
+
 module.exports = router;
