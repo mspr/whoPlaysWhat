@@ -12,13 +12,13 @@ export class IncomingSongsHelper
 
   getSongComment(song : IncomingSong, musician : Musician)
   {
-    let comment = song.musicians.find(m => m.id === musician.id).comment;
+    let comment = song.musiciansFeedback.find(m => m.id === musician.id).comment;
     return comment != undefined ? comment : '';
   }
 
   getSongScore(song : IncomingSong, musician : Musician)
   {
-    let score = song.musicians.find(m => m.id === musician.id).score;
+    let score = song.musiciansFeedback.find(m => m.id === musician.id).score;
     return score != undefined ? score : 0;
   }
 

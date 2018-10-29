@@ -8,7 +8,7 @@ export class IncomingSong
   public link : string = '';
   public proposer : number;
   public level = SongLevel.Easy;
-  public musicians = [];
+  public musiciansFeedback = [];
 
   constructor(proposer : number)
   {
@@ -21,7 +21,7 @@ export class IncomingSong
     song.id = info.id;
     song.title = info.title;
     song.link = info.link;
-    song.musicians = info.musicians;
+    song.musiciansFeedback = info.musiciansFeedback;
     song.level = info.level;
     song.proposer = info.proposer;
     return song;
@@ -35,7 +35,7 @@ export class IncomingSong
   score()
   {
     var score = 0;
-    this.musicians.forEach(musician => score += musician.score);
+    this.musiciansFeedback.forEach(musician => score += musician.score);
     return score;
   }
 }

@@ -39,7 +39,15 @@ export class IncomingSongsAddComponent implements OnInit
       {
         var songs = new Array<IncomingSong>(this.songSuggestionNumber);
         for (var i=0; i < this.songSuggestionNumber; ++i)
-          songs[i] = new IncomingSong(musician.id);
+        {
+          var song = new IncomingSong(musician.id);
+          this.musicians.forEach(musicianFeedback => {
+            song.musiciansFeedback.push({ id: musicianFeedback.id, score: 0 });
+          });
+
+          songs[i] = song;
+        }
+
         this.newIncomingSongsPerMusician.set(musician.id, songs);
       });
     });

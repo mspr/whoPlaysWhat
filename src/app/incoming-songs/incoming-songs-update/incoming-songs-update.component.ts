@@ -48,7 +48,7 @@ export class IncomingSongsUpdateComponent implements OnInit
 
   getSongScore(song : IncomingSong, musician : Musician)
   {
-    var musicianAboutSongInfo = song.musicians.find(m => m.id === musician.id);
+    var musicianAboutSongInfo = song.musiciansFeedback.find(m => m.id === musician.id);
     if (musicianAboutSongInfo != undefined)
       return musicianAboutSongInfo.score;
 
@@ -57,7 +57,7 @@ export class IncomingSongsUpdateComponent implements OnInit
 
   getSongComment(song : IncomingSong, musician : Musician)
   {
-    var musicianAboutSongInfo = song.musicians.find(m => m.id === musician.id);
+    var musicianAboutSongInfo = song.musiciansFeedback.find(m => m.id === musician.id);
     if (musicianAboutSongInfo != undefined)
       return musicianAboutSongInfo.comment;
 
@@ -66,7 +66,7 @@ export class IncomingSongsUpdateComponent implements OnInit
 
   updateSongScore(wheelEvent : WheelEvent, song : IncomingSong, musician : Musician)
   {
-    let songInfoByMusician = song.musicians.find(m => m.id === musician.id);
+    let songInfoByMusician = song.musiciansFeedback.find(m => m.id === musician.id);
 
     let stepValue = 1;
     if (wheelEvent.deltaY >= 0)
@@ -98,7 +98,7 @@ export class IncomingSongsUpdateComponent implements OnInit
   getScore(song : IncomingSong)
   {
     let score = 0;
-    song.musicians.forEach(musician => {
+    song.musiciansFeedback.forEach(musician => {
       score += (musician.score != undefined) ? musician.score : 0;
     });
     return score;
