@@ -16,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 export class MusiciansOverviewComponent implements OnInit
 {
   public band : Band;
-  public musicians : Musician[] = new Array<Musician>();
+  public musicians = new Array<Musician>();
 
   constructor(private activatedRoute: ActivatedRoute,
     private bandService: BandService,

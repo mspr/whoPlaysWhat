@@ -22,7 +22,7 @@ import { switchMap } from 'rxjs/operators';
 export class MusiciansListComponent implements OnInit, OnDestroy
 {
   public band : Band;
-  public musicians : Musician[] = new Array<Musician>();
+  public musicians = new Array<Musician>();
   public retrieveMusiciansSubscription : Subscription;
   private componentDestroyed$: Subject<boolean> = new Subject();
 

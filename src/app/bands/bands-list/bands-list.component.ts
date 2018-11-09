@@ -12,8 +12,10 @@ export class BandsListComponent implements OnInit
 {
   public bands = new Array<Band>();
 
-  constructor(private bandService: BandService) { }
-
+  constructor(private bandService: BandService)
+  {
+  }
+  
   ngOnInit()
   {
     this.bandService.getAll().subscribe((res) => {
