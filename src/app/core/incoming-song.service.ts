@@ -29,7 +29,7 @@ export class IncomingSongService
 
         incomingSongs.forEach(songInfo =>
         {
-          let song = IncomingSong.fromInfo(songInfo);
+          let song = IncomingSong.fromJSON(songInfo);
           let score = song.score();
           let topSongFound = topSongs.find(s => s.id === song.id);
           if (score >= higherScore && topSongFound === undefined)

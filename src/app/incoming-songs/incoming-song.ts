@@ -15,7 +15,7 @@ export class IncomingSong
     this.proposer = proposer;
   }
 
-  static fromInfo(info)
+  static fromJSON(info)
   {
     var song = new IncomingSong(info.proposer);
     song.id = info.id;

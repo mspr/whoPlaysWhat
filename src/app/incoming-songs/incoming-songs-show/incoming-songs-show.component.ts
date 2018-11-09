@@ -34,7 +34,7 @@ export class IncomingSongsShowComponent implements OnInit
     this.bandService.getById(bandId).subscribe((band) =>
     {
       this.band = band;
-      this.band.incomingSongs.forEach(song => this.incomingSongs.push(IncomingSong.fromInfo(song)));
+      this.band.incomingSongs.forEach(song => this.incomingSongs.push(IncomingSong.fromJSON(song)));
       this.incomingSongsHelper = new IncomingSongsHelper(this.incomingSongs);
       this.musicians = this.band.musicians;
     });
