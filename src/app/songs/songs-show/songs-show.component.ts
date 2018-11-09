@@ -17,7 +17,7 @@ import { Band } from '../../bands/band';
 export class SongsShowComponent implements OnInit, OnDestroy
 {
   public band : Band;
-  public song : Song = new Song();
+  public song = new Song();
   public musicians = new Array<Musician>();
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -40,7 +40,7 @@ export class SongsShowComponent implements OnInit, OnDestroy
     .subscribe((band) =>
     {
       this.band = band;
-      this.song = Song.fromInfo(this.band.songs.find(s => s.id === songId));
+      this.song = Song.fromJSON(this.band.songs.find(s => s.id === songId));
       this.musicians = this.band.musicians;
     });
   }

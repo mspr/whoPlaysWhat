@@ -17,7 +17,7 @@ import { forkJoin } from 'rxjs/observable/forkJoin';
 
 export class SongsListComponent implements OnInit, OnDestroy
 {
-  public songs : Song[] = new Array<Song>();
+  public songs = new Array<Song>();
   public band : Band;
   private componentDestroyed$: Subject<boolean> = new Subject();
 
@@ -60,7 +60,7 @@ export class SongsListComponent implements OnInit, OnDestroy
   {
     this.songService.getById(id).switchMap((songInfo) =>
     {
-      let song = Song.fromInfo(songInfo);
+      let song = Song.fromJSON(songInfo);
       this.band.songs.splice(this.band.songs.indexOf(song.id), 1);
       return this.bandService.update(this.band);
     })
@@ -81,7 +81,7 @@ export class SongsListComponent implements OnInit, OnDestroy
         this.band = band;
         this.songs = [];
         this.band.songs.forEach(songInfo => {
-          this.songs.push(Song.fromInfo(songInfo));
+          this.songs.push(Song.fromJSON(songInfo));
         });
       })
   }

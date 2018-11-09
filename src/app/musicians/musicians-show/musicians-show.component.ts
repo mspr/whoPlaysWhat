@@ -31,7 +31,7 @@ export class MusiciansShowComponent implements OnInit
     )
     .switchMap((musicianInfo) =>
     {
-      this.musician = Musician.fromInfo(musicianInfo);
+      this.musician = Musician.fromJSON(musicianInfo);
       return this.bandService.getById(this.bandId)
     })
     .subscribe((band) => {

@@ -6,7 +6,7 @@ export class Musician
   public bands;
   public color;
 
-  static fromInfo(info)
+  static fromJSON(info)
   {
     let musician = new Musician();
 

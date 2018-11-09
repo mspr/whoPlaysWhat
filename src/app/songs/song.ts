@@ -13,7 +13,7 @@ export class Song
   public musicians = [];
   public progression = 0;
 
-  static fromInfo(info)
+  static fromJSON(info)
   {
     let song = new Song();
 

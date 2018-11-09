@@ -32,7 +32,7 @@ export class SongsOverviewComponent implements OnInit
     {
       this.band = band;
       this.band.songs.forEach((songInfo) => {
-        this.songs.push(Song.fromInfo(songInfo));
+        this.songs.push(Song.fromJSON(songInfo));
       })
     })
  }
